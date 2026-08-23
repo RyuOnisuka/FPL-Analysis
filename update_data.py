@@ -49,6 +49,17 @@ def update_fpl_data(team_id=DEFAULT_TEAM_ID):
         print(f"  - Fetching live match stats for GW{cur_gw_id}...")
         live = get_json(f'https://fantasy.premierleague.com/api/event/{cur_gw_id}/live/')
 
+        league_standings = {}
+        classic_leagues = entry.get('leagues', {}).get('classic', [])
+        print(f"  - Fetching standings for {len(classic_leagues)} leagues...")
+        for l in classic_leagues:
+            lid = l['id']
+            try:
+                std = get_json(f'https://fantasy.premierleague.com/api/leagues-classic/{lid}/standings/')
+                league_standings[lid] = std
+            except Exception as e:
+                print(f"    ⚠️ Could not fetch standings for league {lid}: {e}")
+
         payload = {
             'team_id': team_id,
             'entry': entry,
@@ -56,6 +67,7 @@ def update_fpl_data(team_id=DEFAULT_TEAM_ID):
             'current_gw': cur_gw_id,
             'picks': picks,
             'live': live,
+            'league_standings': league_standings,
             'bootstrap': {
                 'events': bootstrap['events'],
                 'teams': bootstrap['teams'],

@@ -21,6 +21,7 @@
                             green: '#00ff87',
                             cyan: '#02efff',
                             pink: '#e90052',
+                            orange: '#f97316',
                             dark: '#120017',
                             card: '#1e0527',
                             pitch: '#1e4620',
@@ -76,11 +77,11 @@
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .fdr-1 { background-color: #00703c; color: white; }
+        .fdr-1 { background-color: #00703c; color: white; font-weight: 700; }
         .fdr-2 { background-color: #00ff87; color: #111; font-weight: 700; }
         .fdr-3 { background-color: #ebe500; color: #111; font-weight: 700; }
-        .fdr-4 { background-color: #ff2882; color: white; }
-        .fdr-5 { background-color: #80072d; color: white; }
+        .fdr-4 { background-color: #f97316; color: white; font-weight: 700; } /* Changed to Orange */
+        .fdr-5 { background-color: #80072d; color: white; font-weight: 700; }
         
         /* Custom scrollbar */
         ::-webkit-scrollbar {
@@ -129,6 +130,9 @@
             <nav class="flex items-center gap-1 bg-black/50 p-1 rounded-xl border border-white/5 overflow-x-auto max-w-full">
                 <button onclick="switchTab('pitch-tab')" id="nav-pitch-tab" class="tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all bg-fpl-green text-black shadow">
                     <i class="fa-solid fa-futbol"></i> <span>My Team</span>
+                </button>
+                <button onclick="switchTab('league-tab')" id="nav-league-tab" class="tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all text-gray-300 hover:text-white hover:bg-white/5">
+                    <i class="fa-solid fa-ranking-star"></i> <span>My Leagues</span>
                 </button>
                 <button onclick="switchTab('transfer-tab')" id="nav-transfer-tab" class="tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all text-gray-300 hover:text-white hover:bg-white/5">
                     <i class="fa-solid fa-arrow-right-arrow-left"></i> <span>Transfers</span>
@@ -273,6 +277,39 @@
                         </h3>
                         <div class="space-y-2 max-h-[360px] overflow-y-auto pr-1" id="squad-performance-list"></div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB: MY LEAGUES (NEW!) ================= -->
+        <section id="league-tab" class="tab-content hidden space-y-6">
+            <div class="glass-card p-6 rounded-2xl space-y-6">
+                <div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
+                    <div>
+                        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-ranking-star text-yellow-400"></i> ตารางคะแนนและอันดับในลีก (My Leagues & Standings)
+                        </h2>
+                        <p class="text-xs text-gray-400 mt-1">คลิกที่ลีกใดก็ได้เพื่อเปิดดู **ตารางคะแนนแบบเต็ม (Leaderboard)** และดูอันดับทีมของคุณ</p>
+                    </div>
+                    <span class="text-xs bg-purple-900/60 text-fpl-cyan px-3 py-1.5 rounded-xl border border-purple-500/30 font-semibold">
+                        เข้าร่วมทั้งหมด: <strong id="leagues-total-count" class="text-white">9</strong> ลีก
+                    </span>
+                </div>
+
+                <!-- Private Mini-Leagues Highlights -->
+                <div>
+                    <h3 class="text-xs font-bold text-fpl-green uppercase tracking-wider mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-users"></i> มินิลีกส่วนตัว & ลีกแข่งขัน (Mini-Leagues)
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3" id="private-leagues-grid"></div>
+                </div>
+
+                <!-- Broad / Global Leagues -->
+                <div class="pt-4 border-t border-white/10">
+                    <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-globe"></i> ลีกทางการ & สโมสร (General & Supporter Leagues)
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3" id="general-leagues-grid"></div>
                 </div>
             </div>
         </section>
@@ -550,11 +587,11 @@
                         </h2>
                         <p class="text-xs text-gray-400 mt-1">Heatmap แสดงโปรแกรม 5 นัดล่วงหน้า (GW2 - GW6) ของทั้ง 20 สโมสร</p>
                     </div>
-                    <!-- Legend -->
+                    <!-- Legend (Updated with Orange for 4) -->
                     <div class="flex items-center gap-1.5 text-[10px]">
                         <span class="fdr-2 px-1.5 py-0.5 rounded">2 (ง่ายมาก)</span>
                         <span class="fdr-3 px-1.5 py-0.5 rounded">3 (ปานกลาง)</span>
-                        <span class="fdr-4 px-1.5 py-0.5 rounded">4 (ยาก)</span>
+                        <span class="fdr-4 px-1.5 py-0.5 rounded">4 (ยาก - ส้ม)</span>
                         <span class="fdr-5 px-1.5 py-0.5 rounded">5 (ยากมาก)</span>
                     </div>
                 </div>
@@ -578,6 +615,41 @@
         </section>
 
     </main>
+
+    <!-- League Standings Modal (NEW!) -->
+    <div id="league-modal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+        <div class="glass-card max-w-2xl w-full p-6 rounded-2xl border border-yellow-500/30 space-y-4 relative max-h-[90vh] flex flex-col">
+            <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 rounded-xl bg-yellow-500/20 text-yellow-400 flex items-center justify-center text-lg border border-yellow-500/30">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <div>
+                        <h3 id="modal-league-name" class="text-base font-bold text-white">ชื่อลีก</h3>
+                        <p class="text-[11px] text-gray-400">League ID: <span id="modal-league-id" class="text-fpl-cyan font-semibold"></span> | ทีมของคุณอยู่อันดับที่ <strong id="modal-league-user-rank" class="text-fpl-green font-bold text-xs"></strong></p>
+                    </div>
+                </div>
+                <button onclick="closeLeagueModal()" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Leaderboard Table -->
+            <div class="overflow-y-auto flex-1 rounded-xl border border-white/10">
+                <table class="w-full text-left text-xs">
+                    <thead class="bg-purple-950/80 text-gray-300 uppercase tracking-wider font-semibold sticky top-0 border-b border-white/10">
+                        <tr>
+                            <th class="p-3 text-center w-14">อันดับ</th>
+                            <th class="p-3">ทีม & ผู้จัดการ</th>
+                            <th class="p-3 text-center">GW Pts</th>
+                            <th class="p-3 text-center">Total Pts</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modal-league-standings-body" class="divide-y divide-white/5 bg-black/30"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
     <!-- Player Modal / Detail Popup -->
     <div id="player-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
@@ -663,7 +735,6 @@
             showToast('กำลังดึงข้อมูลสดจาก FPL API...', true);
 
             async function fetchJson(url) {
-                // Try direct first, then CORS proxy fallbacks
                 const proxies = [
                     url,
                     `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
@@ -676,7 +747,7 @@
                             return await r.json();
                         }
                     } catch (e) {
-                        // try next proxy
+                        // try next
                     }
                 }
                 throw new Error(`Failed to fetch ${url}`);
@@ -699,6 +770,15 @@
                     fetchJson(`https://fantasy.premierleague.com/api/event/${curGwId}/live/`)
                 ]);
 
+                // Fetch Standings
+                const leagueStandings = fplData?.league_standings || {};
+                const classicLeagues = entry?.leagues?.classic || [];
+                for (let l of classicLeagues.slice(0, 5)) {
+                    try {
+                        leagueStandings[l.id] = await fetchJson(`https://fantasy.premierleague.com/api/leagues-classic/${l.id}/standings/`);
+                    } catch (e) {}
+                }
+
                 fplData = {
                     team_id: teamId,
                     entry: entry,
@@ -706,6 +786,7 @@
                     current_gw: curGwId,
                     picks: picks,
                     live: live,
+                    league_standings: leagueStandings,
                     bootstrap: {
                         events: bootstrap.events,
                         teams: bootstrap.teams,
@@ -736,6 +817,7 @@
             renderHeaderAndStats();
             renderPitch();
             renderSquadPerformance();
+            renderLeagues();
             renderTransferSimulator();
             renderScoutTable();
             renderFixtureTicker();
@@ -903,6 +985,137 @@
             }).join('');
 
             document.getElementById('squad-performance-list').innerHTML = html;
+        }
+
+        // ================= MY LEAGUES (NEW!) =================
+        function renderLeagues() {
+            const leagues = fplData?.entry?.leagues?.classic || [];
+            document.getElementById('leagues-total-count').innerText = leagues.length;
+
+            const privateLeagues = [];
+            const generalLeagues = [];
+
+            leagues.forEach(l => {
+                if (['Overall', 'Thailand', 'Gameweek 1', 'Liverpool', 'Monomax League'].includes(l.name) || l.league_type === 's') {
+                    generalLeagues.push(l);
+                } else {
+                    privateLeagues.push(l);
+                }
+            });
+
+            const renderLeagueCard = (l, isPrivate = false) => {
+                const rank = l.entry_rank || '-';
+                const lastRank = l.entry_last_rank || 0;
+                let rankDiffHtml = '';
+                if (lastRank > 0) {
+                    if (rank < lastRank) rankDiffHtml = `<span class="text-emerald-400 text-[10px] font-bold"><i class="fa-solid fa-arrow-up"></i> ${lastRank - rank}</span>`;
+                    else if (rank > lastRank) rankDiffHtml = `<span class="text-red-400 text-[10px] font-bold"><i class="fa-solid fa-arrow-down"></i> ${rank - lastRank}</span>`;
+                }
+
+                let badgeColor = 'bg-purple-900/60 border-purple-500/30 text-purple-200';
+                if (rank === 1) badgeColor = 'bg-yellow-500/20 border-yellow-500/50 text-yellow-300';
+                else if (rank === 2) badgeColor = 'bg-slate-300/20 border-slate-300/50 text-slate-200';
+                else if (rank <= 3) badgeColor = 'bg-amber-700/20 border-amber-600/50 text-amber-300';
+                else if (rank <= 20) badgeColor = 'bg-emerald-900/40 border-emerald-500/40 text-emerald-300';
+
+                return `
+                    <div onclick="openLeagueModal(${l.id}, '${escapeHtml(l.name)}', ${rank})" class="glass-card p-4 rounded-xl border border-white/10 hover:border-yellow-400 transition cursor-pointer flex flex-col justify-between group space-y-3 shadow-lg">
+                        <div class="flex items-start justify-between gap-2">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid ${isPrivate ? 'fa-users text-fpl-green' : 'fa-globe text-fpl-cyan'} text-sm"></i>
+                                <h4 class="font-bold text-sm text-white group-hover:text-yellow-300 transition truncate max-w-[180px]">${l.name}</h4>
+                            </div>
+                            <span class="text-[10px] text-gray-500 font-mono">#${l.id}</span>
+                        </div>
+                        <div class="flex items-end justify-between bg-black/40 p-2.5 rounded-lg border border-white/5">
+                            <div>
+                                <span class="text-[10px] text-gray-400 block">อันดับปัจจุบัน (Rank)</span>
+                                <div class="flex items-baseline gap-1.5">
+                                    <span class="text-lg font-black text-white">#${typeof rank === 'number' ? rank.toLocaleString() : rank}</span>
+                                    ${rankDiffHtml}
+                                </div>
+                            </div>
+                            <button class="text-[10px] bg-yellow-500/20 hover:bg-yellow-500 text-yellow-300 hover:text-black font-bold px-2.5 py-1 rounded transition border border-yellow-500/30 flex items-center gap-1">
+                                <span>ดูตารางคะแนน</span> <i class="fa-solid fa-arrow-right text-[8px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            };
+
+            document.getElementById('private-leagues-grid').innerHTML = privateLeagues.map(l => renderLeagueCard(l, true)).join('');
+            document.getElementById('general-leagues-grid').innerHTML = generalLeagues.map(l => renderLeagueCard(l, false)).join('');
+        }
+
+        function escapeHtml(str) {
+            return (str || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+        }
+
+        function openLeagueModal(leagueId, leagueName, userRank) {
+            document.getElementById('modal-league-name').innerText = leagueName;
+            document.getElementById('modal-league-id').innerText = leagueId;
+            document.getElementById('modal-league-user-rank').innerText = typeof userRank === 'number' ? '#' + userRank.toLocaleString() : userRank;
+
+            const tbody = document.getElementById('modal-league-standings-body');
+            const standingsObj = fplData?.league_standings?.[leagueId]?.standings?.results || [];
+
+            if (!standingsObj || standingsObj.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="4" class="p-6 text-center text-gray-400">
+                            <i class="fa-solid fa-spinner fa-spin text-fpl-cyan text-xl mb-2 block"></i>
+                            กำลังดึงข้อมูลตารางคะแนนของลีกนี้...
+                        </td>
+                    </tr>
+                `;
+                // Fetch directly
+                fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent('https://fantasy.premierleague.com/api/leagues-classic/' + leagueId + '/standings/')}`)
+                    .then(r => r.json())
+                    .then(data => {
+                        if (!fplData.league_standings) fplData.league_standings = {};
+                        fplData.league_standings[leagueId] = data;
+                        renderLeagueModalBody(data?.standings?.results || []);
+                    })
+                    .catch(() => {
+                        tbody.innerHTML = `<tr><td colspan="4" class="p-6 text-center text-red-400">ไม่สามารถดึงข้อมูลตารางคะแนนสดได้ในขณะนี้</td></tr>`;
+                    });
+            } else {
+                renderLeagueModalBody(standingsObj);
+            }
+
+            document.getElementById('league-modal').classList.remove('hidden');
+        }
+
+        function renderLeagueModalBody(results) {
+            const tbody = document.getElementById('modal-league-standings-body');
+            const myTeamId = fplData?.team_id || 4554263;
+
+            tbody.innerHTML = results.map(row => {
+                const isMyTeam = (row.entry === myTeamId);
+                let rankBadge = `<span class="font-bold text-gray-300">${row.rank}</span>`;
+                if (row.rank === 1) rankBadge = `<span class="w-6 h-6 rounded-full bg-yellow-400 text-black font-black text-xs inline-flex items-center justify-center shadow">🥇</span>`;
+                else if (row.rank === 2) rankBadge = `<span class="w-6 h-6 rounded-full bg-slate-300 text-black font-black text-xs inline-flex items-center justify-center shadow">🥈</span>`;
+                else if (row.rank === 3) rankBadge = `<span class="w-6 h-6 rounded-full bg-amber-600 text-white font-black text-xs inline-flex items-center justify-center shadow">🥉</span>`;
+
+                return `
+                    <tr class="${isMyTeam ? 'bg-fpl-green/15 border-l-4 border-l-fpl-green font-semibold' : 'hover:bg-white/5'} transition">
+                        <td class="p-3 text-center">${rankBadge}</td>
+                        <td class="p-3">
+                            <div class="flex items-center gap-2">
+                                <span class="font-bold ${isMyTeam ? 'text-fpl-green' : 'text-white'}">${row.entry_name}</span>
+                                ${isMyTeam ? '<span class="bg-fpl-green text-black text-[9px] font-black px-1.5 py-0.2 rounded-full">ทีมคุณ</span>' : ''}
+                            </div>
+                            <span class="text-[10px] text-gray-400 block">${row.player_name}</span>
+                        </td>
+                        <td class="p-3 text-center font-semibold text-gray-300">${row.event_total || 0}</td>
+                        <td class="p-3 text-center font-black ${isMyTeam ? 'text-fpl-green' : 'text-yellow-300'}">${row.total}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function closeLeagueModal() {
+            document.getElementById('league-modal').classList.add('hidden');
         }
 
         // ================= TRANSFER PLANNER =================

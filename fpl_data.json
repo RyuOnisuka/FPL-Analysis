@@ -31988,7 +31988,7 @@
           }
         ]
       },
-      "last_updated_data": "2026-08-23T23:33:16Z",
+      "last_updated_data": "2026-08-23T23:33:15Z",
       "new_entries": {
         "has_next": false,
         "page": 1,
@@ -32567,7 +32567,7 @@
           }
         ]
       },
-      "last_updated_data": "2026-08-23T23:33:15Z",
+      "last_updated_data": "2026-08-23T23:33:16Z",
       "new_entries": {
         "has_next": false,
         "page": 1,
@@ -32639,17 +32639,6 @@
             "total": 107
           },
           {
-            "club_badge_src": null,
-            "entry": 6088367,
-            "entry_name": "Arsenum",
-            "event_total": 106,
-            "last_rank": 0,
-            "player_name": "Erik N",
-            "rank": 5,
-            "rank_sort": 5,
-            "total": 106
-          },
-          {
             "club_badge_src": "https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/1511699/3cb94597-48e6-46cf-b320-b64f16a23b3c.png",
             "entry": 2317814,
             "entry_name": "FC Voldy",
@@ -32657,16 +32646,27 @@
             "last_rank": 0,
             "player_name": "Patrik Voleský",
             "rank": 5,
+            "rank_sort": 5,
+            "total": 106
+          },
+          {
+            "club_badge_src": null,
+            "entry": 6088367,
+            "entry_name": "Arsenum",
+            "event_total": 106,
+            "last_rank": 0,
+            "player_name": "Erik N",
+            "rank": 5,
             "rank_sort": 6,
             "total": 106
           },
           {
             "club_badge_src": null,
-            "entry": 464300,
-            "entry_name": "cold morgz",
+            "entry": 2299229,
+            "entry_name": "Alalmeyn",
             "event_total": 106,
             "last_rank": 0,
-            "player_name": "Ilya Drab",
+            "player_name": "Allen Yim",
             "rank": 5,
             "rank_sort": 7,
             "total": 106
@@ -32684,25 +32684,14 @@
           },
           {
             "club_badge_src": null,
-            "entry": 2299229,
-            "entry_name": "Alalmeyn",
+            "entry": 464300,
+            "entry_name": "cold morgz",
             "event_total": 106,
             "last_rank": 0,
-            "player_name": "Allen Yim",
+            "player_name": "Ilya Drab",
             "rank": 5,
             "rank_sort": 9,
             "total": 106
-          },
-          {
-            "club_badge_src": "https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/9996/cda4dd9e-6b6d-42f8-89df-bcf6b8a9a769.png",
-            "entry": 43242,
-            "entry_name": "Odd man out",
-            "event_total": 105,
-            "last_rank": 0,
-            "player_name": "Erik Nes Ohnstad",
-            "rank": 10,
-            "rank_sort": 10,
-            "total": 105
           },
           {
             "club_badge_src": null,
@@ -32712,16 +32701,27 @@
             "last_rank": 0,
             "player_name": "kb two",
             "rank": 10,
+            "rank_sort": 10,
+            "total": 105
+          },
+          {
+            "club_badge_src": "https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/9996/cda4dd9e-6b6d-42f8-89df-bcf6b8a9a769.png",
+            "entry": 43242,
+            "entry_name": "Odd man out",
+            "event_total": 105,
+            "last_rank": 0,
+            "player_name": "Erik Nes Ohnstad",
+            "rank": 10,
             "rank_sort": 11,
             "total": 105
           },
           {
             "club_badge_src": null,
-            "entry": 6043688,
-            "entry_name": "Tarik Muharemofiets",
+            "entry": 6922784,
+            "entry_name": "S8",
             "event_total": 104,
             "last_rank": 0,
-            "player_name": "Matteo Magaldi",
+            "player_name": "Pannapat Homsuwan",
             "rank": 12,
             "rank_sort": 12,
             "total": 104
@@ -32739,22 +32739,22 @@
           },
           {
             "club_badge_src": null,
-            "entry": 6922784,
-            "entry_name": "S8",
+            "entry": 1068212,
+            "entry_name": "Yemen اب",
             "event_total": 104,
             "last_rank": 0,
-            "player_name": "Pannapat Homsuwan",
+            "player_name": "Zakaria Husain",
             "rank": 12,
             "rank_sort": 14,
             "total": 104
           },
           {
             "club_badge_src": null,
-            "entry": 1068212,
-            "entry_name": "Yemen اب",
+            "entry": 6043688,
+            "entry_name": "Tarik Muharemofiets",
             "event_total": 104,
             "last_rank": 0,
-            "player_name": "Zakaria Husain",
+            "player_name": "Matteo Magaldi",
             "rank": 12,
             "rank_sort": 15,
             "total": 104
@@ -32794,35 +32794,24 @@
           },
           {
             "club_badge_src": null,
-            "entry": 8861777,
-            "entry_name": "Good Start",
-            "event_total": 102,
-            "last_rank": 0,
-            "player_name": "Ahmed 1998",
-            "rank": 19,
-            "rank_sort": 19,
-            "total": 102
-          },
-          {
-            "club_badge_src": null,
-            "entry": 2212828,
-            "entry_name": "Two Pints o Schlager",
-            "event_total": 102,
-            "last_rank": 0,
-            "player_name": "William Garrison",
-            "rank": 19,
-            "rank_sort": 20,
-            "total": 102
-          },
-          {
-            "club_badge_src": null,
             "entry": 7296522,
             "entry_name": "Saka Potatoes",
             "event_total": 102,
             "last_rank": 0,
             "player_name": "Anna Greening",
             "rank": 19,
-            "rank_sort": 21,
+            "rank_sort": 19,
+            "total": 102
+          },
+          {
+            "club_badge_src": null,
+            "entry": 8861777,
+            "entry_name": "Good Start",
+            "event_total": 102,
+            "last_rank": 0,
+            "player_name": "Ahmed 1998",
+            "rank": 19,
+            "rank_sort": 20,
             "total": 102
           },
           {
@@ -32833,7 +32822,7 @@
             "last_rank": 0,
             "player_name": "Momo Gaballah",
             "rank": 19,
-            "rank_sort": 22,
+            "rank_sort": 21,
             "total": 102
           },
           {
@@ -32844,30 +32833,19 @@
             "last_rank": 0,
             "player_name": "Yonis K",
             "rank": 19,
-            "rank_sort": 23,
+            "rank_sort": 22,
             "total": 102
           },
           {
             "club_badge_src": null,
-            "entry": 853987,
-            "entry_name": "CD Tenerife",
-            "event_total": 101,
+            "entry": 2212828,
+            "entry_name": "Two Pints o Schlager",
+            "event_total": 102,
             "last_rank": 0,
-            "player_name": "aman damai",
-            "rank": 24,
-            "rank_sort": 24,
-            "total": 101
-          },
-          {
-            "club_badge_src": null,
-            "entry": 197673,
-            "entry_name": "Gaztello",
-            "event_total": 101,
-            "last_rank": 0,
-            "player_name": "Artem Filatov",
-            "rank": 24,
-            "rank_sort": 25,
-            "total": 101
+            "player_name": "William Garrison",
+            "rank": 19,
+            "rank_sort": 23,
+            "total": 102
           },
           {
             "club_badge_src": null,
@@ -32876,6 +32854,28 @@
             "event_total": 101,
             "last_rank": 0,
             "player_name": "Rhys Thomas",
+            "rank": 24,
+            "rank_sort": 24,
+            "total": 101
+          },
+          {
+            "club_badge_src": null,
+            "entry": 4731437,
+            "entry_name": "Gangsta’s Allardyce",
+            "event_total": 101,
+            "last_rank": 0,
+            "player_name": "Nick Cavaday",
+            "rank": 24,
+            "rank_sort": 25,
+            "total": 101
+          },
+          {
+            "club_badge_src": "https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/3420830/18b3c9e2-fba8-47c5-b249-d4f5d7f48d81.png",
+            "entry": 3420830,
+            "entry_name": "Why Always Me !?",
+            "event_total": 101,
+            "last_rank": 0,
+            "player_name": "Karim Nasef",
             "rank": 24,
             "rank_sort": 26,
             "total": 101
@@ -32893,35 +32893,13 @@
           },
           {
             "club_badge_src": null,
-            "entry": 4731437,
-            "entry_name": "Gangsta’s Allardyce",
+            "entry": 853987,
+            "entry_name": "CD Tenerife",
             "event_total": 101,
             "last_rank": 0,
-            "player_name": "Nick Cavaday",
+            "player_name": "aman damai",
             "rank": 24,
             "rank_sort": 28,
-            "total": 101
-          },
-          {
-            "club_badge_src": "https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/3420830/18b3c9e2-fba8-47c5-b249-d4f5d7f48d81.png",
-            "entry": 3420830,
-            "entry_name": "Why Always Me !?",
-            "event_total": 101,
-            "last_rank": 0,
-            "player_name": "Karim Nasef",
-            "rank": 24,
-            "rank_sort": 29,
-            "total": 101
-          },
-          {
-            "club_badge_src": "https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/1620486/e2b530a6-c55f-418d-a2f9-b5cb5e815789.png",
-            "entry": 1620486,
-            "entry_name": "Change Name",
-            "event_total": 101,
-            "last_rank": 0,
-            "player_name": "Joe Milligan",
-            "rank": 24,
-            "rank_sort": 30,
             "total": 101
           },
           {
@@ -32932,40 +32910,40 @@
             "last_rank": 0,
             "player_name": "Jared Fagerstrom",
             "rank": 24,
+            "rank_sort": 29,
+            "total": 101
+          },
+          {
+            "club_badge_src": null,
+            "entry": 197673,
+            "entry_name": "Gaztello",
+            "event_total": 101,
+            "last_rank": 0,
+            "player_name": "Artem Filatov",
+            "rank": 24,
+            "rank_sort": 30,
+            "total": 101
+          },
+          {
+            "club_badge_src": "https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/1620486/e2b530a6-c55f-418d-a2f9-b5cb5e815789.png",
+            "entry": 1620486,
+            "entry_name": "Change Name",
+            "event_total": 101,
+            "last_rank": 0,
+            "player_name": "Joe Milligan",
+            "rank": 24,
             "rank_sort": 31,
             "total": 101
           },
           {
             "club_badge_src": null,
-            "entry": 1537181,
-            "entry_name": "Hobbsy's Lions",
+            "entry": 6436649,
+            "entry_name": "Sajad",
             "event_total": 100,
             "last_rank": 0,
-            "player_name": "stuart hobbs",
+            "player_name": "The King 980",
             "rank": 32,
             "rank_sort": 32,
-            "total": 100
-          },
-          {
-            "club_badge_src": null,
-            "entry": 128139,
-            "entry_name": "Rob's Team",
-            "event_total": 100,
-            "last_rank": 0,
-            "player_name": "Rob Faulkner",
-            "rank": 32,
-            "rank_sort": 33,
-            "total": 100
-          },
-          {
-            "club_badge_src": null,
-            "entry": 824948,
-            "entry_name": "Ings FC",
-            "event_total": 100,
-            "last_rank": 0,
-            "player_name": "Hogan Adam",
-            "rank": 32,
-            "rank_sort": 34,
             "total": 100
           },
           {
@@ -32976,7 +32954,7 @@
             "last_rank": 0,
             "player_name": "Roberto Soracchi",
             "rank": 32,
-            "rank_sort": 35,
+            "rank_sort": 33,
             "total": 100
           },
           {
@@ -32987,51 +32965,29 @@
             "last_rank": 0,
             "player_name": "Abdalrhamn Alakrami",
             "rank": 32,
+            "rank_sort": 34,
+            "total": 100
+          },
+          {
+            "club_badge_src": null,
+            "entry": 5318248,
+            "entry_name": "Taso",
+            "event_total": 100,
+            "last_rank": 0,
+            "player_name": "Taso Ava",
+            "rank": 32,
+            "rank_sort": 35,
+            "total": 100
+          },
+          {
+            "club_badge_src": null,
+            "entry": 824948,
+            "entry_name": "Ings FC",
+            "event_total": 100,
+            "last_rank": 0,
+            "player_name": "Hogan Adam",
+            "rank": 32,
             "rank_sort": 36,
-            "total": 100
-          },
-          {
-            "club_badge_src": null,
-            "entry": 1675156,
-            "entry_name": "Bagniyanini",
-            "event_total": 100,
-            "last_rank": 0,
-            "player_name": "Dem ya Kevo",
-            "rank": 32,
-            "rank_sort": 37,
-            "total": 100
-          },
-          {
-            "club_badge_src": "https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/43174/c354374d-1339-42b2-a2a1-310f0ec549fc.png",
-            "entry": 43174,
-            "entry_name": "AskGreaves",
-            "event_total": 100,
-            "last_rank": 0,
-            "player_name": "Brett Norman",
-            "rank": 32,
-            "rank_sort": 38,
-            "total": 100
-          },
-          {
-            "club_badge_src": "https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/3997710/fd40f56e-cbe3-4a90-b3f1-661b1e04440a.png",
-            "entry": 271328,
-            "entry_name": "Araballstars",
-            "event_total": 100,
-            "last_rank": 0,
-            "player_name": "Pete Thom",
-            "rank": 32,
-            "rank_sort": 39,
-            "total": 100
-          },
-          {
-            "club_badge_src": null,
-            "entry": 534233,
-            "entry_name": "Farke",
-            "event_total": 100,
-            "last_rank": 0,
-            "player_name": "Einar Floberg",
-            "rank": 32,
-            "rank_sort": 40,
             "total": 100
           },
           {
@@ -33042,18 +32998,29 @@
             "last_rank": 0,
             "player_name": "Hafizul Hafiz",
             "rank": 32,
-            "rank_sort": 41,
+            "rank_sort": 37,
+            "total": 100
+          },
+          {
+            "club_badge_src": "https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/3997710/fd40f56e-cbe3-4a90-b3f1-661b1e04440a.png",
+            "entry": 271328,
+            "entry_name": "Araballstars",
+            "event_total": 100,
+            "last_rank": 0,
+            "player_name": "Pete Thom",
+            "rank": 32,
+            "rank_sort": 38,
             "total": 100
           },
           {
             "club_badge_src": null,
-            "entry": 1471949,
-            "entry_name": "Rail Horse Inn",
+            "entry": 534233,
+            "entry_name": "Farke",
             "event_total": 100,
             "last_rank": 0,
-            "player_name": "Neil Harrison",
+            "player_name": "Einar Floberg",
             "rank": 32,
-            "rank_sort": 42,
+            "rank_sort": 39,
             "total": 100
           },
           {
@@ -33064,16 +33031,49 @@
             "last_rank": 0,
             "player_name": "Panos Eleftheriadis",
             "rank": 32,
+            "rank_sort": 40,
+            "total": 100
+          },
+          {
+            "club_badge_src": null,
+            "entry": 7041067,
+            "entry_name": "MarcoTeam",
+            "event_total": 100,
+            "last_rank": 0,
+            "player_name": "Marek Wójtowicz",
+            "rank": 32,
+            "rank_sort": 41,
+            "total": 100
+          },
+          {
+            "club_badge_src": null,
+            "entry": 128139,
+            "entry_name": "Rob's Team",
+            "event_total": 100,
+            "last_rank": 0,
+            "player_name": "Rob Faulkner",
+            "rank": 32,
+            "rank_sort": 42,
+            "total": 100
+          },
+          {
+            "club_badge_src": null,
+            "entry": 1537181,
+            "entry_name": "Hobbsy's Lions",
+            "event_total": 100,
+            "last_rank": 0,
+            "player_name": "stuart hobbs",
+            "rank": 32,
             "rank_sort": 43,
             "total": 100
           },
           {
             "club_badge_src": null,
-            "entry": 6436649,
-            "entry_name": "Sajad",
+            "entry": 1675156,
+            "entry_name": "Bagniyanini",
             "event_total": 100,
             "last_rank": 0,
-            "player_name": "The King 980",
+            "player_name": "Dem ya Kevo",
             "rank": 32,
             "rank_sort": 44,
             "total": 100
@@ -33091,62 +33091,62 @@
           },
           {
             "club_badge_src": null,
-            "entry": 5318248,
-            "entry_name": "Taso",
-            "event_total": 100,
-            "last_rank": 0,
-            "player_name": "Taso Ava",
-            "rank": 32,
-            "rank_sort": 46,
-            "total": 100
-          },
-          {
-            "club_badge_src": null,
-            "entry": 7041067,
-            "entry_name": "MarcoTeam",
-            "event_total": 100,
-            "last_rank": 0,
-            "player_name": "Marek Wójtowicz",
-            "rank": 32,
-            "rank_sort": 47,
-            "total": 100
-          },
-          {
-            "club_badge_src": null,
             "entry": 1799570,
             "entry_name": "FC Frigo",
             "event_total": 100,
             "last_rank": 0,
             "player_name": "Alexander Polle",
             "rank": 32,
+            "rank_sort": 46,
+            "total": 100
+          },
+          {
+            "club_badge_src": "https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/43174/c354374d-1339-42b2-a2a1-310f0ec549fc.png",
+            "entry": 43174,
+            "entry_name": "AskGreaves",
+            "event_total": 100,
+            "last_rank": 0,
+            "player_name": "Brett Norman",
+            "rank": 32,
+            "rank_sort": 47,
+            "total": 100
+          },
+          {
+            "club_badge_src": null,
+            "entry": 1471949,
+            "entry_name": "Rail Horse Inn",
+            "event_total": 100,
+            "last_rank": 0,
+            "player_name": "Neil Harrison",
+            "rank": 32,
             "rank_sort": 48,
             "total": 100
           },
           {
-            "club_badge_src": "https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/127285/ac752717-9c54-4c56-950f-9f961f5f2617.png",
-            "entry": 162981,
-            "entry_name": "Take my breath (A)",
+            "club_badge_src": null,
+            "entry": 5122404,
+            "entry_name": "Differentials Röhl",
             "event_total": 99,
             "last_rank": 0,
-            "player_name": "Anthony Milicevic",
+            "player_name": "Ban Dini",
             "rank": 49,
             "rank_sort": 49,
             "total": 99
           },
           {
             "club_badge_src": null,
-            "entry": 2066139,
-            "entry_name": "Welldone",
+            "entry": 909565,
+            "entry_name": "Musc Ball",
             "event_total": 99,
             "last_rank": 0,
-            "player_name": "Wildan Pratama",
+            "player_name": "Anthony Roach",
             "rank": 49,
             "rank_sort": 50,
             "total": 99
           }
         ]
       },
-      "last_updated_data": "2026-08-23T23:28:23Z",
+      "last_updated_data": "2026-08-23T23:33:15Z",
       "new_entries": {
         "has_next": false,
         "page": 1,
@@ -33229,28 +33229,6 @@
             "total": 106
           },
           {
-            "club_badge_src": null,
-            "entry": 464300,
-            "entry_name": "cold morgz",
-            "event_total": 106,
-            "last_rank": 0,
-            "player_name": "Ilya Drab",
-            "rank": 5,
-            "rank_sort": 6,
-            "total": 106
-          },
-          {
-            "club_badge_src": null,
-            "entry": 6088367,
-            "entry_name": "Arsenum",
-            "event_total": 106,
-            "last_rank": 0,
-            "player_name": "Erik N",
-            "rank": 5,
-            "rank_sort": 7,
-            "total": 106
-          },
-          {
             "club_badge_src": "https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/1511699/3cb94597-48e6-46cf-b320-b64f16a23b3c.png",
             "entry": 2317814,
             "entry_name": "FC Voldy",
@@ -33258,7 +33236,18 @@
             "last_rank": 0,
             "player_name": "Patrik Voleský",
             "rank": 5,
-            "rank_sort": 8,
+            "rank_sort": 6,
+            "total": 106
+          },
+          {
+            "club_badge_src": null,
+            "entry": 464300,
+            "entry_name": "cold morgz",
+            "event_total": 106,
+            "last_rank": 0,
+            "player_name": "Ilya Drab",
+            "rank": 5,
+            "rank_sort": 7,
             "total": 106
           },
           {
@@ -33269,19 +33258,19 @@
             "last_rank": 0,
             "player_name": "Allen Yim",
             "rank": 5,
-            "rank_sort": 9,
+            "rank_sort": 8,
             "total": 106
           },
           {
-            "club_badge_src": "https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/9996/cda4dd9e-6b6d-42f8-89df-bcf6b8a9a769.png",
-            "entry": 43242,
-            "entry_name": "Odd man out",
-            "event_total": 105,
+            "club_badge_src": null,
+            "entry": 6088367,
+            "entry_name": "Arsenum",
+            "event_total": 106,
             "last_rank": 0,
-            "player_name": "Erik Nes Ohnstad",
-            "rank": 10,
-            "rank_sort": 10,
-            "total": 105
+            "player_name": "Erik N",
+            "rank": 5,
+            "rank_sort": 9,
+            "total": 106
           },
           {
             "club_badge_src": null,
@@ -33290,6 +33279,17 @@
             "event_total": 105,
             "last_rank": 0,
             "player_name": "kb two",
+            "rank": 10,
+            "rank_sort": 10,
+            "total": 105
+          },
+          {
+            "club_badge_src": "https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/9996/cda4dd9e-6b6d-42f8-89df-bcf6b8a9a769.png",
+            "entry": 43242,
+            "entry_name": "Odd man out",
+            "event_total": 105,
+            "last_rank": 0,
+            "player_name": "Erik Nes Ohnstad",
             "rank": 10,
             "rank_sort": 11,
             "total": 105
@@ -33340,22 +33340,22 @@
           },
           {
             "club_badge_src": null,
-            "entry": 253468,
-            "entry_name": "teddy's bears",
+            "entry": 3965821,
+            "entry_name": "infantinoooooo",
             "event_total": 103,
             "last_rank": 0,
-            "player_name": "Teddy Cairns",
+            "player_name": "Sebastian Dahlberg",
             "rank": 16,
             "rank_sort": 16,
             "total": 103
           },
           {
             "club_badge_src": null,
-            "entry": 3965821,
-            "entry_name": "infantinoooooo",
+            "entry": 253468,
+            "entry_name": "teddy's bears",
             "event_total": 103,
             "last_rank": 0,
-            "player_name": "Sebastian Dahlberg",
+            "player_name": "Teddy Cairns",
             "rank": 16,
             "rank_sort": 17,
             "total": 103
@@ -33373,22 +33373,22 @@
           },
           {
             "club_badge_src": null,
-            "entry": 1816889,
-            "entry_name": "Harold finch",
+            "entry": 2212828,
+            "entry_name": "Two Pints o Schlager",
             "event_total": 102,
             "last_rank": 0,
-            "player_name": "Momo Gaballah",
+            "player_name": "William Garrison",
             "rank": 19,
             "rank_sort": 19,
             "total": 102
           },
           {
             "club_badge_src": null,
-            "entry": 2212828,
-            "entry_name": "Two Pints o Schlager",
+            "entry": 8861777,
+            "entry_name": "Good Start",
             "event_total": 102,
             "last_rank": 0,
-            "player_name": "William Garrison",
+            "player_name": "Ahmed 1998",
             "rank": 19,
             "rank_sort": 20,
             "total": 102
@@ -33417,47 +33417,14 @@
           },
           {
             "club_badge_src": null,
-            "entry": 8861777,
-            "entry_name": "Good Start",
+            "entry": 1816889,
+            "entry_name": "Harold finch",
             "event_total": 102,
             "last_rank": 0,
-            "player_name": "Ahmed 1998",
+            "player_name": "Momo Gaballah",
             "rank": 19,
             "rank_sort": 23,
             "total": 102
-          },
-          {
-            "club_badge_src": "https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/2055227/60468d1d-70fa-42e3-9b06-19a612761540.png",
-            "entry": 2055227,
-            "entry_name": "Salamanca",
-            "event_total": 101,
-            "last_rank": 0,
-            "player_name": "Tonight's the night",
-            "rank": 24,
-            "rank_sort": 24,
-            "total": 101
-          },
-          {
-            "club_badge_src": null,
-            "entry": 7629633,
-            "entry_name": "RT FC",
-            "event_total": 101,
-            "last_rank": 0,
-            "player_name": "Rhys Thomas",
-            "rank": 24,
-            "rank_sort": 25,
-            "total": 101
-          },
-          {
-            "club_badge_src": null,
-            "entry": 853987,
-            "entry_name": "CD Tenerife",
-            "event_total": 101,
-            "last_rank": 0,
-            "player_name": "aman damai",
-            "rank": 24,
-            "rank_sort": 26,
-            "total": 101
           },
           {
             "club_badge_src": "https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/3420830/18b3c9e2-fba8-47c5-b249-d4f5d7f48d81.png",
@@ -33467,7 +33434,18 @@
             "last_rank": 0,
             "player_name": "Karim Nasef",
             "rank": 24,
-            "rank_sort": 27,
+            "rank_sort": 24,
+            "total": 101
+          },
+          {
+            "club_badge_src": "https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/2055227/60468d1d-70fa-42e3-9b06-19a612761540.png",
+            "entry": 2055227,
+            "entry_name": "Salamanca",
+            "event_total": 101,
+            "last_rank": 0,
+            "player_name": "Tonight's the night",
+            "rank": 24,
+            "rank_sort": 25,
             "total": 101
           },
           {
@@ -33478,7 +33456,7 @@
             "last_rank": 0,
             "player_name": "Joe Milligan",
             "rank": 24,
-            "rank_sort": 28,
+            "rank_sort": 26,
             "total": 101
           },
           {
@@ -33489,7 +33467,18 @@
             "last_rank": 0,
             "player_name": "Nick Cavaday",
             "rank": 24,
-            "rank_sort": 29,
+            "rank_sort": 27,
+            "total": 101
+          },
+          {
+            "club_badge_src": null,
+            "entry": 853987,
+            "entry_name": "CD Tenerife",
+            "event_total": 101,
+            "last_rank": 0,
+            "player_name": "aman damai",
+            "rank": 24,
+            "rank_sort": 28,
             "total": 101
           },
           {
@@ -33500,7 +33489,7 @@
             "last_rank": 0,
             "player_name": "Jared Fagerstrom",
             "rank": 24,
-            "rank_sort": 30,
+            "rank_sort": 29,
             "total": 101
           },
           {
@@ -33511,38 +33500,49 @@
             "last_rank": 0,
             "player_name": "Artem Filatov",
             "rank": 24,
+            "rank_sort": 30,
+            "total": 101
+          },
+          {
+            "club_badge_src": null,
+            "entry": 7629633,
+            "entry_name": "RT FC",
+            "event_total": 101,
+            "last_rank": 0,
+            "player_name": "Rhys Thomas",
+            "rank": 24,
             "rank_sort": 31,
             "total": 101
           },
           {
             "club_badge_src": null,
-            "entry": 1217286,
-            "entry_name": "piero get your culo",
+            "entry": 5638311,
+            "entry_name": "Zabarnyi",
             "event_total": 100,
             "last_rank": 0,
-            "player_name": "Roberto Soracchi",
+            "player_name": "Abdalrhamn Alakrami",
             "rank": 32,
             "rank_sort": 32,
             "total": 100
           },
           {
             "club_badge_src": null,
-            "entry": 128139,
-            "entry_name": "Rob's Team",
+            "entry": 1799570,
+            "entry_name": "FC Frigo",
             "event_total": 100,
             "last_rank": 0,
-            "player_name": "Rob Faulkner",
+            "player_name": "Alexander Polle",
             "rank": 32,
             "rank_sort": 33,
             "total": 100
           },
           {
             "club_badge_src": null,
-            "entry": 1537181,
-            "entry_name": "Hobbsy's Lions",
+            "entry": 7041067,
+            "entry_name": "MarcoTeam",
             "event_total": 100,
             "last_rank": 0,
-            "player_name": "stuart hobbs",
+            "player_name": "Marek Wójtowicz",
             "rank": 32,
             "rank_sort": 34,
             "total": 100
@@ -33559,58 +33559,14 @@
             "total": 100
           },
           {
-            "club_badge_src": "https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/10540463/fa07b8cc-2797-4abc-9afe-91e0645af308.png",
-            "entry": 6653391,
-            "entry_name": "ISAK Newton",
+            "club_badge_src": null,
+            "entry": 1537181,
+            "entry_name": "Hobbsy's Lions",
             "event_total": 100,
             "last_rank": 0,
-            "player_name": "Kavisha Punchihewa",
+            "player_name": "stuart hobbs",
             "rank": 32,
             "rank_sort": 36,
-            "total": 100
-          },
-          {
-            "club_badge_src": null,
-            "entry": 1471949,
-            "entry_name": "Rail Horse Inn",
-            "event_total": 100,
-            "last_rank": 0,
-            "player_name": "Neil Harrison",
-            "rank": 32,
-            "rank_sort": 37,
-            "total": 100
-          },
-          {
-            "club_badge_src": null,
-            "entry": 5638311,
-            "entry_name": "Zabarnyi",
-            "event_total": 100,
-            "last_rank": 0,
-            "player_name": "Abdalrhamn Alakrami",
-            "rank": 32,
-            "rank_sort": 38,
-            "total": 100
-          },
-          {
-            "club_badge_src": null,
-            "entry": 5318248,
-            "entry_name": "Taso",
-            "event_total": 100,
-            "last_rank": 0,
-            "player_name": "Taso Ava",
-            "rank": 32,
-            "rank_sort": 39,
-            "total": 100
-          },
-          {
-            "club_badge_src": null,
-            "entry": 824948,
-            "entry_name": "Ings FC",
-            "event_total": 100,
-            "last_rank": 0,
-            "player_name": "Hogan Adam",
-            "rank": 32,
-            "rank_sort": 40,
             "total": 100
           },
           {
@@ -33621,51 +33577,7 @@
             "last_rank": 0,
             "player_name": "Hafizul Hafiz",
             "rank": 32,
-            "rank_sort": 41,
-            "total": 100
-          },
-          {
-            "club_badge_src": "https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/3997710/fd40f56e-cbe3-4a90-b3f1-661b1e04440a.png",
-            "entry": 271328,
-            "entry_name": "Araballstars",
-            "event_total": 100,
-            "last_rank": 0,
-            "player_name": "Pete Thom",
-            "rank": 32,
-            "rank_sort": 42,
-            "total": 100
-          },
-          {
-            "club_badge_src": null,
-            "entry": 6436649,
-            "entry_name": "Sajad",
-            "event_total": 100,
-            "last_rank": 0,
-            "player_name": "The King 980",
-            "rank": 32,
-            "rank_sort": 43,
-            "total": 100
-          },
-          {
-            "club_badge_src": null,
-            "entry": 1799570,
-            "entry_name": "FC Frigo",
-            "event_total": 100,
-            "last_rank": 0,
-            "player_name": "Alexander Polle",
-            "rank": 32,
-            "rank_sort": 44,
-            "total": 100
-          },
-          {
-            "club_badge_src": null,
-            "entry": 534233,
-            "entry_name": "Farke",
-            "event_total": 100,
-            "last_rank": 0,
-            "player_name": "Einar Floberg",
-            "rank": 32,
-            "rank_sort": 45,
+            "rank_sort": 37,
             "total": 100
           },
           {
@@ -33676,7 +33588,62 @@
             "last_rank": 0,
             "player_name": "Brett Norman",
             "rank": 32,
-            "rank_sort": 46,
+            "rank_sort": 38,
+            "total": 100
+          },
+          {
+            "club_badge_src": "https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/3997710/fd40f56e-cbe3-4a90-b3f1-661b1e04440a.png",
+            "entry": 271328,
+            "entry_name": "Araballstars",
+            "event_total": 100,
+            "last_rank": 0,
+            "player_name": "Pete Thom",
+            "rank": 32,
+            "rank_sort": 39,
+            "total": 100
+          },
+          {
+            "club_badge_src": null,
+            "entry": 534233,
+            "entry_name": "Farke",
+            "event_total": 100,
+            "last_rank": 0,
+            "player_name": "Einar Floberg",
+            "rank": 32,
+            "rank_sort": 40,
+            "total": 100
+          },
+          {
+            "club_badge_src": "https://fantasy.premierleague.com/gcs/plfpl-production-adobe-approved/plfpl-production/10540463/fa07b8cc-2797-4abc-9afe-91e0645af308.png",
+            "entry": 6653391,
+            "entry_name": "ISAK Newton",
+            "event_total": 100,
+            "last_rank": 0,
+            "player_name": "Kavisha Punchihewa",
+            "rank": 32,
+            "rank_sort": 41,
+            "total": 100
+          },
+          {
+            "club_badge_src": null,
+            "entry": 1471949,
+            "entry_name": "Rail Horse Inn",
+            "event_total": 100,
+            "last_rank": 0,
+            "player_name": "Neil Harrison",
+            "rank": 32,
+            "rank_sort": 42,
+            "total": 100
+          },
+          {
+            "club_badge_src": null,
+            "entry": 128139,
+            "entry_name": "Rob's Team",
+            "event_total": 100,
+            "last_rank": 0,
+            "player_name": "Rob Faulkner",
+            "rank": 32,
+            "rank_sort": 43,
             "total": 100
           },
           {
@@ -33687,27 +33654,60 @@
             "last_rank": 0,
             "player_name": "Panos Eleftheriadis",
             "rank": 32,
+            "rank_sort": 44,
+            "total": 100
+          },
+          {
+            "club_badge_src": null,
+            "entry": 5318248,
+            "entry_name": "Taso",
+            "event_total": 100,
+            "last_rank": 0,
+            "player_name": "Taso Ava",
+            "rank": 32,
+            "rank_sort": 45,
+            "total": 100
+          },
+          {
+            "club_badge_src": null,
+            "entry": 6436649,
+            "entry_name": "Sajad",
+            "event_total": 100,
+            "last_rank": 0,
+            "player_name": "The King 980",
+            "rank": 32,
+            "rank_sort": 46,
+            "total": 100
+          },
+          {
+            "club_badge_src": null,
+            "entry": 824948,
+            "entry_name": "Ings FC",
+            "event_total": 100,
+            "last_rank": 0,
+            "player_name": "Hogan Adam",
+            "rank": 32,
             "rank_sort": 47,
             "total": 100
           },
           {
             "club_badge_src": null,
-            "entry": 7041067,
-            "entry_name": "MarcoTeam",
+            "entry": 1217286,
+            "entry_name": "piero get your culo",
             "event_total": 100,
             "last_rank": 0,
-            "player_name": "Marek Wójtowicz",
+            "player_name": "Roberto Soracchi",
             "rank": 32,
             "rank_sort": 48,
             "total": 100
           },
           {
             "club_badge_src": null,
-            "entry": 2066139,
-            "entry_name": "Welldone",
+            "entry": 5122404,
+            "entry_name": "Differentials Röhl",
             "event_total": 99,
             "last_rank": 0,
-            "player_name": "Wildan Pratama",
+            "player_name": "Ban Dini",
             "rank": 49,
             "rank_sort": 49,
             "total": 99
@@ -33725,7 +33725,7 @@
           }
         ]
       },
-      "last_updated_data": "2026-08-23T23:28:25Z",
+      "last_updated_data": "2026-08-23T23:33:16Z",
       "new_entries": {
         "has_next": false,
         "page": 1,
@@ -34487,7 +34487,7 @@
           }
         ]
       },
-      "last_updated_data": "2026-08-23T23:33:16Z",
+      "last_updated_data": "2026-08-23T23:33:15Z",
       "new_entries": {
         "has_next": false,
         "page": 1,
@@ -35377,7 +35377,7 @@
           }
         ]
       },
-      "last_updated_data": "2026-08-23T23:33:16Z",
+      "last_updated_data": "2026-08-23T23:33:15Z",
       "new_entries": {
         "has_next": true,
         "page": 1,

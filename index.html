@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="th" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FPL Strategy & Analysis Dashboard - Keekee</title>
+    
+    <!-- Load embedded initial dataset (Ensures 100% offline & local file:// support) -->
+    <script src="fpl_data.js"></script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        fpl: {
+                            purple: '#37003c',
+                            green: '#00ff87',
+                            cyan: '#02efff',
+                            pink: '#e90052',
+                            dark: '#120017',
+                            card: '#1e0527',
+                            pitch: '#1e4620',
+                            pitchDark: '#173619'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Prompt & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Prompt', 'Outfit', sans-serif;
+            background-color: #0d0112;
+            color: #f3f4f6;
+        }
+        .pitch-pattern {
+            background-color: #173619;
+            background-image: repeating-linear-gradient(0deg, #1b401d, #1b401d 40px, #153317 40px, #153317 80px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+        .pitch-center-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 110px;
+            height: 110px;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .pitch-half-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.15);
+            pointer-events: none;
+        }
+        .glass-card {
+            background: rgba(30, 5, 39, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .fdr-1 { background-color: #00703c; color: white; }
+        .fdr-2 { background-color: #00ff87; color: #111; font-weight: 700; }
+        .fdr-3 { background-color: #ebe500; color: #111; font-weight: 700; }
+        .fdr-4 { background-color: #ff2882; color: white; }
+        .fdr-5 { background-color: #80072d; color: white; }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #120017;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #37003c;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00ff87;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="glass-card px-4 py-3 rounded-xl border border-fpl-green shadow-2xl flex items-center gap-3">
+            <i id="toast-icon" class="fa-solid fa-circle-check text-fpl-green text-lg"></i>
+            <span id="toast-msg" class="text-xs font-semibold text-white">ข้อความแจ้งเตือน</span>
+        </div>
+    </div>
+
+    <!-- Top Navigation Bar -->
+    <header class="glass-card border-b border-purple-900/50 sticky top-0 z-40 px-4 lg:px-8 py-3">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-fpl-purple to-fpl-pink flex items-center justify-center shadow-lg shadow-purple-900/50">
+                    <i class="fa-solid fa-trophy text-fpl-green text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-base lg:text-lg font-bold tracking-wide flex items-center gap-2">
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-fpl-green via-fpl-cyan to-white">FPL STRATEGY DASHBOARD</span>
+                        <span class="text-xs bg-purple-900/80 text-fpl-green px-2 py-0.5 rounded-full border border-fpl-green/30">GW<span id="current-gw-label">1</span> Live</span>
+                    </h1>
+                    <p class="text-xs text-gray-400">Team: <span id="header-team-name" class="text-white font-medium">Keekee</span> | Manager: <span id="header-manager-name" class="text-gray-300">Nattaporn Chotiyanuwong</span></p>
+                </div>
+            </div>
+
+            <!-- Tab Navigation Buttons -->
+            <nav class="flex items-center gap-1 bg-black/50 p-1 rounded-xl border border-white/5 overflow-x-auto max-w-full">
+                <button onclick="switchTab('pitch-tab')" id="nav-pitch-tab" class="tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all bg-fpl-green text-black shadow">
+                    <i class="fa-solid fa-futbol"></i> <span>My Team</span>
+                </button>
+                <button onclick="switchTab('transfer-tab')" id="nav-transfer-tab" class="tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all text-gray-300 hover:text-white hover:bg-white/5">
+                    <i class="fa-solid fa-arrow-right-arrow-left"></i> <span>Transfers</span>
+                </button>
+                <button onclick="switchTab('chip-tab')" id="nav-chip-tab" class="tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all text-gray-300 hover:text-white hover:bg-white/5">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> <span>Chip Strategy</span>
+                </button>
+                <button onclick="switchTab('scout-tab')" id="nav-scout-tab" class="tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all text-gray-300 hover:text-white hover:bg-white/5">
+                    <i class="fa-solid fa-magnifying-glass-chart"></i> <span>Scout Hub</span>
+                </button>
+                <button onclick="switchTab('fixture-tab')" id="nav-fixture-tab" class="tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all text-gray-300 hover:text-white hover:bg-white/5">
+                    <i class="fa-solid fa-calendar-days"></i> <span>FDR Ticker</span>
+                </button>
+            </nav>
+
+            <!-- Team ID & In-Browser Live Update Button -->
+            <div class="flex items-center gap-2">
+                <div class="flex items-center bg-black/60 rounded-lg border border-white/10 px-2 py-1">
+                    <span class="text-[10px] text-gray-400 mr-1.5">ID:</span>
+                    <input type="number" id="team-id-input" value="4554263" class="w-16 bg-transparent text-xs font-bold text-fpl-cyan focus:outline-none">
+                </div>
+                <button onclick="fetchLiveFPLDataInBrowser()" id="btn-live-update" class="px-3 py-1.5 rounded-lg bg-gradient-to-r from-purple-700 to-fpl-pink hover:from-purple-600 hover:to-pink-500 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-md shadow-pink-900/30">
+                    <i id="refresh-icon" class="fa-solid fa-rotate"></i> <span>อัปเดตข้อมูลสด</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 lg:px-8 py-6 flex-1 w-full space-y-6">
+
+        <!-- Top Summary Cards -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+            <div class="glass-card p-3 rounded-xl flex flex-col justify-between border-l-4 border-l-fpl-green">
+                <span class="text-[11px] text-gray-400 font-medium">คะแนนรวม (Overall)</span>
+                <div class="flex items-baseline justify-between mt-1">
+                    <span id="stat-overall-pts" class="text-xl font-black text-white">12</span>
+                    <span class="text-[10px] text-fpl-green">pts</span>
+                </div>
+            </div>
+            <div class="glass-card p-3 rounded-xl flex flex-col justify-between border-l-4 border-l-fpl-cyan">
+                <span class="text-[11px] text-gray-400 font-medium">คะแนน GW1 สด</span>
+                <div class="flex items-baseline justify-between mt-1">
+                    <span id="stat-gw-pts" class="text-xl font-black text-fpl-cyan">12</span>
+                    <span class="text-[10px] text-gray-400">Live</span>
+                </div>
+            </div>
+            <div class="glass-card p-3 rounded-xl flex flex-col justify-between border-l-4 border-l-fpl-pink">
+                <span class="text-[11px] text-gray-400 font-medium">อันดับรวม (Overall Rank)</span>
+                <div class="flex items-baseline justify-between mt-1">
+                    <span id="stat-overall-rank" class="text-sm font-bold text-gray-200">5.4M</span>
+                    <i class="fa-solid fa-chart-line text-xs text-fpl-pink"></i>
+                </div>
+            </div>
+            <div class="glass-card p-3 rounded-xl flex flex-col justify-between border-l-4 border-l-yellow-400">
+                <span class="text-[11px] text-gray-400 font-medium">มูลค่าทีม (Team Value)</span>
+                <div class="flex items-baseline justify-between mt-1">
+                    <span id="stat-team-value" class="text-lg font-bold text-yellow-300">£100.0m</span>
+                    <i class="fa-solid fa-coins text-xs text-yellow-500"></i>
+                </div>
+            </div>
+            <div class="glass-card p-3 rounded-xl flex flex-col justify-between border-l-4 border-l-emerald-400">
+                <span class="text-[11px] text-gray-400 font-medium">งบในคลัง (Bank)</span>
+                <div class="flex items-baseline justify-between mt-1">
+                    <span id="stat-bank" class="text-lg font-bold text-emerald-300">£0.0m</span>
+                    <span class="text-[10px] text-gray-400">In Bank</span>
+                </div>
+            </div>
+            <div class="glass-card p-3 rounded-xl flex flex-col justify-between border-l-4 border-l-blue-400">
+                <span class="text-[11px] text-gray-400 font-medium">สิทธิ์เปลี่ยนตัวฟรี (FT)</span>
+                <div class="flex items-baseline justify-between mt-1">
+                    <span id="stat-free-transfers" class="text-lg font-black text-blue-300">1 FT</span>
+                    <span class="text-[10px] bg-blue-900/60 text-blue-200 px-1.5 py-0.5 rounded">GW2: Roll ได้</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= TAB 1: PITCH & LIVE SQUAD ================= -->
+        <section id="pitch-tab" class="tab-content block space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- Football Pitch View (8 Cols) -->
+                <div class="lg:col-span-8 space-y-4">
+                    <div class="glass-card p-4 rounded-2xl">
+                        <div class="flex items-center justify-between mb-3 px-2">
+                            <div class="flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
+                                <h2 class="font-bold text-sm text-gray-200 uppercase tracking-wider">Starting XI (4-4-2)</h2>
+                            </div>
+                            <div class="text-xs text-gray-400 flex items-center gap-3">
+                                <span><i class="fa-solid fa-crown text-yellow-400 mr-1"></i>Captain (x2)</span>
+                                <span><i class="fa-solid fa-shield text-blue-400 mr-1"></i>Vice (VC)</span>
+                            </div>
+                        </div>
+
+                        <!-- Pitch Graphic -->
+                        <div class="pitch-pattern rounded-xl p-4 min-h-[520px] flex flex-col justify-between overflow-hidden shadow-2xl relative">
+                            <div class="pitch-half-line"></div>
+                            <div class="pitch-center-circle"></div>
+
+                            <!-- Goalkeepers Row -->
+                            <div class="flex justify-center items-center gap-4 relative z-10" id="pitch-gkps"></div>
+
+                            <!-- Defenders Row -->
+                            <div class="flex justify-around items-center gap-1.5 relative z-10" id="pitch-defs"></div>
+
+                            <!-- Midfielders Row -->
+                            <div class="flex justify-around items-center gap-1.5 relative z-10" id="pitch-mids"></div>
+
+                            <!-- Forwards Row -->
+                            <div class="flex justify-around items-center gap-4 relative z-10" id="pitch-fwds"></div>
+                        </div>
+
+                        <!-- Bench Section -->
+                        <div class="mt-4 pt-4 border-t border-purple-900/40">
+                            <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 px-2 flex items-center gap-2">
+                                <i class="fa-solid fa-couch text-fpl-cyan"></i> ม้านั่งสำรอง (Bench Order)
+                            </h3>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2" id="pitch-bench"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side Summary & Live Action (4 Cols) -->
+                <div class="lg:col-span-4 space-y-4">
+                    <!-- Manager Insights & Recommendation -->
+                    <div class="glass-card p-4 rounded-2xl border-l-4 border-l-fpl-cyan">
+                        <h3 class="font-bold text-sm text-fpl-cyan flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-robot"></i> คำแนะนำด่วนจาก AI ผู้ช่วย
+                        </h3>
+                        <div class="text-xs space-y-2 text-gray-300 leading-relaxed">
+                            <p>🟢 <strong>GW2 Strategy:</strong> แนะนำให้ <strong>Roll Transfer (ไม่เปลี่ยนตัว)</strong> เพื่อสะสมเป็น 2 Free Transfers ไว้ปรับทัพใหญ่ใน GW3</p>
+                            <p>👑 <strong>Captaincy:</strong> วาง <strong>Haaland (C)</strong> ปลอดภัยที่สุด และวาง <strong>Saka หรือ Szoboszlai (VC)</strong></p>
+                            <p>🎯 <strong>Scout Target:</strong> จับตาฟอร์มของ <strong>João Pedro (CHE)</strong> ในคู่ Fulham vs Chelsea อย่างใกล้ชิด</p>
+                        </div>
+                    </div>
+
+                    <!-- Live Match Statuses in Squad -->
+                    <div class="glass-card p-4 rounded-2xl">
+                        <h3 class="font-bold text-sm text-gray-200 flex items-center justify-between mb-3">
+                            <span><i class="fa-solid fa-tower-broadcast text-fpl-green"></i> สรุปผลงานนักเตะในทีม</span>
+                            <span class="text-[10px] text-gray-400">GW1 Live</span>
+                        </h3>
+                        <div class="space-y-2 max-h-[360px] overflow-y-auto pr-1" id="squad-performance-list"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 2: TRANSFER PLANNER ================= -->
+        <section id="transfer-tab" class="tab-content hidden space-y-6">
+            <div class="glass-card p-6 rounded-2xl">
+                <div class="flex flex-wrap items-center justify-between gap-4 mb-6 border-b border-white/10 pb-4">
+                    <div>
+                        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-arrow-right-arrow-left text-fpl-green"></i> ระบบจำลองการย้ายตัว (Transfer Planner & Simulator)
+                        </h2>
+                        <p class="text-xs text-gray-400 mt-1">ทดลองสลับตัวผู้เล่น คำนวณงบประมาณในคลัง และแต้มติดลบ (-4 Hit) ก่อนตัดสินใจจริง</p>
+                    </div>
+                    <div class="flex items-center gap-4 bg-black/40 px-4 py-2 rounded-xl border border-white/10">
+                        <div>
+                            <span class="text-[10px] text-gray-400 block">งบในคลังจำลอง (Simulated Bank)</span>
+                            <span id="sim-bank" class="text-base font-bold text-fpl-green">£0.0m</span>
+                        </div>
+                        <div class="border-l border-white/10 pl-4">
+                            <span class="text-[10px] text-gray-400 block">จำนวนการเปลี่ยนตัว</span>
+                            <span id="sim-transfers-count" class="text-base font-bold text-white">0 / 1 FT (0 pts hit)</span>
+                        </div>
+                        <button onclick="resetTransferSimulator()" class="text-xs bg-red-500/20 hover:bg-red-500 text-red-300 hover:text-white px-2.5 py-1.5 rounded-lg transition ml-2">
+                            <i class="fa-solid fa-arrow-rotate-left mr-1"></i> รีเซ็ต
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Simulation Area: Out vs In -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Current Squad (Pick Player to Sell) -->
+                    <div class="bg-black/30 p-4 rounded-xl border border-white/5 space-y-3">
+                        <h3 class="text-xs font-bold text-red-400 uppercase tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-user-minus"></i> 1. เลือกนักเตะที่จะขายออก (Select Player OUT)
+                        </h3>
+                        <div class="space-y-1.5 max-h-[420px] overflow-y-auto pr-1" id="transfer-out-list"></div>
+                    </div>
+
+                    <!-- Market / Shortlist (Pick Player to Buy) -->
+                    <div class="bg-black/30 p-4 rounded-xl border border-white/5 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-xs font-bold text-fpl-green uppercase tracking-wider flex items-center gap-2">
+                                <i class="fa-solid fa-user-plus"></i> 2. เลือกนักเตะที่จะซื้อเข้า (Select Player IN)
+                            </h3>
+                            <select id="transfer-in-pos-filter" onchange="renderTransferInList()" class="bg-purple-950/80 border border-white/10 text-xs rounded-lg px-2 py-1 text-gray-200">
+                                <option value="ALL">ทุกตำแหน่ง (All)</option>
+                                <option value="1">GKP</option>
+                                <option value="2">DEF</option>
+                                <option value="3">MID</option>
+                                <option value="4">FWD</option>
+                            </select>
+                        </div>
+                        <div class="space-y-1.5 max-h-[420px] overflow-y-auto pr-1" id="transfer-in-list"></div>
+                    </div>
+                </div>
+
+                <!-- Suggested Combos for GW3 -->
+                <div class="mt-6 pt-6 border-t border-white/10">
+                    <h3 class="text-sm font-bold text-fpl-cyan mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-lightbulb"></i> สูตรการย้ายตัวยอดนิยมที่แนะนำสำหรับ GW3 (Recommended Move Sets):
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <div class="glass-card p-3 rounded-xl border border-fpl-green/30 hover:border-fpl-green transition cursor-pointer" onclick="applyPresetTransfer('THIAGO_TO_PEDRO')">
+                            <div class="flex justify-between items-center text-xs mb-1">
+                                <span class="font-bold text-fpl-green">สูตร 1: Direct FWD Swap</span>
+                                <span class="bg-emerald-900/60 text-emerald-300 text-[10px] px-1.5 py-0.5 rounded">1 FT</span>
+                            </div>
+                            <p class="text-xs text-gray-300"><strong>Thiago</strong> (£8.0m) ➔ <strong>João Pedro</strong> (£7.5m)</p>
+                            <p class="text-[11px] text-gray-400 mt-1">ได้กองหน้าตัวความหวังเชลซี + ได้เงินทอนเข้าคลัง £0.5m</p>
+                        </div>
+
+                        <div class="glass-card p-3 rounded-xl border border-blue-500/30 hover:border-blue-500 transition cursor-pointer" onclick="applyPresetTransfer('DEF_DOWNGRADE_MID_UP')">
+                            <div class="flex justify-between items-center text-xs mb-1">
+                                <span class="font-bold text-blue-400">สูตร 2: Combo 2 Transfers (GW3)</span>
+                                <span class="bg-blue-900/60 text-blue-300 text-[10px] px-1.5 py-0.5 rounded">2 FTs</span>
+                            </div>
+                            <p class="text-xs text-gray-300"><strong>Burn</strong> (£5.0m) ➔ <strong>Thomas</strong> (£4.0m)</p>
+                            <p class="text-xs text-gray-300"><strong>Rayan</strong> (£6.5m) ➔ <strong>Mbeumo</strong> (£8.0m)</p>
+                            <p class="text-[11px] text-gray-400 mt-1">ลดงบตัวสำรอง £1.0m แล้วอัปเกรดแดนกลางเป็นตัวท็อป</p>
+                        </div>
+
+                        <div class="glass-card p-3 rounded-xl border border-fpl-pink/30 hover:border-fpl-pink transition cursor-pointer" onclick="applyPresetTransfer('ODEGAARD_PULL')">
+                            <div class="flex justify-between items-center text-xs mb-1">
+                                <span class="font-bold text-fpl-pink">สูตร 3: ดึงตัวรุกอาร์เซนอล</span>
+                                <span class="bg-pink-900/60 text-pink-300 text-[10px] px-1.5 py-0.5 rounded">1 FT</span>
+                            </div>
+                            <p class="text-xs text-gray-300"><strong>Rayan</strong> (£6.5m) ➔ <strong>Ødegaard</strong> (£6.5m)</p>
+                            <p class="text-[11px] text-gray-400 mt-1">งบเท่ากันเป๊ะ (£6.5m) ได้เพลย์เมกเกอร์ฟอร์มฮอต 11 แต้ม</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 3: CHIP STRATEGY ROADMAP ================= -->
+        <section id="chip-tab" class="tab-content hidden space-y-6">
+            <div class="glass-card p-6 rounded-2xl space-y-6">
+                <div>
+                    <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-wand-magic-sparkles text-fpl-pink"></i> แผนที่กลยุทธ์การใช้ชิป (FPL Chip Strategy & Master Roadmap)
+                    </h2>
+                    <p class="text-xs text-gray-400 mt-1">คู่มือเจาะลึกช่วงเวลาที่คุ้มค่าที่สุดในการใช้ชิปทั้ง 4 ตัว เพื่อกวาดคะแนนสูงสุดตลอดฤดูกาล</p>
+                </div>
+
+                <!-- Chips Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Wildcard 1 -->
+                    <div class="bg-black/40 p-4 rounded-xl border-l-4 border-l-purple-500 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-bold text-sm text-purple-300 flex items-center gap-2">
+                                🃏 Wildcard 1 (ครึ่งแรกของฤดูกาล)
+                            </h3>
+                            <span class="text-[10px] bg-purple-900/80 text-purple-200 px-2 py-0.5 rounded-full">แนะนำ: GW6 - GW8 หรือ GW12</span>
+                        </div>
+                        <p class="text-xs text-gray-300 leading-relaxed">
+                            <strong>ช่วงเวลาที่ดีที่สุด:</strong> สัปดาห์ที่ 6-8 (หลังตลาดซื้อขายจริงปิดสมบูรณ์ และช่วงพักเบรกทีมชาติครั้งแรก) หรือ GW12 เมื่อเห็นฟอร์มและความพร้อมของทุกทีมชัดเจน
+                        </p>
+                        <ul class="text-[11px] text-gray-400 list-disc list-inside space-y-1">
+                            <li>ใช้รื้อโครงสร้างทีม ปล่อยตัวเจ็บ/ฟอร์มตกโดยไม่เสียแต้มติดลบ</li>
+                            <li>ปรับลดงบตัวสำรองที่ไม่จำเป็น เพื่อดันเงินไปไว้กับ 11 ตัวจริงฟอร์มแรง</li>
+                        </ul>
+                    </div>
+
+                    <!-- Wildcard 2 -->
+                    <div class="bg-black/40 p-4 rounded-xl border-l-4 border-l-indigo-500 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-bold text-sm text-indigo-300 flex items-center gap-2">
+                                🃏 Wildcard 2 (ครึ่งหลังของฤดูกาล)
+                            </h3>
+                            <span class="text-[10px] bg-indigo-900/80 text-indigo-200 px-2 py-0.5 rounded-full">แนะนำ: GW28 - GW33</span>
+                        </div>
+                        <p class="text-xs text-gray-300 leading-relaxed">
+                            <strong>ช่วงเวลาที่ดีที่สุด:</strong> สัปดาห์ที่ 28-33 เพื่อจัดทีมล่วงหน้า 15 คนให้พร้อมสำหรับ <strong>Double Gameweeks (DGW)</strong> และเป็นฐานในการเปิดใช้ Bench Boost ในสัปดาห์ถัดไป
+                        </p>
+                    </div>
+
+                    <!-- Triple Captain -->
+                    <div class="bg-black/40 p-4 rounded-xl border-l-4 border-l-yellow-500 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-bold text-sm text-yellow-300 flex items-center gap-2">
+                                👑 Triple Captain (TC)
+                            </h3>
+                            <span class="text-[10px] bg-yellow-900/80 text-yellow-200 px-2 py-0.5 rounded-full">แนะนำ: Double Gameweek (DGW)</span>
+                        </div>
+                        <p class="text-xs text-gray-300 leading-relaxed">
+                            <strong>ช่วงเวลาที่ดีที่สุด:</strong> อย่าใช้ในสัปดาห์ที่มีเกมเดียว! ให้เก็บไว้ใช้ใน <strong>Double Gameweek (DGW)</strong> ที่ Man City หรือ Arsenal ได้เตะ 2 นัดในสัปดาห์เดียว และ Haaland หรือ Saka ได้ลงเล่นในบ้านทั้ง 2 นัด
+                        </p>
+                    </div>
+
+                    <!-- Bench Boost -->
+                    <div class="bg-black/40 p-4 rounded-xl border-l-4 border-l-emerald-500 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-bold text-sm text-emerald-300 flex items-center gap-2">
+                                🚀 Bench Boost (BB)
+                            </h3>
+                            <span class="text-[10px] bg-emerald-900/80 text-emerald-200 px-2 py-0.5 rounded-full">แนะนำ: Big DGW (GW34 หรือ GW37)</span>
+                        </div>
+                        <p class="text-xs text-gray-300 leading-relaxed">
+                            <strong>ช่วงเวลาที่ดีที่สุด:</strong> ในสัปดาห์ Double Gameweek ที่ใหญ่ที่สุด (GW34/37) โดยก่อนหน้านั้น 1 นัด ให้กดใช้ Wildcard เพื่อเซ็ตให้นักเตะทั้ง 15 คน (ตัวจริง+สำรอง) ได้ลงเตะ 2 นัด จะทำแต้มได้มหาศาลกว่า 120-150+ แต้ม
+                        </p>
+                    </div>
+
+                    <!-- Free Hit -->
+                    <div class="bg-black/40 p-4 rounded-xl border-l-4 border-l-cyan-500 space-y-2 md:col-span-2">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-bold text-sm text-cyan-300 flex items-center gap-2">
+                                🛡️ Free Hit (FH)
+                            </h3>
+                            <span class="text-[10px] bg-cyan-900/80 text-cyan-200 px-2 py-0.5 rounded-full">แนะนำ: Blank Gameweek (BGW - GW29)</span>
+                        </div>
+                        <p class="text-xs text-gray-300 leading-relaxed">
+                            <strong>ช่วงเวลาที่ดีที่สุด:</strong> สัปดาห์ <strong>Blank Gameweek (BGW)</strong> ที่สโมสรใหญ่ติดเตะบอลถ้วย FA Cup จนไม่มีแข่งในลีก และทีมทั่วไปมีนักเตะลงเตะแค่ 3-4 คน การกด Free Hit จะช่วยให้เราจัดทีมเฉพาะกิจ 11 ตัวจริงที่ลงแข่งได้เต็มที่โดยสัปดาห์ถัดไปทีมเดิมจะกลับมาเหมือนเดิม
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Season Timeline Chart / Visual -->
+                <div class="p-4 rounded-xl bg-purple-950/40 border border-purple-800/30">
+                    <h3 class="text-xs font-bold text-gray-300 uppercase tracking-wider mb-3">
+                        📅 ไทม์ไลน์ภาพรวมการบริหารชิป (Season Timeline)
+                    </h3>
+                    <div class="flex flex-col sm:flex-row justify-between items-center gap-2 text-center text-xs">
+                        <div class="p-2.5 rounded-lg bg-black/40 border border-white/10 w-full">
+                            <span class="text-gray-400 block text-[10px]">GW1 - GW5</span>
+                            <span class="font-bold text-fpl-green">สร้างฐาน & Roll FT</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-gray-600 hidden sm:block"></i>
+                        <div class="p-2.5 rounded-lg bg-purple-900/40 border border-purple-500/30 w-full">
+                            <span class="text-gray-400 block text-[10px]">GW6 - GW8</span>
+                            <span class="font-bold text-purple-300">พิจารณา Wildcard 1</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-gray-600 hidden sm:block"></i>
+                        <div class="p-2.5 rounded-lg bg-yellow-900/40 border border-yellow-500/30 w-full">
+                            <span class="text-gray-400 block text-[10px]">GW20 - GW25</span>
+                            <span class="font-bold text-yellow-300">Triple Captain (DGW)</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-gray-600 hidden sm:block"></i>
+                        <div class="p-2.5 rounded-lg bg-cyan-900/40 border border-cyan-500/30 w-full">
+                            <span class="text-gray-400 block text-[10px]">GW29</span>
+                            <span class="font-bold text-cyan-300">Free Hit (BGW)</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-gray-600 hidden sm:block"></i>
+                        <div class="p-2.5 rounded-lg bg-emerald-900/40 border border-emerald-500/30 w-full">
+                            <span class="text-gray-400 block text-[10px]">GW34 - GW37</span>
+                            <span class="font-bold text-emerald-300">WC2 + Bench Boost</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 4: SCOUT & SHORTLIST HUB ================= -->
+        <section id="scout-tab" class="tab-content hidden space-y-6">
+            <div class="glass-card p-6 rounded-2xl space-y-4">
+                <div class="flex flex-wrap items-center justify-between gap-4">
+                    <div>
+                        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-magnifying-glass-chart text-fpl-cyan"></i> ศูนย์สเกาต์และค้นหานักเตะ (Scout & Shortlist Hub)
+                        </h2>
+                        <p class="text-xs text-gray-400 mt-1">คัดกรองนักเตะฟอร์มดี วิเคราะห์ค่าตัว และเช็กโปรแกรมแข่งล่วงหน้า</p>
+                    </div>
+                    <!-- Quick Tag Filters -->
+                    <div class="flex flex-wrap items-center gap-1.5">
+                        <button onclick="setScoutFilter('ALL')" id="scout-tag-ALL" class="scout-tag-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-fpl-cyan text-black">ทั้งหมด</button>
+                        <button onclick="setScoutFilter('HOT')" id="scout-tag-HOT" class="scout-tag-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-white/5 text-gray-300 hover:bg-white/10">🔥 ฟอร์มแรง (GW1 Pts &ge; 5)</button>
+                        <button onclick="setScoutFilter('META')" id="scout-tag-META" class="scout-tag-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-white/5 text-gray-300 hover:bg-white/10">🎯 ตัวยอดฮิต (Own &ge; 30%)</button>
+                        <button onclick="setScoutFilter('BUDGET')" id="scout-tag-BUDGET" class="scout-tag-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-white/5 text-gray-300 hover:bg-white/10">💰 ราคาประหยัด (&le; £5.0m)</button>
+                        <button onclick="setScoutFilter('DIFF')" id="scout-tag-DIFF" class="scout-tag-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-white/5 text-gray-300 hover:bg-white/10">💎 Differential (&lt; 10%)</button>
+                    </div>
+                </div>
+
+                <!-- Search and Pos Select -->
+                <div class="flex flex-wrap items-center gap-3">
+                    <div class="relative flex-1 min-w-[200px]">
+                        <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+                        <input type="text" id="scout-search-input" oninput="renderScoutTable()" placeholder="ค้นหาชื่อนักเตะ หรือทีม..." class="w-full bg-black/40 border border-white/10 rounded-xl pl-9 pr-3 py-2 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-fpl-cyan">
+                    </div>
+                    <select id="scout-pos-select" onchange="renderScoutTable()" class="bg-black/40 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-fpl-cyan">
+                        <option value="ALL">ทุกตำแหน่ง (All Positions)</option>
+                        <option value="1">ผู้รักษาประตู (GKP)</option>
+                        <option value="2">กองหลัง (DEF)</option>
+                        <option value="3">กองกลาง (MID)</option>
+                        <option value="4">กองหน้า (FWD)</option>
+                    </select>
+                </div>
+
+                <!-- Scout Table -->
+                <div class="overflow-x-auto rounded-xl border border-white/5">
+                    <table class="w-full text-left text-xs">
+                        <thead class="bg-purple-950/60 text-gray-300 uppercase tracking-wider font-semibold border-b border-white/10">
+                            <tr>
+                                <th class="p-3">นักเตะ</th>
+                                <th class="p-3">ทีม / ตำแหน่ง</th>
+                                <th class="p-3 cursor-pointer" onclick="sortScout('now_cost')">ราคา <i class="fa-solid fa-sort text-[10px]"></i></th>
+                                <th class="p-3 cursor-pointer" onclick="sortScout('total_points')">คะแนนรวม <i class="fa-solid fa-sort text-[10px]"></i></th>
+                                <th class="p-3 cursor-pointer" onclick="sortScout('selected_by_percent')">% ถือครอง <i class="fa-solid fa-sort text-[10px]"></i></th>
+                                <th class="p-3">โปรแกรม 3 นัดถัดไป (FDR)</th>
+                                <th class="p-3 text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scout-table-body" class="divide-y divide-white/5 bg-black/20"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 5: FDR FIXTURE TICKER ================= -->
+        <section id="fixture-tab" class="tab-content hidden space-y-6">
+            <div class="glass-card p-6 rounded-2xl space-y-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-calendar-days text-fpl-green"></i> ตารางความยากง่ายโปรแกรมแข่ง (Fixture Difficulty Ticker)
+                        </h2>
+                        <p class="text-xs text-gray-400 mt-1">Heatmap แสดงโปรแกรม 5 นัดล่วงหน้า (GW2 - GW6) ของทั้ง 20 สโมสร</p>
+                    </div>
+                    <!-- Legend -->
+                    <div class="flex items-center gap-1.5 text-[10px]">
+                        <span class="fdr-2 px-1.5 py-0.5 rounded">2 (ง่ายมาก)</span>
+                        <span class="fdr-3 px-1.5 py-0.5 rounded">3 (ปานกลาง)</span>
+                        <span class="fdr-4 px-1.5 py-0.5 rounded">4 (ยาก)</span>
+                        <span class="fdr-5 px-1.5 py-0.5 rounded">5 (ยากมาก)</span>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto rounded-xl border border-white/5">
+                    <table class="w-full text-left text-xs">
+                        <thead class="bg-purple-950/60 text-gray-300 uppercase tracking-wider font-semibold border-b border-white/10">
+                            <tr>
+                                <th class="p-3">สโมสร (Club)</th>
+                                <th class="p-3 text-center">GW2</th>
+                                <th class="p-3 text-center">GW3</th>
+                                <th class="p-3 text-center">GW4</th>
+                                <th class="p-3 text-center">GW5</th>
+                                <th class="p-3 text-center">GW6</th>
+                            </tr>
+                        </thead>
+                        <tbody id="fixture-ticker-body" class="divide-y divide-white/5 bg-black/20"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Player Modal / Detail Popup -->
+    <div id="player-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="glass-card max-w-md w-full p-6 rounded-2xl border border-purple-500/30 space-y-4 relative">
+            <button onclick="closePlayerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="flex items-center gap-3">
+                <div id="modal-player-shirt" class="w-12 h-12 rounded-xl bg-purple-900/60 flex items-center justify-center text-lg font-black text-fpl-green border border-white/10"></div>
+                <div>
+                    <h3 id="modal-player-name" class="text-base font-bold text-white">Player Name</h3>
+                    <p id="modal-player-team-pos" class="text-xs text-gray-400">Team • Position • £0.0m</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-3 gap-2 text-center text-xs">
+                <div class="bg-black/40 p-2 rounded-lg border border-white/5">
+                    <span class="text-gray-400 block text-[10px]">คะแนนรวม</span>
+                    <strong id="modal-player-pts" class="text-fpl-green text-sm">0</strong>
+                </div>
+                <div class="bg-black/40 p-2 rounded-lg border border-white/5">
+                    <span class="text-gray-400 block text-[10px]">% ถือครอง</span>
+                    <strong id="modal-player-own" class="text-fpl-cyan text-sm">0%</strong>
+                </div>
+                <div class="bg-black/40 p-2 rounded-lg border border-white/5">
+                    <span class="text-gray-400 block text-[10px]">นาทีที่ลง</span>
+                    <strong id="modal-player-min" class="text-white text-sm">0'</strong>
+                </div>
+            </div>
+            <div class="space-y-1.5">
+                <span class="text-[11px] font-semibold text-gray-300 block">โปรแกรม 5 นัดถัดไป (Fixtures):</span>
+                <div id="modal-player-fixtures" class="grid grid-cols-5 gap-1 text-center text-[10px]"></div>
+            </div>
+            <div id="modal-player-news-box" class="hidden p-2.5 rounded-lg bg-yellow-900/30 border border-yellow-500/30 text-[11px] text-yellow-200">
+                <i class="fa-solid fa-triangle-exclamation mr-1"></i> <span id="modal-player-news"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Script Logic -->
+    <script>
+        let fplData = window.INITIAL_FPL_DATA || null;
+        let activeTab = 'pitch-tab';
+        let scoutFilterTag = 'ALL';
+        let scoutSortField = 'total_points';
+        let scoutSortAsc = false;
+        let transferOutPlayer = null;
+        let transferInPlayer = null;
+
+        // Toast Helper
+        function showToast(msg, isSuccess = true) {
+            const toast = document.getElementById('toast');
+            const icon = document.getElementById('toast-icon');
+            const msgEl = document.getElementById('toast-msg');
+            msgEl.innerText = msg;
+            icon.className = isSuccess ? 'fa-solid fa-circle-check text-fpl-green text-lg' : 'fa-solid fa-circle-exclamation text-fpl-pink text-lg';
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Tab Switcher
+        function switchTab(tabId) {
+            activeTab = tabId;
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = 'tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all text-gray-300 hover:text-white hover:bg-white/5';
+            });
+
+            document.getElementById(tabId).classList.remove('hidden');
+            const activeBtn = document.getElementById('nav-' + tabId);
+            if (activeBtn) {
+                activeBtn.className = 'tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all bg-fpl-green text-black shadow';
+            }
+        }
+
+        // In-Browser Live API Fetcher (with CORS Proxy fallback)
+        async function fetchLiveFPLDataInBrowser() {
+            const teamIdInput = document.getElementById('team-id-input')?.value || '4554263';
+            const teamId = parseInt(teamIdInput);
+            const icon = document.getElementById('refresh-icon');
+            icon.classList.add('fa-spin');
+            showToast('กำลังดึงข้อมูลสดจาก FPL API...', true);
+
+            async function fetchJson(url) {
+                // Try direct first, then CORS proxy fallbacks
+                const proxies = [
+                    url,
+                    `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
+                    `https://corsproxy.io/?url=${encodeURIComponent(url)}`
+                ];
+                for (let pUrl of proxies) {
+                    try {
+                        const r = await fetch(pUrl, { cache: 'no-cache' });
+                        if (r.ok) {
+                            return await r.json();
+                        }
+                    } catch (e) {
+                        // try next proxy
+                    }
+                }
+                throw new Error(`Failed to fetch ${url}`);
+            }
+
+            try {
+                const [bootstrap, fixtures, entry, history] = await Promise.all([
+                    fetchJson('https://fantasy.premierleague.com/api/bootstrap-static/'),
+                    fetchJson('https://fantasy.premierleague.com/api/fixtures/'),
+                    fetchJson(`https://fantasy.premierleague.com/api/entry/${teamId}/`),
+                    fetchJson(`https://fantasy.premierleague.com/api/entry/${teamId}/history/`)
+                ]);
+
+                const events = bootstrap.events || [];
+                const currentGw = events.find(e => e.is_current) || events[0];
+                const curGwId = currentGw ? currentGw.id : 1;
+
+                const [picks, live] = await Promise.all([
+                    fetchJson(`https://fantasy.premierleague.com/api/entry/${teamId}/event/${curGwId}/picks/`),
+                    fetchJson(`https://fantasy.premierleague.com/api/event/${curGwId}/live/`)
+                ]);
+
+                fplData = {
+                    team_id: teamId,
+                    entry: entry,
+                    history: history,
+                    current_gw: curGwId,
+                    picks: picks,
+                    live: live,
+                    bootstrap: {
+                        events: bootstrap.events,
+                        teams: bootstrap.teams,
+                        element_types: bootstrap.element_types,
+                        elements: bootstrap.elements
+                    },
+                    fixtures: fixtures
+                };
+
+                renderAll();
+                showToast('อัปเดตข้อมูลสดสำเร็จ!', true);
+            } catch (err) {
+                console.warn('Live API fetch error, using local fallback:', err);
+                if (window.INITIAL_FPL_DATA) {
+                    fplData = window.INITIAL_FPL_DATA;
+                    renderAll();
+                    showToast('โหลดข้อมูลจาก Local Dataset สำเร็จ!', true);
+                } else {
+                    showToast('เกิดข้อผิดพลาดในการดึงข้อมูลสด', false);
+                }
+            } finally {
+                setTimeout(() => icon.classList.remove('fa-spin'), 600);
+            }
+        }
+
+        function renderAll() {
+            if (!fplData) return;
+            renderHeaderAndStats();
+            renderPitch();
+            renderSquadPerformance();
+            renderTransferSimulator();
+            renderScoutTable();
+            renderFixtureTicker();
+        }
+
+        function renderHeaderAndStats() {
+            const entry = fplData.entry || {};
+            const currentGw = fplData.current_gw || 1;
+
+            document.getElementById('current-gw-label').innerText = currentGw;
+            document.getElementById('header-team-name').innerText = entry.name || 'Keekee';
+            document.getElementById('header-manager-name').innerText = `${entry.player_first_name || ''} ${entry.player_last_name || ''}`;
+            
+            document.getElementById('stat-overall-pts').innerText = entry.summary_overall_points || 12;
+            document.getElementById('stat-gw-pts').innerText = entry.summary_event_points || 12;
+            document.getElementById('stat-overall-rank').innerText = (entry.summary_overall_rank ? (entry.summary_overall_rank / 1000000).toFixed(1) + 'M' : '5.4M');
+            
+            const picks = fplData.picks || {};
+            const bank = (picks.entry_history?.bank ? picks.entry_history.bank / 10 : 0).toFixed(1);
+            const value = (picks.entry_history?.value ? picks.entry_history.value / 10 : 100).toFixed(1);
+            document.getElementById('stat-bank').innerText = '£' + bank + 'm';
+            document.getElementById('stat-team-value').innerText = '£' + value + 'm';
+            document.getElementById('sim-bank').innerText = '£' + bank + 'm';
+        }
+
+        function getPlayer(id) {
+            return (fplData?.bootstrap?.elements || []).find(p => p.id === id);
+        }
+
+        function getTeam(id) {
+            return (fplData?.bootstrap?.teams || []).find(t => t.id === id);
+        }
+
+        function getPosName(posId) {
+            const types = { 1: 'GKP', 2: 'DEF', 3: 'MID', 4: 'FWD' };
+            return types[posId] || 'MID';
+        }
+
+        function getTeamUpcomingFixtures(teamId, count = 5) {
+            const fixtures = fplData?.fixtures || [];
+            const curGw = fplData?.current_gw || 1;
+            const res = [];
+            for (let f of fixtures) {
+                if (f.event && f.event >= curGw + 1 && f.event <= curGw + count) {
+                    if (f.team_h === teamId) {
+                        const opp = getTeam(f.team_a);
+                        res.push({ gw: f.event, opp: opp?.short_name || 'UNK', isHome: true, diff: f.team_h_difficulty });
+                    } else if (f.team_a === teamId) {
+                        const opp = getTeam(f.team_h);
+                        res.push({ gw: f.event, opp: opp?.short_name || 'UNK', isHome: false, diff: f.team_a_difficulty });
+                    }
+                }
+            }
+            return res.sort((a, b) => a.gw - b.gw).slice(0, count);
+        }
+
+        function renderPitch() {
+            const picks = fplData?.picks?.picks || [];
+            const liveMap = {};
+            (fplData?.live?.elements || []).forEach(el => {
+                liveMap[el.id] = el.stats;
+            });
+
+            const gkps = [], defs = [], mids = [], fwds = [], bench = [];
+
+            picks.forEach(pick => {
+                const player = getPlayer(pick.element);
+                if (!player) return;
+                const team = getTeam(player.team);
+                const nextFix = getTeamUpcomingFixtures(player.team, 1)[0] || { opp: '-', isHome: true, diff: 3 };
+                const liveStats = liveMap[player.id] || {};
+                const livePts = (liveStats.total_points !== undefined ? liveStats.total_points : player.event_points || 0);
+
+                const cardData = {
+                    ...player,
+                    team_short: team?.short_name || '',
+                    next_fix: nextFix,
+                    live_pts: livePts,
+                    is_captain: pick.is_captain,
+                    is_vice: pick.is_vice_captain,
+                    position_num: pick.position,
+                    multiplier: pick.multiplier || 1
+                };
+
+                if (pick.position <= 11) {
+                    if (player.element_type === 1) gkps.push(cardData);
+                    else if (player.element_type === 2) defs.push(cardData);
+                    else if (player.element_type === 3) mids.push(cardData);
+                    else if (player.element_type === 4) fwds.push(cardData);
+                } else {
+                    bench.push(cardData);
+                }
+            });
+
+            const renderCard = (p) => `
+                <div onclick="openPlayerModal(${p.id})" class="flex flex-col items-center cursor-pointer transform hover:scale-105 transition group relative">
+                    ${p.is_captain ? '<span class="absolute -top-2.5 -right-1 bg-yellow-400 text-black text-[10px] font-black px-1.5 py-0.2 rounded-full shadow-lg border border-black z-20">C</span>' : ''}
+                    ${p.is_vice ? '<span class="absolute -top-2.5 -right-1 bg-blue-400 text-black text-[10px] font-black px-1.5 py-0.2 rounded-full shadow-lg border border-black z-20">VC</span>' : ''}
+                    <div class="w-12 h-12 rounded-xl bg-purple-950/90 border border-white/20 flex flex-col items-center justify-center text-white shadow-lg group-hover:border-fpl-green transition">
+                        <span class="text-[10px] text-gray-300 font-bold">${p.team_short}</span>
+                        <span class="text-xs font-black text-fpl-green">${p.live_pts * (p.multiplier || 1)}<span class="text-[8px] font-normal text-gray-300">p</span></span>
+                    </div>
+                    <div class="bg-black/90 px-1.5 py-0.5 rounded text-[10px] font-semibold text-gray-200 mt-1 max-w-[76px] truncate text-center shadow">
+                        ${p.web_name}
+                    </div>
+                    <div class="fdr-${p.next_fix.diff} text-[9px] px-1 rounded-sm mt-0.5 font-bold shadow">
+                        ${p.next_fix.opp} (${p.next_fix.isHome ? 'H' : 'A'})
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('pitch-gkps').innerHTML = gkps.map(renderCard).join('');
+            document.getElementById('pitch-defs').innerHTML = defs.map(renderCard).join('');
+            document.getElementById('pitch-mids').innerHTML = mids.map(renderCard).join('');
+            document.getElementById('pitch-fwds').innerHTML = fwds.map(renderCard).join('');
+
+            // Bench Cards
+            document.getElementById('pitch-bench').innerHTML = bench.map((p, idx) => `
+                <div onclick="openPlayerModal(${p.id})" class="glass-card p-2 rounded-xl flex items-center justify-between border border-white/10 hover:border-fpl-cyan transition cursor-pointer">
+                    <div class="flex items-center gap-2">
+                        <span class="text-[10px] font-bold text-gray-400 bg-white/5 w-4 h-4 rounded-full flex items-center justify-center">${idx + 1}</span>
+                        <div>
+                            <span class="text-xs font-bold text-white block truncate max-w-[85px]">${p.web_name}</span>
+                            <span class="text-[9px] text-gray-400">${getPosName(p.element_type)} • ${p.team_short} • £${(p.now_cost / 10).toFixed(1)}m</span>
+                        </div>
+                    </div>
+                    <div class="fdr-${p.next_fix.diff} text-[9px] px-1.5 py-0.5 rounded font-bold">
+                        ${p.next_fix.opp}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderSquadPerformance() {
+            const picks = fplData?.picks?.picks || [];
+            const liveMap = {};
+            (fplData?.live?.elements || []).forEach(el => {
+                liveMap[el.id] = el.stats;
+            });
+
+            const html = picks.map(pick => {
+                const p = getPlayer(pick.element);
+                if (!p) return '';
+                const t = getTeam(p.team);
+                const live = liveMap[p.id] || {};
+                const pts = live.total_points !== undefined ? live.total_points : p.event_points || 0;
+                const min = live.minutes || 0;
+                const isStarter = pick.position <= 11;
+
+                return `
+                    <div class="p-2 rounded-lg bg-black/30 border border-white/5 flex items-center justify-between text-xs">
+                        <div class="flex items-center gap-2">
+                            <span class="text-[10px] ${isStarter ? 'text-fpl-green font-bold' : 'text-gray-500'}">${isStarter ? 'XI' : 'SUB'}</span>
+                            <div>
+                                <span class="font-bold text-gray-200">${p.web_name}</span>
+                                <span class="text-[10px] text-gray-400 block">${t?.short_name} • £${(p.now_cost/10).toFixed(1)}m</span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <span class="font-black ${pts > 0 ? 'text-fpl-green' : 'text-gray-400'}">${pts} pts</span>
+                            <span class="text-[9px] text-gray-500 block">${min > 0 ? min + ' mins' : 'ยังไม่แข่ง'}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('squad-performance-list').innerHTML = html;
+        }
+
+        // ================= TRANSFER PLANNER =================
+        function renderTransferSimulator() {
+            const picks = fplData?.picks?.picks || [];
+            const htmlOut = picks.map(pick => {
+                const p = getPlayer(pick.element);
+                if (!p) return '';
+                const t = getTeam(p.team);
+                const isSelected = (transferOutPlayer && transferOutPlayer.id === p.id);
+
+                return `
+                    <div onclick="selectTransferOut(${p.id})" class="p-2 rounded-lg border ${isSelected ? 'bg-red-950/40 border-red-500 text-white' : 'bg-black/20 border-white/5 text-gray-300 hover:border-red-500/50'} transition cursor-pointer flex items-center justify-between text-xs">
+                        <div class="flex items-center gap-2">
+                            <span class="text-[10px] font-bold bg-white/5 px-1.5 py-0.5 rounded text-gray-400">${getPosName(p.element_type)}</span>
+                            <div>
+                                <span class="font-bold">${p.web_name}</span>
+                                <span class="text-[10px] text-gray-400 block">${t?.short_name}</span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <span class="font-bold text-yellow-400">£${(p.now_cost / 10).toFixed(1)}m</span>
+                            <span class="text-[9px] text-gray-400 block">${p.total_points} pts</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('transfer-out-list').innerHTML = htmlOut;
+            renderTransferInList();
+        }
+
+        function selectTransferOut(id) {
+            transferOutPlayer = getPlayer(id);
+            renderTransferSimulator();
+            updateSimBudget();
+        }
+
+        function renderTransferInList() {
+            const posFilter = document.getElementById('transfer-in-pos-filter')?.value || 'ALL';
+            const squadIds = new Set((fplData?.picks?.picks || []).map(p => p.element));
+            
+            let candidates = (fplData?.bootstrap?.elements || []).filter(p => !squadIds.has(p.id) && p.status === 'a');
+            if (posFilter !== 'ALL') {
+                candidates = candidates.filter(p => p.element_type === parseInt(posFilter));
+            }
+
+            candidates = candidates.sort((a, b) => b.total_points - a.total_points || parseFloat(b.selected_by_percent) - parseFloat(a.selected_by_percent)).slice(0, 30);
+
+            const htmlIn = candidates.map(p => {
+                const t = getTeam(p.team);
+                const isSelected = (transferInPlayer && transferInPlayer.id === p.id);
+
+                return `
+                    <div onclick="selectTransferIn(${p.id})" class="p-2 rounded-lg border ${isSelected ? 'bg-emerald-950/40 border-fpl-green text-white' : 'bg-black/20 border-white/5 text-gray-300 hover:border-fpl-green/50'} transition cursor-pointer flex items-center justify-between text-xs">
+                        <div class="flex items-center gap-2">
+                            <span class="text-[10px] font-bold bg-white/5 px-1.5 py-0.5 rounded text-fpl-cyan">${getPosName(p.element_type)}</span>
+                            <div>
+                                <span class="font-bold">${p.web_name}</span>
+                                <span class="text-[10px] text-gray-400 block">${t?.short_name} • ${p.selected_by_percent}% own</span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <span class="font-bold text-fpl-green">£${(p.now_cost / 10).toFixed(1)}m</span>
+                            <span class="text-[9px] text-gray-400 block">${p.total_points} pts</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('transfer-in-list').innerHTML = htmlIn;
+        }
+
+        function selectTransferIn(id) {
+            transferInPlayer = getPlayer(id);
+            renderTransferInList();
+            updateSimBudget();
+        }
+
+        function updateSimBudget() {
+            const currentBank = (fplData?.picks?.entry_history?.bank || 0) / 10;
+            let simBank = currentBank;
+            let moves = 0;
+
+            if (transferOutPlayer && transferInPlayer) {
+                const outCost = transferOutPlayer.now_cost / 10;
+                const inCost = transferInPlayer.now_cost / 10;
+                simBank = (currentBank + outCost - inCost);
+                moves = 1;
+            }
+
+            const simBankEl = document.getElementById('sim-bank');
+            if (simBankEl) {
+                simBankEl.innerText = '£' + simBank.toFixed(1) + 'm';
+                simBankEl.className = simBank >= 0 ? 'text-base font-bold text-fpl-green' : 'text-base font-bold text-red-400';
+            }
+
+            const countEl = document.getElementById('sim-transfers-count');
+            if (countEl) {
+                countEl.innerText = `${moves} / 1 FT (0 pts hit)`;
+            }
+        }
+
+        function resetTransferSimulator() {
+            transferOutPlayer = null;
+            transferInPlayer = null;
+            renderTransferSimulator();
+            updateSimBudget();
+        }
+
+        function applyPresetTransfer(preset) {
+            switchTab('transfer-tab');
+            if (preset === 'THIAGO_TO_PEDRO') {
+                const thiago = (fplData?.bootstrap?.elements || []).find(p => p.web_name === 'Thiago' && p.element_type === 4);
+                const pedro = (fplData?.bootstrap?.elements || []).find(p => p.web_name.toLowerCase().includes('pedro'));
+                if (thiago) selectTransferOut(thiago.id);
+                if (pedro) selectTransferIn(pedro.id);
+            } else if (preset === 'ODEGAARD_PULL') {
+                const rayan = (fplData?.bootstrap?.elements || []).find(p => p.web_name === 'Rayan');
+                const odegaard = (fplData?.bootstrap?.elements || []).find(p => p.web_name.toLowerCase().includes('ødegaard') || p.web_name.toLowerCase().includes('odegaard'));
+                if (rayan) selectTransferOut(rayan.id);
+                if (odegaard) selectTransferIn(odegaard.id);
+            }
+        }
+
+        // ================= SCOUT HUB =================
+        function setScoutFilter(tag) {
+            scoutFilterTag = tag;
+            document.querySelectorAll('.scout-tag-btn').forEach(b => {
+                b.className = 'scout-tag-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-white/5 text-gray-300 hover:bg-white/10';
+            });
+            document.getElementById('scout-tag-' + tag).className = 'scout-tag-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-fpl-cyan text-black';
+            renderScoutTable();
+        }
+
+        function sortScout(field) {
+            if (scoutSortField === field) {
+                scoutSortAsc = !scoutSortAsc;
+            } else {
+                scoutSortField = field;
+                scoutSortAsc = false;
+            }
+            renderScoutTable();
+        }
+
+        function renderScoutTable() {
+            const search = (document.getElementById('scout-search-input')?.value || '').toLowerCase();
+            const posFilter = document.getElementById('scout-pos-select')?.value || 'ALL';
+
+            let list = (fplData?.bootstrap?.elements || []).filter(p => p.status === 'a');
+
+            if (posFilter !== 'ALL') {
+                list = list.filter(p => p.element_type === parseInt(posFilter));
+            }
+
+            if (search) {
+                list = list.filter(p => {
+                    const team = getTeam(p.team);
+                    return p.web_name.toLowerCase().includes(search) || 
+                           (p.first_name + ' ' + p.second_name).toLowerCase().includes(search) ||
+                           (team?.name || '').toLowerCase().includes(search) ||
+                           (team?.short_name || '').toLowerCase().includes(search);
+                });
+            }
+
+            // Tag Filters
+            if (scoutFilterTag === 'HOT') {
+                list = list.filter(p => (p.event_points || p.total_points) >= 5);
+            } else if (scoutFilterTag === 'META') {
+                list = list.filter(p => parseFloat(p.selected_by_percent) >= 30);
+            } else if (scoutFilterTag === 'BUDGET') {
+                list = list.filter(p => (p.now_cost / 10) <= 5.0);
+            } else if (scoutFilterTag === 'DIFF') {
+                list = list.filter(p => parseFloat(p.selected_by_percent) < 10.0 && p.total_points > 0);
+            }
+
+            // Sorting
+            list = list.sort((a, b) => {
+                let vA = a[scoutSortField];
+                let vB = b[scoutSortField];
+                if (scoutSortField === 'selected_by_percent') {
+                    vA = parseFloat(vA);
+                    vB = parseFloat(vB);
+                }
+                return scoutSortAsc ? (vA - vB) : (vB - vA);
+            }).slice(0, 50);
+
+            const tbody = document.getElementById('scout-table-body');
+            if (!tbody) return;
+
+            tbody.innerHTML = list.map(p => {
+                const t = getTeam(p.team);
+                const next3 = getTeamUpcomingFixtures(p.team, 3);
+                const fixHtml = next3.map(f => `<span class="fdr-${f.diff} text-[9px] px-1 py-0.5 rounded font-bold mr-1">${f.opp}(${f.isHome ? 'H' : 'A'})</span>`).join('');
+
+                return `
+                    <tr class="hover:bg-white/5 transition">
+                        <td class="p-3 font-bold text-white flex items-center gap-2 cursor-pointer" onclick="openPlayerModal(${p.id})">
+                            <span class="w-6 h-6 rounded bg-purple-900/60 text-[10px] text-fpl-green flex items-center justify-center font-bold">${getPosName(p.element_type)}</span>
+                            ${p.web_name}
+                        </td>
+                        <td class="p-3 text-gray-300">${t?.short_name}</td>
+                        <td class="p-3 font-bold text-yellow-300">£${(p.now_cost/10).toFixed(1)}m</td>
+                        <td class="p-3 font-black ${p.total_points > 5 ? 'text-fpl-green' : 'text-gray-300'}">${p.total_points}</td>
+                        <td class="p-3 text-fpl-cyan">${p.selected_by_percent}%</td>
+                        <td class="p-3">${fixHtml}</td>
+                        <td class="p-3 text-center">
+                            <button onclick="selectTransferIn(${p.id}); switchTab('transfer-tab')" class="text-[10px] bg-purple-900/50 hover:bg-fpl-green hover:text-black text-gray-200 px-2 py-1 rounded transition border border-purple-500/30">
+                                <i class="fa-solid fa-plus mr-1"></i> เล็งเข้าทีม
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // ================= FIXTURE TICKER =================
+        function renderFixtureTicker() {
+            const teams = fplData?.bootstrap?.teams || [];
+            const tbody = document.getElementById('fixture-ticker-body');
+            if (!tbody) return;
+
+            tbody.innerHTML = teams.map(t => {
+                const next5 = getTeamUpcomingFixtures(t.id, 5);
+                const cells = [2, 3, 4, 5, 6].map((gw, idx) => {
+                    const f = next5[idx];
+                    if (!f) return '<td class="p-3 text-center text-gray-500">-</td>';
+                    return `
+                        <td class="p-3 text-center">
+                            <span class="fdr-${f.diff} text-[10px] px-2 py-1 rounded-md font-bold shadow-sm inline-block min-w-[50px]">
+                                ${f.opp} (${f.isHome ? 'H' : 'A'})
+                            </span>
+                        </td>
+                    `;
+                }).join('');
+
+                return `
+                    <tr class="hover:bg-white/5 transition">
+                        <td class="p-3 font-bold text-white">${t.name} (${t.short_name})</td>
+                        ${cells}
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // ================= MODAL =================
+        function openPlayerModal(id) {
+            const p = getPlayer(id);
+            if (!p) return;
+            const t = getTeam(p.team);
+            const next5 = getTeamUpcomingFixtures(p.team, 5);
+
+            document.getElementById('modal-player-name').innerText = p.first_name + ' ' + p.second_name;
+            document.getElementById('modal-player-team-pos').innerText = `${t?.name} (${t?.short_name}) • ${getPosName(p.element_type)} • £${(p.now_cost/10).toFixed(1)}m`;
+            document.getElementById('modal-player-shirt').innerText = p.web_name.substring(0, 3).toUpperCase();
+            document.getElementById('modal-player-pts').innerText = p.total_points;
+            document.getElementById('modal-player-own').innerText = p.selected_by_percent + '%';
+            document.getElementById('modal-player-min').innerText = (p.minutes || 0) + "'";
+
+            const fixHtml = next5.map(f => `
+                <div class="bg-black/30 p-1.5 rounded border border-white/5">
+                    <span class="text-gray-400 block text-[9px]">GW${f.gw}</span>
+                    <span class="fdr-${f.diff} text-[9px] px-1 rounded font-bold block mt-0.5">${f.opp} (${f.isHome ? 'H' : 'A'})</span>
+                </div>
+            `).join('');
+            document.getElementById('modal-player-fixtures').innerHTML = fixHtml;
+
+            const newsBox = document.getElementById('modal-player-news-box');
+            if (p.news) {
+                document.getElementById('modal-player-news').innerText = p.news;
+                newsBox.classList.remove('hidden');
+            } else {
+                newsBox.classList.add('hidden');
+            }
+
+            document.getElementById('player-modal').classList.remove('hidden');
+        }
+
+        function closePlayerModal() {
+            document.getElementById('player-modal').classList.add('hidden');
+        }
+
+        // Initial Load
+        window.addEventListener('DOMContentLoaded', () => {
+            if (window.INITIAL_FPL_DATA) {
+                fplData = window.INITIAL_FPL_DATA;
+                renderAll();
+            } else {
+                fetchLiveFPLDataInBrowser();
+            }
+        });
+    </script>
+</body>
+</html>

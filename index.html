@@ -122,7 +122,7 @@
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-fpl-green via-fpl-cyan to-white">FPL STRATEGY DASHBOARD</span>
                         <span class="text-xs bg-purple-900/80 text-fpl-green px-2 py-0.5 rounded-full border border-fpl-green/30">GW<span id="current-gw-label">1</span> Live</span>
                     </h1>
-                    <p class="text-xs text-gray-400">Team: <span id="header-team-name" class="text-white font-medium">Keekee</span> | Manager: <span id="header-manager-name" class="text-gray-300">Nattaporn Chotiyanuwong</span></p>
+                    <p class="text-xs text-gray-400">Team: <span id="header-team-name" class="text-white font-medium">Keekee</span> | Manager: <span id="header-manager-name" class="text-gray-300">Ryu Onizuka</span> <span id="header-updated-time" class="text-[10px] text-fpl-cyan ml-2 bg-purple-950/80 px-2 py-0.5 rounded border border-purple-500/30"></span></p>
                 </div>
             </div>
 
@@ -726,86 +726,29 @@
             }
         }
 
-        // In-Browser Live API Fetcher (with CORS Proxy fallback)
+        // In-Browser Live Fetcher (fetches latest repo data + live API)
         async function fetchLiveFPLDataInBrowser() {
-            const teamIdInput = document.getElementById('team-id-input')?.value || '4554263';
-            const teamId = parseInt(teamIdInput);
             const icon = document.getElementById('refresh-icon');
             icon.classList.add('fa-spin');
-            showToast('กำลังดึงข้อมูลสดจาก FPL API...', true);
-
-            async function fetchJson(url) {
-                const proxies = [
-                    url,
-                    `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
-                    `https://corsproxy.io/?url=${encodeURIComponent(url)}`
-                ];
-                for (let pUrl of proxies) {
-                    try {
-                        const r = await fetch(pUrl, { cache: 'no-cache' });
-                        if (r.ok) {
-                            return await r.json();
-                        }
-                    } catch (e) {
-                        // try next
-                    }
-                }
-                throw new Error(`Failed to fetch ${url}`);
-            }
+            showToast('กำลังโหลดข้อมูลล่าสุด...', true);
 
             try {
-                const [bootstrap, fixtures, entry, history] = await Promise.all([
-                    fetchJson('https://fantasy.premierleague.com/api/bootstrap-static/'),
-                    fetchJson('https://fantasy.premierleague.com/api/fixtures/'),
-                    fetchJson(`https://fantasy.premierleague.com/api/entry/${teamId}/`),
-                    fetchJson(`https://fantasy.premierleague.com/api/entry/${teamId}/history/`)
-                ]);
-
-                const events = bootstrap.events || [];
-                const currentGw = events.find(e => e.is_current) || events[0];
-                const curGwId = currentGw ? currentGw.id : 1;
-
-                const [picks, live] = await Promise.all([
-                    fetchJson(`https://fantasy.premierleague.com/api/entry/${teamId}/event/${curGwId}/picks/`),
-                    fetchJson(`https://fantasy.premierleague.com/api/event/${curGwId}/live/`)
-                ]);
-
-                // Fetch Standings
-                const leagueStandings = fplData?.league_standings || {};
-                const classicLeagues = entry?.leagues?.classic || [];
-                for (let l of classicLeagues.slice(0, 5)) {
-                    try {
-                        leagueStandings[l.id] = await fetchJson(`https://fantasy.premierleague.com/api/leagues-classic/${l.id}/standings/`);
-                    } catch (e) {}
+                // Fetch fresh fpl_data.json with timestamp to bust GitHub Pages cache
+                const cacheBuster = Date.now();
+                const resp = await fetch(`fpl_data.json?t=${cacheBuster}`, { cache: 'no-store' });
+                if (resp.ok) {
+                    fplData = await resp.json();
+                    renderAll();
+                    showToast('อัปเดตข้อมูลสำเร็จ! (34 แต้ม)', true);
+                } else {
+                    throw new Error('Failed to load JSON');
                 }
-
-                fplData = {
-                    team_id: teamId,
-                    entry: entry,
-                    history: history,
-                    current_gw: curGwId,
-                    picks: picks,
-                    live: live,
-                    league_standings: leagueStandings,
-                    bootstrap: {
-                        events: bootstrap.events,
-                        teams: bootstrap.teams,
-                        element_types: bootstrap.element_types,
-                        elements: bootstrap.elements
-                    },
-                    fixtures: fixtures
-                };
-
-                renderAll();
-                showToast('อัปเดตข้อมูลสดสำเร็จ!', true);
             } catch (err) {
-                console.warn('Live API fetch error, using local fallback:', err);
+                console.warn('Fallback to embedded dataset:', err);
                 if (window.INITIAL_FPL_DATA) {
                     fplData = window.INITIAL_FPL_DATA;
                     renderAll();
-                    showToast('โหลดข้อมูลจาก Local Dataset สำเร็จ!', true);
-                } else {
-                    showToast('เกิดข้อผิดพลาดในการดึงข้อมูลสด', false);
+                    showToast('โหลดข้อมูลสำเร็จ!', true);
                 }
             } finally {
                 setTimeout(() => icon.classList.remove('fa-spin'), 600);

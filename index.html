@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FPL Strategy & Analysis Dashboard - Keekee</title>
     
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
     <!-- Load embedded initial dataset (Ensures 100% offline & local file:// support) -->
-    <script src="fpl_data.js"></script>
+    <script src="fpl_data.js?v=20260921_gw5_final"></script>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -120,9 +124,9 @@
                 <div>
                     <h1 class="text-base lg:text-lg font-bold tracking-wide flex items-center gap-2">
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-fpl-green via-fpl-cyan to-white">FPL STRATEGY DASHBOARD</span>
-                        <span class="text-xs bg-purple-900/80 text-fpl-green px-2 py-0.5 rounded-full border border-fpl-green/30">GW<span id="current-gw-label">1</span> Live</span>
+                        <span class="text-xs bg-purple-900/80 text-fpl-green px-2 py-0.5 rounded-full border border-fpl-green/30">GW<span id="current-gw-label">5</span> Official</span>
                     </h1>
-                    <p class="text-xs text-gray-400">Team: <span id="header-team-name" class="text-white font-medium">Keekee</span> | Manager: <span id="header-manager-name" class="text-gray-300">Ryu Onizuka</span> <span id="header-updated-time" class="text-[10px] text-fpl-cyan ml-2 bg-purple-950/80 px-2 py-0.5 rounded border border-purple-500/30"></span></p>
+                    <p class="text-xs text-gray-400">Team: <span id="header-team-name" class="text-white font-medium">Keekee</span> | Manager: <span id="header-manager-name" class="text-gray-300">Ryu Onizuka</span> <span id="header-updated-time" class="text-[10px] text-fpl-cyan ml-2 bg-purple-950/80 px-2 py-0.5 rounded border border-purple-500/30">อัปเดต: GW5 (266 แต้ม)</span></p>
                 </div>
             </div>
 
@@ -169,15 +173,15 @@
             <div class="glass-card p-3 rounded-xl flex flex-col justify-between border-l-4 border-l-fpl-green">
                 <span class="text-[11px] text-gray-400 font-medium">คะแนนรวม (Overall)</span>
                 <div class="flex items-baseline justify-between mt-1">
-                    <span id="stat-overall-pts" class="text-xl font-black text-white">12</span>
+                    <span id="stat-overall-pts" class="text-xl font-black text-white">266</span>
                     <span class="text-[10px] text-fpl-green">pts</span>
                 </div>
             </div>
             <div class="glass-card p-3 rounded-xl flex flex-col justify-between border-l-4 border-l-fpl-cyan">
-                <span class="text-[11px] text-gray-400 font-medium">คะแนน GW1 สด</span>
+                <span class="text-[11px] text-gray-400 font-medium">คะแนน GW<span id="stat-gw-num">5</span></span>
                 <div class="flex items-baseline justify-between mt-1">
-                    <span id="stat-gw-pts" class="text-xl font-black text-fpl-cyan">12</span>
-                    <span class="text-[10px] text-gray-400">Live</span>
+                    <span id="stat-gw-pts" class="text-xl font-black text-fpl-cyan">41</span>
+                    <span class="text-[10px] text-gray-400">pts</span>
                 </div>
             </div>
             <div class="glass-card p-3 rounded-xl flex flex-col justify-between border-l-4 border-l-fpl-pink">
@@ -739,7 +743,7 @@
                 if (resp.ok) {
                     fplData = await resp.json();
                     renderAll();
-                    showToast('อัปเดตข้อมูลสำเร็จ! (34 แต้ม)', true);
+                    showToast(`อัปเดตข้อมูลสำเร็จ! GW${fplData.current_gw || 5} (${fplData.entry?.summary_overall_points || 266} แต้มรวม)`, true);
                 } else {
                     throw new Error('Failed to load JSON');
                 }
@@ -771,11 +775,15 @@
             const currentGw = fplData.current_gw || 1;
 
             document.getElementById('current-gw-label').innerText = currentGw;
+            const statGwNum = document.getElementById('stat-gw-num');
+            if (statGwNum) statGwNum.innerText = currentGw;
             document.getElementById('header-team-name').innerText = entry.name || 'Keekee';
             document.getElementById('header-manager-name').innerText = `${entry.player_first_name || ''} ${entry.player_last_name || ''}`;
+            const updateBadge = document.getElementById('header-updated-time');
+            if (updateBadge) updateBadge.innerText = `อัปเดตล่าสุด: GW${currentGw} (${entry.summary_overall_points || 266} แต้ม)`;
             
-            document.getElementById('stat-overall-pts').innerText = entry.summary_overall_points || 12;
-            document.getElementById('stat-gw-pts').innerText = entry.summary_event_points || 12;
+            document.getElementById('stat-overall-pts').innerText = entry.summary_overall_points || 266;
+            document.getElementById('stat-gw-pts').innerText = entry.summary_event_points || 41;
             document.getElementById('stat-overall-rank').innerText = (entry.summary_overall_rank ? (entry.summary_overall_rank / 1000000).toFixed(1) + 'M' : '5.4M');
             
             const picks = fplData.picks || {};
@@ -1346,9 +1354,9 @@
             if (window.INITIAL_FPL_DATA) {
                 fplData = window.INITIAL_FPL_DATA;
                 renderAll();
-            } else {
-                fetchLiveFPLDataInBrowser();
             }
+            // Always fetch latest live fpl_data.json with timestamp to avoid stale browser cache
+            fetchLiveFPLDataInBrowser();
         });
     </script>
 </body>

@@ -263,13 +263,12 @@
                 <div class="lg:col-span-4 space-y-4">
                     <!-- Manager Insights & Recommendation -->
                     <div class="glass-card p-4 rounded-2xl border-l-4 border-l-fpl-cyan">
-                        <h3 class="font-bold text-sm text-fpl-cyan flex items-center gap-2 mb-2">
-                            <i class="fa-solid fa-robot"></i> คำแนะนำด่วนจาก AI ผู้ช่วย
+                        <h3 class="font-bold text-sm text-fpl-cyan flex items-center justify-between mb-2">
+                            <span class="flex items-center gap-2"><i class="fa-solid fa-robot"></i> คำแนะนำด่วนจาก AI ผู้ช่วย</span>
+                            <span id="ai-rec-gw-badge" class="text-[10px] bg-cyan-950/80 text-fpl-cyan px-2 py-0.5 rounded-full border border-cyan-500/30">GW6 Strategic Brief</span>
                         </h3>
-                        <div class="text-xs space-y-2 text-gray-300 leading-relaxed">
-                            <p>🟢 <strong>GW2 Strategy:</strong> แนะนำให้ <strong>Roll Transfer (ไม่เปลี่ยนตัว)</strong> เพื่อสะสมเป็น 2 Free Transfers ไว้ปรับทัพใหญ่ใน GW3</p>
-                            <p>👑 <strong>Captaincy:</strong> วาง <strong>Haaland (C)</strong> ปลอดภัยที่สุด และวาง <strong>Saka หรือ Szoboszlai (VC)</strong></p>
-                            <p>🎯 <strong>Scout Target:</strong> จับตาฟอร์มของ <strong>João Pedro (CHE)</strong> ในคู่ Fulham vs Chelsea อย่างใกล้ชิด</p>
+                        <div class="text-xs space-y-2 text-gray-300 leading-relaxed" id="ai-recommendations-content">
+                            <!-- Dynamically populated by renderAIRecommendations() -->
                         </div>
                     </div>
 
@@ -277,7 +276,7 @@
                     <div class="glass-card p-4 rounded-2xl">
                         <h3 class="font-bold text-sm text-gray-200 flex items-center justify-between mb-3">
                             <span><i class="fa-solid fa-tower-broadcast text-fpl-green"></i> สรุปผลงานนักเตะในทีม</span>
-                            <span class="text-[10px] text-gray-400">GW1 Live</span>
+                            <span class="text-[10px] text-gray-400" id="squad-perf-gw">GW5 Official</span>
                         </h3>
                         <div class="space-y-2 max-h-[360px] overflow-y-auto pr-1" id="squad-performance-list"></div>
                     </div>
@@ -371,38 +370,37 @@
                     </div>
                 </div>
 
-                <!-- Suggested Combos for GW3 -->
+                <!-- Suggested Combos for Upcoming GW -->
                 <div class="mt-6 pt-6 border-t border-white/10">
                     <h3 class="text-sm font-bold text-fpl-cyan mb-3 flex items-center gap-2">
-                        <i class="fa-solid fa-lightbulb"></i> สูตรการย้ายตัวยอดนิยมที่แนะนำสำหรับ GW3 (Recommended Move Sets):
+                        <i class="fa-solid fa-lightbulb"></i> สูตรและกลยุทธ์การย้ายตัวแนะนำสำหรับสัปดาห์นี้ (Recommended Move Sets):
                     </h3>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                        <div class="glass-card p-3 rounded-xl border border-fpl-green/30 hover:border-fpl-green transition cursor-pointer" onclick="applyPresetTransfer('THIAGO_TO_PEDRO')">
+                        <div class="glass-card p-3 rounded-xl border border-fpl-green/30 hover:border-fpl-green transition cursor-pointer" onclick="applyPresetTransfer('ROLL_FT')">
                             <div class="flex justify-between items-center text-xs mb-1">
-                                <span class="font-bold text-fpl-green">สูตร 1: Direct FWD Swap</span>
-                                <span class="bg-emerald-900/60 text-emerald-300 text-[10px] px-1.5 py-0.5 rounded">1 FT</span>
+                                <span class="font-bold text-fpl-green">สูตร 1: Roll Transfer (แนะนำที่สุด ⭐)</span>
+                                <span class="bg-emerald-900/60 text-emerald-300 text-[10px] px-1.5 py-0.5 rounded">0 Transfer</span>
                             </div>
-                            <p class="text-xs text-gray-300"><strong>Thiago</strong> (£8.0m) ➔ <strong>João Pedro</strong> (£7.5m)</p>
-                            <p class="text-[11px] text-gray-400 mt-1">ได้กองหน้าตัวความหวังเชลซี + ได้เงินทอนเข้าคลัง £0.5m</p>
+                            <p class="text-xs text-gray-300"><strong>เก็บ 1 FT ไว้</strong> ➔ สะสมเป็น <strong>2 Free Transfers ใน GW7</strong></p>
+                            <p class="text-[11px] text-gray-400 mt-1">11 ตัวจริงพร้อมรบอยู่แล้ว เก็บโควตาย้ายตัวไว้ลุยช่วงชิปแตก GW7-GW8</p>
                         </div>
 
-                        <div class="glass-card p-3 rounded-xl border border-blue-500/30 hover:border-blue-500 transition cursor-pointer" onclick="applyPresetTransfer('DEF_DOWNGRADE_MID_UP')">
+                        <div class="glass-card p-3 rounded-xl border border-blue-500/30 hover:border-blue-500 transition cursor-pointer" onclick="applyPresetTransfer('SENESI_TO_PORRO')">
                             <div class="flex justify-between items-center text-xs mb-1">
-                                <span class="font-bold text-blue-400">สูตร 2: Combo 2 Transfers (GW3)</span>
-                                <span class="bg-blue-900/60 text-blue-300 text-[10px] px-1.5 py-0.5 rounded">2 FTs</span>
+                                <span class="font-bold text-blue-400">สูตร 2: อัปเกรดแนวรับ (DEF Upgrade)</span>
+                                <span class="bg-blue-900/60 text-blue-300 text-[10px] px-1.5 py-0.5 rounded">1 FT</span>
                             </div>
-                            <p class="text-xs text-gray-300"><strong>Burn</strong> (£5.0m) ➔ <strong>Thomas</strong> (£4.0m)</p>
-                            <p class="text-xs text-gray-300"><strong>Rayan</strong> (£6.5m) ➔ <strong>Mbeumo</strong> (£8.0m)</p>
-                            <p class="text-[11px] text-gray-400 mt-1">ลดงบตัวสำรอง £1.0m แล้วอัปเกรดแดนกลางเป็นตัวท็อป</p>
+                            <p class="text-xs text-gray-300"><strong>Senesi</strong> (£5.8m) ➔ <strong>Pedro Porro</strong> (£5.5m) หรือ <strong>Saliba</strong> (£6.0m)</p>
+                            <p class="text-[11px] text-gray-400 mt-1">สลับกองหลังตัวสำรองที่ไม่ได้ลงเล่น ไปเป็นตัวจริงการันตีคลีนชีท</p>
                         </div>
 
-                        <div class="glass-card p-3 rounded-xl border border-fpl-pink/30 hover:border-fpl-pink transition cursor-pointer" onclick="applyPresetTransfer('ODEGAARD_PULL')">
+                        <div class="glass-card p-3 rounded-xl border border-fpl-pink/30 hover:border-fpl-pink transition cursor-pointer" onclick="applyPresetTransfer('WILSON_TO_WOOD')">
                             <div class="flex justify-between items-center text-xs mb-1">
-                                <span class="font-bold text-fpl-pink">สูตร 3: ดึงตัวรุกอาร์เซนอล</span>
+                                <span class="font-bold text-fpl-pink">สูตร 3: ปรับกองหน้าสำรอง (FWD Swap)</span>
                                 <span class="bg-pink-900/60 text-pink-300 text-[10px] px-1.5 py-0.5 rounded">1 FT</span>
                             </div>
-                            <p class="text-xs text-gray-300"><strong>Rayan</strong> (£6.5m) ➔ <strong>Ødegaard</strong> (£6.5m)</p>
-                            <p class="text-[11px] text-gray-400 mt-1">งบเท่ากันเป๊ะ (£6.5m) ได้เพลย์เมกเกอร์ฟอร์มฮอต 11 แต้ม</p>
+                            <p class="text-xs text-gray-300"><strong>Wilson</strong> (£5.4m) ➔ <strong>Danny Welbeck</strong> (£5.7m) หรือ <strong>Wood</strong> (£6.1m)</p>
+                            <p class="text-[11px] text-gray-400 mt-1">เปลี่ยนตัวสำรองนาทีน้อย ให้เป็นกองหน้าตัวจริงที่ยิงต่อเนื่อง</p>
                         </div>
                     </div>
                 </div>
@@ -494,32 +492,32 @@
                 <!-- Season Timeline Chart / Visual -->
                 <div class="p-4 rounded-xl bg-purple-950/40 border border-purple-800/30">
                     <h3 class="text-xs font-bold text-gray-300 uppercase tracking-wider mb-3">
-                        📅 ไทม์ไลน์ภาพรวมการบริหารชิป (Season Timeline)
+                        📅 ไทม์ไลน์ 4 ระยะสู่แชมป์ SMBC League (4-Phase Championship Roadmap)
                     </h3>
                     <div class="flex flex-col sm:flex-row justify-between items-center gap-2 text-center text-xs">
-                        <div class="p-2.5 rounded-lg bg-black/40 border border-white/10 w-full">
-                            <span class="text-gray-400 block text-[10px]">GW1 - GW5</span>
-                            <span class="font-bold text-fpl-green">สร้างฐาน & Roll FT</span>
+                        <div class="p-2.5 rounded-lg bg-black/40 border border-emerald-500/50 w-full">
+                            <span class="text-emerald-400 block text-[10px]">GW1 - GW5 (เสร็จสิ้น)</span>
+                            <span class="font-bold text-white">266 แต้ม (รากฐานแน่น)</span>
                         </div>
                         <i class="fa-solid fa-chevron-right text-gray-600 hidden sm:block"></i>
-                        <div class="p-2.5 rounded-lg bg-purple-900/40 border border-purple-500/30 w-full">
-                            <span class="text-gray-400 block text-[10px]">GW6 - GW8</span>
-                            <span class="font-bold text-purple-300">พิจารณา Wildcard 1</span>
+                        <div class="p-2.5 rounded-lg bg-purple-900/50 border border-purple-500/50 w-full">
+                            <span class="text-purple-300 block text-[10px]">GW6 - GW10 (ระยะที่ 1)</span>
+                            <span class="font-bold text-purple-200">TC1 (GW7) + WC1 ➔ ขึ้นที่ 1</span>
                         </div>
                         <i class="fa-solid fa-chevron-right text-gray-600 hidden sm:block"></i>
-                        <div class="p-2.5 rounded-lg bg-yellow-900/40 border border-yellow-500/30 w-full">
-                            <span class="text-gray-400 block text-[10px]">GW20 - GW25</span>
-                            <span class="font-bold text-yellow-300">Triple Captain (DGW)</span>
+                        <div class="p-2.5 rounded-lg bg-blue-900/40 border border-blue-500/30 w-full">
+                            <span class="text-blue-300 block text-[10px]">GW11 - GW20 (ระยะที่ 2)</span>
+                            <span class="font-bold text-blue-200">ปีใหม่ & FH1 ➔ จ่าฝูง GW20</span>
                         </div>
                         <i class="fa-solid fa-chevron-right text-gray-600 hidden sm:block"></i>
                         <div class="p-2.5 rounded-lg bg-cyan-900/40 border border-cyan-500/30 w-full">
-                            <span class="text-gray-400 block text-[10px]">GW29</span>
-                            <span class="font-bold text-cyan-300">Free Hit (BGW)</span>
+                            <span class="text-cyan-300 block text-[10px]">GW21 - GW30 (ระยะที่ 3)</span>
+                            <span class="font-bold text-cyan-200">ฝ่าด่าน BGW ➔ นำโด่ง GW30</span>
                         </div>
                         <i class="fa-solid fa-chevron-right text-gray-600 hidden sm:block"></i>
                         <div class="p-2.5 rounded-lg bg-emerald-900/40 border border-emerald-500/30 w-full">
-                            <span class="text-gray-400 block text-[10px]">GW34 - GW37</span>
-                            <span class="font-bold text-emerald-300">WC2 + Bench Boost</span>
+                            <span class="text-emerald-300 block text-[10px]">GW31 - GW38 (ระยะที่ 4)</span>
+                            <span class="font-bold text-emerald-300">WC2 + BB / TC2 ➔ คว้าแชมป์!</span>
                         </div>
                     </div>
                 </div>
@@ -539,7 +537,7 @@
                     <!-- Quick Tag Filters -->
                     <div class="flex flex-wrap items-center gap-1.5">
                         <button onclick="setScoutFilter('ALL')" id="scout-tag-ALL" class="scout-tag-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-fpl-cyan text-black">ทั้งหมด</button>
-                        <button onclick="setScoutFilter('HOT')" id="scout-tag-HOT" class="scout-tag-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-white/5 text-gray-300 hover:bg-white/10">🔥 ฟอร์มแรง (GW1 Pts &ge; 5)</button>
+                        <button onclick="setScoutFilter('HOT')" id="scout-tag-HOT" class="scout-tag-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-white/5 text-gray-300 hover:bg-white/10">🔥 ฟอร์มแรง (Form &ge; 5.0 / Pts &ge; 5)</button>
                         <button onclick="setScoutFilter('META')" id="scout-tag-META" class="scout-tag-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-white/5 text-gray-300 hover:bg-white/10">🎯 ตัวยอดฮิต (Own &ge; 30%)</button>
                         <button onclick="setScoutFilter('BUDGET')" id="scout-tag-BUDGET" class="scout-tag-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-white/5 text-gray-300 hover:bg-white/10">💰 ราคาประหยัด (&le; £5.0m)</button>
                         <button onclick="setScoutFilter('DIFF')" id="scout-tag-DIFF" class="scout-tag-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-white/5 text-gray-300 hover:bg-white/10">💎 Differential (&lt; 10%)</button>
@@ -589,7 +587,7 @@
                         <h2 class="text-lg font-bold text-white flex items-center gap-2">
                             <i class="fa-solid fa-calendar-days text-fpl-green"></i> ตารางความยากง่ายโปรแกรมแข่ง (Fixture Difficulty Ticker)
                         </h2>
-                        <p class="text-xs text-gray-400 mt-1">Heatmap แสดงโปรแกรม 5 นัดล่วงหน้า (GW2 - GW6) ของทั้ง 20 สโมสร</p>
+                        <p class="text-xs text-gray-400 mt-1">Heatmap แสดงระดับความยากง่ายโปรแกรมแข่ง 5 นัดล่วงหน้าของทั้ง 20 สโมสร</p>
                     </div>
                     <!-- Legend (Updated with Orange for 4) -->
                     <div class="flex items-center gap-1.5 text-[10px]">
@@ -603,13 +601,13 @@
                 <div class="overflow-x-auto rounded-xl border border-white/5">
                     <table class="w-full text-left text-xs">
                         <thead class="bg-purple-950/60 text-gray-300 uppercase tracking-wider font-semibold border-b border-white/10">
-                            <tr>
+                            <tr id="fixture-ticker-header">
                                 <th class="p-3">สโมสร (Club)</th>
-                                <th class="p-3 text-center">GW2</th>
-                                <th class="p-3 text-center">GW3</th>
-                                <th class="p-3 text-center">GW4</th>
-                                <th class="p-3 text-center">GW5</th>
                                 <th class="p-3 text-center">GW6</th>
+                                <th class="p-3 text-center">GW7</th>
+                                <th class="p-3 text-center">GW8</th>
+                                <th class="p-3 text-center">GW9</th>
+                                <th class="p-3 text-center">GW10</th>
                             </tr>
                         </thead>
                         <tbody id="fixture-ticker-body" class="divide-y divide-white/5 bg-black/20"></tbody>
@@ -762,12 +760,45 @@
         function renderAll() {
             if (!fplData) return;
             renderHeaderAndStats();
+            renderAIRecommendations();
             renderPitch();
             renderSquadPerformance();
             renderLeagues();
             renderTransferSimulator();
             renderScoutTable();
             renderFixtureTicker();
+        }
+
+        function renderAIRecommendations() {
+            const curGw = fplData?.current_gw || 5;
+            const nextGw = curGw + 1;
+            const badge = document.getElementById('ai-rec-gw-badge');
+            if (badge) badge.innerText = `GW${nextGw} Strategic Brief`;
+
+            const container = document.getElementById('ai-recommendations-content');
+            if (!container) return;
+
+            let html = '';
+            if (nextGw === 6) {
+                html = `
+                    <p>🟢 <strong>GW6 Strategy:</strong> แนะนำให้ <strong>Roll Transfer (ไม่เปลี่ยนตัว)</strong> เพื่อสะสมเป็น 2 Free Transfers ไว้สู้ศึกใหญ่และช่วงชิปแตกใน GW7-GW8</p>
+                    <p>👑 <strong>Captaincy Differential:</strong> วาง <strong>Bukayo Saka (C)</strong> หรือ <strong>Martin Ødegaard (C)</strong> เปิดบ้านดวล ลีดส์ ยูไนเต็ด (FDR: 2) เป็นหมัดเด็ดฟันแต้มแซงคู่แข่ง หรือเพลย์เซฟด้วย <strong>Erling Haaland (C)</strong></p>
+                    <p>🎯 <strong>SMBC Phase 1 Roadmap:</strong> สัปดาห์ถัดไป (GW7) แมนฯ ซิตี้ พบ อิปสวิช ในบ้าน (FDR: 2) เตรียมกดใช้ <strong>Triple Captain 1 (TC1)</strong> ให้ Haaland ตามแผนยุทธศาสตร์ 4 ระยะ!</p>
+                `;
+            } else if (nextGw === 7) {
+                html = `
+                    <p>👑 <strong>GW7 Triple Captain Alert:</strong> แมนฯ ซิตี้ vs อิปสวิช ในบ้าน (FDR: 2) ➔ ถึงเวลากดใช้ <strong>Triple Captain 1 (TC1)</strong> ให้ Erling Haaland เพื่อกวาด 40-50+ แต้มไล่จ่าฝูง!</p>
+                    <p>🟢 <strong>Transfer Strategy:</strong> ใช้โควตา 2 Free Transfers ปรับโครงสร้างเพื่อเตรียมรับมือสัปดาห์ Wildcard 1 ใน GW8</p>
+                    <p>🎯 <strong>Target Checkpoint:</strong> เตรียมเร่งสปีดแต้มเพื่อทะยานขึ้นอันดับ 1 ของ SMBC League ใน GW10</p>
+                `;
+            } else {
+                html = `
+                    <p>🟢 <strong>GW${nextGw} Strategy:</strong> บริหารโควตาย้ายตัวตามโปรแกรม FDR และรักษาระดับแต้มสะสมตามแผน 4 ระยะสู่แชมป์ SMBC League</p>
+                    <p>👑 <strong>Captaincy:</strong> วางกัปตันตัวท็อปตามโปรแกรมความยากง่าย (Haaland / Saka)</p>
+                    <p>🎯 <strong>Roadmap Checkpoint:</strong> มุ่งสู่เป้าหมายอันดับ 1 ของลีกใน GW10, GW20, GW30, GW38</p>
+                `;
+            }
+            container.innerHTML = html;
         }
 
         function renderHeaderAndStats() {
@@ -936,6 +967,12 @@
             }).join('');
 
             document.getElementById('squad-performance-list').innerHTML = html;
+            const perfGw = document.getElementById('squad-perf-gw');
+            if (perfGw) {
+                const curGw = fplData?.current_gw || 5;
+                const eventPts = fplData?.entry?.summary_event_points !== undefined ? fplData.entry.summary_event_points : 41;
+                perfGw.innerText = `GW${curGw} Official (${eventPts} pts)`;
+            }
         }
 
         // ================= MY LEAGUES (NEW!) =================
@@ -1179,16 +1216,19 @@
 
         function applyPresetTransfer(preset) {
             switchTab('transfer-tab');
-            if (preset === 'THIAGO_TO_PEDRO') {
-                const thiago = (fplData?.bootstrap?.elements || []).find(p => p.web_name === 'Thiago' && p.element_type === 4);
-                const pedro = (fplData?.bootstrap?.elements || []).find(p => p.web_name.toLowerCase().includes('pedro'));
-                if (thiago) selectTransferOut(thiago.id);
-                if (pedro) selectTransferIn(pedro.id);
-            } else if (preset === 'ODEGAARD_PULL') {
-                const rayan = (fplData?.bootstrap?.elements || []).find(p => p.web_name === 'Rayan');
-                const odegaard = (fplData?.bootstrap?.elements || []).find(p => p.web_name.toLowerCase().includes('ødegaard') || p.web_name.toLowerCase().includes('odegaard'));
-                if (rayan) selectTransferOut(rayan.id);
-                if (odegaard) selectTransferIn(odegaard.id);
+            if (preset === 'ROLL_FT') {
+                resetTransferSimulator();
+                showToast('กลยุทธ์แนะนำ: ไม่เปลี่ยนตัว (Roll Transfer) เพื่อสะสม 2 FTs ใน GW7', true);
+            } else if (preset === 'SENESI_TO_PORRO') {
+                const senesi = (fplData?.bootstrap?.elements || []).find(p => p.web_name === 'Senesi');
+                const porro = (fplData?.bootstrap?.elements || []).find(p => p.web_name.toLowerCase().includes('porro'));
+                if (senesi) selectTransferOut(senesi.id);
+                if (porro) selectTransferIn(porro.id);
+            } else if (preset === 'WILSON_TO_WOOD') {
+                const wilson = (fplData?.bootstrap?.elements || []).find(p => p.web_name === 'Wilson' && p.element_type === 4);
+                const wood = (fplData?.bootstrap?.elements || []).find(p => p.web_name === 'Wood' && p.element_type === 4);
+                if (wilson) selectTransferOut(wilson.id);
+                if (wood) selectTransferIn(wood.id);
             }
         }
 
@@ -1234,7 +1274,7 @@
 
             // Tag Filters
             if (scoutFilterTag === 'HOT') {
-                list = list.filter(p => (p.event_points || p.total_points) >= 5);
+                list = list.filter(p => (p.event_points || 0) >= 5 || parseFloat(p.form || 0) >= 5.0 || p.total_points >= 20);
             } else if (scoutFilterTag === 'META') {
                 list = list.filter(p => parseFloat(p.selected_by_percent) >= 30);
             } else if (scoutFilterTag === 'BUDGET') {
@@ -1289,9 +1329,17 @@
             const tbody = document.getElementById('fixture-ticker-body');
             if (!tbody) return;
 
+            const curGw = fplData?.current_gw || 5;
+            const upcomingGws = [curGw + 1, curGw + 2, curGw + 3, curGw + 4, curGw + 5];
+
+            const theadRow = document.getElementById('fixture-ticker-header');
+            if (theadRow) {
+                theadRow.innerHTML = `<th class="p-3">สโมสร (Club)</th>` + upcomingGws.map(gw => `<th class="p-3 text-center">GW${gw}</th>`).join('');
+            }
+
             tbody.innerHTML = teams.map(t => {
                 const next5 = getTeamUpcomingFixtures(t.id, 5);
-                const cells = [2, 3, 4, 5, 6].map((gw, idx) => {
+                const cells = upcomingGws.map((gw, idx) => {
                     const f = next5[idx];
                     if (!f) return '<td class="p-3 text-center text-gray-500">-</td>';
                     return `

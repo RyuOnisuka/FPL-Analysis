@@ -8,9 +8,10 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
+    <meta name="version" content="20260921_2325">
     
     <!-- Load embedded initial dataset (Ensures 100% offline & local file:// support) -->
-    <script src="fpl_data.js?v=20260921_gw5_final"></script>
+    <script src="fpl_data.js?v=20260921_2325"></script>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -265,10 +266,70 @@
                     <div class="glass-card p-4 rounded-2xl border-l-4 border-l-fpl-cyan">
                         <h3 class="font-bold text-sm text-fpl-cyan flex items-center justify-between mb-2">
                             <span class="flex items-center gap-2"><i class="fa-solid fa-robot"></i> คำแนะนำด่วนจาก AI ผู้ช่วย</span>
-                            <span id="ai-rec-gw-badge" class="text-[10px] bg-cyan-950/80 text-fpl-cyan px-2 py-0.5 rounded-full border border-cyan-500/30">GW6 Strategic Brief</span>
+                            <span id="ai-rec-gw-badge" class="text-[10px] bg-cyan-950/80 text-fpl-cyan px-2 py-0.5 rounded-full border border-cyan-500/30 font-semibold">GW6 Strategic Brief</span>
                         </h3>
                         <div class="text-xs space-y-2 text-gray-300 leading-relaxed" id="ai-recommendations-content">
-                            <!-- Dynamically populated by renderAIRecommendations() -->
+                            <p>🟢 <strong>GW6 Strategy:</strong> แนะนำให้ <strong>Roll Transfer (ไม่เปลี่ยนตัว)</strong> เพื่อสะสมเป็น 2 Free Transfers ไว้สู้ศึกใหญ่และช่วงชิปแตกใน GW7-GW8</p>
+                            <p>👑 <strong>Captaincy Differential:</strong> วาง <strong>Bukayo Saka (C)</strong> หรือ <strong>Martin Ødegaard (C)</strong> เปิดบ้านดวล ลีดส์ ยูไนเต็ด (FDR: 2) เป็นหมัดเด็ดฟันแต้มแซงคู่แข่ง หรือเพลย์เซฟด้วย <strong>Erling Haaland (C)</strong></p>
+                            <p>🎯 <strong>SMBC Phase 1 Roadmap:</strong> สัปดาห์ถัดไป (GW7) แมนฯ ซิตี้ พบ อิปสวิช ในบ้าน (FDR: 2) เตรียมกดใช้ <strong>Triple Captain 1 (TC1)</strong> ให้ Haaland ตามแผนยุทธศาสตร์ 4 ระยะ!</p>
+                        </div>
+                    </div>
+
+                    <!-- SMBC League Championship Roadmap & Target Progress Widget (NEW!) -->
+                    <div class="glass-card p-4 rounded-2xl border-l-4 border-l-yellow-400 space-y-3">
+                        <div class="flex items-center justify-between border-b border-white/10 pb-2">
+                            <h3 class="font-bold text-xs text-yellow-400 flex items-center gap-1.5 uppercase tracking-wider">
+                                <i class="fa-solid fa-trophy text-yellow-400"></i> แผนสู่แชมป์ SMBC League (ระยะที่ 1)
+                            </h3>
+                            <span class="text-[10px] bg-yellow-500/20 text-yellow-300 px-2 py-0.5 rounded-full border border-yellow-500/40 font-bold">
+                                เป้าหมาย: อันดับ 1 ใน GW10
+                            </span>
+                        </div>
+
+                        <!-- Target Progress Bar -->
+                        <div class="space-y-1.5">
+                            <div class="flex justify-between items-baseline text-xs">
+                                <span class="text-gray-300 font-medium">ความคืบหน้าคะแนนสู่เป้าหมาย GW10:</span>
+                                <span class="font-black text-fpl-green text-sm">39.1% <span class="text-[10px] text-gray-400 font-normal">(266 / 680 pts)</span></span>
+                            </div>
+                            <div class="w-full bg-black/50 h-2.5 rounded-full overflow-hidden p-0.5 border border-white/10">
+                                <div class="bg-gradient-to-r from-fpl-cyan to-fpl-green h-full rounded-full transition-all duration-1000 shadow-sm shadow-fpl-green/50" style="width: 39.1%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Progress vs Leader -->
+                        <div class="space-y-1.5 pt-1">
+                            <div class="flex justify-between items-baseline text-xs">
+                                <span class="text-gray-300 font-medium">เทียบสัดส่วนคะแนนกับจ่าฝูงปัจจุบัน:</span>
+                                <span class="font-black text-fpl-cyan text-sm">78.7% <span class="text-[10px] text-gray-400 font-normal">(266 / 338 pts)</span></span>
+                            </div>
+                            <div class="w-full bg-black/50 h-2 rounded-full overflow-hidden p-0.5 border border-white/10">
+                                <div class="bg-gradient-to-r from-purple-500 to-fpl-cyan h-full rounded-full transition-all duration-1000" style="width: 78.7%;"></div>
+                            </div>
+                            <p class="text-[11px] text-gray-400 flex items-center justify-between pt-0.5">
+                                <span>ห่างจ่าฝูง: <strong class="text-yellow-300 font-bold">72 แต้ม</strong></span>
+                                <span class="text-fpl-green font-semibold">เป้าหมายลด: ~14.4 แต้ม/สัปดาห์</span>
+                            </p>
+                        </div>
+
+                        <!-- 4-Phase Status Badges -->
+                        <div class="grid grid-cols-4 gap-1.5 pt-2 border-t border-white/10 text-center">
+                            <div class="bg-emerald-950/60 p-1.5 rounded-lg border border-emerald-500/40">
+                                <span class="text-[9px] text-emerald-300 block font-bold">ระยะ 1 (GW10)</span>
+                                <span class="text-[10px] text-white font-black">ขึ้นที่ 1 ⏳</span>
+                            </div>
+                            <div class="bg-black/30 p-1.5 rounded-lg border border-white/5 opacity-70">
+                                <span class="text-[9px] text-gray-400 block">ระยะ 2 (GW20)</span>
+                                <span class="text-[10px] text-gray-300 font-medium">จ่าฝูงปีใหม่</span>
+                            </div>
+                            <div class="bg-black/30 p-1.5 rounded-lg border border-white/5 opacity-70">
+                                <span class="text-[9px] text-gray-400 block">ระยะ 3 (GW30)</span>
+                                <span class="text-[10px] text-gray-300 font-medium">นำโด่ง BGW</span>
+                            </div>
+                            <div class="bg-black/30 p-1.5 rounded-lg border border-white/5 opacity-70">
+                                <span class="text-[9px] text-gray-400 block">ระยะ 4 (GW38)</span>
+                                <span class="text-[10px] text-yellow-300 font-bold">คว้าแชมป์ 🏆</span>
+                            </div>
                         </div>
                     </div>
 

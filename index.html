@@ -290,10 +290,10 @@
                         <div class="space-y-1.5">
                             <div class="flex justify-between items-baseline text-xs">
                                 <span class="text-gray-300 font-medium">ความคืบหน้าคะแนนสู่เป้าหมาย GW10:</span>
-                                <span class="font-black text-fpl-green text-sm">39.1% <span class="text-[10px] text-gray-400 font-normal">(266 / 680 pts)</span></span>
+                                <span id="smbc-target-progress-text" class="font-black text-fpl-green text-sm">47.2% <span class="text-[10px] text-gray-400 font-normal">(321 / 680 pts)</span></span>
                             </div>
                             <div class="w-full bg-black/50 h-2.5 rounded-full overflow-hidden p-0.5 border border-white/10">
-                                <div class="bg-gradient-to-r from-fpl-cyan to-fpl-green h-full rounded-full transition-all duration-1000 shadow-sm shadow-fpl-green/50" style="width: 39.1%;"></div>
+                                <div id="smbc-target-progress-bar" class="bg-gradient-to-r from-fpl-cyan to-fpl-green h-full rounded-full transition-all duration-1000 shadow-sm shadow-fpl-green/50" style="width: 47.2%;"></div>
                             </div>
                         </div>
 
@@ -301,14 +301,14 @@
                         <div class="space-y-1.5 pt-1">
                             <div class="flex justify-between items-baseline text-xs">
                                 <span class="text-gray-300 font-medium">เทียบสัดส่วนคะแนนกับจ่าฝูงปัจจุบัน:</span>
-                                <span class="font-black text-fpl-cyan text-sm">78.7% <span class="text-[10px] text-gray-400 font-normal">(266 / 338 pts)</span></span>
+                                <span id="smbc-leader-progress-text" class="font-black text-fpl-cyan text-sm">83.6% <span class="text-[10px] text-gray-400 font-normal">(321 / 384 pts)</span></span>
                             </div>
                             <div class="w-full bg-black/50 h-2 rounded-full overflow-hidden p-0.5 border border-white/10">
-                                <div class="bg-gradient-to-r from-purple-500 to-fpl-cyan h-full rounded-full transition-all duration-1000" style="width: 78.7%;"></div>
+                                <div id="smbc-leader-progress-bar" class="bg-gradient-to-r from-purple-500 to-fpl-cyan h-full rounded-full transition-all duration-1000" style="width: 83.6%;"></div>
                             </div>
                             <p class="text-[11px] text-gray-400 flex items-center justify-between pt-0.5">
-                                <span>ห่างจ่าฝูง: <strong class="text-yellow-300 font-bold">72 แต้ม</strong></span>
-                                <span class="text-fpl-green font-semibold">เป้าหมายลด: ~14.4 แต้ม/สัปดาห์</span>
+                                <span id="smbc-leader-gap-text">ห่างจ่าฝูง: <strong class="text-yellow-300 font-bold">63 แต้ม</strong></span>
+                                <span id="smbc-rate-target-text" class="text-fpl-green font-semibold">เป้าหมายลด: ~15.8 แต้ม/สัปดาห์</span>
                             </p>
                         </div>
 
@@ -822,12 +822,45 @@
             if (!fplData) return;
             renderHeaderAndStats();
             renderAIRecommendations();
+            renderSMBCTracker();
             renderPitch();
             renderSquadPerformance();
             renderLeagues();
             renderTransferSimulator();
             renderScoutTable();
             renderFixtureTicker();
+        }
+
+        function renderSMBCTracker() {
+            const totalPts = fplData?.entry?.summary_overall_points || 321;
+            const curGw = fplData?.current_gw || 6;
+            const targetGw10 = 680;
+            const targetPct = ((totalPts / targetGw10) * 100).toFixed(1);
+
+            const smbcStandings = fplData?.league_standings?.['63159']?.standings?.results || [];
+            const leaderPts = smbcStandings[0]?.total || 384;
+            const leaderPct = ((totalPts / leaderPts) * 100).toFixed(1);
+            const gap = Math.max(0, leaderPts - totalPts);
+            const remainingGws = Math.max(1, 10 - curGw);
+            const ratePerGw = (gap / remainingGws).toFixed(1);
+
+            const targetText = document.getElementById('smbc-target-progress-text');
+            if (targetText) targetText.innerHTML = `${targetPct}% <span class="text-[10px] text-gray-400 font-normal">(${totalPts} / ${targetGw10} pts)</span>`;
+
+            const targetBar = document.getElementById('smbc-target-progress-bar');
+            if (targetBar) targetBar.style.width = `${Math.min(100, targetPct)}%`;
+
+            const leaderText = document.getElementById('smbc-leader-progress-text');
+            if (leaderText) leaderText.innerHTML = `${leaderPct}% <span class="text-[10px] text-gray-400 font-normal">(${totalPts} / ${leaderPts} pts)</span>`;
+
+            const leaderBar = document.getElementById('smbc-leader-progress-bar');
+            if (leaderBar) leaderBar.style.width = `${Math.min(100, leaderPct)}%`;
+
+            const gapText = document.getElementById('smbc-leader-gap-text');
+            if (gapText) gapText.innerHTML = `ห่างจ่าฝูง: <strong class="text-yellow-300 font-bold">${gap} แต้ม</strong>`;
+
+            const rateText = document.getElementById('smbc-rate-target-text');
+            if (rateText) rateText.innerHTML = `เป้าหมายลด: ~${ratePerGw} แต้ม/สัปดาห์`;
         }
 
         function renderAIRecommendations() {

@@ -557,8 +557,8 @@
                     </h3>
                     <div class="flex flex-col sm:flex-row justify-between items-center gap-2 text-center text-xs">
                         <div class="p-2.5 rounded-lg bg-black/40 border border-emerald-500/50 w-full">
-                            <span class="text-emerald-400 block text-[10px]">GW1 - GW5 (เสร็จสิ้น)</span>
-                            <span class="font-bold text-white">266 แต้ม (รากฐานแน่น)</span>
+                            <span class="text-emerald-400 block text-[10px]">GW1 - GW6 (เสร็จสิ้น)</span>
+                            <span class="font-bold text-white">332 แต้ม (+66 แต้มใน GW6!)</span>
                         </div>
                         <i class="fa-solid fa-chevron-right text-gray-600 hidden sm:block"></i>
                         <div class="p-2.5 rounded-lg bg-purple-900/50 border border-purple-500/50 w-full">
@@ -918,9 +918,27 @@
             document.getElementById('stat-team-value').innerText = '£' + value + 'm';
             document.getElementById('sim-bank').innerText = '£' + bank + 'm';
 
+            // Calculate Free Transfers available
+            let ftCount = 1;
+            const historyRounds = fplData?.history?.current || [];
+            for (let i = 0; i < historyRounds.length; i++) {
+                const round = historyRounds[i];
+                const transfersMade = round.event_transfers || 0;
+                ftCount = Math.max(0, ftCount - transfersMade) + 1;
+                if (ftCount > 5) ftCount = 5;
+            }
+            const ftElem = document.getElementById('stat-free-transfers');
+            if (ftElem) ftElem.innerText = `${ftCount} FT${ftCount > 1 ? 's' : ''}`;
+
             const ftBadge = document.getElementById('stat-ft-badge');
             if (ftBadge) {
-                ftBadge.innerText = `GW${currentGw + 1}: แนะนำ Roll`;
+                if (currentGw === 6) {
+                    ftBadge.innerText = `GW7: TC Alert 🚨`;
+                    ftBadge.className = 'text-[10px] bg-yellow-900/80 text-yellow-300 px-1.5 py-0.5 rounded font-bold';
+                } else {
+                    ftBadge.innerText = `GW${currentGw + 1}: แนะนำ Roll`;
+                    ftBadge.className = 'text-[10px] bg-blue-900/60 text-blue-200 px-1.5 py-0.5 rounded';
+                }
             }
         }
 

@@ -885,6 +885,12 @@
                     <p>🟢 <strong>Transfer Strategy:</strong> ใช้โควตา 2 Free Transfers ปรับโครงสร้างเพื่อเตรียมรับมือสัปดาห์ Wildcard 1 ใน GW8</p>
                     <p>🎯 <strong>Target Checkpoint:</strong> เตรียมเร่งสปีดแต้มเพื่อทะยานขึ้นอันดับ 1 ของ SMBC League ใน GW10</p>
                 `;
+            } else if (nextGw === 8) {
+                html = `
+                    <p>🃏 <strong>GW8 Strategic Window:</strong> ประเมินการใช้งาน <strong>Wildcard 1 (WC1)</strong> เพื่อรีเซ็ตโครงสร้าง 15 คนให้โปรแกรม FDR เขียวทั่วทั้งทีมตามแผนแม่บทระยะที่ 1</p>
+                    <p>🔥 <strong>Triple Captain Harvest:</strong> Haaland (TC) ระเบิดฟอร์ม 39 แต้มช่วยลดช่องว่างกับหัวตารางอย่างมหาศาล!</p>
+                    <p>🎯 <strong>Sprint to GW10:</strong> เหลืออีก 3 สัปดาห์ (GW8-GW10) สู่เป้าหมายก้าวขึ้นครองอันดับ 1 ของ SMBC League!</p>
+                `;
             } else {
                 html = `
                     <p>🟢 <strong>GW${nextGw} Strategy:</strong> บริหารโควตาย้ายตัวตามโปรแกรม FDR และรักษาระดับแต้มสะสมตามแผน 4 ระยะสู่แชมป์ SMBC League</p>
@@ -935,6 +941,9 @@
                 if (currentGw === 6) {
                     ftBadge.innerText = `GW7: TC Alert 🚨`;
                     ftBadge.className = 'text-[10px] bg-yellow-900/80 text-yellow-300 px-1.5 py-0.5 rounded font-bold';
+                } else if (currentGw === 7) {
+                    ftBadge.innerText = `GW8: WC1 Window`;
+                    ftBadge.className = 'text-[10px] bg-purple-900/80 text-purple-200 px-1.5 py-0.5 rounded font-bold';
                 } else {
                     ftBadge.innerText = `GW${currentGw + 1}: แนะนำ Roll`;
                     ftBadge.className = 'text-[10px] bg-blue-900/60 text-blue-200 px-1.5 py-0.5 rounded';
@@ -1013,7 +1022,7 @@
 
             const renderCard = (p) => `
                 <div onclick="openPlayerModal(${p.id})" class="flex flex-col items-center cursor-pointer transform hover:scale-105 transition group relative">
-                    ${p.is_captain ? '<span class="absolute -top-2.5 -right-1 bg-yellow-400 text-black text-[10px] font-black px-1.5 py-0.2 rounded-full shadow-lg border border-black z-20">C</span>' : ''}
+                    ${p.is_captain ? `<span class="absolute -top-2.5 -right-1 ${p.multiplier === 3 ? 'bg-gradient-to-r from-yellow-300 to-amber-400 text-purple-950 ring-1 ring-white' : 'bg-yellow-400 text-black'} text-[10px] font-black px-1.5 py-0.2 rounded-full shadow-lg border border-black z-20">${p.multiplier === 3 ? 'TC' : 'C'}</span>` : ''}
                     ${p.is_vice ? '<span class="absolute -top-2.5 -right-1 bg-blue-400 text-black text-[10px] font-black px-1.5 py-0.2 rounded-full shadow-lg border border-black z-20">VC</span>' : ''}
                     <div class="w-12 h-12 rounded-xl bg-purple-950/90 border border-white/20 flex flex-col items-center justify-center text-white shadow-lg group-hover:border-fpl-green transition">
                         <span class="text-[10px] text-gray-300 font-bold">${p.team_short}</span>

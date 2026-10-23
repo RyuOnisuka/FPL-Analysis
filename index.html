@@ -563,7 +563,7 @@
                         <i class="fa-solid fa-chevron-right text-gray-600 hidden sm:block"></i>
                         <div class="p-2.5 rounded-lg bg-purple-900/50 border border-purple-500/50 w-full">
                             <span class="text-purple-300 block text-[10px]">GW8 - GW10 (โค้งสุดท้ายระยะ 1)</span>
-                            <span class="font-bold text-purple-200">3 FTs + BB1/WC1 ➔ พุ่งขึ้นที่ 1</span>
+                            <span class="font-bold text-purple-200">2 FTs + BB1/WC1 ➔ พุ่งขึ้นที่ 1</span>
                         </div>
                         <i class="fa-solid fa-chevron-right text-gray-600 hidden sm:block"></i>
                         <div class="p-2.5 rounded-lg bg-blue-900/40 border border-blue-500/30 w-full">
@@ -887,8 +887,8 @@
                 `;
             } else if (nextGw === 8) {
                 html = `
-                    <p>🚨 <strong>ด่วน! เส้นตายคืนนี้ (00:30 น.):</strong> GW8 มีคู่ Friday Night เตะตี 2 ทำให้ต้องกดยืนยันจัดทีมก่อนเที่ยงคืนครึ่งคืนนี้!</p>
-                    <p>🔄 <strong>แผนหลัก 3 Free Transfers (0 แต้มลบ):</strong> ถอดตัวเจ็บ/สำรอง <strong>Saka (เจ็บ 50%) ➔ Mbeumo (£7.9m)</strong>, <strong>Steele ➔ Raya (£6.1m)</strong>, <strong>Senesi ➔ Bogle (£4.7m)</strong> เหลือเงิน £1.6m รอดึง Evanilson กด <strong>Bench Boost 1 ใน GW9-10!</strong> (เก็บ WC1 ไว้เป็นไพ่ตายต่อได้)</p>
+                    <p>🚨 <strong>ด่วน! เส้นตายคืนนี้ (00:30 น.):</strong> GW8 มีคู่ Friday Night เตะตี 2 ต้องกดยืนยันจัดทีมก่อนเที่ยงคืนครึ่งคืนนี้!</p>
+                    <p>🔄 <strong>แผนหลัก 2 Free Transfers (0 แต้มลบ):</strong> ใช้สิทธิ์ฟรี 2 ตัวแก้จุดอ่อนด่วน <strong>1) Saka (เจ็บ 50%) ➔ Mbeumo (£7.9m)</strong> และ <strong>2) Steele ➔ Raya (£6.1m)</strong> เหลืองบ £0.6m ได้ประตูมือ 1 เฝ้าบ้านรับเอฟเวอร์ตันแทนการส่ง Verbruggen ไปเยือนแอนฟิลด์!</p>
                     <p>👑 <strong>Captaincy GW8:</strong> วาง <strong>Erling Haaland (C)</strong> เยือนวิลล่า (Form 9.5) หรือหมัดเด็ด <strong>João Pedro (VC/C)</strong> เปิดบ้านพบสเปอร์สอันดับ 16 (FDR: 2)</p>
                 `;
             } else {
@@ -924,14 +924,19 @@
             document.getElementById('stat-team-value').innerText = '£' + value + 'm';
             document.getElementById('sim-bank').innerText = '£' + bank + 'm';
 
-            // Calculate Free Transfers available
+            // Calculate Free Transfers available (index 0 is initial squad creation; 1 FT starts entering round index 1)
             let ftCount = 1;
             const historyRounds = fplData?.history?.current || [];
-            for (let i = 0; i < historyRounds.length; i++) {
+            const chipsUsed = fplData?.history?.chips || [];
+            for (let i = 1; i < historyRounds.length; i++) {
                 const round = historyRounds[i];
-                const transfersMade = round.event_transfers || 0;
-                ftCount = Math.max(0, ftCount - transfersMade) + 1;
-                if (ftCount > 5) ftCount = 5;
+                const chip = chipsUsed.find(c => c.event === round.event)?.name;
+                if (chip === 'wildcard' || chip === 'freehit') {
+                    ftCount = Math.max(1, ftCount);
+                } else {
+                    const transfersMade = round.event_transfers || 0;
+                    ftCount = Math.min(5, Math.max(0, ftCount - transfersMade) + 1);
+                }
             }
             const ftElem = document.getElementById('stat-free-transfers');
             if (ftElem) ftElem.innerText = `${ftCount} FT${ftCount > 1 ? 's' : ''}`;
@@ -942,7 +947,7 @@
                     ftBadge.innerText = `GW7: TC Alert 🚨`;
                     ftBadge.className = 'text-[10px] bg-yellow-900/80 text-yellow-300 px-1.5 py-0.5 rounded font-bold';
                 } else if (currentGw === 7) {
-                    ftBadge.innerText = `GW8: ใช้ 3 FTs ลุย!`;
+                    ftBadge.innerText = `GW8: ใช้ 2 FTs ลุย!`;
                     ftBadge.className = 'text-[10px] bg-emerald-900/80 text-emerald-300 px-1.5 py-0.5 rounded font-bold';
                 } else {
                     ftBadge.innerText = `GW${currentGw + 1}: แนะนำ Roll`;

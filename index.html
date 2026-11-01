@@ -8,10 +8,10 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <meta name="version" content="20260921_2325">
+    <meta name="version" content="20261101_1020">
     
     <!-- Load embedded initial dataset (Ensures 100% offline & local file:// support) -->
-    <script src="fpl_data.js?v=20260921_2325"></script>
+    <script src="fpl_data.js?v=20261101_1020"></script>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -102,6 +102,131 @@
         }
         ::-webkit-scrollbar-thumb:hover {
             background: #00ff87;
+        }
+
+        /* Accessible visually-hidden utility */
+        .visually-hidden:where(:not(:focus-within, :active)) {
+            position: absolute !important;
+            clip-path: inset(50%) !important;
+            overflow: hidden !important;
+            width: 1px !important;
+            height: 1px !important;
+            margin: -1px !important;
+            padding: 0 !important;
+            border: 0 !important;
+            white-space: nowrap !important;
+        }
+
+        /* SMBC Phase Tabs — Anchor Positioning Tab Underline + Fallback */
+        .smbc-phase-tablist {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding-block-end: 0.35rem;
+        }
+        .smbc-phase-tablist::before {
+            content: '';
+            position: absolute;
+            position-anchor: --smbc-phase-active;
+            inset-block-start: calc(anchor(bottom) + 0.1lh);
+            inset-inline-start: anchor(left);
+            inset-inline-end: anchor(right);
+            block-size: 0.22lh;
+            background: linear-gradient(90deg, #00ff87, #02efff);
+            border-radius: 9999px;
+            pointer-events: none;
+        }
+        @media (prefers-reduced-motion: no-preference) {
+            .smbc-phase-tablist::before {
+                transition: inset 0.2s ease;
+            }
+        }
+        .smbc-phase-tab.active {
+            anchor-name: --smbc-phase-active;
+        }
+        @supports not (position-anchor: auto) {
+            .smbc-phase-tab.active {
+                border-bottom: 0.22lh solid #00ff87;
+            }
+        }
+        .smbc-phase-tab:focus-visible,
+        .smbc-phase-table-wrapper:focus-visible,
+        .smbc-phase-jump-btn:focus-visible {
+            outline: 2px solid #02efff;
+            outline-offset: 2px;
+        }
+
+        /* SMBC Phase Responsive Table — Sticky Headers + @container Stacked Cards */
+        .smbc-phase-table-wrapper {
+            overflow: auto;
+            max-inline-size: 100%;
+            max-block-size: min(640px, 80vh);
+            container-type: inline-size;
+        }
+        .smbc-phase-table {
+            border-collapse: separate;
+            border-spacing: 0;
+            --label-2: "แข่งแล้ว";
+            --label-3: "ชิปรอบนี้";
+            --label-4: "นัดล่าสุด";
+            --label-5: "แต้มลบ (Hits)";
+            --label-6: "ห่างจ่าฝูงรอบนี้";
+            --label-7: "คะแนนสุทธิรอบนี้";
+        }
+        .smbc-phase-table thead {
+            position: sticky;
+            inset-block-start: 0;
+            z-index: 3;
+        }
+        .smbc-phase-table tbody th {
+            position: sticky;
+            inset-inline-start: 0;
+            z-index: 2;
+            background-color: #16031d;
+        }
+        .smbc-phase-table tbody tr.is-my-team th {
+            background-color: #0e2923;
+        }
+        @container (width < 600px) {
+            .smbc-phase-table,
+            .smbc-phase-table thead,
+            .smbc-phase-table tbody,
+            .smbc-phase-table tr,
+            .smbc-phase-table th,
+            .smbc-phase-table td {
+                display: block;
+            }
+            .smbc-phase-table thead {
+                display: none;
+            }
+            .smbc-phase-table tbody tr {
+                margin-block-end: 0.85rem;
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                border-radius: 0.75rem;
+                overflow: hidden;
+                background: rgba(0, 0, 0, 0.35);
+            }
+            .smbc-phase-table tbody th {
+                position: sticky;
+                inset-block-start: 0;
+                z-index: 2;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            .smbc-phase-table tbody td {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.5rem 0.85rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                text-align: end;
+            }
+            .smbc-phase-table tbody td:nth-child(2)::before { content: var(--label-2) ": "; color: #9ca3af; font-weight: 500; }
+            .smbc-phase-table tbody td:nth-child(3)::before { content: var(--label-3) ": "; color: #9ca3af; font-weight: 500; }
+            .smbc-phase-table tbody td:nth-child(4)::before { content: var(--label-4) ": "; color: #9ca3af; font-weight: 500; }
+            .smbc-phase-table tbody td:nth-child(5)::before { content: var(--label-5) ": "; color: #9ca3af; font-weight: 500; }
+            .smbc-phase-table tbody td:nth-child(6)::before { content: var(--label-6) ": "; color: #9ca3af; font-weight: 500; }
+            .smbc-phase-table tbody td:nth-child(7)::before { content: var(--label-7) ": "; color: #9ca3af; font-weight: 600; }
         }
     </style>
 </head>
@@ -312,24 +437,24 @@
                             </p>
                         </div>
 
-                        <!-- 4-Phase Status Badges -->
+                        <!-- 4-Phase Status Badges (Click to jump to SMBC Phase Leaderboard) -->
                         <div class="grid grid-cols-4 gap-1.5 pt-2 border-t border-white/10 text-center">
-                            <div class="bg-emerald-950/60 p-1.5 rounded-lg border border-emerald-500/40">
-                                <span class="text-[9px] text-emerald-300 block font-bold">ระยะ 1 (GW10)</span>
-                                <span class="text-[10px] text-white font-black">ขึ้นที่ 1 ⏳</span>
-                            </div>
-                            <div class="bg-black/30 p-1.5 rounded-lg border border-white/5 opacity-70">
-                                <span class="text-[9px] text-gray-400 block">ระยะ 2 (GW20)</span>
-                                <span class="text-[10px] text-gray-300 font-medium">จ่าฝูงปีใหม่</span>
-                            </div>
-                            <div class="bg-black/30 p-1.5 rounded-lg border border-white/5 opacity-70">
-                                <span class="text-[9px] text-gray-400 block">ระยะ 3 (GW30)</span>
-                                <span class="text-[10px] text-gray-300 font-medium">นำโด่ง BGW</span>
-                            </div>
-                            <div class="bg-black/30 p-1.5 rounded-lg border border-white/5 opacity-70">
-                                <span class="text-[9px] text-gray-400 block">ระยะ 4 (GW38)</span>
+                            <button type="button" onclick="openSMBCPhaseFromOverview(1)" class="smbc-phase-jump-btn bg-emerald-950/60 hover:bg-emerald-900/70 p-1.5 rounded-lg border border-emerald-500/40 transition cursor-pointer">
+                                <span class="text-[9px] text-emerald-300 block font-bold">Phase 1 (1-10)</span>
+                                <span class="text-[10px] text-white font-black">ดูตาราง ⏳</span>
+                            </button>
+                            <button type="button" onclick="openSMBCPhaseFromOverview(2)" class="smbc-phase-jump-btn bg-black/30 hover:bg-white/10 p-1.5 rounded-lg border border-white/10 transition cursor-pointer">
+                                <span class="text-[9px] text-gray-400 block">Phase 2 (11-20)</span>
+                                <span class="text-[10px] text-gray-300 font-medium">เริ่ม 0 ใหม่</span>
+                            </button>
+                            <button type="button" onclick="openSMBCPhaseFromOverview(3)" class="smbc-phase-jump-btn bg-black/30 hover:bg-white/10 p-1.5 rounded-lg border border-white/10 transition cursor-pointer">
+                                <span class="text-[9px] text-gray-400 block">Phase 3 (21-30)</span>
+                                <span class="text-[10px] text-gray-300 font-medium">เริ่ม 0 ใหม่</span>
+                            </button>
+                            <button type="button" onclick="openSMBCPhaseFromOverview(4)" class="smbc-phase-jump-btn bg-black/30 hover:bg-white/10 p-1.5 rounded-lg border border-white/10 transition cursor-pointer">
+                                <span class="text-[9px] text-gray-400 block">Phase 4 (31-38)</span>
                                 <span class="text-[10px] text-yellow-300 font-bold">คว้าแชมป์ 🏆</span>
-                            </div>
+                            </button>
                         </div>
                     </div>
 
@@ -347,13 +472,76 @@
 
         <!-- ================= TAB: MY LEAGUES (NEW!) ================= -->
         <section id="league-tab" class="tab-content hidden space-y-6">
+            <!-- Dedicated SMBC League 4-Phase Standings Card (Separate from Normal Overall Standings) -->
+            <div id="smbc-phase-card" class="glass-card p-6 rounded-2xl space-y-5 border-t-4 border-t-yellow-400">
+                <div class="flex flex-wrap items-start justify-between gap-4 border-b border-white/10 pb-4">
+                    <div>
+                        <h2 id="smbc-phase-heading" class="text-lg font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-medal text-yellow-400"></i> ตารางคะแนนแยกตามรอบ: SMBC LEAGUE 2026-27 (Phase Standings)
+                        </h2>
+                        <p class="text-xs text-gray-400 mt-1">
+                            แยกจากตารางคะแนนรวมปกติ — <strong>รีเซ็ตคะแนนเริ่มต้นที่ 0 ใหม่ทุกรอบ</strong> (หักแต้มติดลบ Hits ในรอบนั้นแล้ว) และเรียงลำดับคะแนนจากมากไปน้อย
+                        </p>
+                    </div>
+                    <span id="smbc-phase-status-pill" class="text-xs bg-emerald-950/80 text-fpl-green px-3 py-1.5 rounded-xl border border-fpl-green/30 font-bold">
+                        กำลังแข่งขัน Phase 1 (GW1–10)
+                    </span>
+                </div>
+
+                <!-- 4 Phase Tabs Controlling a Single Table -->
+                <div role="tablist" aria-labelledby="smbc-phase-heading" class="smbc-phase-tablist" id="smbc-phase-tablist">
+                    <button type="button" role="tab" id="smbc-phase-tab-1" aria-selected="true" aria-controls="smbc-phase-tabpanel" tabindex="0" onclick="selectSMBCPhase(1)" class="smbc-phase-tab active px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 bg-fpl-green text-black shadow">
+                        <span>Phase 1</span>
+                        <span class="text-[10px] px-1.5 py-0.5 rounded bg-black/20 font-semibold">GW 1–10</span>
+                    </button>
+                    <button type="button" role="tab" id="smbc-phase-tab-2" aria-selected="false" aria-controls="smbc-phase-tabpanel" tabindex="-1" onclick="selectSMBCPhase(2)" class="smbc-phase-tab px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 bg-white/5 text-gray-300 hover:text-white hover:bg-white/10">
+                        <span>Phase 2</span>
+                        <span class="text-[10px] px-1.5 py-0.5 rounded bg-white/10 font-semibold">GW 11–20</span>
+                    </button>
+                    <button type="button" role="tab" id="smbc-phase-tab-3" aria-selected="false" aria-controls="smbc-phase-tabpanel" tabindex="-1" onclick="selectSMBCPhase(3)" class="smbc-phase-tab px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 bg-white/5 text-gray-300 hover:text-white hover:bg-white/10">
+                        <span>Phase 3</span>
+                        <span class="text-[10px] px-1.5 py-0.5 rounded bg-white/10 font-semibold">GW 21–30</span>
+                    </button>
+                    <button type="button" role="tab" id="smbc-phase-tab-4" aria-selected="false" aria-controls="smbc-phase-tabpanel" tabindex="-1" onclick="selectSMBCPhase(4)" class="smbc-phase-tab px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 bg-white/5 text-gray-300 hover:text-white hover:bg-white/10">
+                        <span>Phase 4</span>
+                        <span class="text-[10px] px-1.5 py-0.5 rounded bg-white/10 font-semibold">GW 31–38</span>
+                    </button>
+                </div>
+
+                <!-- Single Tabpanel & Single Table -->
+                <div id="smbc-phase-tabpanel" role="tabpanel" aria-labelledby="smbc-phase-tab-1" class="space-y-4">
+                    <!-- Phase KPI Summary Cards -->
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3" id="smbc-phase-kpi-grid"></div>
+
+                    <!-- Single Responsive Data Table -->
+                    <div tabindex="0" role="region" aria-labelledby="smbc-phase-table-caption" class="smbc-phase-table-wrapper rounded-xl border border-white/10 bg-black/30">
+                        <table class="smbc-phase-table w-full text-left text-xs">
+                            <caption id="smbc-phase-table-caption" class="visually-hidden">ตารางคะแนน SMBC League แยกตามรอบ Phase 1 (GW 1–10)</caption>
+                            <thead class="bg-purple-950/95 text-gray-300 uppercase text-[10px] tracking-wider">
+                                <tr>
+                                    <th scope="col" class="p-3 border-b border-white/10">อันดับ &amp; ทีม (Rank &amp; Team)</th>
+                                    <th scope="col" class="p-3 text-center border-b border-white/10">แข่งแล้ว</th>
+                                    <th scope="col" class="p-3 text-center border-b border-white/10">ชิปรอบนี้</th>
+                                    <th scope="col" class="p-3 text-center border-b border-white/10">นัดล่าสุดในรอบ</th>
+                                    <th scope="col" class="p-3 text-center border-b border-white/10">แต้มลบ (Hits)</th>
+                                    <th scope="col" class="p-3 text-center border-b border-white/10">ห่างจ่าฝูงรอบนี้</th>
+                                    <th scope="col" class="p-3 text-right border-b border-white/10 text-yellow-300">คะแนนรอบนี้ (Pts)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="smbc-phase-table-body" class="divide-y divide-white/5"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Normal Overall Classic Leagues Card (Unchanged / Separate) -->
             <div class="glass-card p-6 rounded-2xl space-y-6">
                 <div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
                     <div>
                         <h2 class="text-lg font-bold text-white flex items-center gap-2">
-                            <i class="fa-solid fa-ranking-star text-yellow-400"></i> ตารางคะแนนและอันดับในลีก (My Leagues & Standings)
+                            <i class="fa-solid fa-ranking-star text-yellow-400"></i> ตารางคะแนนรวมปกติ (Overall Season Leagues &amp; Standings)
                         </h2>
-                        <p class="text-xs text-gray-400 mt-1">คลิกที่ลีกใดก็ได้เพื่อเปิดดู **ตารางคะแนนแบบเต็ม (Leaderboard)** และดูอันดับทีมของคุณ</p>
+                        <p class="text-xs text-gray-400 mt-1">คลิกที่ลีกใดก็ได้เพื่อเปิดดู **ตารางคะแนนรวมทั้งฤดูกาล (Classic Leaderboard)** แบบปกติ</p>
                     </div>
                     <span class="text-xs bg-purple-900/60 text-fpl-cyan px-3 py-1.5 rounded-xl border border-purple-500/30 font-semibold">
                         เข้าร่วมทั้งหมด: <strong id="leagues-total-count" class="text-white">9</strong> ลีก
@@ -760,6 +948,15 @@
         let scoutSortAsc = false;
         let transferOutPlayer = null;
         let transferInPlayer = null;
+        let activeSMBCPhase = 1;
+        let smbcPhaseUserSelected = false;
+
+        const SMBC_PHASES = [
+            { id: 1, label: 'Phase 1', rangeLabel: 'GW 1–10', startGw: 1, endGw: 10, totalMatches: 10 },
+            { id: 2, label: 'Phase 2', rangeLabel: 'GW 11–20', startGw: 11, endGw: 20, totalMatches: 10 },
+            { id: 3, label: 'Phase 3', rangeLabel: 'GW 21–30', startGw: 21, endGw: 30, totalMatches: 10 },
+            { id: 4, label: 'Phase 4', rangeLabel: 'GW 31–38', startGw: 31, endGw: 38, totalMatches: 8 }
+        ];
 
         // Toast Helper
         function showToast(msg, isSuccess = true) {
@@ -826,6 +1023,7 @@
             renderPitch();
             renderSquadPerformance();
             renderLeagues();
+            renderSMBCPhaseTable();
             renderTransferSimulator();
             renderScoutTable();
             renderFixtureTicker();
@@ -1265,6 +1463,281 @@
             document.getElementById('league-modal').classList.add('hidden');
         }
 
+        // ================= SMBC LEAGUE 4-PHASE STANDINGS =================
+        function escapeHtmlSafe(str) {
+            return String(str ?? '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function getDefaultSMBCPhase(gw) {
+            if (gw >= 31) return 4;
+            if (gw >= 21) return 3;
+            if (gw >= 11) return 2;
+            return 1;
+        }
+
+        function selectSMBCPhase(phaseId, focusTab = false) {
+            activeSMBCPhase = phaseId;
+            smbcPhaseUserSelected = true;
+            renderSMBCPhaseTable();
+            if (focusTab) {
+                const tabBtn = document.getElementById(`smbc-phase-tab-${phaseId}`);
+                if (tabBtn) tabBtn.focus();
+            }
+        }
+
+        function openSMBCPhaseFromOverview(phaseId) {
+            switchTab('league-tab');
+            selectSMBCPhase(phaseId, false);
+            const card = document.getElementById('smbc-phase-card');
+            if (card) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function initSMBCPhaseTabKeyboard() {
+            const tablist = document.getElementById('smbc-phase-tablist');
+            if (!tablist) return;
+            tablist.addEventListener('keydown', (e) => {
+                const ids = SMBC_PHASES.map(p => p.id);
+                const curIdx = ids.indexOf(activeSMBCPhase);
+                if (curIdx === -1) return;
+
+                let nextIdx = null;
+                if (e.key === 'ArrowRight') {
+                    nextIdx = (curIdx + 1) % ids.length;
+                } else if (e.key === 'ArrowLeft') {
+                    nextIdx = (curIdx - 1 + ids.length) % ids.length;
+                } else if (e.key === 'Home') {
+                    nextIdx = 0;
+                } else if (e.key === 'End') {
+                    nextIdx = ids.length - 1;
+                }
+
+                if (nextIdx !== null) {
+                    e.preventDefault();
+                    selectSMBCPhase(ids[nextIdx], true);
+                }
+            });
+        }
+
+        function renderSMBCPhaseTable() {
+            const curGw = fplData?.current_gw || 1;
+            if (!smbcPhaseUserSelected) {
+                activeSMBCPhase = getDefaultSMBCPhase(curGw);
+            }
+
+            const phase = SMBC_PHASES.find(p => p.id === activeSMBCPhase) || SMBC_PHASES[0];
+            const myTeamId = fplData?.team_id || 4554263;
+
+            // Update ARIA tab states, roving tabindex, and active visual class
+            SMBC_PHASES.forEach(p => {
+                const btn = document.getElementById(`smbc-phase-tab-${p.id}`);
+                if (!btn) return;
+                const isSelected = p.id === phase.id;
+                btn.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+                btn.setAttribute('tabindex', isSelected ? '0' : '-1');
+                const subSpan = btn.querySelector('span:last-child');
+                if (isSelected) {
+                    btn.className = 'smbc-phase-tab active px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 bg-fpl-green text-black shadow';
+                    if (subSpan) subSpan.className = 'text-[10px] px-1.5 py-0.5 rounded bg-black/20 font-semibold';
+                } else {
+                    btn.className = 'smbc-phase-tab px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 bg-white/5 text-gray-300 hover:text-white hover:bg-white/10';
+                    if (subSpan) subSpan.className = 'text-[10px] px-1.5 py-0.5 rounded bg-white/10 font-semibold';
+                }
+            });
+
+            const tabpanel = document.getElementById('smbc-phase-tabpanel');
+            if (tabpanel) tabpanel.setAttribute('aria-labelledby', `smbc-phase-tab-${phase.id}`);
+
+            const caption = document.getElementById('smbc-phase-table-caption');
+            if (caption) caption.innerText = `ตารางคะแนน SMBC League แยกตามรอบ ${phase.label} (${phase.rangeLabel})`;
+
+            const smbcResults = fplData?.league_standings?.['63159']?.standings?.results || [];
+            const histories = fplData?.smbc_histories || {};
+            const tbody = document.getElementById('smbc-phase-table-body');
+            const kpiGrid = document.getElementById('smbc-phase-kpi-grid');
+            const statusPill = document.getElementById('smbc-phase-status-pill');
+            if (!tbody) return;
+
+            if (!smbcResults.length) {
+                tbody.innerHTML = `<tr><td colspan="7" class="p-6 text-center text-gray-400">ไม่พบข้อมูลสมาชิก SMBC League (#63159)</td></tr>`;
+                return;
+            }
+
+            const chipMeta = {
+                '3xc': { short: 'TC', cls: 'bg-yellow-500/20 text-yellow-300 border-yellow-500/40' },
+                'wildcard': { short: 'WC', cls: 'bg-purple-500/25 text-purple-200 border-purple-400/40' },
+                'bboost': { short: 'BB', cls: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40' },
+                'freehit': { short: 'FH', cls: 'bg-cyan-500/20 text-cyan-200 border-cyan-400/40' }
+            };
+
+            const computed = smbcResults.map(row => {
+                const hist = histories[String(row.entry)] || (row.entry === myTeamId ? fplData?.history : null) || { current: [], chips: [] };
+                const phaseRounds = (hist.current || [])
+                    .filter(r => r.event >= phase.startGw && r.event <= phase.endGw)
+                    .sort((a, b) => a.event - b.event);
+
+                const playedCount = phaseRounds.length;
+                const grossPts = phaseRounds.reduce((sum, r) => sum + (r.points || 0), 0);
+                const hitsCost = phaseRounds.reduce((sum, r) => sum + (r.event_transfers_cost || 0), 0);
+                const netPts = grossPts - hitsCost;
+
+                const lastRound = playedCount > 0 ? phaseRounds[playedCount - 1] : null;
+                const latestGwNum = lastRound ? lastRound.event : null;
+                const latestGwNet = lastRound ? ((lastRound.points || 0) - (lastRound.event_transfers_cost || 0)) : 0;
+
+                const phaseChips = (hist.chips || [])
+                    .filter(c => c.event >= phase.startGw && c.event <= phase.endGw)
+                    .sort((a, b) => a.event - b.event);
+
+                return {
+                    entry: row.entry,
+                    entry_name: row.entry_name,
+                    player_name: row.player_name,
+                    classicRank: row.rank || 999,
+                    playedCount,
+                    grossPts,
+                    hitsCost,
+                    netPts,
+                    latestGwNum,
+                    latestGwNet,
+                    phaseChips
+                };
+            });
+
+            const maxPlayedInPhase = Math.max(0, ...computed.map(m => m.playedCount));
+
+            // Sort strictly from highest phase net points to lowest
+            computed.sort((a, b) => {
+                if (b.netPts !== a.netPts) return b.netPts - a.netPts;
+                if (maxPlayedInPhase > 0) {
+                    if (a.hitsCost !== b.hitsCost) return a.hitsCost - b.hitsCost;
+                    if (b.latestGwNet !== a.latestGwNet) return b.latestGwNet - a.latestGwNet;
+                }
+                return a.classicRank - b.classicRank;
+            });
+
+            // Assign competition ranks (equal netPts share the same rank when matches have been played)
+            let currentRank = 1;
+            computed.forEach((item, idx) => {
+                if (maxPlayedInPhase === 0) {
+                    item.phaseRank = null;
+                } else {
+                    if (idx > 0 && item.netPts < computed[idx - 1].netPts) {
+                        currentRank = idx + 1;
+                    }
+                    item.phaseRank = currentRank;
+                }
+            });
+
+            const leader = computed[0];
+            const leaderPts = leader ? leader.netPts : 0;
+            const me = computed.find(m => m.entry === myTeamId);
+
+            // Update Phase Status Pill & KPI Cards
+            if (statusPill) {
+                if (curGw < phase.startGw) {
+                    statusPill.innerText = `⏳ ยังไม่เริ่มแข่งขัน (เริ่ม GW${phase.startGw})`;
+                    statusPill.className = 'text-xs bg-white/5 text-gray-300 px-3 py-1.5 rounded-xl border border-white/10 font-semibold';
+                } else if (curGw > phase.endGw) {
+                    statusPill.innerText = `✅ จบการแข่งขัน ${phase.label} (${phase.rangeLabel})`;
+                    statusPill.className = 'text-xs bg-indigo-950/80 text-indigo-200 px-3 py-1.5 rounded-xl border border-indigo-500/40 font-bold';
+                } else {
+                    statusPill.innerText = `⚡ กำลังแข่งขัน ${phase.label} (${maxPlayedInPhase}/${phase.totalMatches} นัด)`;
+                    statusPill.className = 'text-xs bg-emerald-950/80 text-fpl-green px-3 py-1.5 rounded-xl border border-fpl-green/30 font-bold';
+                }
+            }
+
+            if (kpiGrid) {
+                const remainingMatches = Math.max(0, phase.totalMatches - maxPlayedInPhase);
+                const myGap = me ? Math.max(0, leaderPts - me.netPts) : 0;
+                kpiGrid.innerHTML = `
+                    <div class="bg-black/40 p-3 rounded-xl border border-white/10">
+                        <span class="text-[10px] text-gray-400 block">ช่วงการแข่งขัน (${phase.label})</span>
+                        <span class="text-sm font-black text-white mt-0.5 block">${phase.rangeLabel} (${phase.totalMatches} นัด)</span>
+                        <span class="text-[10px] text-fpl-cyan block mt-0.5">${maxPlayedInPhase > 0 ? `แข่งแล้ว ${maxPlayedInPhase} นัด • เหลือ ${remainingMatches} นัด` : `รีเซ็ตเริ่มต้นที่ 0 แต้มทุกคน`}</span>
+                    </div>
+                    <div class="bg-black/40 p-3 rounded-xl border border-yellow-500/25">
+                        <span class="text-[10px] text-gray-400 block">จ่าฝูงประจำ ${phase.label}</span>
+                        <span class="text-sm font-black text-yellow-300 mt-0.5 block truncate">${maxPlayedInPhase > 0 && leader ? escapeHtmlSafe(leader.entry_name) : 'รอเปิดฉากรอบใหม่'}</span>
+                        <span class="text-[10px] text-gray-300 block mt-0.5">${maxPlayedInPhase > 0 ? `${leaderPts} แต้มสุทธิ` : `เริ่มนับคะแนนตั้งแต่ GW${phase.startGw}`}</span>
+                    </div>
+                    <div class="bg-emerald-950/30 p-3 rounded-xl border border-fpl-green/30">
+                        <span class="text-[10px] text-emerald-300 block">อันดับ &amp; แต้มทีมคุณ (${phase.label})</span>
+                        <span class="text-sm font-black text-fpl-green mt-0.5 block">${me ? (me.phaseRank ? `#${me.phaseRank} • ${me.netPts} pts` : `0 pts (รอเริ่ม GW${phase.startGw})`) : '-'}</span>
+                        <span class="text-[10px] text-gray-300 block mt-0.5">${me && me.latestGwNum ? `ล่าสุด GW${me.latestGwNum}: ${me.latestGwNet} แต้ม` : 'นับคะแนนใหม่แยกเฉพาะรอบนี้'}</span>
+                    </div>
+                    <div class="bg-black/40 p-3 rounded-xl border border-white/10">
+                        <span class="text-[10px] text-gray-400 block">ระยะห่างจากที่ 1 รอบนี้</span>
+                        <span class="text-sm font-black ${myGap === 0 && maxPlayedInPhase > 0 ? 'text-fpl-green' : 'text-fpl-cyan'} mt-0.5 block">${maxPlayedInPhase === 0 ? '0 แต้ม (เท่ากันทุกคน)' : (myGap === 0 ? 'นำเป็นจ่าฝูง! 👑' : `ตามหลัง ${myGap} แต้ม`)}</span>
+                        <span class="text-[10px] text-gray-400 block mt-0.5">${maxPlayedInPhase === 0 ? 'พร้อมชิงจ่าฝูงตั้งแต่นัดแรก' : (remainingMatches > 0 && myGap > 0 ? `เฉลี่ยลด ~${(myGap / remainingMatches).toFixed(1)} แต้ม/นัด` : 'สรุปผลคะแนนสุทธิในรอบ')}</span>
+                    </div>
+                `;
+            }
+
+            tbody.innerHTML = computed.map(row => {
+                const isMyTeam = row.entry === myTeamId;
+                let rankBadge = `<span class="w-6 h-6 rounded-full bg-white/5 text-gray-400 font-bold text-[11px] inline-flex items-center justify-center">-</span>`;
+                if (row.phaseRank === 1) {
+                    rankBadge = `<span class="w-6 h-6 rounded-full bg-yellow-400 text-black font-black text-xs inline-flex items-center justify-center shadow">🥇</span>`;
+                } else if (row.phaseRank === 2) {
+                    rankBadge = `<span class="w-6 h-6 rounded-full bg-slate-300 text-black font-black text-xs inline-flex items-center justify-center shadow">🥈</span>`;
+                } else if (row.phaseRank === 3) {
+                    rankBadge = `<span class="w-6 h-6 rounded-full bg-amber-600 text-white font-black text-xs inline-flex items-center justify-center shadow">🥉</span>`;
+                } else if (row.phaseRank) {
+                    rankBadge = `<span class="w-6 h-6 rounded-full bg-white/5 text-gray-200 font-bold text-[11px] inline-flex items-center justify-center">${row.phaseRank}</span>`;
+                }
+
+                const chipsHtml = row.phaseChips.length > 0
+                    ? `<div class="inline-flex flex-wrap justify-center gap-1">` + row.phaseChips.map(c => {
+                        const meta = chipMeta[c.name] || { short: c.name.toUpperCase(), cls: 'bg-white/10 text-gray-200 border-white/20' };
+                        return `<span class="text-[9px] font-bold px-1.5 py-0.5 rounded border ${meta.cls}">${meta.short}${c.event}</span>`;
+                    }).join('') + `</div>`
+                    : `<span class="text-gray-500">-</span>`;
+
+                const latestHtml = row.latestGwNum
+                    ? `<span class="font-semibold text-gray-200">${row.latestGwNet}</span> <span class="text-[10px] text-gray-500">(GW${row.latestGwNum})</span>`
+                    : `<span class="text-gray-500">-</span>`;
+
+                const hitsHtml = row.hitsCost > 0
+                    ? `<span class="text-red-400 font-bold">-${row.hitsCost}</span>`
+                    : `<span class="text-gray-500">0</span>`;
+
+                const diff = leaderPts - row.netPts;
+                const gapHtml = maxPlayedInPhase === 0
+                    ? `<span class="text-gray-500">0</span>`
+                    : (diff === 0
+                        ? `<span class="text-[10px] bg-yellow-500/20 text-yellow-300 px-2 py-0.5 rounded-full font-bold border border-yellow-500/30">จ่าฝูงรอบนี้</span>`
+                        : `<span class="text-gray-400 font-medium">-${diff}</span>`);
+
+                return `
+                    <tr class="${isMyTeam ? 'is-my-team bg-fpl-green/15 font-semibold' : 'hover:bg-white/5'} transition">
+                        <th scope="row" class="p-3 font-normal text-left ${isMyTeam ? 'border-l-4 border-l-fpl-green' : ''}">
+                            <div class="flex items-center gap-2.5">
+                                ${rankBadge}
+                                <div class="min-w-0">
+                                    <div class="flex items-center gap-1.5 flex-wrap">
+                                        <span class="font-bold ${isMyTeam ? 'text-fpl-green' : 'text-white'} truncate max-w-[165px]">${escapeHtmlSafe(row.entry_name)}</span>
+                                        ${isMyTeam ? '<span class="bg-fpl-green text-black text-[9px] font-black px-1.5 py-0.2 rounded-full">ทีมคุณ</span>' : ''}
+                                    </div>
+                                    <span class="text-[10px] text-gray-400 block truncate max-w-[180px]">${escapeHtmlSafe(row.player_name)}</span>
+                                </div>
+                            </div>
+                        </th>
+                        <td class="p-3 text-center text-gray-300 font-medium">${row.playedCount} / ${phase.totalMatches}</td>
+                        <td class="p-3 text-center">${chipsHtml}</td>
+                        <td class="p-3 text-center">${latestHtml}</td>
+                        <td class="p-3 text-center">${hitsHtml}</td>
+                        <td class="p-3 text-center">${gapHtml}</td>
+                        <td class="p-3 text-right font-black text-sm ${isMyTeam ? 'text-fpl-green' : (row.phaseRank === 1 ? 'text-yellow-300' : 'text-white')}">${row.netPts}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
         // ================= TRANSFER PLANNER =================
         function renderTransferSimulator() {
             const picks = fplData?.picks?.picks || [];
@@ -1558,6 +2031,7 @@
 
         // Initial Load
         window.addEventListener('DOMContentLoaded', () => {
+            initSMBCPhaseTabKeyboard();
             if (window.INITIAL_FPL_DATA) {
                 fplData = window.INITIAL_FPL_DATA;
                 renderAll();

@@ -60,6 +60,41 @@ def update_fpl_data(team_id=DEFAULT_TEAM_ID):
             except Exception as e:
                 print(f"    ⚠️ Could not fetch standings for league {lid}: {e}")
 
+        SMBC_LEAGUE_ID = 63159
+        smbc_histories = {}
+        smbc_std = league_standings.get(SMBC_LEAGUE_ID)
+        if smbc_std:
+            smbc_entries = list(smbc_std.get('standings', {}).get('results', []))
+            page = 1
+            has_next = smbc_std.get('standings', {}).get('has_next', False)
+            while has_next and page < 10:
+                page += 1
+                try:
+                    next_std = get_json(f'https://fantasy.premierleague.com/api/leagues-classic/{SMBC_LEAGUE_ID}/standings/?page_standings={page}')
+                    smbc_entries.extend(next_std.get('standings', {}).get('results', []))
+                    has_next = next_std.get('standings', {}).get('has_next', False)
+                except Exception:
+                    break
+            print(f"  - Fetching per-gameweek phase history for {len(smbc_entries)} SMBC League managers...")
+            for row in smbc_entries:
+                eid = row.get('entry')
+                if not eid:
+                    continue
+                if eid == team_id:
+                    smbc_histories[str(eid)] = {
+                        'current': history.get('current', []),
+                        'chips': history.get('chips', [])
+                    }
+                    continue
+                try:
+                    m_hist = get_json(f'https://fantasy.premierleague.com/api/entry/{eid}/history/')
+                    smbc_histories[str(eid)] = {
+                        'current': m_hist.get('current', []),
+                        'chips': m_hist.get('chips', [])
+                    }
+                except Exception as e:
+                    print(f"    ⚠️ Could not fetch history for manager {eid}: {e}")
+
         payload = {
             'team_id': team_id,
             'entry': entry,
@@ -68,6 +103,7 @@ def update_fpl_data(team_id=DEFAULT_TEAM_ID):
             'picks': picks,
             'live': live,
             'league_standings': league_standings,
+            'smbc_histories': smbc_histories,
             'bootstrap': {
                 'events': bootstrap['events'],
                 'teams': bootstrap['teams'],

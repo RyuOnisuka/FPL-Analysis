@@ -8,10 +8,10 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <meta name="version" content="20261106_2255">
+    <meta name="version" content="20261106_2330">
     
     <!-- Load embedded initial dataset (Ensures 100% offline & local file:// support) -->
-    <script src="fpl_data.js?v=20261106_2255"></script>
+    <script src="fpl_data.js?v=20261106_2330"></script>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -325,9 +325,9 @@
                 <div>
                     <h1 class="text-base lg:text-lg font-bold tracking-wide flex flex-wrap items-center gap-2">
                         <span class="brand-gradient-text text-transparent bg-clip-text bg-gradient-to-r from-violet-700 via-teal-700 to-sky-700">FPL Strategy Dashboard</span>
-                        <span class="text-xs bg-emerald-100 text-emerald-900 px-2.5 py-0.5 rounded-full border border-emerald-300 font-semibold">GW<span id="current-gw-label">5</span> Official</span>
+                        <span class="text-xs bg-emerald-100 text-emerald-900 px-2.5 py-0.5 rounded-full border border-emerald-300 font-semibold">GW<span id="current-gw-label">9</span> Official</span>
                     </h1>
-                    <p class="text-xs text-slate-600">Team: <span id="header-team-name" class="text-slate-900 font-semibold">Keekee</span> | Manager: <span id="header-manager-name" class="text-slate-700 font-medium">Ryu Onizuka</span> <span id="header-updated-time" class="text-[11px] text-sky-900 ml-1.5 bg-sky-100/90 px-2 py-0.5 rounded-md border border-sky-300 font-medium">อัปเดต: GW5 (266 แต้ม)</span></p>
+                    <p class="text-xs text-slate-600">Team: <span id="header-team-name" class="text-slate-900 font-semibold">Keekee</span> | Manager: <span id="header-manager-name" class="text-slate-700 font-medium">Ryu Onizuka</span> <span id="header-updated-time" class="text-[11px] text-sky-900 ml-1.5 bg-sky-100/90 px-2 py-0.5 rounded-md border border-sky-300 font-medium">อัปเดตล่าสุด: GW9 (508 แต้ม)</span></p>
                 </div>
             </div>
 
@@ -374,35 +374,35 @@
             <div class="glass-card bg-emerald-50/85 p-3.5 rounded-2xl flex flex-col justify-between border-l-4 border-l-emerald-400">
                 <span class="text-xs text-slate-600 font-medium">คะแนนรวม (Overall)</span>
                 <div class="flex items-baseline justify-between mt-1.5">
-                    <span id="stat-overall-pts" class="text-xl font-black text-emerald-950">266</span>
+                    <span id="stat-overall-pts" class="text-xl font-black text-emerald-950">508</span>
                     <span class="text-[11px] text-emerald-800 font-semibold">pts</span>
                 </div>
             </div>
             <div class="glass-card bg-sky-50/85 p-3.5 rounded-2xl flex flex-col justify-between border-l-4 border-l-sky-400">
-                <span class="text-xs text-slate-600 font-medium">คะแนน GW<span id="stat-gw-num">5</span></span>
+                <span class="text-xs text-slate-600 font-medium">คะแนน GW<span id="stat-gw-num">9</span></span>
                 <div class="flex items-baseline justify-between mt-1.5">
-                    <span id="stat-gw-pts" class="text-xl font-black text-sky-900">41</span>
-                    <span class="text-[11px] text-sky-800 font-semibold">pts</span>
+                    <span id="stat-gw-pts" class="text-xl font-black text-sky-900">67</span>
+                    <span id="stat-gw-avg-badge" class="text-[10px] text-sky-800 font-semibold">Avg 47</span>
                 </div>
             </div>
             <div class="glass-card bg-rose-50/85 p-3.5 rounded-2xl flex flex-col justify-between border-l-4 border-l-rose-400">
                 <span class="text-xs text-slate-600 font-medium">อันดับรวม (Overall Rank)</span>
                 <div class="flex items-baseline justify-between mt-1.5">
-                    <span id="stat-overall-rank" class="text-base font-bold text-rose-950">5.4M</span>
-                    <i class="fa-solid fa-chart-line text-xs text-rose-600"></i>
+                    <span id="stat-overall-rank" class="text-base font-bold text-rose-950">4.8M</span>
+                    <i class="fa-solid fa-arrow-trend-up text-xs text-emerald-600"></i>
                 </div>
             </div>
             <div class="glass-card bg-amber-50/85 p-3.5 rounded-2xl flex flex-col justify-between border-l-4 border-l-amber-400">
                 <span class="text-xs text-slate-600 font-medium">มูลค่าทีม (Team Value)</span>
                 <div class="flex items-baseline justify-between mt-1.5">
-                    <span id="stat-team-value" class="text-lg font-bold text-amber-950">£100.0m</span>
+                    <span id="stat-team-value" class="text-lg font-bold text-amber-950">£100.2m</span>
                     <i class="fa-solid fa-coins text-xs text-amber-600"></i>
                 </div>
             </div>
             <div class="glass-card bg-teal-50/85 p-3.5 rounded-2xl flex flex-col justify-between border-l-4 border-l-teal-400">
                 <span class="text-xs text-slate-600 font-medium">งบในคลัง (Bank)</span>
                 <div class="flex items-baseline justify-between mt-1.5">
-                    <span id="stat-bank" class="text-lg font-bold text-teal-950">£0.0m</span>
+                    <span id="stat-bank" class="text-lg font-bold text-teal-950">£1.0m</span>
                     <span class="text-[11px] text-teal-800 font-medium">In Bank</span>
                 </div>
             </div>
@@ -410,7 +410,7 @@
                 <span class="text-xs text-slate-600 font-medium">สิทธิ์เปลี่ยนตัวฟรี (FT)</span>
                 <div class="flex items-baseline justify-between gap-1 mt-1.5 flex-wrap">
                     <span id="stat-free-transfers" class="text-lg font-black text-indigo-950">1 FT</span>
-                    <span id="stat-ft-badge" class="text-[10px] bg-indigo-100 text-indigo-900 border border-indigo-300 px-1.5 py-0.5 rounded-md font-semibold">GW6: แนะนำ Roll</span>
+                    <span id="stat-ft-badge" class="text-[10px] bg-rose-100 text-rose-900 border border-rose-300 px-1.5 py-0.5 rounded-md font-bold">GW10 คืนนี้ 01:30! 🚨</span>
                 </div>
             </div>
         </div>
@@ -466,34 +466,35 @@
                     <div class="glass-card bg-sky-50/70 p-4 rounded-2xl border-l-4 border-l-sky-400">
                         <h3 class="font-bold text-sm text-sky-950 flex items-center justify-between gap-2 mb-2.5">
                             <span class="flex items-center gap-2"><i class="fa-solid fa-robot text-sky-600"></i> คำแนะนำด่วนจาก AI ผู้ช่วย</span>
-                            <span id="ai-rec-gw-badge" class="text-[10px] bg-sky-100 text-sky-900 px-2.5 py-0.5 rounded-full border border-sky-300 font-semibold shrink-0">GW6 Strategic Brief</span>
+                            <span id="ai-rec-gw-badge" class="text-[10px] bg-rose-100 text-rose-900 px-2.5 py-0.5 rounded-full border border-rose-300 font-bold shrink-0">GW10 • คืนนี้ 01:30 น.!</span>
                         </h3>
                         <div class="readable-prose text-xs space-y-2.5 text-slate-700" id="ai-recommendations-content">
-                            <p>🟢 <strong>GW6 Strategy:</strong> แนะนำให้ <strong>Roll Transfer (ไม่เปลี่ยนตัว)</strong> เพื่อสะสมเป็น 2 Free Transfers ไว้สู้ศึกใหญ่และช่วงชิปแตกใน GW7-GW8</p>
-                            <p>👑 <strong>Captaincy Differential:</strong> วาง <strong>Bukayo Saka (C)</strong> หรือ <strong>Martin Ødegaard (C)</strong> เปิดบ้านดวล ลีดส์ ยูไนเต็ด (FDR: 2) เป็นหมัดเด็ดฟันแต้มแซงคู่แข่ง หรือเพลย์เซฟด้วย <strong>Erling Haaland (C)</strong></p>
-                            <p>🎯 <strong>SMBC Phase 1 Roadmap:</strong> สัปดาห์ถัดไป (GW7) แมนฯ ซิตี้ พบ อิปสวิช ในบ้าน (FDR: 2) เตรียมกดใช้ <strong>Triple Captain 1 (TC1)</strong> ให้ Haaland ตามแผนยุทธศาสตร์ 4 ระยะ!</p>
+                            <p>🚨 <strong>ด่วนที่สุด! เดดไลน์ GW10 คืนนี้ 01:30 น. (เช้ามืดเสาร์ 7 พ.ย.):</strong> GW9 สรุปผล Official กวาด <strong>67 แต้ม</strong> (ชนะค่าเฉลี่ยโลก 47 ขาดลอย • รวม <strong>508p</strong> พุ่งขึ้น <strong>#7 SMBC League</strong> จี้ที่ 6 แค่ 4 แต้ม!) ต้องจัดตัวก่อนนอนคืนนี้!</p>
+                            <p>🔄 <strong>แผนย้ายตัว 1 FT (0 Hit):</strong> แนะนำขาย <strong>Guéhi (£6.0m • สำรอง 0 นาที เสี่ยงราคาตก) ➔ ซื้อ Ezri Konsa (£4.8m • ARS, Form 9.2 อันดับ 1 ของเกม!)</strong> ลงเปิดบ้านรับ Hull (FDR 2) ทันที เหลืองบอู้ฟู่ <strong>£2.2m</strong> <em>(หรือสายเซฟ Roll เก็บเป็น 2 FTs ไปลุย GW11)</em></p>
+                            <p>🧩 <strong>จัด 11 ตัวจริง GW10:</strong> ดึง <strong>Ødegaard (HUL เหย้า FDR 2)</strong> กลับมาลงตัวจริง! ดรอป <strong>McGinn (เยือน MUN)</strong> ไว้สำรองอันดับ 1</p>
+                            <p>👑 <strong>กัปตัน &amp; ชิป:</strong> ล็อก <strong>Erling Haaland (C)</strong> เยือน NFO (FDR 2) | รอง <strong>Evanilson (VC • Form 8.5)</strong> เยือน IPS และ <strong>เก็บ Bench Boost 1 (BB1) ไว้กดใน GW11</strong> เปิดฉาก Phase 2 (เริ่มนับ 0 ใหม่)!</p>
                         </div>
                     </div>
 
                     <!-- SMBC League Championship Roadmap & Target Progress Widget -->
                     <div class="glass-card bg-amber-50/65 p-4 rounded-2xl border-l-4 border-l-amber-400 space-y-3">
                         <div class="flex items-center justify-between gap-2 border-b border-amber-200/80 pb-2.5">
-                            <h3 class="font-bold text-xs text-amber-950 flex items-center gap-1.5">
+                            <h3 id="smbc-roadmap-phase-title" class="font-bold text-xs text-amber-950 flex items-center gap-1.5">
                                 <i class="fa-solid fa-trophy text-amber-600"></i> แผนสู่แชมป์ SMBC League (ระยะที่ 1)
                             </h3>
-                            <span class="text-[10px] bg-amber-100 text-amber-900 px-2 py-0.5 rounded-full border border-amber-300 font-bold shrink-0">
-                                เป้าหมาย: อันดับ 1 ใน GW10
+                            <span id="smbc-roadmap-goal-badge" class="text-[10px] bg-amber-100 text-amber-900 px-2 py-0.5 rounded-full border border-amber-300 font-bold shrink-0">
+                                นัดส่งท้าย Phase 1 (GW10)
                             </span>
                         </div>
 
                         <!-- Target Progress Bar -->
                         <div class="space-y-1.5">
                             <div class="flex justify-between items-baseline text-xs">
-                                <span class="text-slate-700 font-medium">ความคืบหน้าคะแนนสู่เป้าหมาย GW10:</span>
-                                <span id="smbc-target-progress-text" class="font-black text-emerald-800 text-sm">47.2% <span class="text-[10px] text-slate-600 font-normal">(321 / 680 pts)</span></span>
+                                <span id="smbc-target-label" class="text-slate-700 font-medium">ความคืบหน้าคะแนนสะสม (เป้า GW10):</span>
+                                <span id="smbc-target-progress-text" class="font-black text-emerald-800 text-sm">74.7% <span class="text-[10px] text-slate-600 font-normal">(508 / 680 pts)</span></span>
                             </div>
                             <div class="w-full bg-slate-200/90 h-2.5 rounded-full overflow-hidden p-0.5 border border-slate-300">
-                                <div id="smbc-target-progress-bar" class="bg-gradient-to-r from-sky-400 to-emerald-400 h-full rounded-full transition-all duration-1000" style="width: 47.2%;"></div>
+                                <div id="smbc-target-progress-bar" class="bg-gradient-to-r from-sky-400 to-emerald-400 h-full rounded-full transition-all duration-1000" style="width: 74.7%;"></div>
                             </div>
                         </div>
 
@@ -501,34 +502,34 @@
                         <div class="space-y-1.5 pt-1">
                             <div class="flex justify-between items-baseline text-xs">
                                 <span class="text-slate-700 font-medium">เทียบสัดส่วนคะแนนกับจ่าฝูงปัจจุบัน:</span>
-                                <span id="smbc-leader-progress-text" class="font-black text-sky-800 text-sm">83.6% <span class="text-[10px] text-slate-600 font-normal">(321 / 384 pts)</span></span>
+                                <span id="smbc-leader-progress-text" class="font-black text-sky-800 text-sm">88.5% <span class="text-[10px] text-slate-600 font-normal">(508 / 574 pts)</span></span>
                             </div>
                             <div class="w-full bg-slate-200/90 h-2.5 rounded-full overflow-hidden p-0.5 border border-slate-300">
-                                <div id="smbc-leader-progress-bar" class="bg-gradient-to-r from-violet-400 to-sky-400 h-full rounded-full transition-all duration-1000" style="width: 83.6%;"></div>
+                                <div id="smbc-leader-progress-bar" class="bg-gradient-to-r from-violet-400 to-sky-400 h-full rounded-full transition-all duration-1000" style="width: 88.5%;"></div>
                             </div>
-                            <p class="text-[11px] text-slate-600 flex items-center justify-between pt-0.5">
-                                <span id="smbc-leader-gap-text">ห่างจ่าฝูง: <strong class="text-amber-900 font-bold">63 แต้ม</strong></span>
-                                <span id="smbc-rate-target-text" class="text-emerald-800 font-semibold">เป้าหมายลด: ~15.8 แต้ม/สัปดาห์</span>
+                            <p class="text-[11px] text-slate-600 flex items-center justify-between flex-wrap gap-1 pt-0.5">
+                                <span id="smbc-leader-gap-text">อันดับ <strong>#7</strong> • ห่างที่ 6 แค่ <strong class="text-emerald-800 font-bold">4 แต้ม</strong> (ที่ 1: 66p)</span>
+                                <span id="smbc-rate-target-text" class="text-violet-900 font-semibold">GW11 รีเซ็ต 0 ใหม่ Phase 2!</span>
                             </p>
                         </div>
 
                         <!-- 4-Phase Status Badges (Click to jump to SMBC Phase Leaderboard) -->
                         <div class="grid grid-cols-4 gap-1.5 pt-2.5 border-t border-amber-200/80 text-center">
-                            <button type="button" onclick="openSMBCPhaseFromOverview(1)" class="smbc-phase-jump-btn bg-emerald-100 hover:bg-emerald-200/80 p-1.5 rounded-xl border border-emerald-300 transition cursor-pointer">
+                            <button type="button" onclick="openSMBCPhaseFromOverview(1)" id="smbc-jump-btn-1" class="smbc-phase-jump-btn bg-emerald-100 hover:bg-emerald-200/80 p-1.5 rounded-xl border border-emerald-300 transition cursor-pointer">
                                 <span class="text-[9px] text-emerald-900 block font-bold">Phase 1 (1-10)</span>
-                                <span class="text-[10px] text-emerald-950 font-black">ดูตาราง ⏳</span>
+                                <span id="smbc-jump-sub-1" class="text-[10px] text-emerald-950 font-black">#7 • 508p ⚡</span>
                             </button>
-                            <button type="button" onclick="openSMBCPhaseFromOverview(2)" class="smbc-phase-jump-btn bg-white/90 hover:bg-violet-50 p-1.5 rounded-xl border border-slate-300 transition cursor-pointer">
-                                <span class="text-[9px] text-slate-600 block font-medium">Phase 2 (11-20)</span>
-                                <span class="text-[10px] text-slate-800 font-semibold">เริ่ม 0 ใหม่</span>
+                            <button type="button" onclick="openSMBCPhaseFromOverview(2)" id="smbc-jump-btn-2" class="smbc-phase-jump-btn bg-violet-50 hover:bg-violet-100 p-1.5 rounded-xl border border-violet-300 transition cursor-pointer">
+                                <span class="text-[9px] text-violet-900 block font-semibold">Phase 2 (11-20)</span>
+                                <span id="smbc-jump-sub-2" class="text-[10px] text-violet-950 font-bold">เริ่ม 0 + BB1 🚀</span>
                             </button>
-                            <button type="button" onclick="openSMBCPhaseFromOverview(3)" class="smbc-phase-jump-btn bg-white/90 hover:bg-violet-50 p-1.5 rounded-xl border border-slate-300 transition cursor-pointer">
+                            <button type="button" onclick="openSMBCPhaseFromOverview(3)" id="smbc-jump-btn-3" class="smbc-phase-jump-btn bg-white/90 hover:bg-violet-50 p-1.5 rounded-xl border border-slate-300 transition cursor-pointer">
                                 <span class="text-[9px] text-slate-600 block font-medium">Phase 3 (21-30)</span>
-                                <span class="text-[10px] text-slate-800 font-semibold">เริ่ม 0 ใหม่</span>
+                                <span id="smbc-jump-sub-3" class="text-[10px] text-slate-800 font-semibold">เริ่ม 0 ใหม่</span>
                             </button>
-                            <button type="button" onclick="openSMBCPhaseFromOverview(4)" class="smbc-phase-jump-btn bg-amber-100/80 hover:bg-amber-200/80 p-1.5 rounded-xl border border-amber-300 transition cursor-pointer">
+                            <button type="button" onclick="openSMBCPhaseFromOverview(4)" id="smbc-jump-btn-4" class="smbc-phase-jump-btn bg-amber-100/80 hover:bg-amber-200/80 p-1.5 rounded-xl border border-amber-300 transition cursor-pointer">
                                 <span class="text-[9px] text-amber-900 block font-medium">Phase 4 (31-38)</span>
-                                <span class="text-[10px] text-amber-950 font-bold">คว้าแชมป์ 🏆</span>
+                                <span id="smbc-jump-sub-4" class="text-[10px] text-amber-950 font-bold">คว้าแชมป์ 🏆</span>
                             </button>
                         </div>
                     </div>
@@ -537,7 +538,7 @@
                     <div class="glass-card p-4 rounded-2xl">
                         <h3 class="font-bold text-sm text-slate-800 flex items-center justify-between mb-3">
                             <span><i class="fa-solid fa-tower-broadcast text-emerald-600 mr-1"></i> สรุปผลงานนักเตะในทีม</span>
-                            <span class="text-[11px] text-slate-600 font-semibold bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200" id="squad-perf-gw">GW5 Official</span>
+                            <span class="text-[11px] text-slate-600 font-semibold bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200" id="squad-perf-gw">GW9 Official (67 pts)</span>
                         </h3>
                         <div class="space-y-2 max-h-[360px] overflow-y-auto pr-1" id="squad-performance-list"></div>
                     </div>
@@ -619,7 +620,7 @@
                         <p class="text-xs text-slate-600 mt-1">คลิกที่ลีกใดก็ได้เพื่อเปิดดู <strong>ตารางคะแนนรวมทั้งฤดูกาล (Classic Leaderboard)</strong> แบบปกติ</p>
                     </div>
                     <span class="text-xs bg-violet-100 text-violet-900 px-3 py-1.5 rounded-xl border border-violet-300 font-semibold">
-                        เข้าร่วมทั้งหมด: <strong id="leagues-total-count" class="text-violet-950">9</strong> ลีก
+                        เข้าร่วมทั้งหมด: <strong id="leagues-total-count" class="text-violet-950">11</strong> ลีก
                     </span>
                 </div>
 
@@ -654,7 +655,7 @@
                     <div class="flex items-center gap-4 bg-slate-50 px-4 py-2.5 rounded-xl border border-slate-300 shadow-sm">
                         <div>
                             <span class="text-[11px] text-slate-600 block">งบในคลังจำลอง (Simulated Bank)</span>
-                            <span id="sim-bank" class="text-base font-bold text-emerald-800">£0.0m</span>
+                            <span id="sim-bank" class="text-base font-bold text-emerald-800">£1.0m</span>
                         </div>
                         <div class="border-l border-slate-300 pl-4">
                             <span class="text-[11px] text-slate-600 block">จำนวนการเปลี่ยนตัว</span>
@@ -696,16 +697,19 @@
 
                 <!-- Suggested Combos for Upcoming GW -->
                 <div class="mt-6 pt-6 border-t border-slate-200">
-                    <h3 class="text-sm font-bold text-sky-900 mb-3 flex items-center gap-2">
-                        <i class="fa-solid fa-lightbulb text-amber-500"></i> สูตรและกลยุทธ์การย้ายตัวแนะนำสำหรับสัปดาห์นี้ (Recommended Move Sets):
-                    </h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5">
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                        <h3 class="text-sm font-bold text-sky-900 flex items-center gap-2">
+                            <i class="fa-solid fa-lightbulb text-amber-500"></i> สูตรและกลยุทธ์การย้ายตัวแนะนำสำหรับสัปดาห์นี้ (Recommended Move Sets):
+                        </h3>
+                        <span id="transfer-presets-gw-badge" class="text-[11px] bg-rose-100 text-rose-900 border border-rose-300 px-2.5 py-0.5 rounded-full font-bold">GW10 • เดดไลน์คืนนี้ 01:30 น.! 🚨</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5" id="transfer-presets-grid">
                         <div class="glass-card bg-emerald-50/75 p-3.5 rounded-xl border border-emerald-300 hover:border-emerald-500 transition cursor-pointer" onclick="applyPresetTransfer('GUEHI_TO_KONSA')">
                             <div class="flex justify-between items-center text-xs mb-1.5">
                                 <span class="font-bold text-emerald-900">สูตร 1: บุกเต็มสูบ GW10 (แนะนำที่สุด ⭐)</span>
                                 <span class="bg-emerald-200/80 text-emerald-950 border border-emerald-300 text-[10px] px-1.5 py-0.5 rounded font-semibold">1 FT (0 Hit)</span>
                             </div>
-                            <p class="text-xs text-slate-800"><strong>Guéhi</strong> (£6.0m) ➔ <strong>Konsa</strong> (£4.8m • ARS)</p>
+                            <p class="text-xs text-slate-800"><strong>Guéhi</strong> (£6.0m • MCI) ➔ <strong>Konsa</strong> (£4.8m • ARS)</p>
                             <p class="text-[11px] text-slate-600 mt-1">โละสำรอง 0 นาทีก่อนราคาตก คว้ากองหลัง Form 9.2 เปิดบ้านรับ HUL (FDR 2) เหลืองบ £2.2m รอกด BB1 ใน GW11!</p>
                         </div>
 
@@ -714,8 +718,8 @@
                                 <span class="font-bold text-sky-900">สูตร 2: สายปูพรมยาว GW11 BB1</span>
                                 <span class="bg-sky-200/80 text-sky-950 border border-sky-300 text-[10px] px-1.5 py-0.5 rounded font-semibold">1 FT (0 Hit)</span>
                             </div>
-                            <p class="text-xs text-slate-800"><strong>Guéhi</strong> (£6.0m) ➔ <strong>Vuskovic</strong> (£5.2m • BHA)</p>
-                            <p class="text-[11px] text-slate-600 mt-1">เซ็นเตอร์ตัวหลักไบรท์ตัน (58 แต้ม • 6 CS) รับมือ BRE (H) แล้วบุก HUL (A) รับชิป BB1 ใน GW11 เหลืองบ £1.8m</p>
+                            <p class="text-xs text-slate-800"><strong>Guéhi</strong> (£6.0m • MCI) ➔ <strong>Vuskovic</strong> (£5.2m • BHA)</p>
+                            <p class="text-[11px] text-slate-600 mt-1">เซ็นเตอร์ตัวหลักไบรท์ตัน (58 แต้ม • Form 6.5) รับมือ BRE (H) แล้วบุก HUL (A, FDR 2) รับชิป BB1 ใน GW11 เหลืองบ £1.8m</p>
                         </div>
 
                         <div class="glass-card bg-violet-50/75 p-3.5 rounded-xl border border-violet-300 hover:border-violet-500 transition cursor-pointer" onclick="applyPresetTransfer('ROLL_FT')">
@@ -724,7 +728,7 @@
                                 <span class="bg-violet-200/80 text-violet-950 border border-violet-300 text-[10px] px-1.5 py-0.5 rounded font-semibold">0 Transfer</span>
                             </div>
                             <p class="text-xs text-slate-800"><strong>เก็บ 1 FT ไว้</strong> ➔ สะสมเป็น <strong>2 FTs ใน GW11</strong></p>
-                            <p class="text-[11px] text-slate-600 mt-1">ดรอป Guéhi ไว้สำรอง 3 ใช้ 11 ตัวจริงที่มีอยู่ แล้วถือ 2 FTs รอเช็กตัวเจ็บหลังทีมชาติก่อนกด BB1</p>
+                            <p class="text-[11px] text-slate-600 mt-1">ส่ง Ødegaard ลงตัวจริงรับ HUL (H) แทน McGinn ดรอป Guéhi สำรอง 3 แล้วถือ 2 FTs รอเช็กตัวเจ็บหลังทีมชาติก่อนกด BB1</p>
                         </div>
                     </div>
                 </div>
@@ -734,11 +738,16 @@
         <!-- ================= TAB 3: CHIP STRATEGY ROADMAP ================= -->
         <section id="chip-tab" class="tab-content hidden space-y-6">
             <div class="glass-card p-6 rounded-2xl space-y-6">
-                <div>
-                    <h2 class="text-lg font-bold text-slate-800 flex items-center gap-2">
-                        <i class="fa-solid fa-wand-magic-sparkles text-violet-600"></i> แผนที่กลยุทธ์การใช้ชิป (FPL Chip Strategy &amp; Master Roadmap)
-                    </h2>
-                    <p class="text-xs text-slate-600 mt-1">คู่มือเจาะลึกช่วงเวลาที่คุ้มค่าที่สุดในการใช้ชิปทั้ง 4 ตัว เพื่อกวาดคะแนนสูงสุดตลอดฤดูกาล</p>
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+                            <i class="fa-solid fa-wand-magic-sparkles text-violet-600"></i> แผนที่กลยุทธ์การใช้ชิป (FPL Chip Strategy &amp; Master Roadmap)
+                        </h2>
+                        <p class="text-xs text-slate-600 mt-1">คู่มือเจาะลึกจังหวะใช้ชิปทั้ง 2 ครึ่งฤดูกาล (ครึ่งแรก GW1–19 | ครึ่งหลัง GW20–38) อัปเดตตามคะแนนจริงล่าสุด</p>
+                    </div>
+                    <span id="chip-roadmap-status-badge" class="text-xs bg-emerald-100 text-emerald-900 border border-emerald-300 px-3 py-1.5 rounded-xl font-bold">
+                        ใช้แล้ว 2/4 ชิปครึ่งแรก (TC7 ✅ • WC9 ✅) | ถัดไป: BB1 ใน GW11 🚀
+                    </span>
                 </div>
 
                 <!-- Chips Grid -->
@@ -749,14 +758,14 @@
                             <h3 class="font-bold text-sm text-violet-950 flex items-center gap-2">
                                 🃏 Wildcard 1 (ครึ่งแรกของฤดูกาล)
                             </h3>
-                            <span class="text-[10px] bg-emerald-100 text-emerald-900 border border-emerald-300 px-2.5 py-0.5 rounded-full font-bold">WC1 ใช้แล้ว GW9 ✅ (8 ดีล • เหลืองบ £1.0m)</span>
+                            <span id="chip-wc1-badge" class="text-[10px] bg-emerald-100 text-emerald-900 border border-emerald-300 px-2.5 py-0.5 rounded-full font-bold">WC1 ใช้แล้ว GW9 ✅ (กด 67p พุ่งที่ 7!)</span>
                         </div>
                         <p class="text-xs text-slate-700">
-                            <strong>สถานะล่าสุด:</strong> เปิดใช้ <strong>WC1 ใน GW9</strong> ล้างตัวเจ็บ/สำรองรวดเดียว 8 ตำแหน่ง (ดึง Evanilson, Tavernier, De Cuyper, Gvardiol, N.Jackson, McGinn, Kinský, Van Hecke) แบบ 0 แต้มลบ แถมเก็บ <strong>1 FT + £1.0m</strong> ข้ามไปลุยต่อใน GW10!
+                            <strong>ผลงาน Official:</strong> เปิดใช้ <strong>WC1 ใน GW9</strong> ผ่าตัดทีม 8 ตำแหน่งแบบ 0 แต้มลบ กวาดทันที <strong>67 แต้ม</strong> (ชนะค่าเฉลี่ยโลก +20p) พาทีมทะยานจากที่ 9 ขึ้น <strong>#7 SMBC League</strong> พร้อมดันมูลค่าทีมพุ่งแตะ <strong>£100.2m</strong> (เงินสดสำรอง £1.0m + 1 FT)!
                         </p>
                         <ul class="text-[11px] text-slate-600 list-disc list-inside space-y-1">
-                            <li>ตัวใหม่ทำแต้มทันทีตั้งแต่นัดแรก (Evanilson ยิง, De Cuyper แอสซิสต์+CS)</li>
-                            <li>โครงสร้างพร้อมเต็มสูบ 15 ตัวจริง รอกด <strong>Bench Boost 1 (BB1)</strong></li>
+                            <li>แข้งใหม่ระเบิดฟอร์มยกแผง: <strong>Van Hecke (15p Auto-sub)</strong>, <strong>De Cuyper (9p)</strong>, <strong>Evanilson (9p)</strong>, <strong>N.Jackson (9p)</strong>, <strong>Rogers (9p)</strong></li>
+                            <li>วางโครงสร้างครบ 15 ตัวหลัก พร้อมต่อยอดกด <strong>Bench Boost 1 (BB1) ใน GW11</strong></li>
                         </ul>
                     </div>
 
@@ -766,10 +775,10 @@
                             <h3 class="font-bold text-sm text-indigo-950 flex items-center gap-2">
                                 🃏 Wildcard 2 (ครึ่งหลังของฤดูกาล)
                             </h3>
-                            <span class="text-[10px] bg-indigo-100 text-indigo-900 border border-indigo-300 px-2.5 py-0.5 rounded-full font-semibold">แนะนำ: GW28 - GW33</span>
+                            <span class="text-[10px] bg-indigo-100 text-indigo-900 border border-indigo-300 px-2.5 py-0.5 rounded-full font-semibold">ปลดล็อก GW20 • เป้าหมาย: GW30–32</span>
                         </div>
                         <p class="text-xs text-slate-700">
-                            <strong>ช่วงเวลาที่ดีที่สุด:</strong> สัปดาห์ที่ 28-33 เพื่อจัดทีมล่วงหน้า 15 คนให้พร้อมสำหรับ <strong>Double Gameweeks (DGW)</strong> และเป็นฐานในการเปิดใช้ Bench Boost ในสัปดาห์ถัดไป
+                            <strong>จังหวะใช้ใน Phase 3–4:</strong> รอปลดล็อกหลังผ่าน GW19 เพื่อจัดทัพใหม่ 15 คนรับเทศกาล <strong>Double Gameweek (DGW)</strong> ช่วงโค้งสุดท้าย (GW31–38) ซึ่งเป็นรอบตัดสินแชมป์ Phase 4
                         </p>
                     </div>
 
@@ -779,10 +788,10 @@
                             <h3 class="font-bold text-sm text-amber-950 flex items-center gap-2">
                                 👑 Triple Captain (TC1 &amp; TC2)
                             </h3>
-                            <span class="text-[10px] bg-emerald-100 text-emerald-900 border border-emerald-300 px-2.5 py-0.5 rounded-full font-bold">TC1 ใช้แล้ว GW7 ✅ (39 แต้ม!)</span>
+                            <span id="chip-tc1-badge" class="text-[10px] bg-emerald-100 text-emerald-900 border border-emerald-300 px-2.5 py-0.5 rounded-full font-bold">TC1 ใช้แล้ว GW7 ✅ (39 แต้ม!)</span>
                         </div>
                         <p class="text-xs text-slate-700">
-                            <strong>สถานะล่าสุด:</strong> กดใช้ <strong>TC1 กับ Erling Haaland (GW7 vs Ipswich) กวาด 39 แต้มเต็ม!</strong> ส่วนชิปชุดที่ 2 (<strong>TC2</strong> หลัง GW20) เก็บไว้ถล่มใน <strong>Double Gameweek (DGW)</strong> ช่วงท้ายฤดูกาล
+                            <strong>ผลงาน Official:</strong> กดใช้ <strong>TC1 กับ Erling Haaland (GW7 vs Ipswich) กวาด 39 แต้มเต็ม!</strong> ส่วนชิปใบที่ 2 (<strong>TC2</strong> ครึ่งหลังฤดูกาล) เก็บไว้ใส่กัปตันที่เตะเบิ้ล 2 นัดในสัปดาห์ <strong>DGW34–37</strong>
                         </p>
                     </div>
 
@@ -792,10 +801,10 @@
                             <h3 class="font-bold text-sm text-emerald-950 flex items-center gap-2">
                                 🚀 Bench Boost (BB1 &amp; BB2)
                             </h3>
-                            <span class="text-[10px] bg-emerald-100 text-emerald-900 px-2.5 py-0.5 rounded-full font-bold border border-emerald-300">BB1 เป้าหมายหลัก: GW11 (หรือ GW10) 🚀</span>
+                            <span id="chip-bb1-badge" class="text-[10px] bg-rose-100 text-rose-900 px-2.5 py-0.5 rounded-full font-bold border border-rose-300">BB1 ล็อกเป้า: GW11 เปิดหัว Phase 2! 🚀</span>
                         </div>
                         <p class="text-xs text-slate-700">
-                            <strong>จังหวะทอง GW11:</strong> ทั้ง 15 คนในทีมเจอโปรแกรมเขียวพร้อมกันยกแผง (MCI เหย้า FUL, TOT เหย้า IPS, BHA เยือน HUL, BOU เหย้า NFO, AVL เหย้า SUN, CHE เหย้า LEE, ARS เยือน NEW) เหมาะกด <strong>BB1</strong> กวาดแต้มแซงกลุ่มบนสุดๆ!
+                            <strong>ทำไมต้อง GW11 (เสาร์ 21 พ.ย.):</strong> คืนนี้ (GW10) <strong>ยังไม่กด BB1</strong> เพราะต้องโละ Guéhi (0 นาที) ก่อนและมีคั่นเบรกทีมชาติ 2 สัปดาห์ พอเข้า <strong>GW11 แต้ม Phase 2 รีเซ็ตเป็น 0 ใหม่ทุกคน</strong> และทั้ง 15 คนเจอโปรแกรมเขียวพร้อมกันยกแผง (MCI เหย้า FUL, TOT เหย้า IPS, BHA เยือน HUL, BOU เหย้า NFO, AVL เหย้า SUN, CHE เหย้า LEE) ➔ กด BB1 ชิงจ่าฝูงตั้งแต่นัดแรก!
                         </p>
                     </div>
 
@@ -805,10 +814,10 @@
                             <h3 class="font-bold text-sm text-sky-950 flex items-center gap-2">
                                 🛡️ Free Hit (FH1 &amp; FH2)
                             </h3>
-                            <span class="text-[10px] bg-sky-100 text-sky-900 border border-sky-300 px-2.5 py-0.5 rounded-full font-semibold">FH1: GW18-19 (Festive) | FH2: BGW29</span>
+                            <span id="chip-fh1-badge" class="text-[10px] bg-sky-100 text-sky-900 border border-sky-300 px-2.5 py-0.5 rounded-full font-semibold">FH1: GW18–19 (ก่อนรีเซ็ตชิป!) | FH2: BGW29/34</span>
                         </div>
                         <p class="text-xs text-slate-700">
-                            <strong>ช่วงเวลาที่ดีที่สุด:</strong> ใช้ <strong>FH1</strong> ช่วงโปรแกรมถี่ Boxing Day/ปีใหม่ (GW18-19) เพื่อหลบโรเตชั่นก่อนรีเซ็ตชิป และเก็บ <strong>FH2</strong> ไว้ลุยสัปดาห์ <strong>Blank Gameweek (BGW)</strong> ที่สโมสรใหญ่ติดบอลถ้วย FA Cup
+                            <strong>แผนยุทธศาสตร์:</strong> ชิปครึ่งแรกจะหมดเขตตอนเส้นตาย GW19 จึงวางเป้าใช้ <strong>FH1 ใน GW18 หรือ GW19</strong> ช่วง Boxing Day ที่ทีมใหญ่โรเตชั่นหนักเพื่อโกยแต้มส่งท้าย Phase 2 และเก็บ <strong>FH2</strong> ไว้แก้เกมสัปดาห์ <strong>Blank Gameweek (BGW)</strong> ที่สโมสรใหญ่ติดถ้วย FA Cup
                         </p>
                     </div>
                 </div>
@@ -820,28 +829,28 @@
                     </h3>
                     <div class="flex flex-col sm:flex-row justify-between items-center gap-2 text-center text-xs">
                         <div class="p-2.5 rounded-xl bg-emerald-100/90 border border-emerald-300 w-full">
-                            <span class="text-emerald-900 font-semibold block text-[10px]">GW1 - GW9 (Official ✅)</span>
-                            <span class="font-bold text-emerald-950">508p (GW9 กด 67p พุ่งที่ 7! 🔥)</span>
+                            <span id="chip-tl-1-label" class="text-emerald-900 font-semibold block text-[10px]">GW1 - GW9 (Official ✅)</span>
+                            <span id="chip-tl-1-val" class="font-bold text-emerald-950">508p (GW9 กด 67p พุ่งที่ 7! 🔥)</span>
                         </div>
                         <i class="fa-solid fa-chevron-right text-slate-400 hidden sm:block"></i>
-                        <div class="p-2.5 rounded-xl bg-violet-100/85 border border-violet-300 w-full">
-                            <span class="text-violet-900 font-semibold block text-[10px]">GW10 ปิด Phase 1 ➔ GW11 เปิด Phase 2</span>
-                            <span class="font-bold text-violet-950">1 FT แก้ Guéhi ➔ กด BB1 ใน GW11 🚀</span>
+                        <div class="p-2.5 rounded-xl bg-rose-100/85 border border-rose-300 w-full">
+                            <span class="text-rose-900 font-semibold block text-[10px]">GW10 คืนนี้ ➔ GW11 เปิด Phase 2</span>
+                            <span class="font-bold text-rose-950">แก้ Guéhi ➔ กด BB1 ใน GW11 🚀</span>
                         </div>
                         <i class="fa-solid fa-chevron-right text-slate-400 hidden sm:block"></i>
                         <div class="p-2.5 rounded-xl bg-sky-100/85 border border-sky-300 w-full">
-                            <span class="text-sky-900 font-semibold block text-[10px]">GW12 - GW20 (ระยะที่ 2)</span>
-                            <span class="font-bold text-sky-950">ปีใหม่ &amp; FH1 ➔ จ่าฝูง GW20</span>
+                            <span class="text-sky-900 font-semibold block text-[10px]">GW12 - GW20 (ล่าแชมป์ Phase 2)</span>
+                            <span class="font-bold text-sky-950">กด FH1 ช่วงปีใหม่ ➔ ยึดจ่าฝูง GW20</span>
                         </div>
                         <i class="fa-solid fa-chevron-right text-slate-400 hidden sm:block"></i>
                         <div class="p-2.5 rounded-xl bg-indigo-100/85 border border-indigo-300 w-full">
-                            <span class="text-indigo-900 font-semibold block text-[10px]">GW21 - GW30 (ระยะที่ 3)</span>
-                            <span class="font-bold text-indigo-950">ฝ่าด่าน BGW ➔ นำโด่ง GW30</span>
+                            <span class="text-indigo-900 font-semibold block text-[10px]">GW21 - GW30 (Phase 3 เริ่ม 0 ใหม่)</span>
+                            <span class="font-bold text-indigo-950">FH2 ฝ่าด่าน BGW ➔ ชิงแชมป์ GW30</span>
                         </div>
                         <i class="fa-solid fa-chevron-right text-slate-400 hidden sm:block"></i>
                         <div class="p-2.5 rounded-xl bg-amber-100/90 border border-amber-300 w-full">
-                            <span class="text-amber-900 font-semibold block text-[10px]">GW31 - GW38 (ระยะที่ 4)</span>
-                            <span class="font-bold text-amber-950">WC2 + BB2 / TC2 ➔ คว้าแชมป์!</span>
+                            <span class="text-amber-900 font-semibold block text-[10px]">GW31 - GW38 (Phase 4 ตัดสินแชมป์)</span>
+                            <span class="font-bold text-amber-950">WC2 + BB2 + TC2 ➔ กวาดแชมป์! 🏆</span>
                         </div>
                     </div>
                 </div>
@@ -856,12 +865,12 @@
                         <h2 class="text-lg font-bold text-slate-800 flex items-center gap-2">
                             <i class="fa-solid fa-magnifying-glass-chart text-sky-600"></i> ศูนย์สเกาต์และค้นหานักเตะ (Scout &amp; Shortlist Hub)
                         </h2>
-                        <p class="text-xs text-slate-600 mt-1">คัดกรองนักเตะฟอร์มดี วิเคราะห์ค่าตัว และเช็กโปรแกรมแข่งล่วงหน้า</p>
+                        <p class="text-xs text-slate-600 mt-1">คัดกรองนักเตะฟอร์มร้อนแรงหลังจบ GW9 วิเคราะห์ค่าตัว และเช็กโปรแกรมแข่งล่วงหน้า GW10–12</p>
                     </div>
                     <!-- Quick Tag Filters -->
                     <div class="flex flex-wrap items-center gap-1.5">
                         <button onclick="setScoutFilter('ALL')" id="scout-tag-ALL" class="scout-tag-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-sky-200 text-sky-950 border border-sky-400 shadow-sm">ทั้งหมด</button>
-                        <button onclick="setScoutFilter('HOT')" id="scout-tag-HOT" class="scout-tag-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-300 hover:bg-sky-50 hover:text-sky-950">🔥 ฟอร์มแรง (Form &ge; 5.0 / Pts &ge; 5)</button>
+                        <button onclick="setScoutFilter('HOT')" id="scout-tag-HOT" class="scout-tag-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-300 hover:bg-sky-50 hover:text-sky-950">🔥 ฟอร์มแรง (Form &ge; 5.0 / GW &ge; 6p)</button>
                         <button onclick="setScoutFilter('META')" id="scout-tag-META" class="scout-tag-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-300 hover:bg-sky-50 hover:text-sky-950">🎯 ตัวยอดฮิต (Own &ge; 30%)</button>
                         <button onclick="setScoutFilter('BUDGET')" id="scout-tag-BUDGET" class="scout-tag-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-300 hover:bg-sky-50 hover:text-sky-950">💰 ราคาประหยัด (&le; £5.0m)</button>
                         <button onclick="setScoutFilter('DIFF')" id="scout-tag-DIFF" class="scout-tag-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-300 hover:bg-sky-50 hover:text-sky-950">💎 Differential (&lt; 10%)</button>
@@ -872,7 +881,7 @@
                 <div class="flex flex-wrap items-center gap-3">
                     <div class="relative flex-1 min-w-[200px]">
                         <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
-                        <input type="text" id="scout-search-input" aria-label="ค้นหาชื่อนักเตะ หรือทีม" oninput="renderScoutTable()" placeholder="ค้นหาชื่อนักเตะ หรือทีม..." class="ui-control w-full rounded-xl pl-9 pr-3 py-2 text-xs placeholder-slate-400 shadow-sm">
+                        <input type="text" id="scout-search-input" aria-label="ค้นหาชื่อนักเตะ หรือทีม" oninput="renderScoutTable()" placeholder="ค้นหาชื่อนักเตะ หรือทีม (เช่น Konsa, Vuskovic, Evanilson)..." class="ui-control w-full rounded-xl pl-9 pr-3 py-2 text-xs placeholder-slate-400 shadow-sm">
                     </div>
                     <select id="scout-pos-select" aria-label="กรองตามตำแหน่ง" onchange="renderScoutTable()" class="ui-control rounded-xl px-3 py-2 text-xs font-medium shadow-sm">
                         <option value="ALL">ทุกตำแหน่ง (All Positions)</option>
@@ -889,11 +898,12 @@
                         <thead class="bg-sky-100/85 text-sky-950 font-bold border-b border-sky-200">
                             <tr>
                                 <th class="p-3">นักเตะ</th>
-                                <th class="p-3">ทีม / ตำแหน่ง</th>
+                                <th class="p-3">สโมสร</th>
                                 <th class="p-3 cursor-pointer hover:text-indigo-700" onclick="sortScout('now_cost')">ราคา <i class="fa-solid fa-sort text-[10px]"></i></th>
+                                <th class="p-3 cursor-pointer hover:text-indigo-700" onclick="sortScout('form')">ฟอร์ม <i class="fa-solid fa-sort text-[10px]"></i></th>
                                 <th class="p-3 cursor-pointer hover:text-indigo-700" onclick="sortScout('total_points')">คะแนนรวม <i class="fa-solid fa-sort text-[10px]"></i></th>
                                 <th class="p-3 cursor-pointer hover:text-indigo-700" onclick="sortScout('selected_by_percent')">% ถือครอง <i class="fa-solid fa-sort text-[10px]"></i></th>
-                                <th class="p-3">โปรแกรม 3 นัดถัดไป (FDR)</th>
+                                <th id="scout-fixtures-th" class="p-3">โปรแกรม 3 นัดถัดไป (GW10–12)</th>
                                 <th class="p-3 text-center">Action</th>
                             </tr>
                         </thead>
@@ -911,7 +921,7 @@
                         <h2 class="text-lg font-bold text-slate-800 flex items-center gap-2">
                             <i class="fa-solid fa-calendar-days text-emerald-600"></i> ตารางความยากง่ายโปรแกรมแข่ง (Fixture Difficulty Ticker)
                         </h2>
-                        <p class="text-xs text-slate-600 mt-1">Heatmap โทนพาสเทลสบายตา แสดงระดับความยากง่ายโปรแกรมแข่ง 5 นัดล่วงหน้าของทั้ง 20 สโมสร</p>
+                        <p id="fixture-ticker-subtitle" class="text-xs text-slate-600 mt-1">Heatmap โทนพาสเทลสบายตา แสดงระดับความยากง่ายโปรแกรมแข่ง 5 นัดล่วงหน้า (GW10–GW14) ของทั้ง 20 สโมสร</p>
                     </div>
                     <!-- Legend -->
                     <div class="flex flex-wrap items-center gap-1.5 text-[11px]">
@@ -927,11 +937,11 @@
                         <thead class="bg-emerald-100/80 text-emerald-950 font-bold border-b border-emerald-200">
                             <tr id="fixture-ticker-header">
                                 <th class="p-3">สโมสร (Club)</th>
-                                <th class="p-3 text-center">GW6</th>
-                                <th class="p-3 text-center">GW7</th>
-                                <th class="p-3 text-center">GW8</th>
-                                <th class="p-3 text-center">GW9</th>
                                 <th class="p-3 text-center">GW10</th>
+                                <th class="p-3 text-center">GW11</th>
+                                <th class="p-3 text-center">GW12</th>
+                                <th class="p-3 text-center">GW13</th>
+                                <th class="p-3 text-center">GW14</th>
                             </tr>
                         </thead>
                         <tbody id="fixture-ticker-body" class="divide-y divide-slate-100 bg-white"></tbody>
@@ -1063,20 +1073,43 @@
             }
         }
 
-        // In-Browser Live Fetcher (fetches latest repo data + live API)
-        async function fetchLiveFPLDataInBrowser() {
+        // In-Browser Live Fetcher (fetches latest repo HTML version + fresh fpl_data.json)
+        async function fetchLiveFPLDataInBrowser(isAutoInit = false) {
             const icon = document.getElementById('refresh-icon');
-            icon.classList.add('fa-spin');
-            showToast('กำลังโหลดข้อมูลล่าสุด...', true);
+            if (icon) icon.classList.add('fa-spin');
+            if (!isAutoInit) showToast('กำลังโหลดข้อมูลล่าสุด...', true);
 
             try {
-                // Fetch fresh fpl_data.json with timestamp to bust GitHub Pages cache
                 const cacheBuster = Date.now();
+
+                // Check if a newer index.html version is deployed so open tabs never run stale JS/HTML
+                if (window.location.protocol.startsWith('http')) {
+                    try {
+                        const htmlResp = await fetch(`index.html?t=${cacheBuster}`, { cache: 'no-store' });
+                        if (htmlResp.ok) {
+                            const remoteHtml = await htmlResp.text();
+                            const verMatch = remoteHtml.match(/<meta\s+name=["']version["']\s+content=["']([^"']+)["']/i);
+                            const remoteVer = verMatch ? verMatch[1] : null;
+                            const localVer = document.querySelector('meta[name="version"]')?.getAttribute('content');
+                            if (remoteVer && localVer && remoteVer !== localVer && !window.location.search.includes(remoteVer)) {
+                                showToast(`ตรวจพบเวอร์ชันใหม่ (${remoteVer}) กำลังรีเฟรชหน้าเว็บ...`, true);
+                                window.location.replace(`${window.location.pathname}?v=${encodeURIComponent(remoteVer)}`);
+                                return;
+                            }
+                        }
+                    } catch (verErr) {
+                        console.warn('Version check skipped:', verErr);
+                    }
+                }
+
+                // Fetch fresh fpl_data.json with timestamp to bust GitHub Pages cache
                 const resp = await fetch(`fpl_data.json?t=${cacheBuster}`, { cache: 'no-store' });
                 if (resp.ok) {
                     fplData = await resp.json();
                     renderAll();
-                    showToast(`อัปเดตข้อมูลสำเร็จ! GW${fplData.current_gw || 5} (${fplData.entry?.summary_overall_points || 266} แต้มรวม)`, true);
+                    if (!isAutoInit) {
+                        showToast(`อัปเดตข้อมูลสำเร็จ! GW${fplData.current_gw || 9} (${fplData.entry?.summary_overall_points || 508} แต้มรวม)`, true);
+                    }
                 } else {
                     throw new Error('Failed to load JSON');
                 }
@@ -1085,10 +1118,10 @@
                 if (window.INITIAL_FPL_DATA) {
                     fplData = window.INITIAL_FPL_DATA;
                     renderAll();
-                    showToast('โหลดข้อมูลสำเร็จ!', true);
+                    if (!isAutoInit) showToast('โหลดข้อมูลล่าสุดสำเร็จ!', true);
                 }
             } finally {
-                setTimeout(() => icon.classList.remove('fa-spin'), 600);
+                if (icon) setTimeout(() => icon.classList.remove('fa-spin'), 600);
             }
         }
 
@@ -1101,23 +1134,41 @@
             renderSquadPerformance();
             renderLeagues();
             renderSMBCPhaseTable();
+            renderTransferPresets();
             renderTransferSimulator();
+            renderChipStrategy();
             renderScoutTable();
             renderFixtureTicker();
         }
 
         function renderSMBCTracker() {
-            const totalPts = fplData?.entry?.summary_overall_points || 321;
-            const curGw = fplData?.current_gw || 6;
+            const totalPts = fplData?.entry?.summary_overall_points || 508;
+            const curGw = fplData?.current_gw || 9;
+            const myTeamId = fplData?.team_id || 4554263;
             const targetGw10 = 680;
             const targetPct = ((totalPts / targetGw10) * 100).toFixed(1);
 
             const smbcStandings = fplData?.league_standings?.['63159']?.standings?.results || [];
-            const leaderPts = smbcStandings[0]?.total || 384;
+            const leaderPts = smbcStandings[0]?.total || 574;
             const leaderPct = ((totalPts / leaderPts) * 100).toFixed(1);
             const gap = Math.max(0, leaderPts - totalPts);
             const remainingGws = Math.max(1, 10 - curGw);
             const ratePerGw = (gap / remainingGws).toFixed(1);
+
+            const meRow = smbcStandings.find(r => r.entry === myTeamId);
+            const myRank = meRow?.rank || 7;
+            const aboveRow = myRank > 1 ? smbcStandings.find(r => r.rank === myRank - 1) : null;
+            const gapAbove = aboveRow ? Math.max(0, (aboveRow.total || 0) - totalPts) : 0;
+
+            const phaseTitle = document.getElementById('smbc-roadmap-phase-title');
+            const goalBadge = document.getElementById('smbc-roadmap-goal-badge');
+            if (curGw <= 10) {
+                if (phaseTitle) phaseTitle.innerHTML = `<i class="fa-solid fa-trophy text-amber-600"></i> แผนสู่แชมป์ SMBC League (ระยะที่ 1)`;
+                if (goalBadge) goalBadge.innerText = curGw === 9 ? 'นัดส่งท้าย Phase 1 (GW10)' : (curGw === 10 ? 'จบ Phase 1 • รอเริ่ม Phase 2' : 'เป้าหมาย: อันดับ 1 ใน GW10');
+            } else if (curGw <= 20) {
+                if (phaseTitle) phaseTitle.innerHTML = `<i class="fa-solid fa-trophy text-amber-600"></i> แผนสู่แชมป์ SMBC League (ระยะที่ 2)`;
+                if (goalBadge) goalBadge.innerText = 'เป้าหมาย: จ่าฝูง Phase 2 (GW11–20)';
+            }
 
             const targetText = document.getElementById('smbc-target-progress-text');
             if (targetText) targetText.innerHTML = `${targetPct}% <span class="text-[10px] text-slate-600 font-normal">(${totalPts} / ${targetGw10} pts)</span>`;
@@ -1132,17 +1183,40 @@
             if (leaderBar) leaderBar.style.width = `${Math.min(100, leaderPct)}%`;
 
             const gapText = document.getElementById('smbc-leader-gap-text');
-            if (gapText) gapText.innerHTML = `ห่างจ่าฝูง: <strong class="text-amber-900 font-bold">${gap} แต้ม</strong>`;
+            if (gapText) {
+                if (aboveRow && myRank > 1) {
+                    gapText.innerHTML = `อันดับ <strong>#${myRank}</strong> • ห่างที่ ${myRank - 1} แค่ <strong class="text-emerald-800 font-bold">${gapAbove} แต้ม</strong> (ที่ 1: ${gap}p)`;
+                } else {
+                    gapText.innerHTML = `ห่างจ่าฝูง: <strong class="text-amber-900 font-bold">${gap} แต้ม</strong>`;
+                }
+            }
 
             const rateText = document.getElementById('smbc-rate-target-text');
-            if (rateText) rateText.innerHTML = `เป้าหมายลด: ~${ratePerGw} แต้ม/สัปดาห์`;
+            if (rateText) {
+                rateText.innerHTML = curGw >= 9 && curGw <= 10
+                    ? `GW11 รีเซ็ต 0 ใหม่ Phase 2!`
+                    : `เป้าหมายลด: ~${ratePerGw} แต้ม/สัปดาห์`;
+            }
+
+            const sub1 = document.getElementById('smbc-jump-sub-1');
+            if (sub1) sub1.innerText = `#${myRank} • ${totalPts}p ${curGw < 10 ? '⚡' : '✅'}`;
+            const sub2 = document.getElementById('smbc-jump-sub-2');
+            if (sub2 && curGw < 11) sub2.innerText = `เริ่ม 0 + BB1 🚀`;
         }
 
         function renderAIRecommendations() {
-            const curGw = fplData?.current_gw || 5;
+            const curGw = fplData?.current_gw || 9;
             const nextGw = curGw + 1;
             const badge = document.getElementById('ai-rec-gw-badge');
-            if (badge) badge.innerText = `GW${nextGw} Strategic Brief`;
+            if (badge) {
+                if (nextGw === 10) {
+                    badge.innerText = `GW10 • คืนนี้ 01:30 น.!`;
+                    badge.className = 'text-[10px] bg-rose-100 text-rose-900 px-2.5 py-0.5 rounded-full border border-rose-300 font-bold shrink-0';
+                } else {
+                    badge.innerText = `GW${nextGw} Strategic Brief`;
+                    badge.className = 'text-[10px] bg-sky-100 text-sky-900 px-2.5 py-0.5 rounded-full border border-sky-300 font-semibold shrink-0';
+                }
+            }
 
             const container = document.getElementById('ai-recommendations-content');
             if (!container) return;
@@ -1168,15 +1242,16 @@
                 `;
             } else if (nextGw === 9) {
                 html = `
-                    <p>🃏 <strong>GW9 Wildcard 1 Alert (เส้นตาย เสาร์ 31 ต.ค. 18:00 น.):</strong> ทีมเผชิญพายุตัวเจ็บ-สำรองรวม 6 คน (João Pedro เจ็บไม่มีกำหนด, Calafiori เจ็บสะโพก, Thomas เจ็บ + Senesi/Wilson/Lerma สำรอง) แต่มีเพียง <strong>1 FT</strong> ➔ ถึงเวลากดใช้ <strong>Wildcard 1 (WC1)</strong> รื้อทีมใหม่หมดแบบ 0 แต้มลบ แถมรักษาโควตา 1 FT ข้ามไป GW10 ได้ตามกฎใหม่!</p>
-                    <p>🚀 <strong>Super-15 รับ Bench Boost 1 (GW10-GW11):</strong> กวาดแข้งโปรแกรมเขียว GW9-GW13 เข้าทีม (<strong>Kinský, Van Hecke [TOT], Tavernier, Evanilson [BOU], N.Jackson, McGinn [AVL], Gvardiol [MCI], De Cuyper [BHA]</strong>) พักแข้ง ARS/BHA ที่เยือนหนักใน GW9 ไว้บนม้านั่ง แล้วระเบิดชิป <strong>BB1</strong> ใน GW10-11!</p>
-                    <p>👑 <strong>Captaincy GW9:</strong> ล็อกปลอกแขน <strong>Erling Haaland (C)</strong> เปิดบ้านดวลไบรท์ตัน (Form 9.0) | รองกัปตัน <strong>Nicolas Jackson / Evanilson (VC)</strong></p>
+                    <p>🃏 <strong>GW9 Wildcard 1 Alert (เส้นตาย เสาร์ 31 ต.ค. 18:00 น.):</strong> ทีมเผชิญพายุตัวเจ็บ-สำรองรวม 6 คน แต่มีเพียง <strong>1 FT</strong> ➔ กดใช้ <strong>Wildcard 1 (WC1)</strong> รื้อทีมใหม่หมดแบบ 0 แต้มลบ แถมรักษาโควตา 1 FT ข้ามไป GW10!</p>
+                    <p>🚀 <strong>Super-15 รับ Bench Boost 1:</strong> กวาดแข้งโปรแกรมเขียวเข้าทีมครบ 15 คน พร้อมต่อยอดกดชิป <strong>BB1</strong>!</p>
+                    <p>👑 <strong>Captaincy GW9:</strong> ล็อกปลอกแขน <strong>Erling Haaland (C)</strong> เปิดบ้านดวลไบรท์ตัน | รองกัปตัน <strong>Evanilson (VC)</strong></p>
                 `;
             } else if (nextGw === 10) {
                 html = `
-                    <p>🚨 <strong>ด่วนที่สุด! เดดไลน์ GW10 คืนนี้ 01:30 น. (เช้ามืดเสาร์ 7 พ.ย.):</strong> GW9 สรุปผล Official กวาด <strong>67 แต้ม (รวม 508p • พุ่งขึ้นที่ 7 SMBC League จี้ที่ 6 แค่ 4 แต้ม!)</strong> คืนนี้ต้องจัดตัวก่อนนอนห้ามรอพรุ่งนี้เด็ดขาด!</p>
-                    <p>🔄 <strong>แผนหลัก 1 FT (0 แต้มลบ):</strong> แนะนำขาย <strong>Guéhi (£6.0m • 0 นาที เสี่ยงราคาตก) ➔ ซื้อ Ezri Konsa (£4.8m • ARS, Form 9.2 อันดับ 1 ของเกม!)</strong> ลงเปิดบ้านรับ Hull (FDR 2) ทันที แถมเหลืองบอู้ฟู่ <strong>£2.2m</strong> รอลุยหลังเบรกทีมชาติ! <em>(หรือสายเซฟ Roll เก็บเป็น 2 FTs ใน GW11)</em></p>
-                    <p>👑 <strong>กัปตัน &amp; ชิป:</strong> วาง <strong>Erling Haaland (C)</strong> เยือน Nott'm Forest (FDR 2) | รองกัปตัน <strong>Evanilson (VC • Form 8.5)</strong> เยือน Ipswich (0 CS) และ <strong>เก็บ Bench Boost 1 (BB1) ไว้กดใน GW11</strong> เปิดหัว Phase 2 (เริ่มนับ 0 ใหม่) แบบ 15 ตัวจริงครบเครื่อง!</p>
+                    <p>🚨 <strong>ด่วนที่สุด! เดดไลน์ GW10 คืนนี้ 01:30 น. (เช้ามืดเสาร์ 7 พ.ย.):</strong> GW9 สรุปผล Official กวาด <strong>67 แต้ม</strong> (ชนะค่าเฉลี่ยโลก 47 ขาดลอย • รวม <strong>508p</strong> พุ่งขึ้น <strong>#7 SMBC League</strong> จี้ที่ 6 แค่ 4 แต้ม!) ต้องจัดตัวก่อนนอนคืนนี้!</p>
+                    <p>🔄 <strong>แผนย้ายตัว 1 FT (0 Hit):</strong> แนะนำขาย <strong>Guéhi (£6.0m • สำรอง 0 นาที เสี่ยงราคาตก) ➔ ซื้อ Ezri Konsa (£4.8m • ARS, Form 9.2 อันดับ 1 ของเกม!)</strong> ลงเปิดบ้านรับ Hull (FDR 2) ทันที เหลืองบอู้ฟู่ <strong>£2.2m</strong> <em>(หรือสายเซฟ Roll เก็บเป็น 2 FTs ไปลุย GW11)</em></p>
+                    <p>🧩 <strong>จัด 11 ตัวจริง GW10:</strong> ดึง <strong>Ødegaard (HUL เหย้า FDR 2)</strong> กลับมาลงตัวจริง! ดรอป <strong>McGinn (เยือน MUN)</strong> ไว้สำรองอันดับ 1</p>
+                    <p>👑 <strong>กัปตัน &amp; ชิป:</strong> ล็อก <strong>Erling Haaland (C)</strong> เยือน NFO (FDR 2) | รอง <strong>Evanilson (VC • Form 8.5)</strong> เยือน IPS และ <strong>เก็บ Bench Boost 1 (BB1) ไว้กดใน GW11</strong> เปิดฉาก Phase 2 (เริ่มนับ 0 ใหม่)!</p>
                 `;
             } else if (nextGw === 11) {
                 html = `
@@ -1196,7 +1271,7 @@
 
         function renderHeaderAndStats() {
             const entry = fplData.entry || {};
-            const currentGw = fplData.current_gw || 1;
+            const currentGw = fplData.current_gw || 9;
 
             document.getElementById('current-gw-label').innerText = currentGw;
             const statGwNum = document.getElementById('stat-gw-num');
@@ -1204,18 +1279,25 @@
             document.getElementById('header-team-name').innerText = entry.name || 'Keekee';
             document.getElementById('header-manager-name').innerText = `${entry.player_first_name || ''} ${entry.player_last_name || ''}`;
             const updateBadge = document.getElementById('header-updated-time');
-            if (updateBadge) updateBadge.innerText = `อัปเดตล่าสุด: GW${currentGw} (${entry.summary_overall_points || 266} แต้ม)`;
+            if (updateBadge) updateBadge.innerText = `อัปเดตล่าสุด: GW${currentGw} (${entry.summary_overall_points || 508} แต้ม)`;
             
-            document.getElementById('stat-overall-pts').innerText = entry.summary_overall_points || 266;
-            document.getElementById('stat-gw-pts').innerText = entry.summary_event_points || 41;
-            document.getElementById('stat-overall-rank').innerText = (entry.summary_overall_rank ? (entry.summary_overall_rank / 1000000).toFixed(1) + 'M' : '5.4M');
+            document.getElementById('stat-overall-pts').innerText = entry.summary_overall_points || 508;
+            document.getElementById('stat-gw-pts').innerText = entry.summary_event_points !== undefined ? entry.summary_event_points : 67;
+            const curEventObj = (fplData?.bootstrap?.events || []).find(e => e.id === currentGw);
+            const avgBadge = document.getElementById('stat-gw-avg-badge');
+            if (avgBadge) {
+                avgBadge.innerText = curEventObj?.average_entry_score ? `Avg ${curEventObj.average_entry_score}` : 'pts';
+            }
+            document.getElementById('stat-overall-rank').innerText = (entry.summary_overall_rank ? (entry.summary_overall_rank / 1000000).toFixed(1) + 'M' : '4.8M');
             
             const picks = fplData.picks || {};
-            const bank = (picks.entry_history?.bank ? picks.entry_history.bank / 10 : 0).toFixed(1);
-            const value = (picks.entry_history?.value ? picks.entry_history.value / 10 : 100).toFixed(1);
+            const bank = (picks.entry_history?.bank !== undefined ? picks.entry_history.bank / 10 : 1.0).toFixed(1);
+            const value = (picks.entry_history?.value ? picks.entry_history.value / 10 : 100.2).toFixed(1);
             document.getElementById('stat-bank').innerText = '£' + bank + 'm';
             document.getElementById('stat-team-value').innerText = '£' + value + 'm';
-            document.getElementById('sim-bank').innerText = '£' + bank + 'm';
+            if (!transferOutPlayer && !transferInPlayer) {
+                document.getElementById('sim-bank').innerText = '£' + bank + 'm';
+            }
 
             // Calculate Free Transfers available (index 0 is initial squad creation; 1 FT starts entering round index 1)
             let ftCount = 1;
@@ -1231,6 +1313,7 @@
                     ftCount = Math.min(5, Math.max(0, ftCount - transfersMade) + 1);
                 }
             }
+            window.currentFreeTransfers = ftCount;
             const ftElem = document.getElementById('stat-free-transfers');
             if (ftElem) ftElem.innerText = `${ftCount} FT${ftCount > 1 ? 's' : ''}`;
 
@@ -1291,6 +1374,9 @@
 
         function renderPitch() {
             const picks = fplData?.picks?.picks || [];
+            const autoSubs = fplData?.picks?.automatic_subs || [];
+            const autoInSet = new Set(autoSubs.map(s => s.element_in));
+            const autoOutSet = new Set(autoSubs.map(s => s.element_out));
             const liveMap = {};
             (fplData?.live?.elements || []).forEach(el => {
                 liveMap[el.id] = el.stats;
@@ -1314,7 +1400,9 @@
                     is_captain: pick.is_captain,
                     is_vice: pick.is_vice_captain,
                     position_num: pick.position,
-                    multiplier: pick.multiplier || 1
+                    multiplier: pick.multiplier ?? 1,
+                    is_auto_in: autoInSet.has(player.id),
+                    is_auto_out: autoOutSet.has(player.id)
                 };
 
                 if (pick.position <= 11) {
@@ -1331,6 +1419,7 @@
                 <div onclick="openPlayerModal(${p.id})" class="flex flex-col items-center cursor-pointer transform hover:scale-105 transition group relative">
                     ${p.is_captain ? `<span class="absolute -top-2.5 -right-1.5 ${p.multiplier === 3 ? 'bg-gradient-to-r from-amber-200 to-rose-200 text-violet-950 border-violet-400' : 'bg-amber-200 text-amber-950 border-amber-400'} text-[10px] font-black px-1.5 py-0.2 rounded-full shadow-sm border z-20">${p.multiplier === 3 ? 'TC' : 'C'}</span>` : ''}
                     ${p.is_vice ? '<span class="absolute -top-2.5 -right-1.5 bg-sky-200 text-sky-950 text-[10px] font-black px-1.5 py-0.2 rounded-full shadow-sm border border-sky-400 z-20">VC</span>' : ''}
+                    ${p.is_auto_in ? '<span class="absolute -top-2.5 -left-1.5 bg-emerald-200 text-emerald-950 text-[8px] font-bold px-1 py-0.2 rounded-full shadow-sm border border-emerald-400 z-20" title="Auto-Sub ลงสนามแทน">⬆️Sub</span>' : ''}
                     <div class="w-12 h-12 rounded-xl bg-white/95 border border-emerald-400/80 flex flex-col items-center justify-center shadow-sm group-hover:border-violet-500 group-hover:shadow-md transition">
                         <span class="text-[10px] text-slate-600 font-bold">${p.team_short}</span>
                         <span class="text-xs font-black text-emerald-800">${p.live_pts * (p.multiplier || 1)}<span class="text-[9px] font-semibold text-slate-500">p</span></span>
@@ -1359,16 +1448,16 @@
 
             // Bench Cards
             document.getElementById('pitch-bench').innerHTML = bench.map((p, idx) => `
-                <div onclick="openPlayerModal(${p.id})" class="bg-slate-50/95 hover:bg-sky-50/90 p-2.5 rounded-xl flex items-center justify-between border border-slate-300 hover:border-sky-400 transition cursor-pointer shadow-sm">
+                <div onclick="openPlayerModal(${p.id})" class="bg-slate-50/95 hover:bg-sky-50/90 p-2.5 rounded-xl flex items-center justify-between border ${p.is_auto_out ? 'border-rose-300 bg-rose-50/50' : 'border-slate-300'} hover:border-sky-400 transition cursor-pointer shadow-sm">
                     <div class="flex items-center gap-2 min-w-0">
                         <span class="text-[10px] font-bold text-slate-700 bg-slate-200/90 w-5 h-5 rounded-full flex items-center justify-center shrink-0">${idx + 1}</span>
                         <div class="min-w-0">
-                            <span class="text-xs font-bold text-slate-800 block truncate max-w-[90px]">${p.web_name}</span>
-                            <span class="text-[10px] text-slate-600">${getPosName(p.element_type)} • ${p.team_short} • £${(p.now_cost / 10).toFixed(1)}m</span>
+                            <span class="text-xs font-bold text-slate-800 block truncate max-w-[95px]">${p.web_name} ${p.is_auto_out ? '<span class="text-[9px] text-rose-700 font-semibold">(0\')</span>' : ''}</span>
+                            <span class="text-[10px] text-slate-600">${getPosName(p.element_type)} • ${p.team_short} • ${p.live_pts}p</span>
                         </div>
                     </div>
                     <div class="fdr-${p.next_fix.diff} text-[9px] px-1.5 py-0.5 rounded font-bold shrink-0">
-                        ${p.next_fix.opp}
+                        ${p.next_fix.opp}(${p.next_fix.isHome ? 'H' : 'A'})
                     </div>
                 </div>
             `).join('');
@@ -1376,6 +1465,9 @@
 
         function renderSquadPerformance() {
             const picks = fplData?.picks?.picks || [];
+            const autoSubs = fplData?.picks?.automatic_subs || [];
+            const autoInSet = new Set(autoSubs.map(s => s.element_in));
+            const autoOutSet = new Set(autoSubs.map(s => s.element_out));
             const liveMap = {};
             (fplData?.live?.elements || []).forEach(el => {
                 liveMap[el.id] = el.stats;
@@ -1386,22 +1478,28 @@
                 if (!p) return '';
                 const t = getTeam(p.team);
                 const live = liveMap[p.id] || {};
-                const pts = live.total_points !== undefined ? live.total_points : p.event_points || 0;
-                const min = live.minutes || 0;
+                const rawPts = live.total_points !== undefined ? live.total_points : p.event_points || 0;
                 const isStarter = pick.position <= 11;
+                const mult = isStarter ? (pick.multiplier || 1) : 1;
+                const displayPts = rawPts * mult;
+                const min = live.minutes || 0;
+                const capTag = pick.is_captain ? `<span class="text-[9px] bg-amber-200 text-amber-950 border border-amber-400 px-1 rounded font-black ml-1">${mult === 3 ? 'TC×3' : 'C×2'}</span>` : (pick.is_vice_captain ? `<span class="text-[9px] bg-sky-100 text-sky-900 border border-sky-300 px-1 rounded font-bold ml-1">VC</span>` : '');
+                const autoTag = autoInSet.has(p.id)
+                    ? `<span class="text-[9px] bg-emerald-100 text-emerald-900 border border-emerald-300 px-1 rounded font-bold ml-1">⬆️Auto</span>`
+                    : (autoOutSet.has(p.id) ? `<span class="text-[9px] bg-rose-100 text-rose-900 border border-rose-300 px-1 rounded font-bold ml-1">⬇️Auto</span>` : '');
 
                 return `
-                    <div class="p-2.5 rounded-xl ${isStarter ? 'bg-emerald-50/50 border-slate-200' : 'bg-slate-50/90 border-slate-200'} border flex items-center justify-between text-xs">
-                        <div class="flex items-center gap-2">
-                            <span class="text-[10px] px-1.5 py-0.5 rounded ${isStarter ? 'bg-emerald-100 text-emerald-900 border border-emerald-300 font-bold' : 'bg-slate-200/80 text-slate-700 font-semibold'}">${isStarter ? 'XI' : 'SUB'}</span>
-                            <div>
-                                <span class="font-bold text-slate-800">${p.web_name}</span>
-                                <span class="text-[10px] text-slate-600 block">${t?.short_name} • £${(p.now_cost/10).toFixed(1)}m</span>
+                    <div onclick="openPlayerModal(${p.id})" class="p-2.5 rounded-xl ${isStarter ? 'bg-emerald-50/50 border-slate-200 hover:border-emerald-300' : 'bg-slate-50/90 border-slate-200 hover:border-slate-300'} border flex items-center justify-between text-xs cursor-pointer transition">
+                        <div class="flex items-center gap-2 min-w-0">
+                            <span class="text-[10px] px-1.5 py-0.5 rounded ${isStarter ? 'bg-emerald-100 text-emerald-900 border border-emerald-300 font-bold' : 'bg-slate-200/80 text-slate-700 font-semibold'} shrink-0">${isStarter ? 'XI' : 'SUB'}</span>
+                            <div class="min-w-0">
+                                <span class="font-bold text-slate-800">${p.web_name}${capTag}${autoTag}</span>
+                                <span class="text-[10px] text-slate-600 block">${t?.short_name} • £${(p.now_cost/10).toFixed(1)}m • Form ${p.form || '0.0'}</span>
                             </div>
                         </div>
-                        <div class="text-right">
-                            <span class="font-black ${pts >= 6 ? 'text-emerald-800' : (pts > 0 ? 'text-slate-800' : 'text-slate-500')}">${pts} pts</span>
-                            <span class="text-[10px] text-slate-500 block">${min > 0 ? min + ' mins' : 'ยังไม่แข่ง / สำรอง'}</span>
+                        <div class="text-right shrink-0">
+                            <span class="font-black ${displayPts >= 6 ? 'text-emerald-800' : (displayPts > 0 ? 'text-slate-800' : 'text-slate-500')}">${displayPts} pts</span>
+                            <span class="text-[10px] text-slate-500 block">${min > 0 ? min + ' mins' : '0 mins (สำรอง)'}</span>
                         </div>
                     </div>
                 `;
@@ -1410,10 +1508,10 @@
             document.getElementById('squad-performance-list').innerHTML = html;
             const perfGw = document.getElementById('squad-perf-gw');
             if (perfGw) {
-                const curGw = fplData?.current_gw || 5;
+                const curGw = fplData?.current_gw || 9;
                 const curEventObj = (fplData?.bootstrap?.events || []).find(e => e.id === curGw);
                 const isFinished = curEventObj?.finished;
-                const eventPts = fplData?.entry?.summary_event_points !== undefined ? fplData.entry.summary_event_points : 41;
+                const eventPts = fplData?.entry?.summary_event_points !== undefined ? fplData.entry.summary_event_points : 67;
                 perfGw.innerText = `GW${curGw} ${isFinished ? 'Official' : 'Live ⚡'} (${eventPts} pts)`;
             }
         }
@@ -1438,17 +1536,18 @@
                 const rank = l.entry_rank || '-';
                 const lastRank = l.entry_last_rank || 0;
                 let rankDiffHtml = '';
-                if (lastRank > 0) {
-                    if (rank < lastRank) rankDiffHtml = `<span class="text-emerald-700 text-[10px] font-bold"><i class="fa-solid fa-arrow-up"></i> ${lastRank - rank}</span>`;
-                    else if (rank > lastRank) rankDiffHtml = `<span class="text-rose-700 text-[10px] font-bold"><i class="fa-solid fa-arrow-down"></i> ${rank - lastRank}</span>`;
+                if (lastRank > 0 && typeof rank === 'number') {
+                    if (rank < lastRank) rankDiffHtml = `<span class="text-emerald-700 text-[10px] font-bold"><i class="fa-solid fa-arrow-up"></i> ${(lastRank - rank).toLocaleString()}</span>`;
+                    else if (rank > lastRank) rankDiffHtml = `<span class="text-rose-700 text-[10px] font-bold"><i class="fa-solid fa-arrow-down"></i> ${(rank - lastRank).toLocaleString()}</span>`;
                 }
+                const crownBadge = rank === 1 ? ' 🥇' : '';
 
                 return `
                     <div onclick="openLeagueModal(${l.id}, '${escapeHtml(l.name)}', ${rank})" class="glass-card bg-white/95 p-4 rounded-2xl border border-slate-300 hover:border-violet-400 transition cursor-pointer flex flex-col justify-between group space-y-3">
                         <div class="flex items-start justify-between gap-2">
                             <div class="flex items-center gap-2 min-w-0">
                                 <i class="fa-solid ${isPrivate ? 'fa-users text-emerald-600' : 'fa-globe text-sky-600'} text-sm shrink-0"></i>
-                                <h4 class="font-bold text-sm text-slate-800 group-hover:text-violet-800 transition truncate max-w-[180px]">${l.name}</h4>
+                                <h4 class="font-bold text-sm text-slate-800 group-hover:text-violet-800 transition truncate max-w-[180px]">${l.name}${crownBadge}</h4>
                             </div>
                             <span class="text-[10px] text-slate-500 font-mono shrink-0">#${l.id}</span>
                         </div>
@@ -1819,6 +1918,136 @@
         }
 
         // ================= TRANSFER PLANNER =================
+        function renderTransferPresets() {
+            const curGw = fplData?.current_gw || 9;
+            const nextGw = curGw + 1;
+            const ft = window.currentFreeTransfers || 1;
+            const bank = (fplData?.picks?.entry_history?.bank !== undefined ? fplData.picks.entry_history.bank / 10 : 1.0);
+
+            const badge = document.getElementById('transfer-presets-gw-badge');
+            if (badge) {
+                if (nextGw === 10) {
+                    badge.innerText = `GW10 • เดดไลน์คืนนี้ 01:30 น.! 🚨 (${ft} FT)`;
+                    badge.className = 'text-[11px] bg-rose-100 text-rose-900 border border-rose-300 px-2.5 py-0.5 rounded-full font-bold';
+                } else {
+                    badge.innerText = `GW${nextGw} • โควตาปัจจุบัน ${ft} FT${ft > 1 ? 's' : ''}`;
+                    badge.className = 'text-[11px] bg-emerald-100 text-emerald-900 border border-emerald-300 px-2.5 py-0.5 rounded-full font-bold';
+                }
+            }
+
+            const grid = document.getElementById('transfer-presets-grid');
+            if (!grid) return;
+
+            const guehi = (fplData?.bootstrap?.elements || []).find(p => p.id === 388 || p.web_name === 'Guéhi');
+            const konsa = (fplData?.bootstrap?.elements || []).find(p => p.id === 31 || p.web_name === 'Konsa');
+            const vuskovic = (fplData?.bootstrap?.elements || []).find(p => p.id === 504 || p.web_name === 'Vuskovic');
+
+            const gPrice = guehi ? (guehi.now_cost / 10).toFixed(1) : '6.0';
+            const kPrice = konsa ? (konsa.now_cost / 10).toFixed(1) : '4.8';
+            const kForm = konsa?.form || '9.2';
+            const kBank = (bank + parseFloat(gPrice) - parseFloat(kPrice)).toFixed(1);
+
+            const vPrice = vuskovic ? (vuskovic.now_cost / 10).toFixed(1) : '5.2';
+            const vPts = vuskovic?.total_points || 58;
+            const vForm = vuskovic?.form || '6.5';
+            const vBank = (bank + parseFloat(gPrice) - parseFloat(vPrice)).toFixed(1);
+
+            if (nextGw === 10) {
+                grid.innerHTML = `
+                    <div class="glass-card bg-emerald-50/75 p-3.5 rounded-xl border border-emerald-300 hover:border-emerald-500 transition cursor-pointer" onclick="applyPresetTransfer('GUEHI_TO_KONSA')">
+                        <div class="flex justify-between items-center text-xs mb-1.5">
+                            <span class="font-bold text-emerald-900">สูตร 1: บุกเต็มสูบ GW10 (แนะนำที่สุด ⭐)</span>
+                            <span class="bg-emerald-200/80 text-emerald-950 border border-emerald-300 text-[10px] px-1.5 py-0.5 rounded font-semibold">1 FT (0 Hit)</span>
+                        </div>
+                        <p class="text-xs text-slate-800"><strong>Guéhi</strong> (£${gPrice}m • MCI) ➔ <strong>Konsa</strong> (£${kPrice}m • ARS)</p>
+                        <p class="text-[11px] text-slate-600 mt-1">โละสำรอง 0 นาทีก่อนราคาตก คว้ากองหลัง Form ${kForm} เปิดบ้านรับ HUL (FDR 2) เหลืองบ <strong>£${kBank}m</strong> รอกด BB1 ใน GW11!</p>
+                    </div>
+
+                    <div class="glass-card bg-sky-50/75 p-3.5 rounded-xl border border-sky-300 hover:border-sky-500 transition cursor-pointer" onclick="applyPresetTransfer('GUEHI_TO_VUSKOVIC')">
+                        <div class="flex justify-between items-center text-xs mb-1.5">
+                            <span class="font-bold text-sky-900">สูตร 2: สายปูพรมยาว GW11 BB1</span>
+                            <span class="bg-sky-200/80 text-sky-950 border border-sky-300 text-[10px] px-1.5 py-0.5 rounded font-semibold">1 FT (0 Hit)</span>
+                        </div>
+                        <p class="text-xs text-slate-800"><strong>Guéhi</strong> (£${gPrice}m • MCI) ➔ <strong>Vuskovic</strong> (£${vPrice}m • BHA)</p>
+                        <p class="text-[11px] text-slate-600 mt-1">เซ็นเตอร์ตัวหลักไบรท์ตัน (${vPts} แต้ม • Form ${vForm}) รับมือ BRE (H) แล้วบุก HUL (A, FDR 2) รับชิป BB1 ใน GW11 เหลืองบ <strong>£${vBank}m</strong></p>
+                    </div>
+
+                    <div class="glass-card bg-violet-50/75 p-3.5 rounded-xl border border-violet-300 hover:border-violet-500 transition cursor-pointer" onclick="applyPresetTransfer('ROLL_FT')">
+                        <div class="flex justify-between items-center text-xs mb-1.5">
+                            <span class="font-bold text-violet-900">สูตร 3: เพลย์เซฟข้ามเบรกทีมชาติ</span>
+                            <span class="bg-violet-200/80 text-violet-950 border border-violet-300 text-[10px] px-1.5 py-0.5 rounded font-semibold">0 Transfer</span>
+                        </div>
+                        <p class="text-xs text-slate-800"><strong>เก็บ ${ft} FT ไว้</strong> ➔ สะสมเป็น <strong>${Math.min(5, ft + 1)} FTs ใน GW11</strong></p>
+                        <p class="text-[11px] text-slate-600 mt-1">ส่ง Ødegaard ลงตัวจริงรับ HUL (H) แทน McGinn ดรอป Guéhi สำรอง 3 แล้วถือ ${Math.min(5, ft + 1)} FTs รอเช็กตัวเจ็บหลังทีมชาติก่อนกด BB1</p>
+                    </div>
+                `;
+            } else {
+                grid.innerHTML = `
+                    <div class="glass-card bg-emerald-50/75 p-3.5 rounded-xl border border-emerald-300 hover:border-emerald-500 transition cursor-pointer" onclick="applyPresetTransfer('GUEHI_TO_KONSA')">
+                        <div class="flex justify-between items-center text-xs mb-1.5">
+                            <span class="font-bold text-emerald-900">สูตร 1: อัปเกรดแนวรับตัวจริงครบ 15 คน</span>
+                            <span class="bg-emerald-200/80 text-emerald-950 border border-emerald-300 text-[10px] px-1.5 py-0.5 rounded font-semibold">1 FT (0 Hit)</span>
+                        </div>
+                        <p class="text-xs text-slate-800"><strong>Guéhi</strong> (£${gPrice}m) ➔ <strong>Konsa</strong> (£${kPrice}m • ARS)</p>
+                        <p class="text-[11px] text-slate-600 mt-1">เติมกองหลังตัวจริง Form ${kForm} พร้อมปลดล็อกงบในคลังเป็น £${kBank}m สำหรับ GW${nextGw}</p>
+                    </div>
+                    <div class="glass-card bg-sky-50/75 p-3.5 rounded-xl border border-sky-300 hover:border-sky-500 transition cursor-pointer" onclick="applyPresetTransfer('GUEHI_TO_VUSKOVIC')">
+                        <div class="flex justify-between items-center text-xs mb-1.5">
+                            <span class="font-bold text-sky-900">สูตร 2: ขุมกำลังรับชิป Bench Boost</span>
+                            <span class="bg-sky-200/80 text-sky-950 border border-sky-300 text-[10px] px-1.5 py-0.5 rounded font-semibold">1 FT (0 Hit)</span>
+                        </div>
+                        <p class="text-xs text-slate-800"><strong>Guéhi</strong> (£${gPrice}m) ➔ <strong>Vuskovic</strong> (£${vPrice}m • BHA)</p>
+                        <p class="text-[11px] text-slate-600 mt-1">เน้นตัวจริง 90 นาทีเต็ม (${vPts} แต้มรวม) ลุยโปรแกรมเขียว GW${nextGw} เหลืองบ £${vBank}m</p>
+                    </div>
+                    <div class="glass-card bg-violet-50/75 p-3.5 rounded-xl border border-violet-300 hover:border-violet-500 transition cursor-pointer" onclick="applyPresetTransfer('ROLL_FT')">
+                        <div class="flex justify-between items-center text-xs mb-1.5">
+                            <span class="font-bold text-violet-900">สูตร 3: สะสมโควตา Roll Transfer</span>
+                            <span class="bg-violet-200/80 text-violet-950 border border-violet-300 text-[10px] px-1.5 py-0.5 rounded font-semibold">0 Transfer</span>
+                        </div>
+                        <p class="text-xs text-slate-800"><strong>เก็บ ${ft} FT</strong> ➔ สะสมเป็น <strong>${Math.min(5, ft + 1)} FTs ใน GW${nextGw + 1}</strong></p>
+                        <p class="text-[11px] text-slate-600 mt-1">รักษาความยืดหยุ่นสูงสุดเมื่อผู้เล่นตัวหลักในทีมไม่มีอาการบาดเจ็บ</p>
+                    </div>
+                `;
+            }
+        }
+
+        function renderChipStrategy() {
+            const curGw = fplData?.current_gw || 9;
+            const totalPts = fplData?.entry?.summary_overall_points || 508;
+            const gwPts = fplData?.entry?.summary_event_points !== undefined ? fplData.entry.summary_event_points : 67;
+            const chips = fplData?.history?.chips || [];
+            const myTeamId = fplData?.team_id || 4554263;
+            const smbcRank = (fplData?.league_standings?.['63159']?.standings?.results || []).find(r => r.entry === myTeamId)?.rank || 7;
+
+            const wc1 = chips.find(c => c.name === 'wildcard' && c.event <= 19);
+            const tc1 = chips.find(c => c.name === '3xc' && c.event <= 19);
+            const bb1 = chips.find(c => c.name === 'bboost' && c.event <= 19);
+            const fh1 = chips.find(c => c.name === 'freehit' && c.event <= 19);
+
+            const usedFirstHalf = [wc1, tc1, bb1, fh1].filter(Boolean).length;
+            const statusBadge = document.getElementById('chip-roadmap-status-badge');
+            if (statusBadge) {
+                const usedTags = [];
+                if (tc1) usedTags.push(`TC${tc1.event} ✅`);
+                if (wc1) usedTags.push(`WC${wc1.event} ✅`);
+                if (bb1) usedTags.push(`BB${bb1.event} ✅`);
+                if (fh1) usedTags.push(`FH${fh1.event} ✅`);
+                const nextChipNote = !bb1 ? 'ถัดไป: BB1 ใน GW11 🚀' : (!fh1 ? 'ถัดไป: FH1 ใน GW18–19 🛡️' : 'ครึ่งแรกใช้ครบแล้ว ✅');
+                statusBadge.innerText = `ใช้แล้ว ${usedFirstHalf}/4 ชิปครึ่งแรก (${usedTags.join(' • ') || 'ยังไม่ใช้'}) | ${nextChipNote}`;
+            }
+
+            const bbBadge = document.getElementById('chip-bb1-badge');
+            if (bbBadge && bb1) {
+                bbBadge.innerText = `BB1 ใช้แล้ว GW${bb1.event} ✅`;
+                bbBadge.className = 'text-[10px] bg-emerald-100 text-emerald-900 px-2.5 py-0.5 rounded-full font-bold border border-emerald-300';
+            }
+
+            const tlLabel = document.getElementById('chip-tl-1-label');
+            const tlVal = document.getElementById('chip-tl-1-val');
+            if (tlLabel) tlLabel.innerText = `GW1 - GW${curGw} (Official ✅)`;
+            if (tlVal) tlVal.innerText = `${totalPts}p (GW${curGw} กด ${gwPts}p • อันดับ #${smbcRank}! 🔥)`;
+        }
+
         function renderTransferSimulator() {
             const picks = fplData?.picks?.picks || [];
             const htmlOut = picks.map(pick => {
@@ -1833,7 +2062,7 @@
                             <span class="text-[10px] font-bold bg-slate-100 border border-slate-200 px-1.5 py-0.5 rounded text-slate-700">${getPosName(p.element_type)}</span>
                             <div>
                                 <span class="font-bold">${p.web_name}</span>
-                                <span class="text-[10px] text-slate-600 block">${t?.short_name}</span>
+                                <span class="text-[10px] text-slate-600 block">${t?.short_name} • Form ${p.form || '0.0'}</span>
                             </div>
                         </div>
                         <div class="text-right">
@@ -1846,6 +2075,7 @@
 
             document.getElementById('transfer-out-list').innerHTML = htmlOut;
             renderTransferInList();
+            updateSimBudget();
         }
 
         function selectTransferOut(id) {
@@ -1863,7 +2093,7 @@
                 candidates = candidates.filter(p => p.element_type === parseInt(posFilter));
             }
 
-            candidates = candidates.sort((a, b) => b.total_points - a.total_points || parseFloat(b.selected_by_percent) - parseFloat(a.selected_by_percent)).slice(0, 30);
+            candidates = candidates.sort((a, b) => b.total_points - a.total_points || parseFloat(b.form || 0) - parseFloat(a.form || 0)).slice(0, 35);
 
             const htmlIn = candidates.map(p => {
                 const t = getTeam(p.team);
@@ -1875,7 +2105,7 @@
                             <span class="text-[10px] font-bold bg-sky-100 border border-sky-200 px-1.5 py-0.5 rounded text-sky-900">${getPosName(p.element_type)}</span>
                             <div>
                                 <span class="font-bold">${p.web_name}</span>
-                                <span class="text-[10px] text-slate-600 block">${t?.short_name} • ${p.selected_by_percent}% own</span>
+                                <span class="text-[10px] text-slate-600 block">${t?.short_name} • Form ${p.form || '0.0'} • ${p.selected_by_percent}%</span>
                             </div>
                         </div>
                         <div class="text-right">
@@ -1896,7 +2126,8 @@
         }
 
         function updateSimBudget() {
-            const currentBank = (fplData?.picks?.entry_history?.bank || 0) / 10;
+            const currentBank = (fplData?.picks?.entry_history?.bank !== undefined ? fplData.picks.entry_history.bank : 10) / 10;
+            const ft = window.currentFreeTransfers || 1;
             let simBank = currentBank;
             let moves = 0;
 
@@ -1907,6 +2138,8 @@
                 moves = 1;
             }
 
+            const hit = Math.max(0, moves - ft) * 4;
+
             const simBankEl = document.getElementById('sim-bank');
             if (simBankEl) {
                 simBankEl.innerText = '£' + simBank.toFixed(1) + 'm';
@@ -1915,7 +2148,8 @@
 
             const countEl = document.getElementById('sim-transfers-count');
             if (countEl) {
-                countEl.innerText = `${moves} / 1 FT (0 pts hit)`;
+                countEl.innerText = `${moves} / ${ft} FT${ft > 1 ? 's' : ''} (${hit > 0 ? '-' + hit : '0'} pts hit)`;
+                countEl.className = hit > 0 ? 'text-base font-bold text-rose-700' : 'text-base font-bold text-slate-800';
             }
         }
 
@@ -1969,6 +2203,11 @@
         function renderScoutTable() {
             const search = (document.getElementById('scout-search-input')?.value || '').toLowerCase();
             const posFilter = document.getElementById('scout-pos-select')?.value || 'ALL';
+            const curGw = fplData?.current_gw || 9;
+            const squadIds = new Set((fplData?.picks?.picks || []).map(pk => pk.element));
+
+            const fixTh = document.getElementById('scout-fixtures-th');
+            if (fixTh) fixTh.innerText = `โปรแกรม 3 นัดถัดไป (GW${curGw + 1}–${curGw + 3})`;
 
             let list = (fplData?.bootstrap?.elements || []).filter(p => p.status === 'a');
 
@@ -1988,7 +2227,7 @@
 
             // Tag Filters
             if (scoutFilterTag === 'HOT') {
-                list = list.filter(p => (p.event_points || 0) >= 5 || parseFloat(p.form || 0) >= 5.0 || p.total_points >= 20);
+                list = list.filter(p => (p.event_points || 0) >= 6 || parseFloat(p.form || 0) >= 5.0);
             } else if (scoutFilterTag === 'META') {
                 list = list.filter(p => parseFloat(p.selected_by_percent) >= 30);
             } else if (scoutFilterTag === 'BUDGET') {
@@ -2001,9 +2240,9 @@
             list = list.sort((a, b) => {
                 let vA = a[scoutSortField];
                 let vB = b[scoutSortField];
-                if (scoutSortField === 'selected_by_percent') {
-                    vA = parseFloat(vA);
-                    vB = parseFloat(vB);
+                if (scoutSortField === 'selected_by_percent' || scoutSortField === 'form') {
+                    vA = parseFloat(vA || 0);
+                    vB = parseFloat(vB || 0);
                 }
                 return scoutSortAsc ? (vA - vB) : (vB - vA);
             }).slice(0, 50);
@@ -2015,22 +2254,27 @@
                 const t = getTeam(p.team);
                 const next3 = getTeamUpcomingFixtures(p.team, 3);
                 const fixHtml = next3.map(f => `<span class="fdr-${f.diff} text-[9px] px-1.5 py-0.5 rounded font-bold mr-1 inline-block">${f.opp}(${f.isHome ? 'H' : 'A'})</span>`).join('');
+                const isOwned = squadIds.has(p.id);
+                const formNum = parseFloat(p.form || 0);
 
                 return `
-                    <tr class="hover:bg-sky-50/50 transition">
+                    <tr class="${isOwned ? 'bg-emerald-50/40' : 'hover:bg-sky-50/50'} transition">
                         <td class="p-3 font-bold text-slate-800 flex items-center gap-2 cursor-pointer" onclick="openPlayerModal(${p.id})">
                             <span class="w-7 h-6 rounded-md bg-violet-100 border border-violet-200 text-[10px] text-violet-900 flex items-center justify-center font-bold">${getPosName(p.element_type)}</span>
                             <span class="hover:text-violet-700">${p.web_name}</span>
+                            ${isOwned ? '<span class="text-[9px] bg-emerald-100 text-emerald-900 border border-emerald-300 px-1.5 py-0.2 rounded-full font-bold">ทีมคุณ</span>' : ''}
                         </td>
                         <td class="p-3 text-slate-700 font-medium">${t?.short_name}</td>
                         <td class="p-3 font-bold text-amber-800">£${(p.now_cost/10).toFixed(1)}m</td>
-                        <td class="p-3 font-black ${p.total_points >= 25 ? 'text-emerald-800' : 'text-slate-800'}">${p.total_points}</td>
+                        <td class="p-3 font-bold ${formNum >= 6.0 ? 'text-emerald-800' : 'text-slate-700'}">${formNum >= 6.0 ? '🔥 ' : ''}${p.form || '0.0'}</td>
+                        <td class="p-3 font-black ${p.total_points >= 45 ? 'text-emerald-800' : 'text-slate-800'}">${p.total_points}</td>
                         <td class="p-3 text-sky-800 font-semibold">${p.selected_by_percent}%</td>
                         <td class="p-3">${fixHtml}</td>
                         <td class="p-3 text-center">
-                            <button onclick="selectTransferIn(${p.id}); switchTab('transfer-tab')" class="text-[10px] bg-emerald-100 hover:bg-emerald-200 text-emerald-950 font-semibold px-2.5 py-1 rounded-lg transition border border-emerald-300">
-                                <i class="fa-solid fa-plus mr-1"></i> เล็งเข้าทีม
-                            </button>
+                            ${isOwned
+                                ? `<span class="text-[10px] bg-slate-100 text-slate-600 font-semibold px-2.5 py-1 rounded-lg border border-slate-300 inline-block">อยู่ในทีม ✓</span>`
+                                : `<button onclick="selectTransferIn(${p.id}); switchTab('transfer-tab')" class="text-[10px] bg-emerald-100 hover:bg-emerald-200 text-emerald-950 font-semibold px-2.5 py-1 rounded-lg transition border border-emerald-300"><i class="fa-solid fa-plus mr-1"></i> เล็งเข้าทีม</button>`
+                            }
                         </td>
                     </tr>
                 `;
@@ -2043,31 +2287,49 @@
             const tbody = document.getElementById('fixture-ticker-body');
             if (!tbody) return;
 
-            const curGw = fplData?.current_gw || 5;
+            const curGw = fplData?.current_gw || 9;
             const upcomingGws = [curGw + 1, curGw + 2, curGw + 3, curGw + 4, curGw + 5];
+
+            const subtitle = document.getElementById('fixture-ticker-subtitle');
+            if (subtitle) {
+                subtitle.innerText = `Heatmap โทนพาสเทลสบายตา แสดงระดับความยากง่ายโปรแกรมแข่ง 5 นัดล่วงหน้า (GW${upcomingGws[0]}–GW${upcomingGws[4]}) ของทั้ง 20 สโมสร`;
+            }
 
             const theadRow = document.getElementById('fixture-ticker-header');
             if (theadRow) {
                 theadRow.innerHTML = `<th class="p-3">สโมสร (Club)</th>` + upcomingGws.map(gw => `<th class="p-3 text-center">GW${gw}</th>`).join('');
             }
 
+            // Count owned squad players per club
+            const ownedByClub = {};
+            (fplData?.picks?.picks || []).forEach(pk => {
+                const pl = getPlayer(pk.element);
+                if (pl) ownedByClub[pl.team] = (ownedByClub[pl.team] || 0) + 1;
+            });
+
             tbody.innerHTML = teams.map(t => {
-                const next5 = getTeamUpcomingFixtures(t.id, 5);
-                const cells = upcomingGws.map((gw, idx) => {
-                    const f = next5[idx];
-                    if (!f) return '<td class="p-3 text-center text-slate-500">-</td>';
+                const nextFixs = getTeamUpcomingFixtures(t.id, 10);
+                const ownedCount = ownedByClub[t.id] || 0;
+                const cells = upcomingGws.map(gw => {
+                    const gwFixs = nextFixs.filter(f => f.gw === gw);
+                    if (!gwFixs.length) return '<td class="p-3 text-center text-slate-400 font-medium">BGW</td>';
                     return `
                         <td class="p-3 text-center">
-                            <span class="fdr-${f.diff} text-[10px] px-2 py-1 rounded-md font-bold shadow-sm inline-block min-w-[54px]">
-                                ${f.opp} (${f.isHome ? 'H' : 'A'})
-                            </span>
+                            ${gwFixs.map(f => `
+                                <span class="fdr-${f.diff} text-[10px] px-2 py-1 rounded-md font-bold shadow-sm inline-block min-w-[54px] m-0.5">
+                                    ${f.opp} (${f.isHome ? 'H' : 'A'})
+                                </span>
+                            `).join('')}
                         </td>
                     `;
                 }).join('');
 
                 return `
-                    <tr class="hover:bg-emerald-50/40 transition">
-                        <td class="p-3 font-bold text-slate-800">${t.name} <span class="text-slate-500 font-semibold">(${t.short_name})</span></td>
+                    <tr class="${ownedCount > 0 ? 'bg-emerald-50/25' : ''} hover:bg-emerald-50/50 transition">
+                        <td class="p-3 font-bold text-slate-800">
+                            ${t.name} <span class="text-slate-500 font-semibold">(${t.short_name})</span>
+                            ${ownedCount > 0 ? `<span class="text-[9px] bg-emerald-100 text-emerald-900 border border-emerald-300 px-1.5 py-0.2 rounded-full font-bold ml-1">ทีมคุณ ${ownedCount}</span>` : ''}
+                        </td>
                         ${cells}
                     </tr>
                 `;
@@ -2082,7 +2344,7 @@
             const next5 = getTeamUpcomingFixtures(p.team, 5);
 
             document.getElementById('modal-player-name').innerText = p.first_name + ' ' + p.second_name;
-            document.getElementById('modal-player-team-pos').innerText = `${t?.name} (${t?.short_name}) • ${getPosName(p.element_type)} • £${(p.now_cost/10).toFixed(1)}m`;
+            document.getElementById('modal-player-team-pos').innerText = `${t?.name} (${t?.short_name}) • ${getPosName(p.element_type)} • £${(p.now_cost/10).toFixed(1)}m • Form ${p.form || '0.0'}`;
             document.getElementById('modal-player-shirt').innerText = p.web_name.substring(0, 3).toUpperCase();
             document.getElementById('modal-player-pts').innerText = p.total_points;
             document.getElementById('modal-player-own').innerText = p.selected_by_percent + '%';
@@ -2118,8 +2380,8 @@
                 fplData = window.INITIAL_FPL_DATA;
                 renderAll();
             }
-            // Always fetch latest live fpl_data.json with timestamp to avoid stale browser cache
-            fetchLiveFPLDataInBrowser();
+            // Check for newer HTML version & fetch latest live fpl_data.json automatically
+            fetchLiveFPLDataInBrowser(true);
         });
     </script>
 </body>

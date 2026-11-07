@@ -8,10 +8,10 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <meta name="version" content="20261106_2330">
+    <meta name="version" content="20261107_2140">
     
     <!-- Load embedded initial dataset (Ensures 100% offline & local file:// support) -->
-    <script src="fpl_data.js?v=20261106_2330"></script>
+    <script src="fpl_data.js?v=20261107_2140"></script>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -325,9 +325,9 @@
                 <div>
                     <h1 class="text-base lg:text-lg font-bold tracking-wide flex flex-wrap items-center gap-2">
                         <span class="brand-gradient-text text-transparent bg-clip-text bg-gradient-to-r from-violet-700 via-teal-700 to-sky-700">FPL Strategy Dashboard</span>
-                        <span class="text-xs bg-emerald-100 text-emerald-900 px-2.5 py-0.5 rounded-full border border-emerald-300 font-semibold">GW<span id="current-gw-label">9</span> Official</span>
+                        <span id="current-gw-status-badge" class="text-xs bg-amber-100 text-amber-950 px-2.5 py-0.5 rounded-full border border-amber-300 font-bold">GW<span id="current-gw-label">10</span> Live ⚡</span>
                     </h1>
-                    <p class="text-xs text-slate-600">Team: <span id="header-team-name" class="text-slate-900 font-semibold">Keekee</span> | Manager: <span id="header-manager-name" class="text-slate-700 font-medium">Ryu Onizuka</span> <span id="header-updated-time" class="text-[11px] text-sky-900 ml-1.5 bg-sky-100/90 px-2 py-0.5 rounded-md border border-sky-300 font-medium">อัปเดตล่าสุด: GW9 (508 แต้ม)</span></p>
+                    <p class="text-xs text-slate-600">Team: <span id="header-team-name" class="text-slate-900 font-semibold">Keekee</span> | Manager: <span id="header-manager-name" class="text-slate-700 font-medium">Ryu Onizuka</span> <span id="header-updated-time" class="text-[11px] text-sky-900 ml-1.5 bg-sky-100/90 px-2 py-0.5 rounded-md border border-sky-300 font-medium">อัปเดตล่าสุด: GW10 Live (512 แต้ม)</span></p>
                 </div>
             </div>
 
@@ -374,15 +374,15 @@
             <div class="glass-card bg-emerald-50/85 p-3.5 rounded-2xl flex flex-col justify-between border-l-4 border-l-emerald-400">
                 <span class="text-xs text-slate-600 font-medium">คะแนนรวม (Overall)</span>
                 <div class="flex items-baseline justify-between mt-1.5">
-                    <span id="stat-overall-pts" class="text-xl font-black text-emerald-950">508</span>
+                    <span id="stat-overall-pts" class="text-xl font-black text-emerald-950">512</span>
                     <span class="text-[11px] text-emerald-800 font-semibold">pts</span>
                 </div>
             </div>
             <div class="glass-card bg-sky-50/85 p-3.5 rounded-2xl flex flex-col justify-between border-l-4 border-l-sky-400">
-                <span class="text-xs text-slate-600 font-medium">คะแนน GW<span id="stat-gw-num">9</span></span>
+                <span class="text-xs text-slate-600 font-medium">คะแนน GW<span id="stat-gw-num">10</span></span>
                 <div class="flex items-baseline justify-between mt-1.5">
-                    <span id="stat-gw-pts" class="text-xl font-black text-sky-900">67</span>
-                    <span id="stat-gw-avg-badge" class="text-[10px] text-sky-800 font-semibold">Avg 47</span>
+                    <span id="stat-gw-pts" class="text-xl font-black text-sky-900">4</span>
+                    <span id="stat-gw-avg-badge" class="text-[10px] text-sky-800 font-semibold">Avg 2 • Live</span>
                 </div>
             </div>
             <div class="glass-card bg-rose-50/85 p-3.5 rounded-2xl flex flex-col justify-between border-l-4 border-l-rose-400">
@@ -395,14 +395,14 @@
             <div class="glass-card bg-amber-50/85 p-3.5 rounded-2xl flex flex-col justify-between border-l-4 border-l-amber-400">
                 <span class="text-xs text-slate-600 font-medium">มูลค่าทีม (Team Value)</span>
                 <div class="flex items-baseline justify-between mt-1.5">
-                    <span id="stat-team-value" class="text-lg font-bold text-amber-950">£100.2m</span>
+                    <span id="stat-team-value" class="text-lg font-bold text-amber-950">£100.8m</span>
                     <i class="fa-solid fa-coins text-xs text-amber-600"></i>
                 </div>
             </div>
             <div class="glass-card bg-teal-50/85 p-3.5 rounded-2xl flex flex-col justify-between border-l-4 border-l-teal-400">
                 <span class="text-xs text-slate-600 font-medium">งบในคลัง (Bank)</span>
                 <div class="flex items-baseline justify-between mt-1.5">
-                    <span id="stat-bank" class="text-lg font-bold text-teal-950">£1.0m</span>
+                    <span id="stat-bank" class="text-lg font-bold text-teal-950">£2.2m</span>
                     <span class="text-[11px] text-teal-800 font-medium">In Bank</span>
                 </div>
             </div>
@@ -410,7 +410,7 @@
                 <span class="text-xs text-slate-600 font-medium">สิทธิ์เปลี่ยนตัวฟรี (FT)</span>
                 <div class="flex items-baseline justify-between gap-1 mt-1.5 flex-wrap">
                     <span id="stat-free-transfers" class="text-lg font-black text-indigo-950">1 FT</span>
-                    <span id="stat-ft-badge" class="text-[10px] bg-rose-100 text-rose-900 border border-rose-300 px-1.5 py-0.5 rounded-md font-bold">GW10 คืนนี้ 01:30! 🚨</span>
+                    <span id="stat-ft-badge" class="text-[10px] bg-emerald-100 text-emerald-900 border border-emerald-300 px-1.5 py-0.5 rounded-md font-bold">GW11: กด BB1 ลุย! 🚀</span>
                 </div>
             </div>
         </div>
@@ -466,13 +466,12 @@
                     <div class="glass-card bg-sky-50/70 p-4 rounded-2xl border-l-4 border-l-sky-400">
                         <h3 class="font-bold text-sm text-sky-950 flex items-center justify-between gap-2 mb-2.5">
                             <span class="flex items-center gap-2"><i class="fa-solid fa-robot text-sky-600"></i> คำแนะนำด่วนจาก AI ผู้ช่วย</span>
-                            <span id="ai-rec-gw-badge" class="text-[10px] bg-rose-100 text-rose-900 px-2.5 py-0.5 rounded-full border border-rose-300 font-bold shrink-0">GW10 • คืนนี้ 01:30 น.!</span>
+                            <span id="ai-rec-gw-badge" class="text-[10px] bg-emerald-100 text-emerald-900 px-2.5 py-0.5 rounded-full border border-emerald-300 font-bold shrink-0">GW10 Live ⚡ ➔ แผน GW11</span>
                         </h3>
                         <div class="readable-prose text-xs space-y-2.5 text-slate-700" id="ai-recommendations-content">
-                            <p>🚨 <strong>ด่วนที่สุด! เดดไลน์ GW10 คืนนี้ 01:30 น. (เช้ามืดเสาร์ 7 พ.ย.):</strong> GW9 สรุปผล Official กวาด <strong>67 แต้ม</strong> (ชนะค่าเฉลี่ยโลก 47 ขาดลอย • รวม <strong>508p</strong> พุ่งขึ้น <strong>#7 SMBC League</strong> จี้ที่ 6 แค่ 4 แต้ม!) ต้องจัดตัวก่อนนอนคืนนี้!</p>
-                            <p>🔄 <strong>แผนย้ายตัว 1 FT (0 Hit):</strong> แนะนำขาย <strong>Guéhi (£6.0m • สำรอง 0 นาที เสี่ยงราคาตก) ➔ ซื้อ Ezri Konsa (£4.8m • ARS, Form 9.2 อันดับ 1 ของเกม!)</strong> ลงเปิดบ้านรับ Hull (FDR 2) ทันที เหลืองบอู้ฟู่ <strong>£2.2m</strong> <em>(หรือสายเซฟ Roll เก็บเป็น 2 FTs ไปลุย GW11)</em></p>
-                            <p>🧩 <strong>จัด 11 ตัวจริง GW10:</strong> ดึง <strong>Ødegaard (HUL เหย้า FDR 2)</strong> กลับมาลงตัวจริง! ดรอป <strong>McGinn (เยือน MUN)</strong> ไว้สำรองอันดับ 1</p>
-                            <p>👑 <strong>กัปตัน &amp; ชิป:</strong> ล็อก <strong>Erling Haaland (C)</strong> เยือน NFO (FDR 2) | รอง <strong>Evanilson (VC • Form 8.5)</strong> เยือน IPS และ <strong>เก็บ Bench Boost 1 (BB1) ไว้กดใน GW11</strong> เปิดฉาก Phase 2 (เริ่มนับ 0 ใหม่)!</p>
+                            <p>✅ <strong>จัดทัพ GW10 สมบูรณ์แบบ 100%!:</strong> คุณกดดีล <strong>Guéhi ➔ Ezri Konsa (£4.8m • ARS)</strong> (0 แต้มลบ) + ดึง <strong>Ødegaard</strong> ลงตัวจริงตามแผนเป๊ะ! มูลค่าทีมพุ่งเป็น <strong>£100.8m</strong> พร้อมเงินสดในคลัง <strong>£2.2m</strong>!</p>
+                            <p>⚡ <strong>เกาะติด GW10 สดคืนนี้ &amp; พรุ่งนี้:</strong> ตอนนี้ <strong>Van Hecke</strong> กำลังเตะสดเยือนลีดส์ (0-0) | คืนนี้ <strong>22:00 น.</strong> ลุ้น 3 ประสานปืนใหญ่ <strong>Raya + Konsa + Ødegaard (รับ HUL)</strong> | <strong>00:30 น.</strong> ลุ้นกัปตัน <strong>Haaland (C) + Gvardiol (เยือน NFO)</strong> และพรุ่งนี้เหลืออีก 5 ตัวหลัก!</p>
+                            <p>🚀 <strong>แผนต่อไป GW11 (เสาร์ 21 พ.ย. 18:00 น. • เปิดฉาก SMBC Phase 2):</strong> หลังพักเบรกทีมชาติ 2 สัปดาห์ คะแนน Phase 2 จะรีเซ็ตเริ่ม <strong>0 แต้มใหม่ทุกคน</strong> ➔ เตรียมกดชิป <strong>Bench Boost 1 (BB1)</strong> เมื่อทั้ง 15 คนเป็นตัวจริงครบ 100% และเจอโปรแกรมเขียวพร้อมกันยกแผง!</p>
                         </div>
                     </div>
 
@@ -699,36 +698,36 @@
                 <div class="mt-6 pt-6 border-t border-slate-200">
                     <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
                         <h3 class="text-sm font-bold text-sky-900 flex items-center gap-2">
-                            <i class="fa-solid fa-lightbulb text-amber-500"></i> สูตรและกลยุทธ์การย้ายตัวแนะนำสำหรับสัปดาห์นี้ (Recommended Move Sets):
+                            <i class="fa-solid fa-lightbulb text-amber-500"></i> สูตรและกลยุทธ์การย้ายตัวแนะนำสำหรับสัปดาห์ถัดไป (Recommended Move Sets):
                         </h3>
-                        <span id="transfer-presets-gw-badge" class="text-[11px] bg-rose-100 text-rose-900 border border-rose-300 px-2.5 py-0.5 rounded-full font-bold">GW10 • เดดไลน์คืนนี้ 01:30 น.! 🚨</span>
+                        <span id="transfer-presets-gw-badge" class="text-[11px] bg-emerald-100 text-emerald-900 border border-emerald-300 px-2.5 py-0.5 rounded-full font-bold">GW11 • เปิดหัว Phase 2 + กด BB1! 🚀 (1 FT • งบ £2.2m)</span>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5" id="transfer-presets-grid">
-                        <div class="glass-card bg-emerald-50/75 p-3.5 rounded-xl border border-emerald-300 hover:border-emerald-500 transition cursor-pointer" onclick="applyPresetTransfer('GUEHI_TO_KONSA')">
+                        <div class="glass-card bg-emerald-50/75 p-3.5 rounded-xl border border-emerald-300 hover:border-emerald-500 transition cursor-pointer" onclick="applyPresetTransfer('BB1_ROLL_GW11')">
                             <div class="flex justify-between items-center text-xs mb-1.5">
-                                <span class="font-bold text-emerald-900">สูตร 1: บุกเต็มสูบ GW10 (แนะนำที่สุด ⭐)</span>
-                                <span class="bg-emerald-200/80 text-emerald-950 border border-emerald-300 text-[10px] px-1.5 py-0.5 rounded font-semibold">1 FT (0 Hit)</span>
+                                <span class="font-bold text-emerald-900">สูตร 1: กด BB1 + Roll 1 FT (แนะนำที่สุด ⭐)</span>
+                                <span class="bg-emerald-200/80 text-emerald-950 border border-emerald-300 text-[10px] px-1.5 py-0.5 rounded font-semibold">0 Transfer + BB1 🚀</span>
                             </div>
-                            <p class="text-xs text-slate-800"><strong>Guéhi</strong> (£6.0m • MCI) ➔ <strong>Konsa</strong> (£4.8m • ARS)</p>
-                            <p class="text-[11px] text-slate-600 mt-1">โละสำรอง 0 นาทีก่อนราคาตก คว้ากองหลัง Form 9.2 เปิดบ้านรับ HUL (FDR 2) เหลืองบ £2.2m รอกด BB1 ใน GW11!</p>
+                            <p class="text-xs text-slate-800"><strong>กดชิป Bench Boost 1</strong> + <strong>เก็บ 1 FT ➔ 2 FTs</strong></p>
+                            <p class="text-[11px] text-slate-600 mt-1">หลังได้ Konsa เข้าทีม ทั้ง 15 คนเป็นตัวจริงครบ 100%! กด BB1 เปิดฉาก Phase 2 (เริ่มนับ 0 ใหม่) แล้วถือ 2 FTs + £2.2m ไปลุย GW12!</p>
                         </div>
 
-                        <div class="glass-card bg-sky-50/75 p-3.5 rounded-xl border border-sky-300 hover:border-sky-500 transition cursor-pointer" onclick="applyPresetTransfer('GUEHI_TO_VUSKOVIC')">
+                        <div class="glass-card bg-sky-50/75 p-3.5 rounded-xl border border-sky-300 hover:border-sky-500 transition cursor-pointer" onclick="applyPresetTransfer('COLWILL_TO_VUSKOVIC')">
                             <div class="flex justify-between items-center text-xs mb-1.5">
-                                <span class="font-bold text-sky-900">สูตร 2: สายปูพรมยาว GW11 BB1</span>
+                                <span class="font-bold text-sky-900">สูตร 2: อัปเกรดตัวที่ 15 รับชิป BB1</span>
                                 <span class="bg-sky-200/80 text-sky-950 border border-sky-300 text-[10px] px-1.5 py-0.5 rounded font-semibold">1 FT (0 Hit)</span>
                             </div>
-                            <p class="text-xs text-slate-800"><strong>Guéhi</strong> (£6.0m • MCI) ➔ <strong>Vuskovic</strong> (£5.2m • BHA)</p>
-                            <p class="text-[11px] text-slate-600 mt-1">เซ็นเตอร์ตัวหลักไบรท์ตัน (58 แต้ม • Form 6.5) รับมือ BRE (H) แล้วบุก HUL (A, FDR 2) รับชิป BB1 ใน GW11 เหลืองบ £1.8m</p>
+                            <p class="text-xs text-slate-800"><strong>Colwill</strong> (£4.8m • CHE) ➔ <strong>Vuskovic</strong> (£5.2m • BHA)</p>
+                            <p class="text-[11px] text-slate-600 mt-1">เปลี่ยนแนวรับสำรองเป็นเซ็นเตอร์ตัวตึงไบรท์ตัน (58 แต้ม) บุกเยือน HUL (A, FDR 2) ในสัปดาห์ BB1 เหลืองบ £1.8m</p>
                         </div>
 
-                        <div class="glass-card bg-violet-50/75 p-3.5 rounded-xl border border-violet-300 hover:border-violet-500 transition cursor-pointer" onclick="applyPresetTransfer('ROLL_FT')">
+                        <div class="glass-card bg-violet-50/75 p-3.5 rounded-xl border border-violet-300 hover:border-violet-500 transition cursor-pointer" onclick="applyPresetTransfer('ODEGAARD_TO_CHERKI')">
                             <div class="flex justify-between items-center text-xs mb-1.5">
-                                <span class="font-bold text-violet-900">สูตร 3: เพลย์เซฟข้ามเบรกทีมชาติ</span>
-                                <span class="bg-violet-200/80 text-violet-950 border border-violet-300 text-[10px] px-1.5 py-0.5 rounded font-semibold">0 Transfer</span>
+                                <span class="font-bold text-violet-900">สูตร 3: อัปเกรดมิดฟิลด์ด้วยงบ £2.2m</span>
+                                <span class="bg-violet-200/80 text-violet-950 border border-violet-300 text-[10px] px-1.5 py-0.5 rounded font-semibold">1 FT (0 Hit)</span>
                             </div>
-                            <p class="text-xs text-slate-800"><strong>เก็บ 1 FT ไว้</strong> ➔ สะสมเป็น <strong>2 FTs ใน GW11</strong></p>
-                            <p class="text-[11px] text-slate-600 mt-1">ส่ง Ødegaard ลงตัวจริงรับ HUL (H) แทน McGinn ดรอป Guéhi สำรอง 3 แล้วถือ 2 FTs รอเช็กตัวเจ็บหลังทีมชาติก่อนกด BB1</p>
+                            <p class="text-xs text-slate-800"><strong>Ødegaard</strong> (£6.7m • ARS) ➔ <strong>Cherki / Rice</strong> (£7.5m–£7.9m)</p>
+                            <p class="text-[11px] text-slate-600 mt-1">รอเช็กความฟิตหลังเบรกทีมชาติ 2 สัปดาห์ หากต้องการเพิ่มเกมรุก MCI (เหย้า FUL, FDR 2) ใน GW11 ใช้ 1 FT สลับได้ทันที</p>
                         </div>
                     </div>
                 </div>
@@ -801,10 +800,10 @@
                             <h3 class="font-bold text-sm text-emerald-950 flex items-center gap-2">
                                 🚀 Bench Boost (BB1 &amp; BB2)
                             </h3>
-                            <span id="chip-bb1-badge" class="text-[10px] bg-rose-100 text-rose-900 px-2.5 py-0.5 rounded-full font-bold border border-rose-300">BB1 ล็อกเป้า: GW11 เปิดหัว Phase 2! 🚀</span>
+                            <span id="chip-bb1-badge" class="text-[10px] bg-rose-100 text-rose-900 px-2.5 py-0.5 rounded-full font-bold border border-rose-300">BB1 ล็อกเป้า: GW11 เปิดหัว Phase 2 (21 พ.ย.)! 🚀</span>
                         </div>
                         <p class="text-xs text-slate-700">
-                            <strong>ทำไมต้อง GW11 (เสาร์ 21 พ.ย.):</strong> คืนนี้ (GW10) <strong>ยังไม่กด BB1</strong> เพราะต้องโละ Guéhi (0 นาที) ก่อนและมีคั่นเบรกทีมชาติ 2 สัปดาห์ พอเข้า <strong>GW11 แต้ม Phase 2 รีเซ็ตเป็น 0 ใหม่ทุกคน</strong> และทั้ง 15 คนเจอโปรแกรมเขียวพร้อมกันยกแผง (MCI เหย้า FUL, TOT เหย้า IPS, BHA เยือน HUL, BOU เหย้า NFO, AVL เหย้า SUN, CHE เหย้า LEE) ➔ กด BB1 ชิงจ่าฝูงตั้งแต่นัดแรก!
+                            <strong>พร้อม 100% สำหรับ GW11:</strong> หลังจากคุณดึง <strong>Konsa (£4.8m)</strong> แทน Guéhi ใน GW10 ทำให้ <strong>ทั้ง 15 คนในทีมเป็นตัวจริงครบ 100%</strong> พอเข้า <strong>GW11 (เสาร์ 21 พ.ย. 18:00 น.) แต้ม Phase 2 รีเซ็ตเป็น 0 ใหม่ทุกคน</strong> และเจอโปรแกรมเขียวพร้อมกันยกแผง (MCI เหย้า FUL, TOT เหย้า IPS, BHA เยือน HUL, BOU เหย้า NFO, AVL เหย้า SUN, CHE เหย้า LEE) ➔ กด BB1 ชิงจ่าฝูงตั้งแต่นัดแรก!
                         </p>
                     </div>
 
@@ -1205,11 +1204,16 @@
         }
 
         function renderAIRecommendations() {
-            const curGw = fplData?.current_gw || 9;
+            const curGw = fplData?.current_gw || 10;
             const nextGw = curGw + 1;
+            const curEventObj = (fplData?.bootstrap?.events || []).find(e => e.id === curGw);
+            const isCurFinished = curEventObj?.finished;
             const badge = document.getElementById('ai-rec-gw-badge');
             if (badge) {
-                if (nextGw === 10) {
+                if (!isCurFinished) {
+                    badge.innerText = `GW${curGw} Live ⚡ ➔ แผน GW${nextGw}`;
+                    badge.className = 'text-[10px] bg-emerald-100 text-emerald-900 px-2.5 py-0.5 rounded-full border border-emerald-300 font-bold shrink-0';
+                } else if (nextGw === 10) {
                     badge.innerText = `GW10 • คืนนี้ 01:30 น.!`;
                     badge.className = 'text-[10px] bg-rose-100 text-rose-900 px-2.5 py-0.5 rounded-full border border-rose-300 font-bold shrink-0';
                 } else {
@@ -1222,31 +1226,7 @@
             if (!container) return;
 
             let html = '';
-            if (nextGw === 6) {
-                html = `
-                    <p>🟢 <strong>GW6 Strategy:</strong> แนะนำให้ <strong>Roll Transfer (ไม่เปลี่ยนตัว)</strong> เพื่อสะสมเป็น 2 Free Transfers ไว้สู้ศึกใหญ่และช่วงชิปแตกใน GW7-GW8</p>
-                    <p>👑 <strong>Captaincy Differential:</strong> วาง <strong>Bukayo Saka (C)</strong> หรือ <strong>Martin Ødegaard (C)</strong> เปิดบ้านดวล ลีดส์ ยูไนเต็ด (FDR: 2) เป็นหมัดเด็ดฟันแต้มแซงคู่แข่ง หรือเพลย์เซฟด้วย <strong>Erling Haaland (C)</strong></p>
-                    <p>🎯 <strong>SMBC Phase 1 Roadmap:</strong> สัปดาห์ถัดไป (GW7) แมนฯ ซิตี้ พบ อิปสวิช ในบ้าน (FDR: 2) เตรียมกดใช้ <strong>Triple Captain 1 (TC1)</strong> ให้ Haaland ตามแผนยุทธศาสตร์ 4 ระยะ!</p>
-                `;
-            } else if (nextGw === 7) {
-                html = `
-                    <p>👑 <strong>GW7 Triple Captain Alert:</strong> แมนฯ ซิตี้ vs อิปสวิช ในบ้าน (FDR: 2) ➔ ถึงเวลากดใช้ <strong>Triple Captain 1 (TC1)</strong> ให้ Erling Haaland เพื่อกวาด 40-50+ แต้มไล่จ่าฝูง!</p>
-                    <p>🟢 <strong>Transfer Strategy:</strong> ใช้โควตา 2 Free Transfers ปรับโครงสร้างเพื่อเตรียมรับมือสัปดาห์ Wildcard 1 ใน GW8</p>
-                    <p>🎯 <strong>Target Checkpoint:</strong> เตรียมเร่งสปีดแต้มเพื่อทะยานขึ้นอันดับ 1 ของ SMBC League ใน GW10</p>
-                `;
-            } else if (nextGw === 8) {
-                html = `
-                    <p>🚨 <strong>ด่วน! เส้นตายคืนนี้ (00:30 น.):</strong> GW8 มีคู่ Friday Night เตะตี 2 ต้องกดยืนยันจัดทีมก่อนเที่ยงคืนครึ่งคืนนี้!</p>
-                    <p>🔄 <strong>แผนหลัก 2 Free Transfers (0 แต้มลบ):</strong> ใช้สิทธิ์ฟรี 2 ตัวแก้จุดอ่อนด่วน <strong>1) Saka (เจ็บ 50%) ➔ Mbeumo (£7.9m)</strong> และ <strong>2) Steele ➔ Raya (£6.1m)</strong> เหลืองบ £0.6m ได้ประตูมือ 1 เฝ้าบ้านรับเอฟเวอร์ตันแทนการส่ง Verbruggen ไปเยือนแอนฟิลด์!</p>
-                    <p>👑 <strong>Captaincy GW8:</strong> วาง <strong>Erling Haaland (C)</strong> เยือนวิลล่า (Form 9.5) หรือหมัดเด็ด <strong>João Pedro (VC/C)</strong> เปิดบ้านพบสเปอร์สอันดับ 16 (FDR: 2)</p>
-                `;
-            } else if (nextGw === 9) {
-                html = `
-                    <p>🃏 <strong>GW9 Wildcard 1 Alert (เส้นตาย เสาร์ 31 ต.ค. 18:00 น.):</strong> ทีมเผชิญพายุตัวเจ็บ-สำรองรวม 6 คน แต่มีเพียง <strong>1 FT</strong> ➔ กดใช้ <strong>Wildcard 1 (WC1)</strong> รื้อทีมใหม่หมดแบบ 0 แต้มลบ แถมรักษาโควตา 1 FT ข้ามไป GW10!</p>
-                    <p>🚀 <strong>Super-15 รับ Bench Boost 1:</strong> กวาดแข้งโปรแกรมเขียวเข้าทีมครบ 15 คน พร้อมต่อยอดกดชิป <strong>BB1</strong>!</p>
-                    <p>👑 <strong>Captaincy GW9:</strong> ล็อกปลอกแขน <strong>Erling Haaland (C)</strong> เปิดบ้านดวลไบรท์ตัน | รองกัปตัน <strong>Evanilson (VC)</strong></p>
-                `;
-            } else if (nextGw === 10) {
+            if (nextGw === 10) {
                 html = `
                     <p>🚨 <strong>ด่วนที่สุด! เดดไลน์ GW10 คืนนี้ 01:30 น. (เช้ามืดเสาร์ 7 พ.ย.):</strong> GW9 สรุปผล Official กวาด <strong>67 แต้ม</strong> (ชนะค่าเฉลี่ยโลก 47 ขาดลอย • รวม <strong>508p</strong> พุ่งขึ้น <strong>#7 SMBC League</strong> จี้ที่ 6 แค่ 4 แต้ม!) ต้องจัดตัวก่อนนอนคืนนี้!</p>
                     <p>🔄 <strong>แผนย้ายตัว 1 FT (0 Hit):</strong> แนะนำขาย <strong>Guéhi (£6.0m • สำรอง 0 นาที เสี่ยงราคาตก) ➔ ซื้อ Ezri Konsa (£4.8m • ARS, Form 9.2 อันดับ 1 ของเกม!)</strong> ลงเปิดบ้านรับ Hull (FDR 2) ทันที เหลืองบอู้ฟู่ <strong>£2.2m</strong> <em>(หรือสายเซฟ Roll เก็บเป็น 2 FTs ไปลุย GW11)</em></p>
@@ -1255,9 +1235,9 @@
                 `;
             } else if (nextGw === 11) {
                 html = `
-                    <p>🚀 <strong>GW11 เปิดฉาก SMBC Phase 2 (เริ่มนับ 0 ใหม่ทุกคน!):</strong> ได้จังหวะทองกดชิป <strong>Bench Boost 1 (BB1)</strong> เมื่อทั้ง 15 คนเจอโปรแกรมเขียวพร้อมกันยกแผงหลังพักเบรกทีมชาติ (เดดไลน์ เสาร์ 21 พ.ย. 18:00 น.)</p>
-                    <p>🔍 <strong>เช็กความฟิตหลังทีมชาติ:</strong> ใช้โควตา FT + เงินสำรองในคลังปรับตัวที่มีธงเหลือง/แดงให้ลงครบ 90 นาทีทั้ง 15 คนก่อนกดยืนยันชิป BB1</p>
-                    <p>👑 <strong>Captaincy GW11:</strong> ล็อกปลอกแขน <strong>Erling Haaland (C)</strong> เปิดบ้านดวลฟูแล่ม (FDR 2) ล่าจ่าฝูง Phase 2 ตั้งแต่นัดแรก!</p>
+                    <p>✅ <strong>จัดทัพ GW10 สมบูรณ์แบบ 100%!:</strong> คุณกดดีล <strong>Guéhi ➔ Ezri Konsa (£4.8m • ARS)</strong> (0 แต้มลบ) + ส่ง <strong>Ødegaard</strong> ลงตัวจริงตามแผนเป๊ะ! มูลค่าทีมพุ่งทะยานเป็น <strong>£100.8m</strong> พร้อมเงินสดในคลัง <strong>£2.2m</strong>!</p>
+                    <p>⚡ <strong>คิวแข่ง GW10 คืนนี้ &amp; พรุ่งนี้:</strong> ลุ้นคลีนชีต <strong>Van Hecke (เยือน LEE)</strong> | คืนนี้ <strong>22:00 น.</strong> เชียร์ 3 ขุนพลปืนใหญ่ <strong>Raya + Konsa + Ødegaard (เหย้า HUL)</strong> | <strong>00:30 น.</strong> ลุ้นกัปตัน <strong>Haaland (C ×2) + Gvardiol (เยือน NFO)</strong> และวันอาทิตย์อีก 5 ตัวจริง!</p>
+                    <p>🚀 <strong>แผนหลัก GW11 (เสาร์ 21 พ.ย. 18:00 น. • เปิดฉาก SMBC Phase 2):</strong> หลังเบรกทีมชาติ 2 สัปดาห์ คะแนน Phase 2 จะรีเซ็ตเริ่ม <strong>0 แต้มใหม่ทุกคน</strong> ➔ เตรียมกดชิป <strong>Bench Boost 1 (BB1)</strong> ทันที (ทั้ง 15 คนเป็นตัวจริงครบ 100% และเจอโปรแกรมเขียวพร้อมกันยกแผง) แนะนำ <strong>Roll 1 FT ➔ เก็บเป็น 2 FTs</strong> ไปลุย GW12 ยกเว้นมีตัวเจ็บจากทีมชาติ!</p>
                 `;
             } else {
                 html = `
@@ -1271,28 +1251,38 @@
 
         function renderHeaderAndStats() {
             const entry = fplData.entry || {};
-            const currentGw = fplData.current_gw || 9;
+            const currentGw = fplData.current_gw || 10;
+            const curEventObj = (fplData?.bootstrap?.events || []).find(e => e.id === currentGw);
+            const isFinished = Boolean(curEventObj?.finished);
 
-            document.getElementById('current-gw-label').innerText = currentGw;
+            const statusBadge = document.getElementById('current-gw-status-badge');
+            if (statusBadge) {
+                statusBadge.innerHTML = `GW<span id="current-gw-label">${currentGw}</span> ${isFinished ? 'Official' : 'Live ⚡'}`;
+                statusBadge.className = isFinished
+                    ? 'text-xs bg-emerald-100 text-emerald-900 px-2.5 py-0.5 rounded-full border border-emerald-300 font-semibold'
+                    : 'text-xs bg-amber-100 text-amber-950 px-2.5 py-0.5 rounded-full border border-amber-300 font-bold';
+            } else {
+                const gwLbl = document.getElementById('current-gw-label');
+                if (gwLbl) gwLbl.innerText = currentGw;
+            }
             const statGwNum = document.getElementById('stat-gw-num');
             if (statGwNum) statGwNum.innerText = currentGw;
             document.getElementById('header-team-name').innerText = entry.name || 'Keekee';
             document.getElementById('header-manager-name').innerText = `${entry.player_first_name || ''} ${entry.player_last_name || ''}`;
             const updateBadge = document.getElementById('header-updated-time');
-            if (updateBadge) updateBadge.innerText = `อัปเดตล่าสุด: GW${currentGw} (${entry.summary_overall_points || 508} แต้ม)`;
+            if (updateBadge) updateBadge.innerText = `อัปเดตล่าสุด: GW${currentGw} ${isFinished ? 'Official' : 'Live'} (${entry.summary_overall_points || 509} แต้ม)`;
             
-            document.getElementById('stat-overall-pts').innerText = entry.summary_overall_points || 508;
-            document.getElementById('stat-gw-pts').innerText = entry.summary_event_points !== undefined ? entry.summary_event_points : 67;
-            const curEventObj = (fplData?.bootstrap?.events || []).find(e => e.id === currentGw);
+            document.getElementById('stat-overall-pts').innerText = entry.summary_overall_points || 509;
+            document.getElementById('stat-gw-pts').innerText = entry.summary_event_points !== undefined ? entry.summary_event_points : 1;
             const avgBadge = document.getElementById('stat-gw-avg-badge');
             if (avgBadge) {
-                avgBadge.innerText = curEventObj?.average_entry_score ? `Avg ${curEventObj.average_entry_score}` : 'pts';
+                avgBadge.innerText = curEventObj?.average_entry_score ? `Avg ${curEventObj.average_entry_score}${isFinished ? '' : ' • Live'}` : 'pts';
             }
-            document.getElementById('stat-overall-rank').innerText = (entry.summary_overall_rank ? (entry.summary_overall_rank / 1000000).toFixed(1) + 'M' : '4.8M');
+            document.getElementById('stat-overall-rank').innerText = (entry.summary_overall_rank ? (entry.summary_overall_rank / 1000000).toFixed(1) + 'M' : '4.9M');
             
             const picks = fplData.picks || {};
-            const bank = (picks.entry_history?.bank !== undefined ? picks.entry_history.bank / 10 : 1.0).toFixed(1);
-            const value = (picks.entry_history?.value ? picks.entry_history.value / 10 : 100.2).toFixed(1);
+            const bank = (picks.entry_history?.bank !== undefined ? picks.entry_history.bank / 10 : 2.2).toFixed(1);
+            const value = (picks.entry_history?.value ? picks.entry_history.value / 10 : 100.8).toFixed(1);
             document.getElementById('stat-bank').innerText = '£' + bank + 'm';
             document.getElementById('stat-team-value').innerText = '£' + value + 'm';
             if (!transferOutPlayer && !transferInPlayer) {
@@ -1319,16 +1309,7 @@
 
             const ftBadge = document.getElementById('stat-ft-badge');
             if (ftBadge) {
-                if (currentGw === 6) {
-                    ftBadge.innerText = `GW7: TC Alert 🚨`;
-                    ftBadge.className = 'text-[10px] bg-amber-100 text-amber-900 border border-amber-300 px-1.5 py-0.5 rounded-md font-bold';
-                } else if (currentGw === 7) {
-                    ftBadge.innerText = `GW8: ใช้ 2 FTs ลุย!`;
-                    ftBadge.className = 'text-[10px] bg-emerald-100 text-emerald-900 border border-emerald-300 px-1.5 py-0.5 rounded-md font-bold';
-                } else if (currentGw === 8) {
-                    ftBadge.innerText = `GW9: กด WC1 ลุย! 🃏`;
-                    ftBadge.className = 'text-[10px] bg-violet-100 text-violet-950 px-1.5 py-0.5 rounded-md font-bold border border-violet-300';
-                } else if (currentGw === 9) {
+                if (currentGw === 9) {
                     ftBadge.innerText = `GW10 คืนนี้ 01:30! 🚨`;
                     ftBadge.className = 'text-[10px] bg-rose-100 text-rose-900 border border-rose-300 px-1.5 py-0.5 rounded-md font-bold';
                 } else if (currentGw === 10) {
@@ -1468,6 +1449,8 @@
             const autoSubs = fplData?.picks?.automatic_subs || [];
             const autoInSet = new Set(autoSubs.map(s => s.element_in));
             const autoOutSet = new Set(autoSubs.map(s => s.element_out));
+            const curGw = fplData?.current_gw || 10;
+            const gwFixtures = (fplData?.fixtures || []).filter(f => f.event === curGw);
             const liveMap = {};
             (fplData?.live?.elements || []).forEach(el => {
                 liveMap[el.id] = el.stats;
@@ -1488,6 +1471,21 @@
                     ? `<span class="text-[9px] bg-emerald-100 text-emerald-900 border border-emerald-300 px-1 rounded font-bold ml-1">⬆️Auto</span>`
                     : (autoOutSet.has(p.id) ? `<span class="text-[9px] bg-rose-100 text-rose-900 border border-rose-300 px-1 rounded font-bold ml-1">⬇️Auto</span>` : '');
 
+                const fix = gwFixtures.find(f => f.team_h === p.team || f.team_a === p.team);
+                let statusText = `${min > 0 ? min + ' mins' : '0 mins (สำรอง)'}`;
+                if (fix) {
+                    const isHome = fix.team_h === p.team;
+                    const opp = getTeam(isHome ? fix.team_a : fix.team_h);
+                    const oppLabel = `${opp?.short_name || ''} (${isHome ? 'H' : 'A'})`;
+                    if (!fix.started) {
+                        statusText = `⏳ รอเตะ vs ${oppLabel}`;
+                    } else if (!fix.finished_provisional) {
+                        statusText = `⚡ LIVE (${min} mins)`;
+                    } else {
+                        statusText = min > 0 ? `${min} mins (จบเกม)` : `0 mins (สำรอง)`;
+                    }
+                }
+
                 return `
                     <div onclick="openPlayerModal(${p.id})" class="p-2.5 rounded-xl ${isStarter ? 'bg-emerald-50/50 border-slate-200 hover:border-emerald-300' : 'bg-slate-50/90 border-slate-200 hover:border-slate-300'} border flex items-center justify-between text-xs cursor-pointer transition">
                         <div class="flex items-center gap-2 min-w-0">
@@ -1499,7 +1497,7 @@
                         </div>
                         <div class="text-right shrink-0">
                             <span class="font-black ${displayPts >= 6 ? 'text-emerald-800' : (displayPts > 0 ? 'text-slate-800' : 'text-slate-500')}">${displayPts} pts</span>
-                            <span class="text-[10px] text-slate-500 block">${min > 0 ? min + ' mins' : '0 mins (สำรอง)'}</span>
+                            <span class="text-[10px] text-slate-500 block">${statusText}</span>
                         </div>
                     </div>
                 `;
@@ -1508,10 +1506,9 @@
             document.getElementById('squad-performance-list').innerHTML = html;
             const perfGw = document.getElementById('squad-perf-gw');
             if (perfGw) {
-                const curGw = fplData?.current_gw || 9;
                 const curEventObj = (fplData?.bootstrap?.events || []).find(e => e.id === curGw);
                 const isFinished = curEventObj?.finished;
-                const eventPts = fplData?.entry?.summary_event_points !== undefined ? fplData.entry.summary_event_points : 67;
+                const eventPts = fplData?.entry?.summary_event_points !== undefined ? fplData.entry.summary_event_points : 1;
                 perfGw.innerText = `GW${curGw} ${isFinished ? 'Official' : 'Live ⚡'} (${eventPts} pts)`;
             }
         }
@@ -1760,13 +1757,23 @@
                     .sort((a, b) => a.event - b.event);
 
                 const playedCount = phaseRounds.length;
-                const grossPts = phaseRounds.reduce((sum, r) => sum + (r.points || 0), 0);
+                const grossPts = phaseRounds.reduce((sum, r) => {
+                    const roundPts = (r.event === curGw && row.event_total !== undefined)
+                        ? Math.max(r.points || 0, row.event_total || 0)
+                        : (r.points || 0);
+                    return sum + roundPts;
+                }, 0);
                 const hitsCost = phaseRounds.reduce((sum, r) => sum + (r.event_transfers_cost || 0), 0);
                 const netPts = grossPts - hitsCost;
 
                 const lastRound = playedCount > 0 ? phaseRounds[playedCount - 1] : null;
                 const latestGwNum = lastRound ? lastRound.event : null;
-                const latestGwNet = lastRound ? ((lastRound.points || 0) - (lastRound.event_transfers_cost || 0)) : 0;
+                const lastRoundGross = lastRound
+                    ? ((lastRound.event === curGw && row.event_total !== undefined)
+                        ? Math.max(lastRound.points || 0, row.event_total || 0)
+                        : (lastRound.points || 0))
+                    : 0;
+                const latestGwNet = lastRound ? (lastRoundGross - (lastRound.event_transfers_cost || 0)) : 0;
 
                 const phaseChips = (hist.chips || [])
                     .filter(c => c.event >= phase.startGw && c.event <= phase.endGw)
@@ -1919,16 +1926,16 @@
 
         // ================= TRANSFER PLANNER =================
         function renderTransferPresets() {
-            const curGw = fplData?.current_gw || 9;
+            const curGw = fplData?.current_gw || 10;
             const nextGw = curGw + 1;
             const ft = window.currentFreeTransfers || 1;
-            const bank = (fplData?.picks?.entry_history?.bank !== undefined ? fplData.picks.entry_history.bank / 10 : 1.0);
+            const bank = (fplData?.picks?.entry_history?.bank !== undefined ? fplData.picks.entry_history.bank / 10 : 2.2);
 
             const badge = document.getElementById('transfer-presets-gw-badge');
             if (badge) {
-                if (nextGw === 10) {
-                    badge.innerText = `GW10 • เดดไลน์คืนนี้ 01:30 น.! 🚨 (${ft} FT)`;
-                    badge.className = 'text-[11px] bg-rose-100 text-rose-900 border border-rose-300 px-2.5 py-0.5 rounded-full font-bold';
+                if (nextGw === 11) {
+                    badge.innerText = `GW11 • เปิดหัว SMBC รอบ 2 + BB1 🚀 (${ft} FT • £${bank.toFixed(1)}m ITB)`;
+                    badge.className = 'text-[11px] bg-emerald-100 text-emerald-900 border border-emerald-300 px-2.5 py-0.5 rounded-full font-bold';
                 } else {
                     badge.innerText = `GW${nextGw} • โควตาปัจจุบัน ${ft} FT${ft > 1 ? 's' : ''}`;
                     badge.className = 'text-[11px] bg-emerald-100 text-emerald-900 border border-emerald-300 px-2.5 py-0.5 rounded-full font-bold';
@@ -1938,83 +1945,88 @@
             const grid = document.getElementById('transfer-presets-grid');
             if (!grid) return;
 
-            const guehi = (fplData?.bootstrap?.elements || []).find(p => p.id === 388 || p.web_name === 'Guéhi');
-            const konsa = (fplData?.bootstrap?.elements || []).find(p => p.id === 31 || p.web_name === 'Konsa');
+            const colwill = (fplData?.bootstrap?.elements || []).find(p => p.id === 149 || p.web_name === 'Colwill');
             const vuskovic = (fplData?.bootstrap?.elements || []).find(p => p.id === 504 || p.web_name === 'Vuskovic');
+            const odegaard = (fplData?.bootstrap?.elements || []).find(p => p.id === 15 || p.web_name === 'Ødegaard');
+            const cherki = (fplData?.bootstrap?.elements || []).find(p => p.id === 399 || p.web_name === 'Cherki');
+            const rice = (fplData?.bootstrap?.elements || []).find(p => p.id === 13 || p.web_name === 'Rice');
 
-            const gPrice = guehi ? (guehi.now_cost / 10).toFixed(1) : '6.0';
-            const kPrice = konsa ? (konsa.now_cost / 10).toFixed(1) : '4.8';
-            const kForm = konsa?.form || '9.2';
-            const kBank = (bank + parseFloat(gPrice) - parseFloat(kPrice)).toFixed(1);
-
+            const cPrice = colwill ? (colwill.now_cost / 10).toFixed(1) : '4.8';
             const vPrice = vuskovic ? (vuskovic.now_cost / 10).toFixed(1) : '5.2';
             const vPts = vuskovic?.total_points || 58;
-            const vForm = vuskovic?.form || '6.5';
-            const vBank = (bank + parseFloat(gPrice) - parseFloat(vPrice)).toFixed(1);
+            const vBank = (bank + parseFloat(cPrice) - parseFloat(vPrice)).toFixed(1);
 
-            if (nextGw === 10) {
+            const oPrice = odegaard ? (odegaard.now_cost / 10).toFixed(1) : '6.7';
+            const chPrice = cherki ? (cherki.now_cost / 10).toFixed(1) : '7.9';
+            const chBank = (bank + parseFloat(oPrice) - parseFloat(chPrice)).toFixed(1);
+            const rPrice = rice ? (rice.now_cost / 10).toFixed(1) : '7.5';
+            const rForm = rice?.form || '5.4';
+            const rBank = (bank + parseFloat(oPrice) - parseFloat(rPrice)).toFixed(1);
+
+            if (nextGw === 11) {
                 grid.innerHTML = `
-                    <div class="glass-card bg-emerald-50/75 p-3.5 rounded-xl border border-emerald-300 hover:border-emerald-500 transition cursor-pointer" onclick="applyPresetTransfer('GUEHI_TO_KONSA')">
+                    <div class="glass-card bg-emerald-50/75 p-3.5 rounded-xl border border-emerald-300 hover:border-emerald-500 transition cursor-pointer" onclick="applyPresetTransfer('BB1_ROLL_GW11')">
                         <div class="flex justify-between items-center text-xs mb-1.5">
-                            <span class="font-bold text-emerald-900">สูตร 1: บุกเต็มสูบ GW10 (แนะนำที่สุด ⭐)</span>
-                            <span class="bg-emerald-200/80 text-emerald-950 border border-emerald-300 text-[10px] px-1.5 py-0.5 rounded font-semibold">1 FT (0 Hit)</span>
+                            <span class="font-bold text-emerald-900">สูตร 1: กด BB1 + Roll FT (แนะนำที่สุด ⭐)</span>
+                            <span class="bg-emerald-200/80 text-emerald-950 border border-emerald-300 text-[10px] px-1.5 py-0.5 rounded font-semibold">BB1 + 0 Hit</span>
                         </div>
-                        <p class="text-xs text-slate-800"><strong>Guéhi</strong> (£${gPrice}m • MCI) ➔ <strong>Konsa</strong> (£${kPrice}m • ARS)</p>
-                        <p class="text-[11px] text-slate-600 mt-1">โละสำรอง 0 นาทีก่อนราคาตก คว้ากองหลัง Form ${kForm} เปิดบ้านรับ HUL (FDR 2) เหลืองบ <strong>£${kBank}m</strong> รอกด BB1 ใน GW11!</p>
+                        <p class="text-xs text-slate-800"><strong>กดชิป Bench Boost 1</strong> + <strong>เก็บ ${ft} FT ➔ ${Math.min(5, ft + 1)} FTs ใน GW12</strong></p>
+                        <p class="text-[11px] text-slate-600 mt-1">15 ขุนพลเป็นตัวจริงครบ 100% หลังได้ Konsa! กวาดแต้มสำรอง (Kinský IPS H, Groß HUL A, McGinn SUN H, Colwill LEE H) แล้วถือ ${Math.min(5, ft + 1)} FTs + £${bank.toFixed(1)}m ลุย GW12!</p>
                     </div>
 
-                    <div class="glass-card bg-sky-50/75 p-3.5 rounded-xl border border-sky-300 hover:border-sky-500 transition cursor-pointer" onclick="applyPresetTransfer('GUEHI_TO_VUSKOVIC')">
+                    <div class="glass-card bg-sky-50/75 p-3.5 rounded-xl border border-sky-300 hover:border-sky-500 transition cursor-pointer" onclick="applyPresetTransfer('COLWILL_TO_VUSKOVIC')">
                         <div class="flex justify-between items-center text-xs mb-1.5">
-                            <span class="font-bold text-sky-900">สูตร 2: สายปูพรมยาว GW11 BB1</span>
+                            <span class="font-bold text-sky-900">สูตร 2: อัปเกรดแนวรับรับชิป BB1</span>
                             <span class="bg-sky-200/80 text-sky-950 border border-sky-300 text-[10px] px-1.5 py-0.5 rounded font-semibold">1 FT (0 Hit)</span>
                         </div>
-                        <p class="text-xs text-slate-800"><strong>Guéhi</strong> (£${gPrice}m • MCI) ➔ <strong>Vuskovic</strong> (£${vPrice}m • BHA)</p>
-                        <p class="text-[11px] text-slate-600 mt-1">เซ็นเตอร์ตัวหลักไบรท์ตัน (${vPts} แต้ม • Form ${vForm}) รับมือ BRE (H) แล้วบุก HUL (A, FDR 2) รับชิป BB1 ใน GW11 เหลืองบ <strong>£${vBank}m</strong></p>
+                        <p class="text-xs text-slate-800"><strong>Colwill</strong> (£${cPrice}m • CHE) ➔ <strong>Vuskovic</strong> (£${vPrice}m • BHA)</p>
+                        <p class="text-[11px] text-slate-600 mt-1">เปลี่ยนกองหลังตัวที่ 15 เป็นเซ็นเตอร์จอมโหม่งไบรท์ตัน (${vPts} แต้มรวม) บุกเยือน HUL (A, FDR 2) ในสัปดาห์กด BB1 เหลืองบ <strong>£${vBank}m</strong></p>
                     </div>
 
-                    <div class="glass-card bg-violet-50/75 p-3.5 rounded-xl border border-violet-300 hover:border-violet-500 transition cursor-pointer" onclick="applyPresetTransfer('ROLL_FT')">
+                    <div class="glass-card bg-violet-50/75 p-3.5 rounded-xl border border-violet-300 hover:border-violet-500 transition cursor-pointer" onclick="applyPresetTransfer('ODEGAARD_TO_CHERKI')">
                         <div class="flex justify-between items-center text-xs mb-1.5">
-                            <span class="font-bold text-violet-900">สูตร 3: เพลย์เซฟข้ามเบรกทีมชาติ</span>
-                            <span class="bg-violet-200/80 text-violet-950 border border-violet-300 text-[10px] px-1.5 py-0.5 rounded font-semibold">0 Transfer</span>
+                            <span class="font-bold text-violet-900">สูตร 3: เติมเกมรุกเรือใบรับ FUL (H)</span>
+                            <span class="bg-violet-200/80 text-violet-950 border border-violet-300 text-[10px] px-1.5 py-0.5 rounded font-semibold">1 FT (0 Hit)</span>
                         </div>
-                        <p class="text-xs text-slate-800"><strong>เก็บ ${ft} FT ไว้</strong> ➔ สะสมเป็น <strong>${Math.min(5, ft + 1)} FTs ใน GW11</strong></p>
-                        <p class="text-[11px] text-slate-600 mt-1">ส่ง Ødegaard ลงตัวจริงรับ HUL (H) แทน McGinn ดรอป Guéhi สำรอง 3 แล้วถือ ${Math.min(5, ft + 1)} FTs รอเช็กตัวเจ็บหลังทีมชาติก่อนกด BB1</p>
+                        <p class="text-xs text-slate-800"><strong>Ødegaard</strong> (£${oPrice}m • ARS) ➔ <strong>Cherki</strong> (£${chPrice}m • MCI)</p>
+                        <p class="text-[11px] text-slate-600 mt-1">ใช้เงินในคลัง £${bank.toFixed(1)}m ดึงเพลย์เมกเกอร์แมนฯ ซิตี้ เปิดบ้านรับฟูแล่ม (FDR 2) หรือเลือก <strong>Rice</strong> (£${rPrice}m • Form ${rForm}) เหลืองบ <strong>£${chBank}m–£${rBank}m</strong></p>
                     </div>
                 `;
             } else {
                 grid.innerHTML = `
-                    <div class="glass-card bg-emerald-50/75 p-3.5 rounded-xl border border-emerald-300 hover:border-emerald-500 transition cursor-pointer" onclick="applyPresetTransfer('GUEHI_TO_KONSA')">
+                    <div class="glass-card bg-emerald-50/75 p-3.5 rounded-xl border border-emerald-300 hover:border-emerald-500 transition cursor-pointer" onclick="applyPresetTransfer('BB1_ROLL_GW11')">
                         <div class="flex justify-between items-center text-xs mb-1.5">
-                            <span class="font-bold text-emerald-900">สูตร 1: อัปเกรดแนวรับตัวจริงครบ 15 คน</span>
-                            <span class="bg-emerald-200/80 text-emerald-950 border border-emerald-300 text-[10px] px-1.5 py-0.5 rounded font-semibold">1 FT (0 Hit)</span>
-                        </div>
-                        <p class="text-xs text-slate-800"><strong>Guéhi</strong> (£${gPrice}m) ➔ <strong>Konsa</strong> (£${kPrice}m • ARS)</p>
-                        <p class="text-[11px] text-slate-600 mt-1">เติมกองหลังตัวจริง Form ${kForm} พร้อมปลดล็อกงบในคลังเป็น £${kBank}m สำหรับ GW${nextGw}</p>
-                    </div>
-                    <div class="glass-card bg-sky-50/75 p-3.5 rounded-xl border border-sky-300 hover:border-sky-500 transition cursor-pointer" onclick="applyPresetTransfer('GUEHI_TO_VUSKOVIC')">
-                        <div class="flex justify-between items-center text-xs mb-1.5">
-                            <span class="font-bold text-sky-900">สูตร 2: ขุมกำลังรับชิป Bench Boost</span>
-                            <span class="bg-sky-200/80 text-sky-950 border border-sky-300 text-[10px] px-1.5 py-0.5 rounded font-semibold">1 FT (0 Hit)</span>
-                        </div>
-                        <p class="text-xs text-slate-800"><strong>Guéhi</strong> (£${gPrice}m) ➔ <strong>Vuskovic</strong> (£${vPrice}m • BHA)</p>
-                        <p class="text-[11px] text-slate-600 mt-1">เน้นตัวจริง 90 นาทีเต็ม (${vPts} แต้มรวม) ลุยโปรแกรมเขียว GW${nextGw} เหลืองบ £${vBank}m</p>
-                    </div>
-                    <div class="glass-card bg-violet-50/75 p-3.5 rounded-xl border border-violet-300 hover:border-violet-500 transition cursor-pointer" onclick="applyPresetTransfer('ROLL_FT')">
-                        <div class="flex justify-between items-center text-xs mb-1.5">
-                            <span class="font-bold text-violet-900">สูตร 3: สะสมโควตา Roll Transfer</span>
-                            <span class="bg-violet-200/80 text-violet-950 border border-violet-300 text-[10px] px-1.5 py-0.5 rounded font-semibold">0 Transfer</span>
+                            <span class="font-bold text-emerald-900">สูตร 1: สะสมโควตา Roll Transfer</span>
+                            <span class="bg-emerald-200/80 text-emerald-950 border border-emerald-300 text-[10px] px-1.5 py-0.5 rounded font-semibold">0 Transfer</span>
                         </div>
                         <p class="text-xs text-slate-800"><strong>เก็บ ${ft} FT</strong> ➔ สะสมเป็น <strong>${Math.min(5, ft + 1)} FTs ใน GW${nextGw + 1}</strong></p>
-                        <p class="text-[11px] text-slate-600 mt-1">รักษาความยืดหยุ่นสูงสุดเมื่อผู้เล่นตัวหลักในทีมไม่มีอาการบาดเจ็บ</p>
+                        <p class="text-[11px] text-slate-600 mt-1">ขุมกำลังตัวจริงครบ 15 คน พร้อมงบสำรอง £${bank.toFixed(1)}m ในคลัง</p>
+                    </div>
+                    <div class="glass-card bg-sky-50/75 p-3.5 rounded-xl border border-sky-300 hover:border-sky-500 transition cursor-pointer" onclick="applyPresetTransfer('COLWILL_TO_VUSKOVIC')">
+                        <div class="flex justify-between items-center text-xs mb-1.5">
+                            <span class="font-bold text-sky-900">สูตร 2: อัปเกรดแนวรับตัวทำแต้ม</span>
+                            <span class="bg-sky-200/80 text-sky-950 border border-sky-300 text-[10px] px-1.5 py-0.5 rounded font-semibold">1 FT (0 Hit)</span>
+                        </div>
+                        <p class="text-xs text-slate-800"><strong>Colwill</strong> (£${cPrice}m) ➔ <strong>Vuskovic</strong> (£${vPrice}m • BHA)</p>
+                        <p class="text-[11px] text-slate-600 mt-1">เน้นตัวจริง 90 นาทีเต็ม (${vPts} แต้มรวม) ลุยโปรแกรมเขียว GW${nextGw} เหลืองบ £${vBank}m</p>
+                    </div>
+                    <div class="glass-card bg-violet-50/75 p-3.5 rounded-xl border border-violet-300 hover:border-violet-500 transition cursor-pointer" onclick="applyPresetTransfer('ODEGAARD_TO_CHERKI')">
+                        <div class="flex justify-between items-center text-xs mb-1.5">
+                            <span class="font-bold text-violet-900">สูตร 3: อัปเกรดแดนกลางด้วยงบ £${bank.toFixed(1)}m</span>
+                            <span class="bg-violet-200/80 text-violet-950 border border-violet-300 text-[10px] px-1.5 py-0.5 rounded font-semibold">1 FT (0 Hit)</span>
+                        </div>
+                        <p class="text-xs text-slate-800"><strong>Ødegaard</strong> (£${oPrice}m) ➔ <strong>Cherki</strong> (£${chPrice}m • MCI)</p>
+                        <p class="text-[11px] text-slate-600 mt-1">ขยับเพิ่มเพดานแต้มเกมรุกแมนฯ ซิตี้ เหลืองบในคลัง £${chBank}m</p>
                     </div>
                 `;
             }
         }
 
         function renderChipStrategy() {
-            const curGw = fplData?.current_gw || 9;
-            const totalPts = fplData?.entry?.summary_overall_points || 508;
-            const gwPts = fplData?.entry?.summary_event_points !== undefined ? fplData.entry.summary_event_points : 67;
+            const curGw = fplData?.current_gw || 10;
+            const curEventObj = (fplData?.bootstrap?.events || []).find(e => e.id === curGw);
+            const isCurFinished = curEventObj?.finished;
+            const totalPts = fplData?.entry?.summary_overall_points || 509;
             const chips = fplData?.history?.chips || [];
             const myTeamId = fplData?.team_id || 4554263;
             const smbcRank = (fplData?.league_standings?.['63159']?.standings?.results || []).find(r => r.entry === myTeamId)?.rank || 7;
@@ -2044,8 +2056,8 @@
 
             const tlLabel = document.getElementById('chip-tl-1-label');
             const tlVal = document.getElementById('chip-tl-1-val');
-            if (tlLabel) tlLabel.innerText = `GW1 - GW${curGw} (Official ✅)`;
-            if (tlVal) tlVal.innerText = `${totalPts}p (GW${curGw} กด ${gwPts}p • อันดับ #${smbcRank}! 🔥)`;
+            if (tlLabel) tlLabel.innerText = `GW1 - GW${curGw} (${isCurFinished ? 'Official ✅' : 'Live ⚡'})`;
+            if (tlVal) tlVal.innerText = `${totalPts}p (GW9 กด 67p • ที่ #${smbcRank} SMBC! 🔥)`;
         }
 
         function renderTransferSimulator() {
@@ -2162,21 +2174,27 @@
 
         function applyPresetTransfer(preset) {
             switchTab('transfer-tab');
-            if (preset === 'ROLL_FT') {
+            if (preset === 'BB1_ROLL_GW11' || preset === 'ROLL_FT') {
                 resetTransferSimulator();
-                showToast('กลยุทธ์เพลย์เซฟ: Roll 1 FT ข้ามเบรกทีมชาติ สะสมเป็น 2 FTs ก่อนกด BB1 ใน GW11', true);
+                showToast('กลยุทธ์แนะนำ GW11: กดชิป Bench Boost 1 (BB1) + Roll 1 FT สะสมเป็น 2 FTs ลุย GW12!', true);
+            } else if (preset === 'COLWILL_TO_VUSKOVIC') {
+                const colwill = (fplData?.bootstrap?.elements || []).find(p => p.id === 149 || p.web_name === 'Colwill');
+                const vuskovic = (fplData?.bootstrap?.elements || []).find(p => p.id === 504 || p.web_name === 'Vuskovic');
+                if (colwill) selectTransferOut(colwill.id);
+                if (vuskovic) selectTransferIn(vuskovic.id);
+                showToast('จำลองสูตร 2: ขาย Colwill (£4.8m) ➔ ซื้อ Vuskovic (£5.2m • BHA) เหลืองบ £1.8m ลุย BB1!', true);
+            } else if (preset === 'ODEGAARD_TO_CHERKI') {
+                const odegaard = (fplData?.bootstrap?.elements || []).find(p => p.id === 15 || p.web_name === 'Ødegaard');
+                const cherki = (fplData?.bootstrap?.elements || []).find(p => p.id === 399 || p.web_name === 'Cherki');
+                if (odegaard) selectTransferOut(odegaard.id);
+                if (cherki) selectTransferIn(cherki.id);
+                showToast('จำลองสูตร 3: ขาย Ødegaard (£6.7m) ➔ ซื้อ Cherki (£7.9m • MCI) เหลืองบ £1.0m!', true);
             } else if (preset === 'GUEHI_TO_KONSA') {
                 const guehi = (fplData?.bootstrap?.elements || []).find(p => p.id === 388 || p.web_name === 'Guéhi');
                 const konsa = (fplData?.bootstrap?.elements || []).find(p => p.id === 31 || p.web_name === 'Konsa');
                 if (guehi) selectTransferOut(guehi.id);
                 if (konsa) selectTransferIn(konsa.id);
-                showToast('จำลองสูตร 1: ขาย Guéhi (£6.0m) ➔ ซื้อ Konsa (£4.8m • ARS) เหลืองบ £2.2m!', true);
-            } else if (preset === 'GUEHI_TO_VUSKOVIC') {
-                const guehi = (fplData?.bootstrap?.elements || []).find(p => p.id === 388 || p.web_name === 'Guéhi');
-                const vuskovic = (fplData?.bootstrap?.elements || []).find(p => p.id === 504 || p.web_name === 'Vuskovic');
-                if (guehi) selectTransferOut(guehi.id);
-                if (vuskovic) selectTransferIn(vuskovic.id);
-                showToast('จำลองสูตร 2: ขาย Guéhi (£6.0m) ➔ ซื้อ Vuskovic (£5.2m • BHA) เหลืองบ £1.8m!', true);
+                showToast('จำลอง: ขาย Guéhi (£6.0m) ➔ ซื้อ Konsa (£4.8m • ARS)', true);
             }
         }
 

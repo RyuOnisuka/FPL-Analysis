@@ -8,10 +8,10 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <meta name="version" content="20261122_2230">
+    <meta name="version" content="20261126_2120">
     
     <!-- Load embedded initial dataset (Ensures 100% offline & local file:// support) -->
-    <script src="fpl_data.js?v=20261122_2230"></script>
+    <script src="fpl_data.js?v=20261126_2120"></script>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -325,9 +325,9 @@
                 <div>
                     <h1 class="text-base lg:text-lg font-bold tracking-wide flex flex-wrap items-center gap-2">
                         <span class="brand-gradient-text text-transparent bg-clip-text bg-gradient-to-r from-violet-700 via-teal-700 to-sky-700">FPL Strategy Dashboard</span>
-                        <span id="current-gw-status-badge" class="text-xs bg-amber-100 text-amber-950 px-2.5 py-0.5 rounded-full border border-amber-300 font-bold">GW<span id="current-gw-label">11</span> Live ⚡</span>
+                        <span id="current-gw-status-badge" class="text-xs bg-emerald-100 text-emerald-900 px-2.5 py-0.5 rounded-full border border-emerald-300 font-semibold">GW<span id="current-gw-label">11</span> Official ✅</span>
                     </h1>
-                    <p class="text-xs text-slate-600">Team: <span id="header-team-name" class="text-slate-900 font-semibold">Keekee</span> | Manager: <span id="header-manager-name" class="text-slate-700 font-medium">Ryu Onizuka</span> <span id="header-updated-time" class="text-[11px] text-sky-900 ml-1.5 bg-sky-100/90 px-2 py-0.5 rounded-md border border-sky-300 font-medium">อัปเดตล่าสุด: GW11 Live (630 แต้ม)</span></p>
+                    <p class="text-xs text-slate-600">Team: <span id="header-team-name" class="text-slate-900 font-semibold">Keekee</span> | Manager: <span id="header-manager-name" class="text-slate-700 font-medium">Ryu Onizuka</span> <span id="header-updated-time" class="text-[11px] text-sky-900 ml-1.5 bg-sky-100/90 px-2 py-0.5 rounded-md border border-sky-300 font-medium">อัปเดตล่าสุด: GW11 Official (624 แต้ม)</span></p>
                 </div>
             </div>
 
@@ -374,21 +374,21 @@
             <div class="glass-card bg-emerald-50/85 p-3.5 rounded-2xl flex flex-col justify-between border-l-4 border-l-emerald-400">
                 <span class="text-xs text-slate-600 font-medium">คะแนนรวม (Overall)</span>
                 <div class="flex items-baseline justify-between mt-1.5">
-                    <span id="stat-overall-pts" class="text-xl font-black text-emerald-950">630</span>
+                    <span id="stat-overall-pts" class="text-xl font-black text-emerald-950">624</span>
                     <span class="text-[11px] text-emerald-800 font-semibold">pts</span>
                 </div>
             </div>
             <div class="glass-card bg-sky-50/85 p-3.5 rounded-2xl flex flex-col justify-between border-l-4 border-l-sky-400">
                 <span class="text-xs text-slate-600 font-medium">คะแนน GW<span id="stat-gw-num">11</span></span>
                 <div class="flex items-baseline justify-between mt-1.5">
-                    <span id="stat-gw-pts" class="text-xl font-black text-sky-900">58</span>
-                    <span id="stat-gw-avg-badge" class="text-[10px] text-sky-800 font-semibold">Avg 21 • Live</span>
+                    <span id="stat-gw-pts" class="text-xl font-black text-sky-900">52</span>
+                    <span id="stat-gw-avg-badge" class="text-[10px] text-sky-800 font-semibold">Avg 35</span>
                 </div>
             </div>
             <div class="glass-card bg-rose-50/85 p-3.5 rounded-2xl flex flex-col justify-between border-l-4 border-l-rose-400">
                 <span class="text-xs text-slate-600 font-medium">อันดับรวม (Overall Rank)</span>
                 <div class="flex items-baseline justify-between mt-1.5">
-                    <span id="stat-overall-rank" class="text-base font-bold text-rose-950">3.1M</span>
+                    <span id="stat-overall-rank" class="text-base font-bold text-rose-950">3.4M</span>
                     <i class="fa-solid fa-arrow-trend-up text-xs text-emerald-600"></i>
                 </div>
             </div>
@@ -466,12 +466,12 @@
                     <div class="glass-card bg-sky-50/70 p-4 rounded-2xl border-l-4 border-l-sky-400">
                         <h3 class="font-bold text-sm text-sky-950 flex items-center justify-between gap-2 mb-2.5">
                             <span class="flex items-center gap-2"><i class="fa-solid fa-robot text-sky-600"></i> คำแนะนำด่วนจาก AI ผู้ช่วย</span>
-                            <span id="ai-rec-gw-badge" class="text-[10px] bg-emerald-100 text-emerald-900 px-2.5 py-0.5 rounded-full border border-emerald-300 font-bold shrink-0">GW11 Live ⚡ ➔ แผน GW12</span>
+                            <span id="ai-rec-gw-badge" class="text-[10px] bg-emerald-100 text-emerald-900 px-2.5 py-0.5 rounded-full border border-emerald-300 font-bold shrink-0">GW11 Official ✅ ➔ แผน GW12</span>
                         </h3>
                         <div class="readable-prose text-xs space-y-2.5 text-slate-700" id="ai-recommendations-content">
-                            <p>🔥 <strong>อัปเดตสดก่อนเตะแดงเดือด (GW11 Live: 58 แต้ม • พุ่งขึ้น #4 ตารางรวม SMBC!):</strong> คู่ไบรท์ตัน <strong>De Cuyper (8 แต้ม • CS + 2 โบนัส)</strong> และ <strong>Groß (3 แต้มจาก BB1 • ลุ้นแต้ม DC 11/12 ครั้ง!)</strong> บวกเพิ่มอีก <strong>+11 แต้ม</strong> ดันคะแนนรวมทะลุ <strong>630 แต้ม</strong> แซง Manchester is Red ขึ้นยึด <strong>อันดับ #4 ตารางรวม SMBC</strong> และเกาะ <strong>#2 Phase 2 (58p • ห่างที่ 1 แค่ 3 แต้ม!)</strong></p>
-                            <p>⚽ <strong>คืนนี้ 23:30 น. ศึกแดงเดือด (LIV vs MUN):</strong> ขุนพลทั้ง 15 คนของเราลงสนามเก็บแต้มครบทุกคนแล้ว รอเช็กผลคู่แดงเดือดและคู่ปิดท้ายพรุ่งนี้ (BRE vs EVE) เพื่อสรุปอันดับ Phase 2 นัดแรก!</p>
-                            <p>🚀 <strong>แผนต่อไป GW12 (มี 2 FTs + งบ £2.2m • มูลค่าทีมพุ่ง £102.0m!):</strong> ใน GW12 คู่ <strong>ARS ชน MCI</strong> แนะนำส่ง <strong>Kinský (เยือน SUN)</strong> เฝ้าเสาแทน <strong>Raya (เจ็บไหล่ 75%)</strong> และใช้ <strong>1 FT สลับ Gvardiol (£5.6m • สำรอง 12 นาที + เยือน ARS) ➔ Bogle (£4.8m • LEE รับ COV [H, FDR 2]) หรือ Vuskovic (£5.3m • BHA รับ NEW [H])</strong> แล้วเก็บอีก 1 FT สะสมเป็น <strong>2 FTs</strong> ไปลุยต่อใน GW13!</p>
+                            <p>🎉 <strong>สรุปผล GW11 จบครบ 10 คู่! กวาด 52 แต้ม (ชนะค่าเฉลี่ยโลก 32 ถึง +20p • Top 5% ของโลก!):</strong> ชิป <strong>Bench Boost 1 (BB1)</strong> บวกแต้มสำรองให้ถึง <strong>+12 แต้ม</strong> (<strong>Kinský 7p</strong> + <strong>Groß 4p [เก็บครบ 12 DC!]</strong> + <strong>McGinn 1p</strong>) พาทีมออกสตาร์ต <strong>อันดับ #4 ของ SMBC Phase 2 (52p)</strong> ชนะบรรดาตัวเต็ง Phase 1 ยกแผง!</p>
+                            <p>📈 <strong>อันดับโลกพุ่งเกือบ 1 ล้านอันดับ!:</strong> คะแนนรวมทั้งฤดูกาลขยับเป็น <strong>624 แต้ม</strong> อันดับโลกทะยานจาก 4.3M ขึ้นมาอยู่ที่ <strong>3.3M (Top 30%)</strong> พร้อมมูลค่าทีมสูงสุดใหม่ <strong>£102.0m</strong> (งบในคลัง <strong>£2.2m</strong> + โควตา <strong>2 FTs</strong>)!</p>
+                            <p>🚀 <strong>แผนหลัก GW12 (เดดไลน์เช้ามืดเสาร์ 28 พ.ย. 01:30 น. • มี 2 FTs + งบ £2.2m):</strong> สัปดาห์หน้าคู่บิ๊กแมตช์ <strong>ARS ชน MCI</strong> แนะนำส่ง <strong>Kinský (เยือน SUN)</strong> เฝ้าเสาแทน <strong>Raya (เจ็บไหล่ 50%)</strong> และใช้ <strong>1 FT สลับ Gvardiol (£5.5m • เยือน ARS) ➔ Bogle (£4.8m • LEE รับ COV [H, FDR 2])</strong> เหลืองบ £2.9m + เก็บอีก 1 FT สะสมเป็น <strong>2 FTs ลุยต่อใน GW13</strong>!</p>
                         </div>
                     </div>
 
@@ -482,7 +482,7 @@
                                 <i class="fa-solid fa-trophy text-amber-600"></i> แผนสู่แชมป์ SMBC League (ระยะที่ 2)
                             </h3>
                             <span id="smbc-roadmap-goal-badge" class="text-[10px] bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded-full border border-emerald-300 font-bold shrink-0">
-                                👑 จ่าฝูง Phase 2 (GW11–20)
+                                🔥 อันดับ #4 Phase 2 (ห่างที่ 1 แค่ 12p)
                             </span>
                         </div>
 
@@ -490,25 +490,25 @@
                         <div class="space-y-1.5">
                             <div class="flex justify-between items-baseline text-xs">
                                 <span id="smbc-target-label" class="text-slate-700 font-medium">ความคืบหน้าคะแนนสะสม (เป้า GW20):</span>
-                                <span id="smbc-target-progress-text" class="font-black text-emerald-800 text-sm">48.4% <span class="text-[10px] text-slate-600 font-normal">(619 / 1280 pts)</span></span>
+                                <span id="smbc-target-progress-text" class="font-black text-emerald-800 text-sm">48.8% <span class="text-[10px] text-slate-600 font-normal">(624 / 1280 pts)</span></span>
                             </div>
                             <div class="w-full bg-slate-200/90 h-2.5 rounded-full overflow-hidden p-0.5 border border-slate-300">
-                                <div id="smbc-target-progress-bar" class="bg-gradient-to-r from-sky-400 to-emerald-400 h-full rounded-full transition-all duration-1000" style="width: 48.4%;"></div>
+                                <div id="smbc-target-progress-bar" class="bg-gradient-to-r from-sky-400 to-emerald-400 h-full rounded-full transition-all duration-1000" style="width: 48.8%;"></div>
                             </div>
                         </div>
 
                         <!-- Progress vs Leader -->
                         <div class="space-y-1.5 pt-1">
                             <div class="flex justify-between items-baseline text-xs">
-                                <span class="text-slate-700 font-medium">เทียบสัดส่วนคะแนนกับจ่าฝูงตารางรวม:</span>
-                                <span id="smbc-leader-progress-text" class="font-black text-sky-800 text-sm">92.5% <span class="text-[10px] text-slate-600 font-normal">(619 / 669 pts)</span></span>
+                                <span class="text-slate-700 font-medium">เทียบสัดส่วนคะแนนกับจ่าฝูง Phase 2:</span>
+                                <span id="smbc-leader-progress-text" class="font-black text-sky-800 text-sm">81.3% <span class="text-[10px] text-slate-600 font-normal">(52 / 64 pts)</span></span>
                             </div>
                             <div class="w-full bg-slate-200/90 h-2.5 rounded-full overflow-hidden p-0.5 border border-slate-300">
-                                <div id="smbc-leader-progress-bar" class="bg-gradient-to-r from-violet-400 to-sky-400 h-full rounded-full transition-all duration-1000" style="width: 92.5%;"></div>
+                                <div id="smbc-leader-progress-bar" class="bg-gradient-to-r from-violet-400 to-sky-400 h-full rounded-full transition-all duration-1000" style="width: 81.3%;"></div>
                             </div>
                             <p class="text-[11px] text-slate-600 flex items-center justify-between flex-wrap gap-1 pt-0.5">
-                                <span id="smbc-leader-gap-text">อันดับรวม <strong>#5</strong> • ห่างที่ 4 แค่ <strong class="text-emerald-800 font-bold">6 แต้ม</strong> (ที่ 1: 50p)</span>
-                                <span id="smbc-rate-target-text" class="text-emerald-900 font-bold">👑 จ่าฝูง Phase 2 (#1 • 47p)!</span>
+                                <span id="smbc-leader-gap-text">อันดับ Phase 2 <strong>#4</strong> • ห่างที่ 3 แค่ <strong class="text-emerald-800 font-bold">6 แต้ม</strong> (ที่ 1: 12p)</span>
+                                <span id="smbc-rate-target-text" class="text-emerald-900 font-bold">🔥 #4 Phase 2 (52p • เหลืออีก 9 นัด)</span>
                             </p>
                         </div>
 
@@ -520,7 +520,7 @@
                             </button>
                             <button type="button" onclick="openSMBCPhaseFromOverview(2)" id="smbc-jump-btn-2" class="smbc-phase-jump-btn bg-emerald-100 hover:bg-emerald-200/80 p-1.5 rounded-xl border border-emerald-400 transition cursor-pointer shadow-sm">
                                 <span class="text-[9px] text-emerald-900 block font-bold">Phase 2 (11-20)</span>
-                                <span id="smbc-jump-sub-2" class="text-[10px] text-emerald-950 font-black">🥇#1 • 47p ⚡</span>
+                                <span id="smbc-jump-sub-2" class="text-[10px] text-emerald-950 font-black">#4 • 52p ✅</span>
                             </button>
                             <button type="button" onclick="openSMBCPhaseFromOverview(3)" id="smbc-jump-btn-3" class="smbc-phase-jump-btn bg-white/90 hover:bg-violet-50 p-1.5 rounded-xl border border-slate-300 transition cursor-pointer">
                                 <span class="text-[9px] text-slate-600 block font-medium">Phase 3 (21-30)</span>
@@ -537,7 +537,7 @@
                     <div class="glass-card p-4 rounded-2xl">
                         <h3 class="font-bold text-sm text-slate-800 flex items-center justify-between mb-3">
                             <span><i class="fa-solid fa-tower-broadcast text-emerald-600 mr-1"></i> สรุปผลงานนักเตะในทีม</span>
-                            <span class="text-[11px] text-slate-600 font-semibold bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200" id="squad-perf-gw">GW11 Live ⚡ (47 pts)</span>
+                            <span class="text-[11px] text-slate-600 font-semibold bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200" id="squad-perf-gw">GW11 Official (52 pts)</span>
                         </h3>
                         <div class="space-y-2 max-h-[360px] overflow-y-auto pr-1" id="squad-performance-list"></div>
                     </div>
@@ -700,7 +700,7 @@
                         <h3 class="text-sm font-bold text-sky-900 flex items-center gap-2">
                             <i class="fa-solid fa-lightbulb text-amber-500"></i> สูตรและกลยุทธ์การย้ายตัวแนะนำสำหรับสัปดาห์ถัดไป (Recommended Move Sets):
                         </h3>
-                        <span id="transfer-presets-gw-badge" class="text-[11px] bg-emerald-100 text-emerald-900 border border-emerald-300 px-2.5 py-0.5 rounded-full font-bold">GW12 • โควตา 2 FTs + งบ £2.2m 🔥</span>
+                        <span id="transfer-presets-gw-badge" class="text-[11px] bg-rose-100 text-rose-900 border border-rose-300 px-2.5 py-0.5 rounded-full font-bold">GW12 • เดดไลน์เช้ามืดเสาร์ 01:30 น.! 🚨 (2 FTs • £2.2m)</span>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5" id="transfer-presets-grid">
                         <div class="glass-card bg-emerald-50/75 p-3.5 rounded-xl border border-emerald-300 hover:border-emerald-500 transition cursor-pointer" onclick="applyPresetTransfer('GVARDIOL_TO_BOGLE')">
@@ -708,17 +708,17 @@
                                 <span class="font-bold text-emerald-900">สูตร 1: ใช้ 1 FT โละ Gvardiol + เก็บ 1 FT (แนะนำ ⭐)</span>
                                 <span class="bg-emerald-200/80 text-emerald-950 border border-emerald-300 text-[10px] px-1.5 py-0.5 rounded font-semibold">1/2 FT (0 Hit)</span>
                             </div>
-                            <p class="text-xs text-slate-800"><strong>Gvardiol</strong> (£5.6m • MCI) ➔ <strong>Bogle</strong> (£4.8m • LEE)</p>
-                            <p class="text-[11px] text-slate-600 mt-1">โละกองหลังที่ลงแค่ 12 นาทีและต้องเยือน ARS (FDR 5) คว้าแบ็กขวาลีดส์ (62 แต้ม) เปิดบ้านรับ COV (H, FDR 2) เหลืองบ £3.0m + เหลือ 2 FTs ใน GW13!</p>
+                            <p class="text-xs text-slate-800"><strong>Gvardiol</strong> (£5.5m • MCI) ➔ <strong>Bogle</strong> (£4.8m • LEE)</p>
+                            <p class="text-[11px] text-slate-600 mt-1">โละกองหลังที่ลงแค่ 12 นาทีและต้องเยือน ARS (FDR 5) คว้าแบ็กขวาลีดส์ (62 แต้ม) เปิดบ้านรับ COV (H, FDR 2) เหลืองบ £2.9m + เหลือ 2 FTs ใน GW13!</p>
                         </div>
 
-                        <div class="glass-card bg-sky-50/75 p-3.5 rounded-xl border border-sky-300 hover:border-sky-500 transition cursor-pointer" onclick="applyPresetTransfer('GVARDIOL_TO_VUSKOVIC')">
+                        <div class="glass-card bg-sky-50/75 p-3.5 rounded-xl border border-sky-300 hover:border-sky-500 transition cursor-pointer" onclick="applyPresetTransfer('ODEGAARD_TO_WIRTZ')">
                             <div class="flex justify-between items-center text-xs mb-1.5">
-                                <span class="font-bold text-sky-900">สูตร 2: ขยับเข้าเซ็นเตอร์ไบรท์ตัน 70 แต้ม</span>
-                                <span class="bg-sky-200/80 text-sky-950 border border-sky-300 text-[10px] px-1.5 py-0.5 rounded font-semibold">1/2 FT (0 Hit)</span>
+                                <span class="font-bold text-sky-900">สูตร 2: คว้า Wirtz (Form 9.7 อันดับ 1 กองกลาง! 🔥)</span>
+                                <span class="bg-sky-200/80 text-sky-950 border border-sky-300 text-[10px] px-1.5 py-0.5 rounded font-semibold">1–2 FTs (0 Hit)</span>
                             </div>
-                            <p class="text-xs text-slate-800"><strong>Gvardiol</strong> (£5.6m • MCI) ➔ <strong>Vuskovic</strong> (£5.3m • BHA)</p>
-                            <p class="text-[11px] text-slate-600 mt-1">หลบคู่บิ๊กแมตช์ ARS vs MCI เข้าเซ็นเตอร์ตัวหลักไบรท์ตัน (70 แต้มรวม) เปิดบ้านรับ NEW (H) เหลืองบ £2.5m + เหลือ 2 FTs ใน GW13!</p>
+                            <p class="text-xs text-slate-800"><strong>Ødegaard</strong> (£6.7m • ARS) ➔ <strong>Wirtz</strong> (£7.4m • LIV)</p>
+                            <p class="text-[11px] text-slate-600 mt-1">สลับมิดฟิลด์ปืนใหญ่ที่เจอคิวหนัก (MCI H, BRE A) เข้าจอมทัพหงส์แดง Form 9.7 (EVE A, SUN H [FDR 2]) เหลืองบ £1.5m (หรือทำคู่กับ Bogle ใช้ 2 FTs เหลือ £2.2m!)</p>
                         </div>
 
                         <div class="glass-card bg-violet-50/75 p-3.5 rounded-xl border border-violet-300 hover:border-violet-500 transition cursor-pointer" onclick="applyPresetTransfer('ROLL_FT')">
@@ -727,7 +727,7 @@
                                 <span class="bg-violet-200/80 text-violet-950 border border-violet-300 text-[10px] px-1.5 py-0.5 rounded font-semibold">0 Transfer ➔ 3 FTs</span>
                             </div>
                             <p class="text-xs text-slate-800"><strong>เก็บ 2 FTs ไว้</strong> ➔ สะสมเป็น <strong>3 FTs ใน GW13</strong></p>
-                            <p class="text-[11px] text-slate-600 mt-1">ส่ง Kinský (เยือน SUN) เฝ้าเสาแทน Raya (75% + ชน MCI) ดรอป Gvardiol/Konsa สำรอง แล้วถือ 3 FTs + £2.2m รอปรับทีมชุดใหญ่ใน GW13!</p>
+                            <p class="text-[11px] text-slate-600 mt-1">ส่ง Kinský (เยือน SUN) เฝ้าเสาแทน Raya (50% + ชน MCI) ดรอป Gvardiol/Konsa สำรอง แล้วถือ 3 FTs + £2.2m รอปรับทีมชุดใหญ่ใน GW13!</p>
                         </div>
                     </div>
                 </div>
@@ -1141,29 +1141,26 @@
         }
 
         function renderSMBCTracker() {
-            const totalPts = fplData?.entry?.summary_overall_points || 630;
-            const gwPts = fplData?.entry?.summary_event_points !== undefined ? fplData.entry.summary_event_points : 58;
+            const totalPts = fplData?.entry?.summary_overall_points || 624;
+            const gwPts = fplData?.entry?.summary_event_points !== undefined ? fplData.entry.summary_event_points : 52;
             const curGw = fplData?.current_gw || 11;
             const myTeamId = fplData?.team_id || 4554263;
             const targetGoal = curGw <= 10 ? 680 : (curGw <= 20 ? 1280 : (curGw <= 30 ? 1900 : 2450));
             const targetPct = ((totalPts / targetGoal) * 100).toFixed(1);
 
-            const smbcStandings = fplData?.league_standings?.['63159']?.standings?.results || [];
-            const leaderPts = smbcStandings[0]?.total || 680;
-            const leaderPct = ((totalPts / leaderPts) * 100).toFixed(1);
-            const gap = Math.max(0, leaderPts - totalPts);
+            const smbcLeagueObj = fplData?.league_standings?.['63159'] || {};
+            const smbcStartEvent = smbcLeagueObj?.league?.start_event || 1;
+            const smbcStandings = smbcLeagueObj?.standings?.results || [];
 
             const meRow = smbcStandings.find(r => r.entry === myTeamId);
+            const myBoardPts = meRow?.total !== undefined ? meRow.total : (smbcStartEvent >= 11 ? gwPts : totalPts);
+            const leaderPts = smbcStandings[0]?.total || myBoardPts || 64;
+            const leaderPct = leaderPts > 0 ? ((myBoardPts / leaderPts) * 100).toFixed(1) : '100.0';
+            const gap = Math.max(0, leaderPts - myBoardPts);
+
             const myRank = meRow?.rank || 4;
             const aboveRow = myRank > 1 ? smbcStandings.find(r => r.rank === myRank - 1) : null;
-            const gapAbove = aboveRow ? Math.max(0, (aboveRow.total || 0) - totalPts) : 0;
-
-            // Compute live Phase 2 rank for GW11
-            const phase2Sorted = [...smbcStandings].sort((a, b) => (b.event_total || 0) - (a.event_total || 0));
-            const myP2Idx = phase2Sorted.findIndex(r => r.entry === myTeamId);
-            const myP2Rank = myP2Idx >= 0 ? myP2Idx + 1 : 2;
-            const p2LeaderPts = phase2Sorted[0]?.event_total || gwPts;
-            const p2Gap = Math.max(0, p2LeaderPts - gwPts);
+            const gapAbove = aboveRow ? Math.max(0, (aboveRow.total || 0) - myBoardPts) : 0;
 
             const phaseTitle = document.getElementById('smbc-roadmap-phase-title');
             const goalBadge = document.getElementById('smbc-roadmap-goal-badge');
@@ -1174,7 +1171,7 @@
                 if (targetLabel) targetLabel.innerText = 'ความคืบหน้าคะแนนสะสม (เป้า GW10):';
             } else if (curGw <= 20) {
                 if (phaseTitle) phaseTitle.innerHTML = `<i class="fa-solid fa-trophy text-amber-600"></i> แผนสู่แชมป์ SMBC League (ระยะที่ 2)`;
-                if (goalBadge) goalBadge.innerText = myP2Rank === 1 ? '👑 จ่าฝูง Phase 2 (GW11–20)' : `🔥 อันดับ #${myP2Rank} Phase 2 (ห่างที่ 1 แค่ ${p2Gap}p)`;
+                if (goalBadge) goalBadge.innerText = myRank === 1 ? '👑 จ่าฝูง Phase 2 (GW11–20)' : `🔥 อันดับ #${myRank} Phase 2 (ห่างที่ 1 แค่ ${gap}p)`;
                 if (targetLabel) targetLabel.innerText = 'ความคืบหน้าคะแนนสะสม (เป้า GW20):';
             }
 
@@ -1185,31 +1182,33 @@
             if (targetBar) targetBar.style.width = `${Math.min(100, targetPct)}%`;
 
             const leaderText = document.getElementById('smbc-leader-progress-text');
-            if (leaderText) leaderText.innerHTML = `${leaderPct}% <span class="text-[10px] text-slate-600 font-normal">(${totalPts} / ${leaderPts} pts)</span>`;
+            if (leaderText) leaderText.innerHTML = `${leaderPct}% <span class="text-[10px] text-slate-600 font-normal">(${myBoardPts} / ${leaderPts} pts)</span>`;
 
             const leaderBar = document.getElementById('smbc-leader-progress-bar');
             if (leaderBar) leaderBar.style.width = `${Math.min(100, leaderPct)}%`;
 
             const gapText = document.getElementById('smbc-leader-gap-text');
             if (gapText) {
+                const boardLabel = smbcStartEvent >= 11 ? 'Phase 2' : 'รวม';
                 if (aboveRow && myRank > 1) {
-                    gapText.innerHTML = `อันดับรวม <strong>#${myRank}</strong> • ห่างที่ ${myRank - 1} แค่ <strong class="text-emerald-800 font-bold">${gapAbove} แต้ม</strong> (ที่ 1: ${gap}p)`;
+                    gapText.innerHTML = `อันดับ ${boardLabel} <strong>#${myRank}</strong> • ห่างที่ ${myRank - 1} แค่ <strong class="text-emerald-800 font-bold">${gapAbove} แต้ม</strong> (ที่ 1: ${gap}p)`;
                 } else {
-                    gapText.innerHTML = `ห่างจ่าฝูง: <strong class="text-amber-900 font-bold">${gap} แต้ม</strong>`;
+                    gapText.innerHTML = `จ่าฝูง ${boardLabel}! <strong class="text-emerald-800 font-bold">${myBoardPts} แต้ม</strong>`;
                 }
             }
 
             const rateText = document.getElementById('smbc-rate-target-text');
             if (rateText) {
-                rateText.innerHTML = curGw === 11
-                    ? (myP2Rank === 1 ? `👑 จ่าฝูง Phase 2 (#1 • ${gwPts}p)!` : `🔥 #${myP2Rank} Phase 2 (${gwPts}p • ห่างที่ 1 แค่ ${p2Gap}p)`)
+                const remP2 = Math.max(0, 20 - curGw);
+                rateText.innerHTML = curGw >= 11 && curGw <= 20
+                    ? (myRank === 1 ? `👑 จ่าฝูง Phase 2 (#1 • ${myBoardPts}p)!` : `🔥 #${myRank} Phase 2 (${myBoardPts}p • เหลืออีก ${remP2} นัด)`)
                     : `เป้าหมายยึด #1 Phase 2!`;
             }
 
             const sub1 = document.getElementById('smbc-jump-sub-1');
             if (sub1) sub1.innerText = `#6 • 572p ✅`;
             const sub2 = document.getElementById('smbc-jump-sub-2');
-            if (sub2 && curGw === 11) sub2.innerText = `${myP2Rank === 1 ? '🥇' : (myP2Rank === 2 ? '🥈' : '')}#${myP2Rank} • ${gwPts}p ⚡`;
+            if (sub2 && curGw >= 11) sub2.innerText = `${myRank === 1 ? '🥇' : (myRank === 2 ? '🥈' : (myRank === 3 ? '🥉' : ''))}#${myRank} • ${myBoardPts}p ${isGwComplete(curGw) ? '✅' : '⚡'}`;
         }
 
         function isGwComplete(gw) {
@@ -1228,6 +1227,9 @@
                 if (!isCurFinished) {
                     badge.innerText = `GW${curGw} Live ⚡ ➔ แผน GW${nextGw}`;
                     badge.className = 'text-[10px] bg-emerald-100 text-emerald-900 px-2.5 py-0.5 rounded-full border border-emerald-300 font-bold shrink-0';
+                } else if (nextGw === 12) {
+                    badge.innerText = `GW12 • เดดไลน์เช้ามืดเสาร์ 01:30 น.! 🚨`;
+                    badge.className = 'text-[10px] bg-rose-100 text-rose-900 px-2.5 py-0.5 rounded-full border border-rose-300 font-bold shrink-0';
                 } else {
                     badge.innerText = `GW${nextGw} Strategic Brief`;
                     badge.className = 'text-[10px] bg-sky-100 text-sky-900 px-2.5 py-0.5 rounded-full border border-sky-300 font-semibold shrink-0';
@@ -1240,9 +1242,9 @@
             let html = '';
             if (nextGw === 12) {
                 html = `
-                    <p>🔥 <strong>อัปเดตสดก่อนเตะแดงเดือด (GW11 Live: 58 แต้ม • พุ่งขึ้น #4 ตารางรวม SMBC!):</strong> คู่ไบรท์ตัน <strong>De Cuyper (8 แต้ม • CS + 2 โบนัส)</strong> และ <strong>Groß (3 แต้มจาก BB1 • ลุ้นแต้ม DC 11/12 ครั้ง!)</strong> บวกเพิ่มอีก <strong>+11 แต้ม</strong> ดันคะแนนรวมทะลุ <strong>630 แต้ม</strong> แซง Manchester is Red ขึ้นยึด <strong>อันดับ #4 ตารางรวม SMBC</strong> และเกาะ <strong>#2 Phase 2 (58p • ห่างที่ 1 แค่ 3 แต้ม!)</strong></p>
-                    <p>⚽ <strong>คืนนี้ 23:30 น. ศึกแดงเดือด (LIV vs MUN):</strong> ขุนพลทั้ง 15 คนของเราลงสนามเก็บแต้มครบทุกคนแล้ว รอเช็กผลคู่แดงเดือดและคู่ปิดท้ายพรุ่งนี้ (BRE vs EVE) เพื่อสรุปอันดับ Phase 2 นัดแรก!</p>
-                    <p>🚀 <strong>แผนต่อไป GW12 (มี 2 FTs + งบ £2.2m • มูลค่าทีมพุ่ง £102.0m!):</strong> ใน GW12 คู่ <strong>ARS ชน MCI</strong> แนะนำส่ง <strong>Kinský (เยือน SUN)</strong> เฝ้าเสาแทน <strong>Raya (เจ็บไหล่ 75%)</strong> และใช้ <strong>1 FT สลับ Gvardiol (£5.6m • สำรอง 12 นาที + เยือน ARS) ➔ Bogle (£4.8m • LEE รับ COV [H, FDR 2]) หรือ Vuskovic (£5.3m • BHA รับ NEW [H])</strong> แล้วเก็บอีก 1 FT สะสมเป็น <strong>2 FTs</strong> ไปลุยต่อใน GW13!</p>
+                    <p>🚨 <strong>เดดไลน์ GW12 คืนพรุ่งนี้ (เช้ามืดเสาร์ 28 พ.ย. 01:30 น.) — มี 2 FTs + งบ £2.2m!:</strong> GW11 Official กวาด <strong>52 แต้ม</strong> (ชนะค่าเฉลี่ยโลก 35 ถึง +17p!) ออกสตาร์ต <strong>อันดับ #4 SMBC Phase 2</strong> (นำหน้าตัวเต็ง Phase 1 ยกแผง) พร้อมมูลค่าทีมพุ่ง <strong>£102.0m</strong>!</p>
+                    <p>🔄 <strong>แผนเปลี่ยนตัว (0 Hit):</strong> ส่ง <strong>Kinský (เยือน SUN)</strong> เฝ้าเสาแทน <strong>Raya (เจ็บไหล่ 50% + ชน MCI)</strong> | <strong>สูตร 1 (แนะนำ ⭐)</strong> ใช้ 1 FT ขาย <strong>Gvardiol (£5.5m • เยือน ARS [FDR 5]) ➔ Bogle (£4.8m • LEE รับ COV [H, FDR 2])</strong> เหลืองบ £2.9m + เหลือ <strong>2 FTs ใน GW13</strong>! <em>(หรือใช้ 2 FTs ทำคู่กับ <strong>Ødegaard ➔ Wirtz £7.4m • LIV Form 9.7</strong> เหลืองบ £2.2m!)</em></p>
+                    <p>👑 <strong>จัด 11 ตัวจริง (3-4-3) &amp; กัปตัน GW12:</strong> ฉีกกัปตันมาใส่ <strong>N.Jackson (C • Form 7.3 เยือน IPS [FDR 2])</strong> หรือ <strong>Rogers (VC • เยือน NFO [FDR 2])</strong> แทน Haaland ที่ต้องเยือน ARS (FDR 5)!</p>
                 `;
             } else {
                 html = `
@@ -1940,8 +1942,13 @@
 
             const badge = document.getElementById('transfer-presets-gw-badge');
             if (badge) {
-                badge.innerText = `GW${nextGw} • โควตาปัจจุบัน ${ft} FT${ft > 1 ? 's' : ''} + งบ £${bank.toFixed(1)}m 🔥`;
-                badge.className = 'text-[11px] bg-emerald-100 text-emerald-900 border border-emerald-300 px-2.5 py-0.5 rounded-full font-bold';
+                if (nextGw === 12) {
+                    badge.innerText = `GW12 • เดดไลน์เช้ามืดเสาร์ 01:30 น.! 🚨 (${ft} FTs • £${bank.toFixed(1)}m)`;
+                    badge.className = 'text-[11px] bg-rose-100 text-rose-900 border border-rose-300 px-2.5 py-0.5 rounded-full font-bold';
+                } else {
+                    badge.innerText = `GW${nextGw} • โควตาปัจจุบัน ${ft} FT${ft > 1 ? 's' : ''} + งบ £${bank.toFixed(1)}m 🔥`;
+                    badge.className = 'text-[11px] bg-emerald-100 text-emerald-900 border border-emerald-300 px-2.5 py-0.5 rounded-full font-bold';
+                }
             }
 
             const grid = document.getElementById('transfer-presets-grid');
@@ -1949,16 +1956,18 @@
 
             const gvardiol = (fplData?.bootstrap?.elements || []).find(p => p.id === 407 || p.web_name === 'Gvardiol');
             const bogle = (fplData?.bootstrap?.elements || []).find(p => p.id === 330 || p.web_name === 'Bogle');
-            const vuskovic = (fplData?.bootstrap?.elements || []).find(p => p.id === 504 || p.web_name === 'Vuskovic');
+            const odegaard = (fplData?.bootstrap?.elements || []).find(p => p.id === 15 || p.web_name === 'Ødegaard');
+            const wirtz = (fplData?.bootstrap?.elements || []).find(p => p.id === 366 || p.web_name === 'Wirtz');
 
-            const gvPrice = gvardiol ? (gvardiol.now_cost / 10).toFixed(1) : '5.6';
+            const gvPrice = gvardiol ? (gvardiol.now_cost / 10).toFixed(1) : '5.5';
             const bPrice = bogle ? (bogle.now_cost / 10).toFixed(1) : '4.8';
             const bPts = bogle?.total_points || 62;
             const bBank = (bank + parseFloat(gvPrice) - parseFloat(bPrice)).toFixed(1);
 
-            const vPrice = vuskovic ? (vuskovic.now_cost / 10).toFixed(1) : '5.3';
-            const vPts = vuskovic?.total_points || 70;
-            const vBank = (bank + parseFloat(gvPrice) - parseFloat(vPrice)).toFixed(1);
+            const oPrice = odegaard ? (odegaard.now_cost / 10).toFixed(1) : '6.7';
+            const wPrice = wirtz ? (wirtz.now_cost / 10).toFixed(1) : '7.4';
+            const wForm = wirtz?.form || '9.7';
+            const wBank = (bank + parseFloat(oPrice) - parseFloat(wPrice)).toFixed(1);
 
             grid.innerHTML = `
                 <div class="glass-card bg-emerald-50/75 p-3.5 rounded-xl border border-emerald-300 hover:border-emerald-500 transition cursor-pointer" onclick="applyPresetTransfer('GVARDIOL_TO_BOGLE')">
@@ -1970,13 +1979,13 @@
                     <p class="text-[11px] text-slate-600 mt-1">โละกองหลังที่ลงแค่ 12 นาทีและต้องเยือน ARS (FDR 5) คว้าแบ็กขวาลีดส์ (${bPts} แต้ม) เปิดบ้านรับ COV (H, FDR 2) เหลืองบ <strong>£${bBank}m</strong> + เหลือ ${Math.min(5, ft)} FTs ใน GW${nextGw + 1}!</p>
                 </div>
 
-                <div class="glass-card bg-sky-50/75 p-3.5 rounded-xl border border-sky-300 hover:border-sky-500 transition cursor-pointer" onclick="applyPresetTransfer('GVARDIOL_TO_VUSKOVIC')">
+                <div class="glass-card bg-sky-50/75 p-3.5 rounded-xl border border-sky-300 hover:border-sky-500 transition cursor-pointer" onclick="applyPresetTransfer('ODEGAARD_TO_WIRTZ')">
                     <div class="flex justify-between items-center text-xs mb-1.5">
-                        <span class="font-bold text-sky-900">สูตร 2: ขยับเข้าเซ็นเตอร์ไบรท์ตัน (${vPts} แต้ม)</span>
-                        <span class="bg-sky-200/80 text-sky-950 border border-sky-300 text-[10px] px-1.5 py-0.5 rounded font-semibold">1/${ft} FT (0 Hit)</span>
+                        <span class="font-bold text-sky-900">สูตร 2: คว้า Wirtz (Form ${wForm} อันดับ 1 กองกลาง! 🔥)</span>
+                        <span class="bg-sky-200/80 text-sky-950 border border-sky-300 text-[10px] px-1.5 py-0.5 rounded font-semibold">1–${ft} FTs (0 Hit)</span>
                     </div>
-                    <p class="text-xs text-slate-800"><strong>Gvardiol</strong> (£${gvPrice}m • MCI) ➔ <strong>Vuskovic</strong> (£${vPrice}m • BHA)</p>
-                    <p class="text-[11px] text-slate-600 mt-1">หลบคู่บิ๊กแมตช์ ARS vs MCI เข้าเซ็นเตอร์ตัวหลักไบรท์ตัน (${vPts} แต้มรวม) เปิดบ้านรับ NEW (H) เหลืองบ <strong>£${vBank}m</strong> + เหลือ ${Math.min(5, ft)} FTs ใน GW${nextGw + 1}!</p>
+                    <p class="text-xs text-slate-800"><strong>Ødegaard</strong> (£${oPrice}m • ARS) ➔ <strong>Wirtz</strong> (£${wPrice}m • LIV)</p>
+                    <p class="text-[11px] text-slate-600 mt-1">สลับมิดฟิลด์ปืนใหญ่ที่เจอคิวหนัก (MCI H, BRE A) เข้าจอมทัพหงส์แดง Form ${wForm} (EVE A, SUN H [FDR 2]) เหลืองบ <strong>£${wBank}m</strong> (หรือทำคู่กับ Bogle ใช้ 2 FTs เหลือ £2.2m!)</p>
                 </div>
 
                 <div class="glass-card bg-violet-50/75 p-3.5 rounded-xl border border-violet-300 hover:border-violet-500 transition cursor-pointer" onclick="applyPresetTransfer('ROLL_FT')">
@@ -1985,7 +1994,7 @@
                         <span class="bg-violet-200/80 text-violet-950 border border-violet-300 text-[10px] px-1.5 py-0.5 rounded font-semibold">0 Transfer ➔ ${Math.min(5, ft + 1)} FTs</span>
                     </div>
                     <p class="text-xs text-slate-800"><strong>เก็บ ${ft} FTs ไว้</strong> ➔ สะสมเป็น <strong>${Math.min(5, ft + 1)} FTs ใน GW${nextGw + 1}</strong></p>
-                    <p class="text-[11px] text-slate-600 mt-1">ส่ง Kinský (เยือน SUN) เฝ้าเสาแทน Raya (75% + ชน MCI) ดรอป Gvardiol/Konsa สำรอง แล้วถือ ${Math.min(5, ft + 1)} FTs + £${bank.toFixed(1)}m รอปรับทีมชุดใหญ่ใน GW${nextGw + 1}!</p>
+                    <p class="text-[11px] text-slate-600 mt-1">ส่ง Kinský (เยือน SUN) เฝ้าเสาแทน Raya (50% + ชน MCI) ดรอป Gvardiol/Konsa สำรอง แล้วถือ ${Math.min(5, ft + 1)} FTs + £${bank.toFixed(1)}m รอปรับทีมชุดใหญ่ใน GW${nextGw + 1}!</p>
                 </div>
             `;
         }
@@ -1993,11 +2002,11 @@
         function renderChipStrategy() {
             const curGw = fplData?.current_gw || 11;
             const isCurFinished = isGwComplete(curGw);
-            const totalPts = fplData?.entry?.summary_overall_points || 619;
-            const gwPts = fplData?.entry?.summary_event_points !== undefined ? fplData.entry.summary_event_points : 47;
+            const totalPts = fplData?.entry?.summary_overall_points || 624;
+            const gwPts = fplData?.entry?.summary_event_points !== undefined ? fplData.entry.summary_event_points : 52;
             const chips = fplData?.history?.chips || [];
             const myTeamId = fplData?.team_id || 4554263;
-            const smbcRank = (fplData?.league_standings?.['63159']?.standings?.results || []).find(r => r.entry === myTeamId)?.rank || 5;
+            const smbcRank = (fplData?.league_standings?.['63159']?.standings?.results || []).find(r => r.entry === myTeamId)?.rank || 4;
 
             const wc1 = chips.find(c => c.name === 'wildcard' && c.event <= 19);
             const tc1 = chips.find(c => c.name === '3xc' && c.event <= 19);
@@ -2019,15 +2028,15 @@
             const bbBadge = document.getElementById('chip-bb1-badge');
             if (bbBadge && bb1) {
                 bbBadge.innerText = bb1.event === curGw && !isCurFinished
-                    ? `BB1 กำลังทำงานใน GW${bb1.event} 🚀 (นำ #1 Phase 2!)`
-                    : `BB1 ใช้แล้ว GW${bb1.event} ✅`;
+                    ? `BB1 กำลังทำงานใน GW${bb1.event} 🚀`
+                    : `BB1 ใช้แล้ว GW${bb1.event} ✅ (+12p สำรอง • รวม 52p!)`;
                 bbBadge.className = 'text-[10px] bg-emerald-100 text-emerald-900 px-2.5 py-0.5 rounded-full font-bold border border-emerald-300';
             }
 
             const tlLabel = document.getElementById('chip-tl-1-label');
             const tlVal = document.getElementById('chip-tl-1-val');
             if (tlLabel) tlLabel.innerText = `GW1 - GW10 (Phase 1 Official ✅)`;
-            if (tlVal) tlVal.innerText = `572p (จบ Phase 1 อันดับ #6 • GW11 นำ #1 Phase 2 [${gwPts}p / รวม ${totalPts}p • #${smbcRank}]! 🔥)`;
+            if (tlVal) tlVal.innerText = `572p (จบ Phase 1 อันดับ #6 • GW11 กด ${gwPts}p อยู่ที่ #${smbcRank} Phase 2 [รวม ${totalPts}p]! 🔥)`;
         }
 
         function renderTransferSimulator() {
